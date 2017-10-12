@@ -83,10 +83,10 @@ parser ParserImpl(packet_in packet,
     state start {
 	meta.ingress_port = standard_metadata.ingress_port;
 //	meta.do_trans = 1;
-	transition select(meta.ingress_port<3){
+	transition select(meta.ingress_port<3){ 
 		true: parse_dot11;
  		false: parse_ethernet;   
-		             //you need to improve  
+		             //port selection issues (systax need to be modified)  
         }
 	
      
@@ -165,6 +165,8 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
 	//dst.addr = addr3
 	//Ether.type =  LLC/IPTYPE(0x0800?)
 	//Invalid dot11 header
+	
+	// Test for update metadata / header type/value 
 	hdr.ethernet.setValid();
 	hdr.ethernet.dstAddr = dstAddr;
 	hdr.ethernet.srcAddr = hdr.dot11.addr1;
