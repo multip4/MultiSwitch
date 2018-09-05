@@ -2,7 +2,7 @@
 MultiSwitch is a switch technology that supports multiple services simultaneously through resource virtualization of one physical switch. This project includes the following technologies:
 - Multi-pipeline programmable switch architecture
 - Data plane programming language for multi-service support: P4 (http://p4.org)
-- Programmable switch resource isolation / pooling and QoS support
+- Programmable switch resource isolation / pooling and QoS support: [PDP virtualization by using data plane hypervisor](https://github.com/multip4/MultiSwitch/tree/master/tests/virtualization)
 - Legacy IP network interworking technology
 
 # Authors
