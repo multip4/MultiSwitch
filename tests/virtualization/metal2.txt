@@ -1,0 +1,3 @@
+table_add table_config_at_initial set_initial_config 0 0 0 => 1 1 4 1
+table_add table_header_match_stage1_1 set_action_id 1 1 0x00010000000000000000&&&0xFFFF0000000000000000 => 0x200000000 0x2000000000 0 0 0xFF 1
+table_add table_mod_std_meta_stage1 do_forward 0x200000000 => 2

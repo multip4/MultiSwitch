@@ -1,0 +1,3861 @@
+{
+  "program" : "./hpv.p4i",
+  "__meta__" : {
+    "version" : [2, 18],
+    "compiler" : "https://github.com/p4lang/p4c"
+  },
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["metadata.load_header", 800, false]
+      ]
+    },
+    {
+      "name" : "description_hdr_t",
+      "id" : 1,
+      "fields" : [
+        ["flag", 8, false],
+        ["len", 8, false],
+        ["vdp_id", 16, false]
+      ]
+    },
+    {
+      "name" : "original_hdr1_t",
+      "id" : 2,
+      "fields" : [
+        ["hdr1", 432, false]
+      ]
+    },
+    {
+      "name" : "original_hdr2_t",
+      "id" : 3,
+      "fields" : [
+        ["hdr2", 272, false]
+      ]
+    },
+    {
+      "name" : "vdp_metadata_t",
+      "id" : 4,
+      "fields" : [
+        ["inst_id", 8, false],
+        ["stage_id", 8, false],
+        ["match_chain_bitmap", 3, false],
+        ["match_chain_result", 48, false],
+        ["action_chain_bitmap", 48, false],
+        ["action_chain_id", 48, false],
+        ["_padding", 5, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 5,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["clone_spec", 32, false],
+        ["instance_type", 32, false],
+        ["drop", 1, false],
+        ["recirculate_port", 16, false],
+        ["packet_length", 32, false],
+        ["enq_timestamp", 32, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["ingress_global_timestamp", 48, false],
+        ["egress_global_timestamp", 48, false],
+        ["lf_field_list", 32, false],
+        ["mcast_grp", 16, false],
+        ["resubmit_flag", 32, false],
+        ["egress_rid", 16, false],
+        ["checksum_error", 1, false],
+        ["recirculate_flag", 32, false],
+        ["_padding_0", 5, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "desc_hdr",
+      "id" : 2,
+      "header_type" : "description_hdr_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ori_hdr1",
+      "id" : 3,
+      "header_type" : "original_hdr1_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ori_hdr2",
+      "id" : 4,
+      "header_type" : "original_hdr2_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "userMetadata.vdp_metadata",
+      "id" : 5,
+      "header_type" : "vdp_metadata_t",
+      "metadata" : true,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 1],
+    ["PacketTooShort", 2],
+    ["NoMatch", 3],
+    ["StackOutOfBounds", 4],
+    ["HeaderTooShort", 5],
+    ["ParserTimeout", 6]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ori_hdr2"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "metadata.load_header"]
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ori_hdr2", "hdr2"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                      }
+                    }
+                  }
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "hpv.p4",
+        "line" : 346,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "order" : ["desc_hdr", "ori_hdr1", "ori_hdr2"]
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [],
+  "calculations" : [],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 5,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 7,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 8,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 9,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 12,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyIngress.set_initial_config",
+      "id" : 13,
+      "runtime_data" : [
+        {
+          "name" : "stageid",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 82,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 83,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = stageid"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 84,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 14,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 15,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 16,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 17,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 18,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 19,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 20,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.set_action_id",
+      "id" : 21,
+      "runtime_data" : [
+        {
+          "name" : "match_result",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "action_bitmap",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "match_bitmap",
+          "bitwidth" : 3
+        },
+        {
+          "name" : "next_stage",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "|",
+                  "left" : {
+                    "type" : "local",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 110,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = match_result|meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.end",
+      "id" : 22,
+      "runtime_data" : [
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.end",
+      "id" : 23,
+      "runtime_data" : [
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.end",
+      "id" : 24,
+      "runtime_data" : [
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.end",
+      "id" : 25,
+      "runtime_data" : [
+        {
+          "name" : "next_prog",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 101,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap = action_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 102,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap = match_bitmap; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "stage_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 103,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.stage_id = next_stage; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "inst_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 104,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.inst_id = next_prog; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "action_chain_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 105,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.action_chain_id = meta.vdp_metadata.match_chain_result"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["userMetadata.vdp_metadata", "match_chain_result"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 106,
+            "column" : 8,
+            "source_fragment" : "meta.vdp_metadata.match_chain_result = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_forward",
+      "id" : 26,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 225,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_forward",
+      "id" : 27,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 225,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_forward",
+      "id" : 28,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 225,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_forward",
+      "id" : 29,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 225,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_drop",
+      "id" : 30,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 229,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_drop",
+      "id" : 31,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 229,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_drop",
+      "id" : 32,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 229,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.do_drop",
+      "id" : 33,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 229,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop()"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "hpv.p4",
+        "line" : 76,
+        "column" : 8,
+        "source_fragment" : "MyIngress"
+      },
+      "init_table" : "MyIngress.table_config_at_initial",
+      "tables" : [
+        {
+          "name" : "MyIngress.table_config_at_initial",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 87,
+            "column" : 10,
+            "source_fragment" : "table_config_at_initial"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.desc_hdr.vdp_id",
+              "target" : ["desc_hdr", "vdp_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [13, 0],
+          "actions" : ["MyIngress.set_initial_config", "NoAction"],
+          "base_default_next" : "node_3",
+          "next_tables" : {
+            "MyIngress.set_initial_config" : "node_3",
+            "NoAction" : "node_3"
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_header_match_stage1",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 122,
+            "column" : 10,
+            "source_fragment" : "table_header_match_stage1"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "meta.load_header",
+              "target" : ["scalars", "metadata.load_header"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [14, 22, 1],
+          "actions" : ["MyIngress.set_action_id", "MyIngress.end", "NoAction"],
+          "base_default_next" : "node_6",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_6",
+            "MyIngress.end" : "node_6",
+            "NoAction" : "node_6"
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_std_meta_match_stage1",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 134,
+            "column" : 10,
+            "source_fragment" : "table_std_meta_match_stage1"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.egress_spec",
+              "target" : ["standard_metadata", "egress_spec"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.instance_type",
+              "target" : ["standard_metadata", "instance_type"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [15, 2],
+          "actions" : ["MyIngress.set_action_id", "NoAction"],
+          "base_default_next" : "node_8",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_8",
+            "NoAction" : "node_8"
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_mod_std_meta_stage1",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 232,
+            "column" : 10,
+            "source_fragment" : "table_mod_std_meta_stage1"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.action_chain_id",
+              "target" : ["userMetadata.vdp_metadata", "action_chain_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [26, 30, 9],
+          "actions" : ["MyIngress.do_forward", "MyIngress.do_drop", "NoAction"],
+          "base_default_next" : "node_11",
+          "next_tables" : {
+            "MyIngress.do_forward" : "node_11",
+            "MyIngress.do_drop" : "node_11",
+            "NoAction" : "node_11"
+          },
+          "default_entry" : {
+            "action_id" : 9,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_header_match_stage2",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 147,
+            "column" : 10,
+            "source_fragment" : "table_header_match_stage2"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "meta.load_header",
+              "target" : ["scalars", "metadata.load_header"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [16, 23, 3],
+          "actions" : ["MyIngress.set_action_id", "MyIngress.end", "NoAction"],
+          "base_default_next" : "node_14",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_14",
+            "MyIngress.end" : "node_14",
+            "NoAction" : "node_14"
+          },
+          "default_entry" : {
+            "action_id" : 3,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_std_meta_match_stage2",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 159,
+            "column" : 10,
+            "source_fragment" : "table_std_meta_match_stage2"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.egress_spec",
+              "target" : ["standard_metadata", "egress_spec"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.instance_type",
+              "target" : ["standard_metadata", "instance_type"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [17, 4],
+          "actions" : ["MyIngress.set_action_id", "NoAction"],
+          "base_default_next" : "node_16",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_16",
+            "NoAction" : "node_16"
+          },
+          "default_entry" : {
+            "action_id" : 4,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_mod_std_meta_stage2",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 242,
+            "column" : 10,
+            "source_fragment" : "table_mod_std_meta_stage2"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.action_chain_id",
+              "target" : ["userMetadata.vdp_metadata", "action_chain_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [27, 31, 10],
+          "actions" : ["MyIngress.do_forward", "MyIngress.do_drop", "NoAction"],
+          "base_default_next" : "node_19",
+          "next_tables" : {
+            "MyIngress.do_forward" : "node_19",
+            "MyIngress.do_drop" : "node_19",
+            "NoAction" : "node_19"
+          },
+          "default_entry" : {
+            "action_id" : 10,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_header_match_stage3",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 172,
+            "column" : 10,
+            "source_fragment" : "table_header_match_stage3"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "meta.load_header",
+              "target" : ["scalars", "metadata.load_header"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [18, 24, 5],
+          "actions" : ["MyIngress.set_action_id", "MyIngress.end", "NoAction"],
+          "base_default_next" : "node_22",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_22",
+            "MyIngress.end" : "node_22",
+            "NoAction" : "node_22"
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_std_meta_match_stage3",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 184,
+            "column" : 10,
+            "source_fragment" : "table_std_meta_match_stage3"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.egress_spec",
+              "target" : ["standard_metadata", "egress_spec"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.instance_type",
+              "target" : ["standard_metadata", "instance_type"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [19, 6],
+          "actions" : ["MyIngress.set_action_id", "NoAction"],
+          "base_default_next" : "node_24",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_24",
+            "NoAction" : "node_24"
+          },
+          "default_entry" : {
+            "action_id" : 6,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_mod_std_meta_stage3",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 252,
+            "column" : 10,
+            "source_fragment" : "table_mod_std_meta_stage3"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.action_chain_id",
+              "target" : ["userMetadata.vdp_metadata", "action_chain_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [28, 32, 11],
+          "actions" : ["MyIngress.do_forward", "MyIngress.do_drop", "NoAction"],
+          "base_default_next" : "node_27",
+          "next_tables" : {
+            "MyIngress.do_forward" : "node_27",
+            "MyIngress.do_drop" : "node_27",
+            "NoAction" : "node_27"
+          },
+          "default_entry" : {
+            "action_id" : 11,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_header_match_stage4",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 197,
+            "column" : 10,
+            "source_fragment" : "table_header_match_stage4"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "meta.load_header",
+              "target" : ["scalars", "metadata.load_header"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [20, 25, 7],
+          "actions" : ["MyIngress.set_action_id", "MyIngress.end", "NoAction"],
+          "base_default_next" : "node_30",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_30",
+            "MyIngress.end" : "node_30",
+            "NoAction" : "node_30"
+          },
+          "default_entry" : {
+            "action_id" : 7,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_std_meta_match_stage4",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 209,
+            "column" : 10,
+            "source_fragment" : "table_std_meta_match_stage4"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.inst_id",
+              "target" : ["userMetadata.vdp_metadata", "inst_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.stage_id",
+              "target" : ["userMetadata.vdp_metadata", "stage_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.egress_spec",
+              "target" : ["standard_metadata", "egress_spec"],
+              "mask" : null
+            },
+            {
+              "match_type" : "ternary",
+              "name" : "standard_metadata.instance_type",
+              "target" : ["standard_metadata", "instance_type"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "ternary",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [21, 8],
+          "actions" : ["MyIngress.set_action_id", "NoAction"],
+          "base_default_next" : "node_32",
+          "next_tables" : {
+            "MyIngress.set_action_id" : "node_32",
+            "NoAction" : "node_32"
+          },
+          "default_entry" : {
+            "action_id" : 8,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.table_mod_std_meta_stage4",
+          "id" : 12,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 262,
+            "column" : 10,
+            "source_fragment" : "table_mod_std_meta_stage4"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "meta.vdp_metadata.action_chain_id",
+              "target" : ["userMetadata.vdp_metadata", "action_chain_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [29, 33, 12],
+          "actions" : ["MyIngress.do_forward", "MyIngress.do_drop", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.do_forward" : null,
+            "MyIngress.do_drop" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 12,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_3",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 274,
+            "column" : 12,
+            "source_fragment" : "(meta.vdp_metadata.stage_id & 0x1f) == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "stage_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x1f"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "node_4",
+          "false_next" : "node_11"
+        },
+        {
+          "name" : "node_4",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 275,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&4 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x04"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_stage1",
+          "false_next" : "node_6"
+        },
+        {
+          "name" : "node_6",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 278,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&1 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_std_meta_match_stage1",
+          "false_next" : "node_8"
+        },
+        {
+          "name" : "node_8",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 281,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "true_next" : "node_9",
+          "false_next" : "node_11"
+        },
+        {
+          "name" : "node_9",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 282,
+            "column" : 20,
+            "source_fragment" : "(meta.vdp_metadata.action_chain_bitmap & (1<<37)) != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x002000000000"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_mod_std_meta_stage1",
+          "false_next" : "node_11"
+        },
+        {
+          "name" : "node_11",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 288,
+            "column" : 12,
+            "source_fragment" : "(meta.vdp_metadata.stage_id & 0x1f) == 2"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "stage_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x1f"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x02"
+              }
+            }
+          },
+          "true_next" : "node_12",
+          "false_next" : "node_19"
+        },
+        {
+          "name" : "node_12",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 289,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&4 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x04"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_stage2",
+          "false_next" : "node_14"
+        },
+        {
+          "name" : "node_14",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 292,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&1 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_std_meta_match_stage2",
+          "false_next" : "node_16"
+        },
+        {
+          "name" : "node_16",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 295,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "true_next" : "node_17",
+          "false_next" : "node_19"
+        },
+        {
+          "name" : "node_17",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 296,
+            "column" : 20,
+            "source_fragment" : "(meta.vdp_metadata.action_chain_bitmap & (1<<37)) != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x002000000000"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_mod_std_meta_stage2",
+          "false_next" : "node_19"
+        },
+        {
+          "name" : "node_19",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 302,
+            "column" : 12,
+            "source_fragment" : "(meta.vdp_metadata.stage_id & 0x1f) == 3"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "stage_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x1f"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x03"
+              }
+            }
+          },
+          "true_next" : "node_20",
+          "false_next" : "node_27"
+        },
+        {
+          "name" : "node_20",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 303,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&4 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x04"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_stage3",
+          "false_next" : "node_22"
+        },
+        {
+          "name" : "node_22",
+          "id" : 12,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 306,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&1 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_std_meta_match_stage3",
+          "false_next" : "node_24"
+        },
+        {
+          "name" : "node_24",
+          "id" : 13,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 309,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "true_next" : "node_25",
+          "false_next" : "node_27"
+        },
+        {
+          "name" : "node_25",
+          "id" : 14,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 310,
+            "column" : 20,
+            "source_fragment" : "(meta.vdp_metadata.action_chain_bitmap & (1<<37)) != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x002000000000"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_mod_std_meta_stage3",
+          "false_next" : "node_27"
+        },
+        {
+          "name" : "node_27",
+          "id" : 15,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 316,
+            "column" : 12,
+            "source_fragment" : "(meta.vdp_metadata.stage_id & 0x1f) == 4"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "stage_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x1f"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x04"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "node_28"
+        },
+        {
+          "name" : "node_28",
+          "id" : 16,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 317,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&4 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x04"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_stage4",
+          "false_next" : "node_30"
+        },
+        {
+          "name" : "node_30",
+          "id" : 17,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 320,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.match_chain_bitmap&1 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "match_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_std_meta_match_stage4",
+          "false_next" : "node_32"
+        },
+        {
+          "name" : "node_32",
+          "id" : 18,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 323,
+            "column" : 16,
+            "source_fragment" : "meta.vdp_metadata.action_chain_bitmap != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "node_33"
+        },
+        {
+          "name" : "node_33",
+          "id" : 19,
+          "source_info" : {
+            "filename" : "hpv.p4",
+            "line" : 324,
+            "column" : 20,
+            "source_fragment" : "(meta.vdp_metadata.action_chain_bitmap & (1<<37)) != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["userMetadata.vdp_metadata", "action_chain_bitmap"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x002000000000"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x000000000000"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "MyIngress.table_mod_std_meta_stage4"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "hpv.p4",
+        "line" : 333,
+        "column" : 8,
+        "source_fragment" : "MyEgress"
+      },
+      "init_table" : null,
+      "tables" : [],
+      "action_profiles" : [],
+      "conditionals" : []
+    }
+  ],
+  "checksums" : [],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [
+    [
+      "queueing_metadata.enq_timestamp",
+      ["standard_metadata", "enq_timestamp"]
+    ],
+    [
+      "queueing_metadata.enq_qdepth",
+      ["standard_metadata", "enq_qdepth"]
+    ],
+    [
+      "queueing_metadata.deq_timedelta",
+      ["standard_metadata", "deq_timedelta"]
+    ],
+    [
+      "queueing_metadata.deq_qdepth",
+      ["standard_metadata", "deq_qdepth"]
+    ],
+    [
+      "intrinsic_metadata.ingress_global_timestamp",
+      ["standard_metadata", "ingress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.egress_global_timestamp",
+      ["standard_metadata", "egress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.lf_field_list",
+      ["standard_metadata", "lf_field_list"]
+    ],
+    [
+      "intrinsic_metadata.mcast_grp",
+      ["standard_metadata", "mcast_grp"]
+    ],
+    [
+      "intrinsic_metadata.resubmit_flag",
+      ["standard_metadata", "resubmit_flag"]
+    ],
+    [
+      "intrinsic_metadata.egress_rid",
+      ["standard_metadata", "egress_rid"]
+    ],
+    [
+      "intrinsic_metadata.recirculate_flag",
+      ["standard_metadata", "recirculate_flag"]
+    ]
+  ]
+}
