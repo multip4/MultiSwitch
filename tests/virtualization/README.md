@@ -5,7 +5,7 @@ Inspired by prior works to PDP virtualization([Hyper4](https://dl.acm.org/citati
 ## On-going Work
 - **Idea # 1** : we propose a description header which consists of information about the number of header stacks and header length to support efficient packet processing model in hypervisor pipeline. As an initial trial of developing data plane hypervisor, we provide P4 programmable parser which extract packet headers by refferring to description header information and we also provide abstracted hypervisor pipeline model.
 
-- Idea # 2 : TBD
+- **Idea # 2** : ***TBD***
 
 This repository is for the data plane hypervisor, a P4 program capable of emulating other P4 programs.
 
