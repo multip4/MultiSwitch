@@ -1,3 +1,7 @@
+/* metatest.p4 is a data plane hypervisor prototype that implemented 
+   with idea # 1 (Using Description Header to build explicit header format).
+*/
+
 #include <core.p4>
 #include <v1model.p4>
 
