@@ -12,5 +12,7 @@ This repository is for the data plane hypervisor, a P4 program capable of emulat
 ## Authors
 - Seokwon Jang (imsoboy2@korea.ac.kr)
 - Sol Han (hs1087@korea.ac.kr)
+- Hongrok Choi (ghdfhrooo@korea.ac.kr)
+- Hochan Lee (ghcks1000@korea.ac.kr)
 - Sangheon Pack (shpack@korea.ac.kr)
 
