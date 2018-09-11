@@ -1,0 +1,7 @@
+table_set_default nsh_exact drop
+table_add nsh_exact l2_forward 0 => 00:00:00:00:00:01 1
+table_add nsh_exact1 loopback_forward 00:00:00:00:00:02 0 => 00:00:00:00:00:01 1
+table_set_default nsh_count do_sub
+table_add nsh_count do_acl 10.0.1.1/32 =>
+table_set_default do_encap do_nsh_encap
+table_set_default copy_eth do_copy_eth
