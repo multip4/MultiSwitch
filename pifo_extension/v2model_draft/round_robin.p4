@@ -46,7 +46,7 @@ header tcp_t {
     bit<16> pointer;
 }
 
-register<bit<8>>(10) regist;
+
 
 header meta_header_t {
     bit<8> rank;
@@ -59,11 +59,24 @@ header meta_header_t {
     bit<48> egress_time;
 }
 
-struct metadata {
-    bit<32> flow_id;
-    bit<8> rank;
-    bit<48> expected_dequeue_timestamp;
+register<bit<32>>(10) regist; // {0}- global round, {1-9} local round
 
+/* Scheduling Metadata Defined in V2Model.p4 
+*
+* struct scheduling_metadata_t {
+*     bit<32> rank;
+*     bit<48> departure_time;
+* 
+*     bit<32> flow_id;
+*     bit<32> weight;
+*     bit<32> sending_rate;
+* }
+*
+*/ 
+
+
+struct metadata {
+    bit<32> flow_rank;
 }
 
 struct headers {
@@ -131,30 +144,29 @@ control MyIngress(inout headers hdr,
     }
 
     action set_flowid(bit<32> flow_id){
-        meta.flow_id = flow_id;
-        hdr.meta_header.setValid();
+        scheduling_metadata.flow_id = flow_id;
     }
 
     action round_robin(){
-        // test
 
-        /* test2 */
+        /* step1. read global & local round */
 
-        /* aaaaaaaaaaaaa
-        */
+        regist.read( scheduling_metadata.rank , 0); // global
+        regist.read(meta.flow_rank,  
+            scheduling_metadata.flow_id);  // local
 
-        regist.read( hdr.meta_header.global_rank , 0);
-        hdr.meta_header.rank = hdr.meta_header.global_rank + 1;
 
-        regist.read(hdr.meta_header.original_flow_rank, meta.flow_id);
+        /* step2. compare global & local round, 
+         *        set rank value             */
 
-        if(hdr.meta_header.rank <= hdr.meta_header.original_flow_rank)
-            hdr.meta_header.rank = hdr.meta_header.original_flow_rank + 1;
+        scheduling_metadata.rank = scheduling_metadata.rank + 1;
+        if(scheduling_metadata.rank <= meta.flow_rank)
+            scheduling_metadata.rank = meta.flow_rank + 1;
 
-        hdr.meta_header.rank = (hdr.meta_header.rank + hdr.meta_header.rank) * hdr.meta_header.rank;
+        /*  step3. update local round    */
 
-        regist.write(meta.flow_id, hdr.meta_header.rank);
-
+        regist.write(scheduling_metadata.flow_id, 
+            scheduling_metadata.rank);
     }
 
     table ipv4_lpm {
@@ -193,27 +205,35 @@ control MyIngress(inout headers hdr,
 }
 
 
+// TODO: Control Boleck for Scheduling.
+
+control V2Scheduling (  inout headers hdr,
+                        inout metadata meta,
+                        inout standard_metadata_t standard_metadata
+                        inout scheduling_metadata_t scheduling_metadata){
+    apply{
+
+    }
+
+}
+
+
+
 
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
+
+    /* *********************************** 
+    *  step4. update local round
+    ************************************ */
+
     action update_global_round(){
-        regist.write(1, hdr.meta_header.rank);
-        regist.read( hdr.meta_header.egress_global_rank , 0);
+        regist.write(0, hdr.meta_header.rank);
     }
-
-    action update_meta_header(){
-        hdr.meta_header.ingress_timestamp = standard_metadata.ingress_global_timestamp;
-        hdr.meta_header.expected_dequeue_timestamp = meta.expected_dequeue_timestamp;
-        hdr.meta_header.dequeue_timestamp = standard_metadata.enq_timestamp + standard_metadata.deq_timedelta;
-        hdr.meta_header.egress_time = standard_metadata.egress_global_timestamp;
-    }
-
-
 
     apply { 
         update_global_round();
-        update_meta_header();
     }
 }
 
