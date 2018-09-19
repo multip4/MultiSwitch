@@ -1,3 +1,6 @@
+/* simple_hpv_l2.p4 is a simplified version of HyperV (refer to https//:www.github.com/HyperVDP) to emulate L2 switch function. 
+   We compare this with metatest.p4 which is hypervisor prototype implemetation based on idea # 1.
+*/
 #include <core.p4>
 #include <v1model.p4>
 
