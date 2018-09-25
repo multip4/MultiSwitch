@@ -124,7 +124,7 @@ parser MyParser(packet_in packet,
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
 *************************************************************************/
 
-control MyVerifyChecksum(inout headers hdr, inout metadata meta) {   
+control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
     apply {  }
 }
 
@@ -140,14 +140,14 @@ control MyIngress(inout headers hdr,
         mark_to_drop();
     }
 
-    
+
     action ipv4_forward(macAddr_t dstAddr, egressSpec_t port) {
         standard_metadata.egress_spec = port;
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
         hdr.ipv4.ttl = hdr.ipv4.ttl - 1;
     }
-    
+
     table ipv4_lpm {
         key = {
             hdr.ipv4.dstAddr: lpm;
@@ -183,44 +183,6 @@ control MyIngress(inout headers hdr,
         size = 1024;
         default_action = drop();
     }
-    
-
-    /*action l2_forward(macAddr_t dstAddr, egressSpec_t port) {
-        standard_metadata.egress_spec = port;
-        hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-        hdr.ethernet.dstAddr = dstAddr;
-    }*/
-
-  /*  table nsh_exact {
-        key = {
-         //   hdr.ethernet.srcAddr: exact;
-            standard_metadata.ingress_port: exact;
-        }
-        actions = {
-            l2_forward;
-            drop;
-        }
-        size = 1024;
-        default_action = drop();
-    }
-
-    action loopback_forward(macAddr_t dstAddr, egressSpec_t port) {
-        standard_metadata.egress_spec = port;
-        hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-        hdr.ethernet.dstAddr = dstAddr;
-    }
-    table nsh_exact1 {
-        key = {
-            hdr.ethernet.dstAddr: exact;
-            standard_metadata.ingress_port: exact;
-        }
-        actions = {
-            loopback_forward;
-            drop;
-        }
-        size = 1024;
-        default_action = drop();
-    }*/
 
     action addhdr(dstid_t dstid, spid_t spid) {
         hdr.myTunnel.setValid();
@@ -267,7 +229,7 @@ control MyIngress(inout headers hdr,
         }
         size = 1024;
         default_action = do_sub();
-    } 
+    }
 
     apply {
         if (hdr.ipv4.isValid() && !hdr.nsh.isValid()) {
@@ -280,10 +242,6 @@ control MyIngress(inout headers hdr,
             nsh_count.apply();
         }
 
-       /* if (hdr.nsh.spid==1 && hdr.nsh.sidx==255) {
-            nsh_exact1.apply();
-            nsh_count.apply();            
-        }*/
     }
 }
 
@@ -316,7 +274,7 @@ control MyEgress(inout headers hdr,
         key = {
             hdr.myTunnel.dst_id: exact;
         }
-            
+
         actions = {
             do_decap;
             NoAction;
@@ -325,7 +283,7 @@ control MyEgress(inout headers hdr,
         default_action = NoAction();
     }
 
-    apply { 
+    apply {
             do_decap_t.apply();
     }
 }
