@@ -167,8 +167,8 @@ control MyIngress(inout headers hdr,
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
         hdr.in_ethernet = hdr.ethernet;
-        hdr.ethernet.etherType = 0x1212;
-        hdr.in_ethernet.etherType = 0x800;
+        hdr.ethernet.etherType = TYPE_MYTUNNEL; //0x1212;
+        hdr.in_ethernet.etherType = TYPE_IPV4; //0x800;
     }
 
     table myTunnel_exact {
@@ -188,14 +188,14 @@ control MyIngress(inout headers hdr,
         hdr.myTunnel.setValid();
         hdr.nsh.setValid();
         hdr.in_ethernet.setValid();
-        hdr.myTunnel.proto_id = 0x894f;
+        hdr.myTunnel.proto_id = TYPE_NSH; //0x894f;
         hdr.myTunnel.dst_id = dstid;
-        hdr.nsh.Nextpro = 0x6558;
+        hdr.nsh.Nextpro = TYPE_ETHER; //0x6558;
         hdr.nsh.spid = spid;
         hdr.nsh.sidx = 255;
         hdr.in_ethernet = hdr.ethernet;
-        hdr.ethernet.etherType = 0x1212;
-        hdr.in_ethernet.etherType = 0x800;
+        hdr.ethernet.etherType = TYPE_MYTUNNEL; //0x1212;
+        hdr.in_ethernet.etherType = TYPE_IPV4; //0x800;
     }
 
     table add_hdr {
@@ -252,7 +252,7 @@ control MyIngress(inout headers hdr,
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
-
+/* addhdr랑 중복
     action do_nsh_encap() {
         hdr.nsh.Nextpro = 0x6558;
         hdr.nsh.spid = 1;
@@ -261,7 +261,7 @@ control MyEgress(inout headers hdr,
         hdr.ethernet.etherType = 0x894f;
         hdr.in_ethernet.etherType = 0x800;
     }
-
+*/
 
 
     action do_decap() {
