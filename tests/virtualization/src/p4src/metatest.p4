@@ -67,14 +67,6 @@ parser MyParser(packet_in packet,
         transition parse_ori1;
     }
 
-  /*  state parse_deschdr {
-        packet.extract(hdr.desc_hdr);
-        transition select(hdr.desc_hdr.flag) {
-            1: parse_ori1;
-            2: parse_ori2;
-            default: accept;
-        }
-    }*/
 
     state parse_ori1 {
         packet.extract(hdr.hdr1);
