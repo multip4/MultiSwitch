@@ -252,17 +252,6 @@ control MyIngress(inout headers hdr,
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
-/* addhdr랑 중복
-    action do_nsh_encap() {
-        hdr.nsh.Nextpro = 0x6558;
-        hdr.nsh.spid = 1;
-        hdr.nsh.sidx = 255;
-        hdr.in_ethernet = hdr.ethernet;
-        hdr.ethernet.etherType = 0x894f;
-        hdr.in_ethernet.etherType = 0x800;
-    }
-*/
-
 
     action do_decap() {
         hdr.nsh.setInvalid();
