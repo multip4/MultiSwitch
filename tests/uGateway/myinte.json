@@ -1,5 +1,5 @@
 {
-  "program" : "./myinte.p4i",
+  "program" : "./mysfc.p4i",
   "__meta__" : {
     "version" : [2, 18],
     "compiler" : "https://github.com/p4lang/p4c"
@@ -333,7 +333,7 @@
       "name" : "deparser",
       "id" : 0,
       "source_info" : {
-        "filename" : "myinte.p4",
+        "filename" : "mysfc.p4",
         "line" : 346,
         "column" : 8,
         "source_fragment" : "MyDeparser"
@@ -368,7 +368,7 @@
           "op" : "drop",
           "parameters" : [],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 140,
             "column" : 8,
             "source_fragment" : "mark_to_drop()"
@@ -385,7 +385,7 @@
           "op" : "drop",
           "parameters" : [],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 140,
             "column" : 8,
             "source_fragment" : "mark_to_drop()"
@@ -420,7 +420,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 145,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
@@ -439,7 +439,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 146,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
@@ -458,7 +458,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 147,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
@@ -500,7 +500,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 148,
             "column" : 8,
             "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl - 1"
@@ -539,7 +539,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 165,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
@@ -558,7 +558,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 166,
             "column" : 8,
             "source_fragment" : "hdr.myTunnel.dst_id = dstid"
@@ -577,7 +577,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 167,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
@@ -596,7 +596,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 168,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
@@ -615,7 +615,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 169,
             "column" : 8,
             "source_fragment" : "hdr.in_ethernet = hdr.ethernet"
@@ -634,7 +634,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 170,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.etherType = 0x1212"
@@ -653,7 +653,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 171,
             "column" : 8,
             "source_fragment" : "hdr.in_ethernet.etherType = 0x800"
@@ -684,7 +684,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 226,
             "column" : 8,
             "source_fragment" : "hdr.myTunnel.setValid()"
@@ -699,7 +699,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 227,
             "column" : 8,
             "source_fragment" : "hdr.nsh.setValid()"
@@ -714,7 +714,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 228,
             "column" : 8,
             "source_fragment" : "hdr.in_ethernet.setValid()"
@@ -733,7 +733,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 229,
             "column" : 8,
             "source_fragment" : "hdr.myTunnel.proto_id = 0x894f"
@@ -752,7 +752,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 230,
             "column" : 8,
             "source_fragment" : "hdr.myTunnel.dst_id = dstid"
@@ -771,7 +771,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 231,
             "column" : 8,
             "source_fragment" : "hdr.nsh.Nextpro = 0x6558"
@@ -790,7 +790,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 232,
             "column" : 8,
             "source_fragment" : "hdr.nsh.spid = spid"
@@ -809,7 +809,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 233,
             "column" : 8,
             "source_fragment" : "hdr.nsh.sidx = 255"
@@ -828,7 +828,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 234,
             "column" : 8,
             "source_fragment" : "hdr.in_ethernet = hdr.ethernet"
@@ -847,7 +847,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 235,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.etherType = 0x1212"
@@ -866,7 +866,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 236,
             "column" : 8,
             "source_fragment" : "hdr.in_ethernet.etherType = 0x800"
@@ -883,7 +883,7 @@
           "op" : "drop",
           "parameters" : [],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 251,
             "column" : 8,
             "source_fragment" : "mark_to_drop()"
@@ -932,7 +932,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 255,
             "column" : 8,
             "source_fragment" : "hdr.nsh.sidx = hdr.nsh.sidx - 1"
@@ -960,7 +960,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 310,
             "column" : 8,
             "source_fragment" : "hdr.nsh.setInvalid()"
@@ -975,7 +975,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 311,
             "column" : 8,
             "source_fragment" : "hdr.in_ethernet.setInvalid()"
@@ -990,7 +990,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 312,
             "column" : 8,
             "source_fragment" : "hdr.myTunnel.setInvalid()"
@@ -1004,7 +1004,7 @@
       "name" : "ingress",
       "id" : 0,
       "source_info" : {
-        "filename" : "myinte.p4",
+        "filename" : "mysfc.p4",
         "line" : 136,
         "column" : 8,
         "source_fragment" : "MyIngress"
@@ -1015,7 +1015,7 @@
           "name" : "MyIngress.ipv4_lpm",
           "id" : 0,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 151,
             "column" : 10,
             "source_fragment" : "ipv4_lpm"
@@ -1053,7 +1053,7 @@
           "name" : "MyIngress.add_hdr",
           "id" : 1,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 239,
             "column" : 10,
             "source_fragment" : "add_hdr"
@@ -1090,7 +1090,7 @@
           "name" : "MyIngress.myTunnel_exact",
           "id" : 2,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 174,
             "column" : 10,
             "source_fragment" : "myTunnel_exact"
@@ -1133,7 +1133,7 @@
           "name" : "MyIngress.nsh_count",
           "id" : 3,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 258,
             "column" : 10,
             "source_fragment" : "nsh_count"
@@ -1185,7 +1185,7 @@
           "name" : "node_2",
           "id" : 0,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 273,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.isValid() && !hdr.nsh.isValid()"
@@ -1232,7 +1232,7 @@
           "name" : "node_5",
           "id" : 1,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 278,
             "column" : 12,
             "source_fragment" : "hdr.nsh.isValid()"
@@ -1257,7 +1257,7 @@
       "name" : "egress",
       "id" : 1,
       "source_info" : {
-        "filename" : "myinte.p4",
+        "filename" : "mysfc.p4",
         "line" : 294,
         "column" : 8,
         "source_fragment" : "MyEgress"
@@ -1268,7 +1268,7 @@
           "name" : "MyEgress.do_decap_t",
           "id" : 4,
           "source_info" : {
-            "filename" : "myinte.p4",
+            "filename" : "mysfc.p4",
             "line" : 315,
             "column" : 10,
             "source_fragment" : "do_decap_t"
