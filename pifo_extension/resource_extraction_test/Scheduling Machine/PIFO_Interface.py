@@ -1,5 +1,3 @@
-from rank_calc_algorithms import Packet
-
 class PifoInterface(object):
     """
     Interface Class for PIFO Machine Model

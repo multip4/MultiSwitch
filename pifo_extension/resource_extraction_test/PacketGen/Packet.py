@@ -17,6 +17,9 @@ class Packet:
     def print_packet(self):
         print "Print Packet: [Key]: {} | [Index]: {} | [Message]: {}".format(self.key, self.index, self.message)
 
+    def to_string(self):
+        return "Packet: [Key]: {} | [Index]: {} | [Message]: {}".format(self.key, self.index, self.message)
+
     def get_key(self):
         return self.key
 
