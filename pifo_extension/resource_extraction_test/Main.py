@@ -1,7 +1,10 @@
-from rank_calc_algorithms.Packet import Packet
-from rank_calc_algorithms.PIFO_Queue import PIFO_Queue
-from rank_calc_algorithms.round_robin import RoundRobin
 import random
+
+from SchedulingMachine.PIFO_Queue import PIFO_Queue
+from rank_calc_algorithms.Scheduling import RoundRobin
+
+from PacketGen.Packet import Packet
+
 
 def packet_gen(flow_range, total_packet):
     result = []
@@ -14,7 +17,7 @@ def packet_gen(flow_range, total_packet):
     for i in range(0, total_packet):
         flow_id = random.randint(0, flow_range - 1)
         print flow_id
-        pkt = Packet(flow_id, flow_index[flow_id], "payload")
+        pkt = Packet(flow_id, flow_index[flow_id], message="payload")
         flow_index[flow_id] += 1
         result.append(pkt)
 
@@ -27,22 +30,20 @@ if __name__ == '__main__':
     scheduling = RoundRobin()
     packet_list = packet_gen(4, 200)
 
-    scheduling.update_global_counter(10)
+    # scheduling.update_global_counter(10)
 
     for pkt in packet_list:
         rank = scheduling.rank_calc(pkt, None)
         queue.push_in(rank, pkt)
 
-
-    queue.print_queue()
+    queue.print_queue_flow_list()
+    queue.print_queue_index_list()
+    queue.print_queue_rank_list()
 
     print "Start to Dequeue ================== "
 
     while (queue.get_size() > 0):
         queue.pop()
-
-
-
 
 
 

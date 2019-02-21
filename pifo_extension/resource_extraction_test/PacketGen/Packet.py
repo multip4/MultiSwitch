@@ -5,6 +5,9 @@ class Packet:
         Key: key for flow(or class) classification
         Index: index for the flow
         Message: payload for the packet
+        length: length of packet
+        receive_time: receive time.
+
     """
     def __init__(self):
         print "init packet"
@@ -14,11 +17,23 @@ class Packet:
         self.index = index
         self.message = message
 
+    def __init__(self, key, index, length, receive_time, message = "default message"):
+        self.key = key
+        self.index = index
+        self.length = length
+        self.receive_time = receive_time
+        self.message = message
+
     def print_packet(self):
         print "Print Packet: [Key]: {} | [Index]: {} | [Message]: {}".format(self.key, self.index, self.message)
 
     def to_string(self):
-        return "Packet: [Key]: {} | [Index]: {} | [Message]: {}".format(self.key, self.index, self.message)
+        return "Packet: [Key]: {} | [Index]: {} | [Length]: {} | [Receive_time]:{} | [Message]: {}"\
+            .format(self.key, self.index, self.length, self.receive_time, self.message)
+
+    """
+    Get Functions:
+    """
 
     def get_key(self):
         return self.key
@@ -28,6 +43,14 @@ class Packet:
 
     def get_payload(self):
         return self.message
+
+    def get_length(self):
+        return self.length
+
+    def get_receive_time(self):
+        return self.receive_time
+    def get_name(self):
+        return self.get_key() + str(self.get_index())
 
 
 

@@ -1,0 +1,18 @@
+ [{
+   "flow": "A",
+   "count": 5,
+   "length": 64,
+   "receive_time": [0.1,0.2,0.3,0.4,0.5]
+ },
+ {
+  "flow": "B",
+  "count": 3,
+   "length": 64,
+  "receive_time": [0.1,0.2,0.3]
+ },
+ {
+  "flow": "C",
+  "count": 3,
+   "length": 64,
+  "receive_time": [0.1,1.2,2.3]
+ }]
