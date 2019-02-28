@@ -88,6 +88,13 @@ class PIFO_Queue:
         print "[debug] PIFO_Queue: pop. pop packet: rank({})".format(val[0]).ljust(80) + val[1].to_string()
         return val
 
+    def top(self):
+        """
+        pop first element from the queue.
+        :return:
+        """
+        val = self.queue[0] # val = (rank, packet)
+        return val
 
 
 

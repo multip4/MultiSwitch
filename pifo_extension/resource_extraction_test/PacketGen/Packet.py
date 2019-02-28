@@ -49,6 +49,7 @@ class Packet:
 
     def get_receive_time(self):
         return self.receive_time
+
     def get_name(self):
         return self.get_key() + str(self.get_index())
 
@@ -62,12 +63,13 @@ class PacketMetadata:
 
     def __init__(self):
         print "init packet metadata"
-
-    def __init__(self, meta_dict):
-        self.meta = meta_dict
+        self.meta = {}
 
     def add_meta(self, key, value):
         self.meta[key] = value
 
     def delete_meta(self, key):
         self.meta.pop(key, None)
+
+    def get_value(self, key):
+        return self.meta[key]

@@ -56,7 +56,7 @@ class TrafficInterpreter:
             for i in range(0, flow["count"]):
                 packet = Packet(key=flow["flow"],
                                 index=i,
-                                length=flow["length"],
+                                length=flow["length"][i],
                                 receive_time=flow["receive_time"][i])
                 packet_list.append(packet)
 
