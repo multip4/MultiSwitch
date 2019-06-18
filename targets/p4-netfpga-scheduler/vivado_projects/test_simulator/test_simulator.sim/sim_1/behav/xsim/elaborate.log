@@ -1,0 +1,17 @@
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto c35e3ac660c34a3cbff7342fe2652454 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot op_tester_behav xil_defaultlib.op_tester xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 168 differs from formal bit length 128 for port s_axis_tuser [/home/jkchoi/Desktop/OperationVerilogs/op_tester.v:93]
+WARNING: [VRFC 10-278] actual bit length 168 differs from formal bit length 128 for port m_axis_tuser [/home/jkchoi/Desktop/OperationVerilogs/op_tester.v:101]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port rst [/home/jkchoi/Desktop/OperationVerilogs/op_tester.v:119]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PIFO_MODULE
+Compiling module xil_defaultlib.adder
+Compiling module xil_defaultlib.op_tester
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot op_tester_behav

@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../../../../../../Downloads/mod_sw/hdl/PIFO_MODULE.v" \
+"../../../../../../../../../../../Desktop/OperationVerilogs/adder.v" \
+"../../../../../../../../../../../Desktop/OperationVerilogs/op_tester.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

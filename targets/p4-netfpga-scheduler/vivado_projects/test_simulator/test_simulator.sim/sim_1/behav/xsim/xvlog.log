@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Downloads/mod_sw/hdl/PIFO_MODULE.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PIFO_MODULE
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Desktop/OperationVerilogs/adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Desktop/OperationVerilogs/op_tester.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module op_tester
+WARNING: [VRFC 10-2019] loop variable declaration is not allowed in this mode of verilog [/home/jkchoi/Desktop/OperationVerilogs/op_tester.v:155]
