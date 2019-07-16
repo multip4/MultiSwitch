@@ -3,7 +3,6 @@
 #include "headers.p4"
 #include "metadata.p4"
 #include "parser.p4"
-#include "template.p4"
 #include "define.p4"
 
 control MyVerifyChecksum(inout headers hdr, inout metadata meta) {   
