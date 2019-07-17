@@ -23,7 +23,7 @@ parser MyParser(packet_in packet,
 
     state parse_desc {
         packet.extract(hdr.desc_hdr);
-        transition select(meta.vdp_metadata.inst_id){
+        transition select(hdr.desc_hdr.vdp_id){
             1:  parse_vPDP1; //Arp Proxy
             2:  parse_vPDP2; //L2switching
             3:  parse_vPDP3; //Firewall
