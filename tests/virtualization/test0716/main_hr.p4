@@ -404,7 +404,7 @@ control MyIngress(inout headers hdr,
 		}
 	}    
 
-	table table_header_match_112_stage1 {                                          
+	table table_header_match_112_1_stage1 {                                          
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                  	
@@ -416,7 +416,7 @@ control MyIngress(inout headers hdr,
 		}    									                                
 	}
 
-	table table_header_match_112_stage2 {                                          
+	table table_header_match_112_1_stage2 {                                          
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                  	
@@ -427,7 +427,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	}       
-	table table_header_match_112_stage3 {                                          
+	table table_header_match_112_1_stage3 {                                          
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                  	
@@ -438,7 +438,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	}       
-	table table_header_match_112_stage4 {                                          
+	table table_header_match_112_1_stage4 {                                          
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                  	
@@ -541,7 +541,7 @@ control MyIngress(inout headers hdr,
 		}    									                                
 	}
 
-	table table_header_match_224_stage1 {                                          
+	table table_header_match_224_1_stage1 {                                          
 		key = {                                                                
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                
@@ -552,7 +552,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	} 
-	table table_header_match_224_stage2 {                                          
+	table table_header_match_224_1_stage2 {                                          
 		key = {                                                                
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                
@@ -563,7 +563,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	}
-	table table_header_match_224_stage3 {                                          
+	table table_header_match_224_1_stage3 {                                          
 		key = {                                                                
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                
@@ -574,7 +574,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	} 
-	table table_header_match_224_stage4 {                                          
+	table table_header_match_224_1_stage4 {                                          
 		key = {                                                                
 			meta.vdp_metadata.inst_id : exact ;                                		
 			meta.vdp_metadata.stage_id : exact ;                                
@@ -691,13 +691,13 @@ control MyIngress(inout headers hdr,
             if((meta.vdp_metadata.stage_id & CONST_NUM_OF_STAGE) == CONST_STAGE_1){
                 if((meta.vdp_metadata.match_chain_bitmap & BIT_MASK_HEADER) != 0){
                     if(meta.vdp_metadata.table_chain&1 != 0)
-                      table_header_match_112_stage1.apply();
+                      table_header_match_112_1_stage1.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage1.apply();
                     else if(meta.vdp_metadata.table_chain&3 != 0)
                       table_header_match_160_2_stage1.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
-                      table_header_match_224_stage1.apply();
+                      table_header_match_224_1_stage1.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
 						table_std_meta_match_stage1.apply();
@@ -720,13 +720,13 @@ control MyIngress(inout headers hdr,
             if((meta.vdp_metadata.stage_id & CONST_NUM_OF_STAGE) == CONST_STAGE_2){
                 if((meta.vdp_metadata.match_chain_bitmap & BIT_MASK_HEADER) != 0){
                     if(meta.vdp_metadata.table_chain&1 != 0)
-                      table_header_match_112_stage2.apply();
+                      table_header_match_112_1_stage2.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage2.apply();
                     else if(meta.vdp_metadata.table_chain&3 != 0)
                       table_header_match_160_2_stage2.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
-                      table_header_match_224_stage2.apply();
+                      table_header_match_224_1_stage2.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
 						table_std_meta_match_stage2.apply();
@@ -750,13 +750,13 @@ control MyIngress(inout headers hdr,
             if((meta.vdp_metadata.stage_id & CONST_NUM_OF_STAGE) == CONST_STAGE_3){
                 if((meta.vdp_metadata.match_chain_bitmap & BIT_MASK_HEADER) != 0){
                     if(meta.vdp_metadata.table_chain&1 != 0)
-                      table_header_match_112_stage3.apply();
+                      table_header_match_112_1_stage3.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage3.apply();
                     else if(meta.vdp_metadata.table_chain&3 != 0)
                       table_header_match_160_2_stage3.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
-                      table_header_match_224_stage3.apply();
+                      table_header_match_224_1_stage3.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
 						table_std_meta_match_stage3.apply();
@@ -779,13 +779,13 @@ control MyIngress(inout headers hdr,
             if((meta.vdp_metadata.stage_id & CONST_NUM_OF_STAGE) == CONST_STAGE_4){
                 if((meta.vdp_metadata.match_chain_bitmap & BIT_MASK_HEADER) != 0){
                     if(meta.vdp_metadata.table_chain&1 != 0)
-                      table_header_match_112_stage4.apply();
+                      table_header_match_112_1_stage4.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage4.apply();
                     else if(meta.vdp_metadata.table_chain&3 != 0)
                       table_header_match_160_2_stage4.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
-                      table_header_match_224_stage4.apply();
+                      table_header_match_224_1_stage4.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
 						table_std_meta_match_stage4.apply();

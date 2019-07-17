@@ -54,47 +54,37 @@ class arp(Packet):
 
 def main():
 
-    if len(sys.argv)<1:
-        print 'pass 1 arguments: <destination> '
-        exit(1)
+#packet selection {1,2,3,4}
+    if socket.gethostbyname(sys.argv[1])==1: 
+#        print = 'arp test'
+        pkt = Ether(src=get_if_hwaddr(iface)) / desc_hdr(vdp_id=1) / arp()
+    elif socket.gethostbyname(sys.argv[1])==2:
+#        print = 'l2switch test'
+        pkt = Ether(src=get_if_hwaddr(iface)) / desc_hdr(vdp_id=2)
+    elif socket.gethostbyname(sys.argv[1])==3:
+#        print = 'FW test'
+        pkt = Ether(src=get_if_hwaddr(iface)) / desc_hdr(vdp_id=3) / IP() / TCP()
+    elif socket.gethostbyname(sys.argv[1])==4:
+#        print = 'NAT test'
+        pkt = Ether(src=get_if_hwaddr(iface)) / desc_hdr(vdp_id=4) / IP()    
 
-#packet selection
-    if ~gethostbyname(sys.argv[1])==1:
-        print = 'L2 selected'
-        pkt = Ether() / desc_hdr() 
-    elif ~ ==2:
-        print = 'L3 selected'
-        pkt = Ether() / desc_hdr() / IP()
-    elif ~ ==3:
-        print = 'L4 selected'
-        pkt = Ether() / desc_hdr() / IP() / TCP()
-    elif ~ ==4:
-        print = 'arp selected'
-        pkt = Ether() / desc_hdr() / arp()
-    else:
-        pass
     
-
 #src addr
-    addr = socket.gethostbyname(sys.argv[1])
+#    addr = socket.gethostbyname(sys.argv[1])
 
 #dst addr
-    addr1 = socket.gethostbyname(sys.argv[2])
+#    addr1 = socket.gethostbyname(sys.argv[2])
 
     iface = "p4p1"
-    iface_1 = "veth2"
-    iface_2 = "veth4"
 
-    
+#    out_ether = Ether(src=get_if_hwaddr(iface), dst='00:00:00:00:00:01', type=0x894f)
+#    in_ether =  Ether(src=get_if_hwaddr(iface), dst='00:00:00:00:00:01', type=0x800)
 
-    out_ether = Ether(src=get_if_hwaddr(iface), dst='00:00:00:00:00:01', type=0x894f)
-    in_ether =  Ether(src=get_if_hwaddr(iface), dst='00:00:00:00:00:01', type=0x800)
-
-    pkt1 = desc_hdr(vdp_id=10) / in_ether / IP(src=addr,dst=addr1) / "hi"
-    pkt1.show()
-    hexdump(pkt1)
-    sendp(pkt1, iface=iface, verbose=False)
-    print "sending on interface %s (Bmv2 port 0) to dmac=00:00:00:00:00:01" % (iface_1)
+#    pkt1 = desc_hdr(vdp_id=10) / in_ether / IP(src=addr,dst=addr1) / "hi"
+    pkt.show()
+    hexdump(pkt)
+    sendp(pkt, iface=iface, verbose=False)
+    print "sending on interface %s (Bmv2 port 0) to dmac=00:00:00:00:00:01" %(iface)
 
 
 if __name__ == '__main__':
