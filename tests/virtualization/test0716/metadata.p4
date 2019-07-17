@@ -9,7 +9,7 @@ struct vdp_metadata_t {
     bit<48> match_chain_result;
     bit<48> action_chain_bitmap;
     bit<48> action_chain_id;
-    bit<3>  table_chain;
+    bit<4>  table_chain;
 }
 
 struct user_metadata_t {

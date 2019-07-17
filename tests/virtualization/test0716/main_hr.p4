@@ -14,7 +14,7 @@ control MyIngress(inout headers hdr,
                   inout standard_metadata_t standard_metadata) {
 
 
-	action set_initial_config (bit<8> progid, bit<8> stageid, bit<3> match_bitmap, bit<3> table_chain) {
+	action set_initial_config (bit<8> progid, bit<8> stageid, bit<3> match_bitmap, bit<4> table_chain) {
 		meta.vdp_metadata.inst_id = progid; 
 		meta.vdp_metadata.stage_id = stageid;
 		meta.vdp_metadata.match_chain_bitmap = match_bitmap;
@@ -694,9 +694,9 @@ control MyIngress(inout headers hdr,
                       table_header_match_112_1_stage1.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage1.apply();
-                    else if(meta.vdp_metadata.table_chain&3 != 0)
-                      table_header_match_160_2_stage1.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
+                      table_header_match_160_2_stage1.apply();
+                    else if(meta.vdp_metadata.table_chain&8 != 0)
                       table_header_match_224_1_stage1.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
@@ -723,9 +723,9 @@ control MyIngress(inout headers hdr,
                       table_header_match_112_1_stage2.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage2.apply();
-                    else if(meta.vdp_metadata.table_chain&3 != 0)
-                      table_header_match_160_2_stage2.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
+                      table_header_match_160_2_stage2.apply();
+                    else if(meta.vdp_metadata.table_chain&8 != 0)
                       table_header_match_224_1_stage2.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
@@ -753,9 +753,9 @@ control MyIngress(inout headers hdr,
                       table_header_match_112_1_stage3.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage3.apply();
-                    else if(meta.vdp_metadata.table_chain&3 != 0)
-                      table_header_match_160_2_stage3.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
+                      table_header_match_160_2_stage3.apply();
+                    else if(meta.vdp_metadata.table_chain&8 != 0)
                       table_header_match_224_1_stage3.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){
@@ -782,9 +782,9 @@ control MyIngress(inout headers hdr,
                       table_header_match_112_1_stage4.apply();
                     else if(meta.vdp_metadata.table_chain&2 != 0)
                       table_header_match_160_1_stage4.apply();
-                    else if(meta.vdp_metadata.table_chain&3 != 0)
-                      table_header_match_160_2_stage4.apply();
                     else if(meta.vdp_metadata.table_chain&4 != 0)
+                      table_header_match_160_2_stage4.apply();
+                    else if(meta.vdp_metadata.table_chain&8 != 0)
                       table_header_match_224_1_stage4.apply();
                 }
 				if (meta.vdp_metadata.match_chain_bitmap & BIT_MASK_STD_META !=0 ){

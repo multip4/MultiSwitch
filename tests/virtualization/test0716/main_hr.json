@@ -18,7 +18,7 @@
         ["metadata._vdp_metadata_match_chain_result3", 48, false],
         ["metadata._vdp_metadata_action_chain_bitmap4", 48, false],
         ["metadata._vdp_metadata_action_chain_id5", 48, false],
-        ["metadata._vdp_metadata_table_chain6", 3, false],
+        ["metadata._vdp_metadata_table_chain6", 4, false],
         ["metadata._user_metadata_meta7", 256, false],
         ["metadata._temp_metadata_temp", 112, false],
         ["metadata._temp_metadata_temp_md_mask", 112, false],
@@ -28,7 +28,7 @@
         ["metadata._temp_metadata_temp_md_mask_160_0", 160, false],
         ["metadata._temp_metadata_temp_0", 224, false],
         ["metadata._temp_metadata_temp_md_mask_0", 224, false],
-        ["_padding_0", 2, false]
+        ["_padding_0", 1, false]
       ]
     },
     {
@@ -211,25 +211,25 @@
           "transitions" : [
             {
               "type" : "hexstr",
-              "value" : "0x01",
+              "value" : "0x0001",
               "mask" : null,
               "next_state" : "parse_vPDP1"
             },
             {
               "type" : "hexstr",
-              "value" : "0x02",
+              "value" : "0x0002",
               "mask" : null,
               "next_state" : "parse_vPDP2"
             },
             {
               "type" : "hexstr",
-              "value" : "0x03",
+              "value" : "0x0003",
               "mask" : null,
               "next_state" : "parse_vPDP3"
             },
             {
               "type" : "hexstr",
-              "value" : "0x04",
+              "value" : "0x0004",
               "mask" : null,
               "next_state" : "parse_vPDP4"
             },
@@ -242,7 +242,7 @@
           "transition_key" : [
             {
               "type" : "field",
-              "value" : ["scalars", "metadata._vdp_metadata_inst_id0"]
+              "value" : ["desc_hdr", "vdp_id"]
             }
           ]
         },
@@ -347,7 +347,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "main_hr.p4",
-        "line" : 828,
+        "line" : 826,
         "column" : 8,
         "source_fragment" : "MyDeparser"
       },
@@ -624,7 +624,7 @@
         },
         {
           "name" : "table_chain",
-          "bitwidth" : 3
+          "bitwidth" : 4
         }
       ],
       "primitives" : [
@@ -15597,13 +15597,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_112_stage1",
+          "name" : "MyIngress.table_header_match_112_1_stage1",
           "id" : 1,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 407,
             "column" : 7,
-            "source_fragment" : "table_header_match_112_stage1"
+            "source_fragment" : "table_header_match_112_1_stage1"
           },
           "key" : [
             {
@@ -15805,13 +15805,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_224_stage1",
+          "name" : "MyIngress.table_header_match_224_1_stage1",
           "id" : 6,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 544,
             "column" : 7,
-            "source_fragment" : "table_header_match_224_stage1"
+            "source_fragment" : "table_header_match_224_1_stage1"
           },
           "key" : [
             {
@@ -16089,13 +16089,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_112_stage2",
+          "name" : "MyIngress.table_header_match_112_1_stage2",
           "id" : 13,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 419,
             "column" : 7,
-            "source_fragment" : "table_header_match_112_stage2"
+            "source_fragment" : "table_header_match_112_1_stage2"
           },
           "key" : [
             {
@@ -16297,13 +16297,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_224_stage2",
+          "name" : "MyIngress.table_header_match_224_1_stage2",
           "id" : 18,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 555,
             "column" : 7,
-            "source_fragment" : "table_header_match_224_stage2"
+            "source_fragment" : "table_header_match_224_1_stage2"
           },
           "key" : [
             {
@@ -16581,13 +16581,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_112_stage3",
+          "name" : "MyIngress.table_header_match_112_1_stage3",
           "id" : 25,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 430,
             "column" : 7,
-            "source_fragment" : "table_header_match_112_stage3"
+            "source_fragment" : "table_header_match_112_1_stage3"
           },
           "key" : [
             {
@@ -16789,13 +16789,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_224_stage3",
+          "name" : "MyIngress.table_header_match_224_1_stage3",
           "id" : 30,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 566,
             "column" : 7,
-            "source_fragment" : "table_header_match_224_stage3"
+            "source_fragment" : "table_header_match_224_1_stage3"
           },
           "key" : [
             {
@@ -17073,13 +17073,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_112_stage4",
+          "name" : "MyIngress.table_header_match_112_1_stage4",
           "id" : 37,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 441,
             "column" : 7,
-            "source_fragment" : "table_header_match_112_stage4"
+            "source_fragment" : "table_header_match_112_1_stage4"
           },
           "key" : [
             {
@@ -17281,13 +17281,13 @@
           }
         },
         {
-          "name" : "MyIngress.table_header_match_224_stage4",
+          "name" : "MyIngress.table_header_match_224_1_stage4",
           "id" : 42,
           "source_info" : {
             "filename" : "main_hr.p4",
             "line" : 577,
             "column" : 7,
-            "source_fragment" : "table_header_match_224_stage4"
+            "source_fragment" : "table_header_match_224_1_stage4"
           },
           "key" : [
             {
@@ -17724,7 +17724,7 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_112_stage1",
+          "true_next" : "MyIngress.table_header_match_112_1_stage1",
           "false_next" : "node_9"
         },
         {
@@ -17770,42 +17770,6 @@
             "filename" : "main_hr.p4",
             "line" : 697,
             "column" : 28,
-            "source_fragment" : "meta.vdp_metadata.table_chain&3 != 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "!=",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x03"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00"
-              }
-            }
-          },
-          "true_next" : "tbl_act_0",
-          "false_next" : "node_15"
-        },
-        {
-          "name" : "node_15",
-          "id" : 7,
-          "source_info" : {
-            "filename" : "main_hr.p4",
-            "line" : 699,
-            "column" : 28,
             "source_fragment" : "meta.vdp_metadata.table_chain&4 != 0"
           },
           "expression" : {
@@ -17832,7 +17796,43 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_224_stage1",
+          "true_next" : "tbl_act_0",
+          "false_next" : "node_15"
+        },
+        {
+          "name" : "node_15",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "main_hr.p4",
+            "line" : 699,
+            "column" : 28,
+            "source_fragment" : "meta.vdp_metadata.table_chain&8 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x08"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_224_1_stage1",
           "false_next" : "node_17"
         },
         {
@@ -18142,7 +18142,7 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_112_stage2",
+          "true_next" : "MyIngress.table_header_match_112_1_stage2",
           "false_next" : "node_34"
         },
         {
@@ -18188,42 +18188,6 @@
             "filename" : "main_hr.p4",
             "line" : 726,
             "column" : 28,
-            "source_fragment" : "meta.vdp_metadata.table_chain&3 != 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "!=",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x03"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00"
-              }
-            }
-          },
-          "true_next" : "tbl_act_2",
-          "false_next" : "node_40"
-        },
-        {
-          "name" : "node_40",
-          "id" : 20,
-          "source_info" : {
-            "filename" : "main_hr.p4",
-            "line" : 728,
-            "column" : 28,
             "source_fragment" : "meta.vdp_metadata.table_chain&4 != 0"
           },
           "expression" : {
@@ -18250,7 +18214,43 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_224_stage2",
+          "true_next" : "tbl_act_2",
+          "false_next" : "node_40"
+        },
+        {
+          "name" : "node_40",
+          "id" : 20,
+          "source_info" : {
+            "filename" : "main_hr.p4",
+            "line" : 728,
+            "column" : 28,
+            "source_fragment" : "meta.vdp_metadata.table_chain&8 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x08"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_224_1_stage2",
           "false_next" : "node_42"
         },
         {
@@ -18560,7 +18560,7 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_112_stage3",
+          "true_next" : "MyIngress.table_header_match_112_1_stage3",
           "false_next" : "node_59"
         },
         {
@@ -18606,42 +18606,6 @@
             "filename" : "main_hr.p4",
             "line" : 756,
             "column" : 28,
-            "source_fragment" : "meta.vdp_metadata.table_chain&3 != 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "!=",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x03"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00"
-              }
-            }
-          },
-          "true_next" : "tbl_act_4",
-          "false_next" : "node_65"
-        },
-        {
-          "name" : "node_65",
-          "id" : 33,
-          "source_info" : {
-            "filename" : "main_hr.p4",
-            "line" : 758,
-            "column" : 28,
             "source_fragment" : "meta.vdp_metadata.table_chain&4 != 0"
           },
           "expression" : {
@@ -18668,7 +18632,43 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_224_stage3",
+          "true_next" : "tbl_act_4",
+          "false_next" : "node_65"
+        },
+        {
+          "name" : "node_65",
+          "id" : 33,
+          "source_info" : {
+            "filename" : "main_hr.p4",
+            "line" : 758,
+            "column" : 28,
+            "source_fragment" : "meta.vdp_metadata.table_chain&8 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x08"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_224_1_stage3",
           "false_next" : "node_67"
         },
         {
@@ -18978,7 +18978,7 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_112_stage4",
+          "true_next" : "MyIngress.table_header_match_112_1_stage4",
           "false_next" : "node_84"
         },
         {
@@ -19024,42 +19024,6 @@
             "filename" : "main_hr.p4",
             "line" : 785,
             "column" : 28,
-            "source_fragment" : "meta.vdp_metadata.table_chain&3 != 0"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "!=",
-              "left" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0x03"
-                  }
-                }
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00"
-              }
-            }
-          },
-          "true_next" : "tbl_act_6",
-          "false_next" : "node_90"
-        },
-        {
-          "name" : "node_90",
-          "id" : 46,
-          "source_info" : {
-            "filename" : "main_hr.p4",
-            "line" : 787,
-            "column" : 28,
             "source_fragment" : "meta.vdp_metadata.table_chain&4 != 0"
           },
           "expression" : {
@@ -19086,7 +19050,43 @@
               }
             }
           },
-          "true_next" : "MyIngress.table_header_match_224_stage4",
+          "true_next" : "tbl_act_6",
+          "false_next" : "node_90"
+        },
+        {
+          "name" : "node_90",
+          "id" : 46,
+          "source_info" : {
+            "filename" : "main_hr.p4",
+            "line" : 787,
+            "column" : 28,
+            "source_fragment" : "meta.vdp_metadata.table_chain&8 != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "metadata._vdp_metadata_table_chain6"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x08"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "MyIngress.table_header_match_224_1_stage4",
           "false_next" : "node_92"
         },
         {
@@ -19298,7 +19298,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "main_hr.p4",
-        "line" : 815,
+        "line" : 813,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
