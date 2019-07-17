@@ -75,7 +75,7 @@ def main():
 #dst addr
 #    addr1 = socket.gethostbyname(sys.argv[2])
 
-    iface = "p4p1"
+    iface = "veth0"
 
 #    out_ether = Ether(src=get_if_hwaddr(iface), dst='00:00:00:00:00:01', type=0x894f)
 #    in_ether =  Ether(src=get_if_hwaddr(iface), dst='00:00:00:00:00:01', type=0x800)

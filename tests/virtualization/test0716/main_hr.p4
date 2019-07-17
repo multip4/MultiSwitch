@@ -806,8 +806,6 @@ control MyIngress(inout headers hdr,
             }
         } 
     }
-   
-    
 
 }
 
