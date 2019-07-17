@@ -30,7 +30,7 @@ control MyIngress(inout headers hdr,
 	}
 
 	action do_drop() {
-		mark_to_drop();
+		mark_to_drop(standard_metadata);
 	}
 
 	action set_stage_and_bitmap(bit<48> action_bitmap, bit<3> match_bitmap, bit<8> next_stage, bit<8> next_prog) {
@@ -58,7 +58,7 @@ control MyIngress(inout headers hdr,
 	action action_do(){
 
 	}
-
+	
 	////////////for ethernet field
 	action mod_field_with_const_112(bit<112> value_112, bit<112> mask_112) {   
 		hdr.hdr_112.buffer = (hdr.hdr_112.buffer&(~mask_112))|(value_112&mask_112);
@@ -249,38 +249,33 @@ control MyIngress(inout headers hdr,
 			
 		}
 		actions = {
-			do_forward;
 			arp_reply;						
 		}
 	}
-    	table action_vdp1_2 {
+	table action_vdp1_2 {
 		key = {
 			
 		}
 		actions = {
-			do_forward;
 			arp_reply;						
 		}
 	}
-    	table action_vdp1_3 {
+	table action_vdp1_3 {
 		key = {
 			
 		}
 		actions = {
-			do_forward;
 			arp_reply;						
 		}
 	}
-    	table action_vdp1_4{
+	table action_vdp1_4{
 		key = {
 			
 		}
 		actions = {
-			do_forward;
 			arp_reply;						
 		}
 	}
-
 	
 	table action_vdp2_1 {
 		key = {
@@ -291,7 +286,6 @@ control MyIngress(inout headers hdr,
 		}
 	}
 
-	
 	table action_vdp2_2 {
 		key = {
 			
@@ -300,7 +294,6 @@ control MyIngress(inout headers hdr,
 			l2_switch_forward;						
 		}
 	}
-
 	
 	table action_vdp2_3 {
 		key = {
@@ -310,7 +303,6 @@ control MyIngress(inout headers hdr,
 			l2_switch_forward;						
 		}
 	}
-
 	
 	table action_vdp2_4 {
 		key = {
@@ -320,7 +312,6 @@ control MyIngress(inout headers hdr,
 			l2_switch_forward;						
 		}
 	}
-
 	
 	table action_vdp3_1 {
 		key = {
@@ -343,8 +334,7 @@ control MyIngress(inout headers hdr,
 			FW_forward;
 		}
 	}
-	
-    	
+	    	
 	table action_vdp3_3 {
 		key = {
 			
@@ -355,8 +345,7 @@ control MyIngress(inout headers hdr,
 			FW_forward;
 		}
 	}
-	
-    	
+
 	table action_vdp3_4 {
 		key = {
 			
@@ -367,8 +356,6 @@ control MyIngress(inout headers hdr,
 			FW_forward;
 		}
 	}
-	
-
 	
 	table action_vdp4_1 {
 		key = {
@@ -416,7 +403,7 @@ control MyIngress(inout headers hdr,
 			set_initial_config();
 		}
 	}    
-	//
+
 	table table_header_match_112_stage1 {                                          
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
@@ -462,7 +449,8 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	}
-	//
+
+
 	table table_header_match_160_1_stage1 {                                        
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
@@ -507,7 +495,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	}
-	//
+
 	table table_header_match_160_2_stage1 {                                        
 		key = {                                                                 
 			meta.vdp_metadata.inst_id : exact ;                                		
@@ -552,7 +540,7 @@ control MyIngress(inout headers hdr,
 			end;							                                    
 		}    									                                
 	}
-	//
+
 	table table_header_match_224_stage1 {                                          
 		key = {                                                                
 			meta.vdp_metadata.inst_id : exact ;                                		
@@ -596,8 +584,7 @@ control MyIngress(inout headers hdr,
 			set_action_id;                                                          
 			end;							                                    
 		}    									                                
-	}
-	//                                                                            
+	}                                                                            
 	table table_std_meta_match_stage1 {                                            
 		key = {                                                                  
 			meta.vdp_metadata.inst_id : exact ;                                		
@@ -649,8 +636,7 @@ control MyIngress(inout headers hdr,
 			set_action_id;														
 			end;                                                                        
 		}									                                    
-	}
-	//                                                                              
+	}                                                                              
 	table table_user_meta_stage1 {	                                                
 		key = {                             				                    
 			meta.vdp_metadata.inst_id 		: exact ;       				        
