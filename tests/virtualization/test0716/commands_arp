@@ -2,5 +2,5 @@ table_add table_config_at_initial set_initial_config 1 0 0 => 1 1 4 8
 
 table_add table_header_match_224_1_stage1 set_action_id 1 1 0x10000000000000000000000000000000000000000&&&0xF0000000000000000000000000000000000000000 => 1 1 0 0 0 1
 
-table_add action_vdp1_1 response =>
+table_add action_vdp1_1 do_forward => 2
 table_add action_vdp1_1 arp_reply => 0xffffffffffff0000000000000000000000000000 0 0x80 0xffffffff00000000000000000000 0 0x80 0xffffffffffff0000 0x48 0 0x082a00010001 0x0a000001 0x082a00010001 0xffff0000000000000000000000000000000000000000

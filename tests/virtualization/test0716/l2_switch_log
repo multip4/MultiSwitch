@@ -1,0 +1,11 @@
+table_add table_config_at_initial set_initial_config 2 0 0 => 2 2 2 1
+table_add table_header_match_112_1_stage2 set_action_id 2 2  0x20000000000000000&&&0xF0000000000000000 => 2 2 2 0 0 1
+table_add action_vdp2_2 l2_switch_forward => 2
+table_add action_vdp2_2 l2_switch_forward => 1
+table_add table_config_at_initial set_initial_config 2 0 0 => 2 1 4 1
+table_add table_header_match_112_1_stage1 set_action_id 2 1  0x20000000000000000&&&0xF0000000000000000 => 2 2 2 0 0 1
+table_add action_vdp2_1 l2_switch_forward => 2
+table_add action_vdp2_1 l2_switch_forward => 1
+table_add table_config_at_initial set_initial_config 2 0 0 => 2 1 4 1
+table_add table_header_match_112_1_stage1 set_action_id 2 1  0x20000000000000000&&&0xF0000000000000000 => 2 2 2 0 0 1
+table_add action_vdp2_1 l2_switch_forward => 2

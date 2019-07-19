@@ -1,9 +1,9 @@
 #include <core.p4>
 #include <v1model.p4>
-#include "headers.p4"
-#include "metadata.p4"
-#include "parser.p4"
-#include "define.p4"
+#include "include/headers.p4"
+#include "include/metadata.p4"
+#include "include/parser.p4"
+#include "include/define.p4"
 
 control MyVerifyChecksum(inout headers hdr, inout metadata meta) {   
     apply {  }
@@ -249,6 +249,7 @@ control MyIngress(inout headers hdr,
 			
 		}
 		actions = {
+			do_forward;
 			arp_reply;						
 		}
 	}
@@ -319,41 +320,34 @@ control MyIngress(inout headers hdr,
 		}
 		actions = {
 			do_drop;
-			no_op;
-			FW_forward;
+
 		}
 	}
     	
 	table action_vdp3_2 {
 		key = {
-			
+
 		}
 		actions = {
 			do_drop;
-			no_op;
-			FW_forward;
+
 		}
 	}
 	    	
 	table action_vdp3_3 {
 		key = {
-			
 		}
 		actions = {
 			do_drop;
-			no_op;
-			FW_forward;
+
 		}
 	}
 
 	table action_vdp3_4 {
 		key = {
-			
 		}
 		actions = {
 			do_drop;
-			no_op;
-			FW_forward;
 		}
 	}
 	

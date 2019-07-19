@@ -1,5 +1,8 @@
-table_add table_config_at_initial set_initial_config 2 0 0 => 2 2 4 1 
+table_add table_config_at_initial set_initial_config 3 0 0 => 3 3 4 2 
 
-table_add table_header_match_112_1_stage2 set_action_id 2 2 0x20000000000000000&&&0xF0000000000000000 => 2 2 0 0 0 1
+table_add table_header_match_160_1_stage3 set_action_id 3 3  0x1&&&0xF => 3 4 0 0 0 1
+table_add table_header_match_160_1_stage3 set_action_id 3 3  0x2&&&0xF => 3 2 0 0 0 1
+table_add table_header_match_160_2_stage3 set_action_id 3 3  0x5000000000000000000000000000000000&&&0xF000000000000000000000000000000000 => 3 4 0 0 0 1
 
-table_add action_vdp2_2 l2_switch_forward => 1
+table_add action_vdp3_3 do_drop =>
+table_add action_vdp2_3 l2_switch_forward => 2
