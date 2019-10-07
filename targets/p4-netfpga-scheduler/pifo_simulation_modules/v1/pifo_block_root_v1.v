@@ -124,10 +124,25 @@ module pifo_block_root_v1
     integer j;
     always @(*)
         begin
+        pifo_shift_slave_index_start = 0;
+        pifo_shift_master_index_start = 0;
+        pifo_shift_count = 0;
         
-            
+        pifo_calendar_update_index = 0;
+        pifo_calendar_update_value = pifo_calendar[0];
         
+        // reset comparator bit array
+        insert_bit_array_reg_next = insert_bit_array_reg;
         
+        // reset cur_state_next
+        cur_state_next = cur_state;
+        
+        // output reg.
+        m_axis_pifo_info_reg_next = m_axis_pifo_info_reg;
+        
+        // pifo_calendar counter
+        pifo_counter_next = pifo_counter;
+        offset_next = 0;
             if(rstn)
                 begin
  
