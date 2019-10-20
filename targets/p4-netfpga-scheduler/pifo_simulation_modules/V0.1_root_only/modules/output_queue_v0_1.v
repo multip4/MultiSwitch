@@ -40,7 +40,8 @@ module output_queue_v0_1
     parameter META_WIDTH=128,
     parameter PIFO_WIDTH=32,
     parameter BUFFER_ADDR_WIDTH = 12,
-    parameter BUFFER_OUTPUT_SYNC = 1
+    parameter BUFFER_OUTPUT_SYNC = 1,
+    parameter OUTPUT_SYNC = 1
     )
     (
     
@@ -55,7 +56,6 @@ module output_queue_v0_1
     input [META_WIDTH-1:0]                          s_axis_tuser,
     input [PIFO_WIDTH-1:0]                          s_axis_tpifo,
     input                                           s_axis_tvalid,    
-    output                                          s_axis_tready,
     input                                           s_axis_tlast,
     
     
@@ -73,6 +73,7 @@ module output_queue_v0_1
     output [META_WIDTH-1:0]                         m_axis_tuser, // output metadata 
     output [PIFO_WIDTH-1:0]                         m_axis_tpifo,  // output pifo infomation.
     output                                          m_is_buffer_almost_full, // buffer almostfull signal
+    output                                          m_is_pifo_full,
 
     // clock and reset
     input axis_aclk,
@@ -124,6 +125,7 @@ module output_queue_v0_1
     wire                            addr_manager_out_st_buffer_empty;
     
     reg                            ctl_buffer_write_no_bypass;
+    reg                            ctl_pifo_insert_no_bypass;
     
     
     // registers for output
@@ -212,8 +214,10 @@ module output_queue_v0_1
     wire [BUFFER_ADDR_WIDTH-1:0] w_pifo_calendar_out_addr; 
     wire                         w_pifo_calendar_out_valid;
     wire                         w_pifo_calendar_out_bypass_en;
+    wire                         w_pifo_calendar_out_caledar_full;
 
     wire [PIFO_WIDTH-1:0]  w_pifo_root_info_final;
+    wire                   w_bypass_final;
     
     // define w_pifo_root_info_final.
     // set the field value as fl_head.
@@ -225,12 +229,13 @@ module output_queue_v0_1
     pifo_calendar_inst
     (
         .s_axis_pifo_info_root(w_pifo_root_info_final),
-        .s_axis_insert_en(s_axis_pifo_insert_en),
+        .s_axis_insert_en(ctl_pifo_insert_no_bypass),
         .s_axis_pop_en(ctl_pifo_pop_en), // pop signal uses combinational logic output.
         
         .m_axis_buffer_addr(w_pifo_calendar_out_addr), // pop result, buffer address
         .m_axis_buffer_addr_valid(w_pifo_calendar_out_valid), // indicate the value is valid.
         .m_axis_bypass_en(w_pifo_calendar_out_bypass_en),
+        .m_axis_calendar_full(w_pifo_calendar_out_caledar_full),
         // add cpu i/o later.
         
         // reset & clock
@@ -249,12 +254,13 @@ module output_queue_v0_1
         r_buffer_rd_addr_next = r_buffer_rd_addr;
         ctl_pifo_pop_en = 0;
         ctl_buffer_write_no_bypass = s_axis_buffer_wr_en;
+        ctl_pifo_insert_no_bypass = s_axis_pifo_insert_en;
         r_buffer_rd_en_d1_next = r_buffer_rd_en;
         m_axis_tvalid_next = 0;
         r_sop_addr_next = r_sop_addr;
         bypass_by_buffer_empty = 0;
         
-        r_m_axis_tvalid_next = r_m_axis_tvalid;
+        r_m_axis_tvalid_next = 0;
         r_m_axis_tdata_next = r_m_axis_tdata;
         r_m_axis_tkeep_next = r_m_axis_tkeep;
         r_m_axis_tlast_next = r_m_axis_tlast;
@@ -281,8 +287,8 @@ module output_queue_v0_1
                                     output_queue_fsm_state_next = UPDATE_FL_TAIL;
                                     ctl_pifo_pop_en = 1;
                                     r_buffer_rd_addr_next = w_pifo_calendar_out_addr;
-                                    r_buffer_first_word_en_next = 1;
-                                    r_buffer_rd_en_next = 1;                                    
+                                    r_buffer_first_word_en_next = 1; // first word control signal set to 1.
+                                    r_buffer_rd_en_next = 0;                                    
                                 end
                             // if the input is valid. then has few more conditions
                             else if(s_axis_tvalid)
@@ -290,7 +296,7 @@ module output_queue_v0_1
                                     // if the buffer is empty then bypass or 
                                     // if the input data is more significant than the first element in pifo_calendar.
                                     // then bypass
-                                    if(addr_manager_out_st_buffer_empty | w_pifo_calendar_out_bypass_en)
+                                    if(w_bypass_final)
                                         begin
                                             output_queue_fsm_state_next = BYPASS;
                                             r_m_axis_tvalid_next = s_axis_tvalid;
@@ -301,7 +307,7 @@ module output_queue_v0_1
                                             r_m_axis_tpifo_next = s_axis_tpifo;
                                             
                                             ctl_buffer_write_no_bypass = 0;
-                                            
+                                            ctl_pifo_insert_no_bypass = 0;
                                         end   
                                     
                                     // otherwise,
@@ -311,8 +317,8 @@ module output_queue_v0_1
                                         begin
                                             output_queue_fsm_state_next = UPDATE_FL_TAIL;
                                             r_buffer_rd_addr_next = w_pifo_calendar_out_addr;
-                                            r_buffer_first_word_en_next = 1;
-                                            r_buffer_rd_en_next = 1;
+                                            r_buffer_first_word_en_next = 1; // first word control signal set to 1.
+                                            r_buffer_rd_en_next = 0;
                                             ctl_pifo_pop_en = 1;                                        
                                         end
                                 end    
@@ -353,10 +359,9 @@ module output_queue_v0_1
                             // update sop address.
                             output_queue_fsm_state_next = UPDATE_FL_TAIL;
                             r_buffer_rd_addr_next = addr_manager_out_buffer_fl_head;
-                            r_buffer_first_word_en_next = 1;
-                            r_buffer_rd_en_next = 1;                          
+                            r_buffer_first_word_en_next = 1; // first word control signal set to 1.
+                            r_buffer_rd_en_next = 0;                          
                             
-                            output_queue_fsm_state_next = UPDATE_FL_TAIL;
                         end
                     
                 end
@@ -377,109 +382,30 @@ module output_queue_v0_1
             // goto IDLE state if get the eop chunck    
             READ_PKT:
                 begin
+                    
+                    // set output value.
+                    r_m_axis_tdata_next = w_buffer_wrapper_out_tdata;
+                    r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
+                    r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
+                    r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
+                    r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;      
+                
                     if(m_axis_tready)
                         begin
-                            
-                            r_m_axis_tvalid_next = r_buffer_rd_en_d1_next;
-                            r_m_axis_tdata_next = w_buffer_wrapper_out_tdata;
-                            r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
-                            r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
-                            r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
-                            r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;          
-                            
-                            
+                            r_m_axis_tvalid_next = 1;
+ 
                             if(w_buffer_wrapper_out_tlast)
                                 output_queue_fsm_state_next = IDLE;
                             else
                                 begin
                                     r_buffer_rd_en_next = 1;
                                     r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;
+                                    
                                 end
                         end
                 end
         
         endcase
-        
-        
-//        case(output_queue_fsm_state)
-//            IDLE:
-//                begin
-//                    // conditions,
-//                    // if port_ready,
-//                    if(m_axis_tready)
-//                        begin
-                            
-//                            if(addr_manager_out_st_buffer_empty)
-//                                bypass_by_buffer_empty = 1;                            
-//                            else
-//                                begin
-//                                    ctl_pifo_pop_en = 1;
-                                    
-//                                    if(w_pifo_calendar_out_bypass_en)
-//                                        output_queue_fsm_state_next = BYPASS;
-//                                    else 
-//                                        output_queue_fsm_state_next = PIFO_POP;
-//                                end
-//                        end
-//                end
-//            BYPASS:
-//                begin
-//                    // conditions,
-//                    // if port_not_ready, then move to WRITE_PKT_FIRST state, with keep fl_head value..
-//                    // if port_ready and 
-//                    if(m_axis_tready & s_axis_tlast)
-//                        output_queue_fsm_state_next = IDLE;
-                        
-//                    else if(~m_axis_tready)
-//                        begin
-//                            output_queue_fsm_state_next = WRITE_PKT_FIRST;
-//                            r_buffer_rd_addr_next = buffer_fl_head;
-                            
-//                            // set first_word_en for fl_tail link update.
-//                            r_buffer_first_word_en_next = 1;
-//                            r_buffer_rd_en_next = 1;
-//                        end
-//                end
-//            PIFO_POP:
-//                begin
-//                    if(w_pifo_calendar_out_bypass_en)
-//                        output_queue_fsm_state_next = BYPASS;
-//                    else if(w_pifo_calendar_out_valid)
-//                        begin
-//                            output_queue_fsm_state_next = WRITE_PKT_FIRST;
-//                            r_buffer_rd_addr_next = w_pifo_calendar_out_addr;
-//                            r_buffer_first_word_en_next = 1;
-//                            r_buffer_rd_en_next = 1;
-//                        end
-//                end
-//            WRITE_PKT_FIRST:
-//                begin
-//                    if(m_axis_tready)
-//                        begin
-//                            output_queue_fsm_state_next = WRITE_PKT_REMAIN;
-//                            r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;
-//                            r_buffer_rd_en_next = 1;
-//                        end
-//                end
-//            WRITE_PKT_REMAIN:
-//                begin
-//                    if(m_axis_tready)
-//                        begin
-//                            if(w_buffer_wrapper_out_tlast)
-//                                output_queue_fsm_state_next = IDLE;
-//                            else
-//                                begin
-//                                    r_buffer_rd_en_next = 1;
-//                                    r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;
-//                                end
-//                        end
-                    
-                    
-//                end
-//        endcase
-        
-        
-        
         
     end
     
@@ -538,11 +464,16 @@ module output_queue_v0_1
 
 //assign w_buffer_write_no_bypass = (w_bypass_en)? 0 : s_axis_buffer_wr_en;
 
-assign m_axis_tvalid = (BUFFER_OUTPUT_SYNC)? r_m_axis_tvalid: r_m_axis_tvalid_next;
-assign m_axis_tdata = (BUFFER_OUTPUT_SYNC)? r_m_axis_tdata: r_m_axis_tdata_next;
-assign m_axis_tkeep = (BUFFER_OUTPUT_SYNC)? r_m_axis_tkeep: r_m_axis_tkeep_next;
-assign m_axis_tlast = (BUFFER_OUTPUT_SYNC)? r_m_axis_tlast: r_m_axis_tlast_next;
-assign m_axis_tuser = (BUFFER_OUTPUT_SYNC)? r_m_axis_tuser: r_m_axis_tuser_next;
-assign m_axis_tpifo = (BUFFER_OUTPUT_SYNC)? r_m_axis_tpifo: r_m_axis_tpifo_next;
-    
+assign m_axis_tvalid = (OUTPUT_SYNC)? r_m_axis_tvalid: r_m_axis_tvalid_next;
+assign m_axis_tdata = (OUTPUT_SYNC)? r_m_axis_tdata: r_m_axis_tdata_next;
+assign m_axis_tkeep = (OUTPUT_SYNC)? r_m_axis_tkeep: r_m_axis_tkeep_next;
+assign m_axis_tlast = (OUTPUT_SYNC)? r_m_axis_tlast: r_m_axis_tlast_next;
+assign m_axis_tuser = (OUTPUT_SYNC)? r_m_axis_tuser: r_m_axis_tuser_next;
+assign m_axis_tpifo = (OUTPUT_SYNC)? r_m_axis_tpifo: r_m_axis_tpifo_next;
+
+assign w_bypass_final = addr_manager_out_st_buffer_empty | w_pifo_calendar_out_bypass_en;
+assign m_is_buffer_almost_full = addr_manager_out_st_buffer_almost_full;
+assign m_is_pifo_full = w_pifo_calendar_out_caledar_full;
+
+
 endmodule

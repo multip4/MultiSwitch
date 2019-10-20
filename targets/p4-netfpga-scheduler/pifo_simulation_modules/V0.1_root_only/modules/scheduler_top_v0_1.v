@@ -25,11 +25,10 @@ module scheduler_top_v0_1
     #(
     // parameters from original output_queue.v
     // Master AXI Stream Data Width
-    parameter C_M_AXIS_DATA_WIDTH=256,
-    parameter C_S_AXIS_DATA_WIDTH=256,
+    parameter DATA_WIDTH=256,
+    parameter C_S_AXIS_TUSER_WIDTH=160, // 128 + pifo width(32)
     parameter C_M_AXIS_TUSER_WIDTH=128,
     //parameter C_S_AXIS_TUSER_WIDTH=128,
-    parameter C_S_AXIS_TUSER_WIDTH=196,
     parameter NUM_QUEUES=5,
     
 
@@ -46,7 +45,7 @@ module scheduler_top_v0_1
     parameter BUFFER_WORD_COUNT = 4096,
     parameter PIFO_INFO_ROOT_LENGTH = 30, //{valid - 1bit,rank-16bit,islast-1bit,field-12bit } total 30bit.
     parameter PIFO_INFO_CHILD_LENGTH = 38, //{valid - 1bit, rank - 16bit, qid - 8bit, islast - 1bit, field - 12bit} total 38bit.
-    parameter PIFO_INFO_LENGTH = 68
+    parameter PIFO_INFO_LENGTH = 32
     )
     (
      
@@ -56,49 +55,49 @@ module scheduler_top_v0_1
     input axis_resetn,
 
     // Slave Stream Ports (interface to data path)
-    input [C_S_AXIS_DATA_WIDTH - 1:0] s_axis_tdata,
-    input [((C_S_AXIS_DATA_WIDTH / 8)) - 1:0] s_axis_tkeep,
-    input [C_S_AXIS_TUSER_WIDTH-1:0] s_axis_tuser,
-    input s_axis_tvalid,
-    input s_axis_tlast,
-    output s_axis_tready,   
+    input [DATA_WIDTH - 1:0]                    s_axis_tdata,
+    input [(DATA_WIDTH / 8) - 1:0]              s_axis_tkeep,
+    input [C_S_AXIS_TUSER_WIDTH-1:0]            s_axis_tuser,
+    input                                       s_axis_tvalid,
+    input                                       s_axis_tlast,
+    output                                      s_axis_tready,   
     
     // Master Stream Ports (interface to TX queues)
     input                                       m_axis_0_tready,
-    output [C_M_AXIS_DATA_WIDTH - 1:0]          m_axis_0_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0]  m_axis_0_tkeep,
+    output [DATA_WIDTH - 1:0]                   m_axis_0_tdata,
+    output [(DATA_WIDTH / 8) - 1:0]             m_axis_0_tkeep,
     output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_0_tuser,
     output [PIFO_INFO_LENGTH-1:0]               m_axis_0_tpifo,
     output                                      m_axis_0_tvalid,
     output                                      m_axis_0_tlast,
     
     input                                       m_axis_1_tready,
-    output [C_M_AXIS_DATA_WIDTH - 1:0]          m_axis_1_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0]  m_axis_1_tkeep,
+    output [DATA_WIDTH - 1:0]                   m_axis_1_tdata,
+    output [(DATA_WIDTH / 8) - 1:0]             m_axis_1_tkeep,
     output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_1_tuser,
     output [PIFO_INFO_LENGTH-1:0]               m_axis_1_tpifo,
     output                                      m_axis_1_tvalid,
     output                                      m_axis_1_tlast,
 
     input                                       m_axis_2_tready,
-    output [C_M_AXIS_DATA_WIDTH - 1:0]          m_axis_2_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0]  m_axis_2_tkeep,
+    output [DATA_WIDTH - 1:0]                   m_axis_2_tdata,
+    output [(DATA_WIDTH / 8) - 1:0]             m_axis_2_tkeep,
     output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_2_tuser,
     output [PIFO_INFO_LENGTH-1:0]               m_axis_2_tpifo,
     output                                      m_axis_2_tvalid,
     output                                      m_axis_2_tlast,
 
     input                                       m_axis_3_tready,
-    output [C_M_AXIS_DATA_WIDTH - 1:0]          m_axis_3_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0]  m_axis_3_tkeep,
+    output [DATA_WIDTH - 1:0]                   m_axis_3_tdata,
+    output [((DATA_WIDTH / 8)) - 1:0]           m_axis_3_tkeep,
     output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_3_tuser,
     output [PIFO_INFO_LENGTH-1:0]               m_axis_3_tpifo,
     output                                      m_axis_3_tvalid,
     output                                      m_axis_3_tlast,
 
     input                                       m_axis_4_tready,
-    output [C_M_AXIS_DATA_WIDTH - 1:0]          m_axis_4_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0]  m_axis_4_tkeep,
+    output [DATA_WIDTH - 1:0]                   m_axis_4_tdata,
+    output [(DATA_WIDTH / 8) - 1:0]             m_axis_4_tkeep,
     output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_4_tuser,
     output [PIFO_INFO_LENGTH-1:0]               m_axis_4_tpifo,
     output                                      m_axis_4_tvalid,
@@ -153,11 +152,12 @@ module scheduler_top_v0_1
     
     
     wire [NUM_QUEUES-1:0]               w_buffer_almost_full_bit_array; 
+    wire [NUM_QUEUES-1:0]               w_pifo_full_bit_array;
     wire [NUM_QUEUES-1:0]               w_buffer_write_en_bit_array; 
     wire [NUM_QUEUES-1:0]               w_pifo_insert_en_bit_array; 
             
     
-    enqueue_agent_v1
+    enqueue_agent_v0_1
     enqueue_agent_inst(
             // from/to pipeline
         .s_axis_tvalid(s_axis_tvalid),
@@ -167,6 +167,7 @@ module scheduler_top_v0_1
         
         // from each port queue status 
         .s_axis_buffer_almost_full(w_buffer_almost_full_bit_array),
+        .s_axis_pifo_full(w_pifo_full_bit_array),
             
         .m_axis_ctl_pifo_in_en(w_pifo_insert_en_bit_array),
         .m_axis_ctl_buffer_wr_en(w_buffer_write_en_bit_array),
@@ -183,14 +184,15 @@ module scheduler_top_v0_1
     
 
     wire                        buffer_0_almost_full;
-    output_queue_v1
+    wire                        pifo_0_full;
+        
+    output_queue_v0_1
     output_queue_inst_port0(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
         .s_axis_tuser(s_axis_tuser),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
-        .s_axis_tready(s_axis_tready),
         .s_axis_tlast(s_axis_tlast),
         .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[0]),
         .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[0]),
@@ -202,19 +204,20 @@ module scheduler_top_v0_1
         .m_axis_tuser(m_axis_0_tuser),
         .m_axis_tpifo(m_axis_0_tpifo),
         .m_is_buffer_almost_full(buffer_0_almost_full),
+        .m_is_pifo_full(pifo_0_full),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn)
     );
     
     wire                        buffer_1_almost_full;
-    output_queue_v1
+    wire                        pifo_1_full;
+    output_queue_v0_1
     output_queue_inst_port1(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
         .s_axis_tuser(s_axis_tuser),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
-        .s_axis_tready(s_axis_tready),
         .s_axis_tlast(s_axis_tlast),
         .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[1]),
         .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[1]),
@@ -226,19 +229,20 @@ module scheduler_top_v0_1
         .m_axis_tuser(m_axis_1_tuser),
         .m_axis_tpifo(m_axis_1_tpifo),
         .m_is_buffer_almost_full(buffer_1_almost_full),
+        .m_is_pifo_full(pifo_1_full),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn)
     );
     
     wire                        buffer_2_almost_full;
-    output_queue_v1
+    wire                        pifo_2_full;
+    output_queue_v0_1
     output_queue_inst_port2(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
         .s_axis_tuser(s_axis_tuser),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
-        .s_axis_tready(s_axis_tready),
         .s_axis_tlast(s_axis_tlast),
         .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[2]),
         .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[2]),
@@ -250,19 +254,20 @@ module scheduler_top_v0_1
         .m_axis_tuser(m_axis_2_tuser),
         .m_axis_tpifo(m_axis_2_tpifo),
         .m_is_buffer_almost_full(buffer_2_almost_full),
+        .m_is_pifo_full(pifo_2_full),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn)
     );
     
     wire                        buffer_3_almost_full;
-    output_queue_v1
+    wire                        pifo_3_full;
+    output_queue_v0_1
     output_queue_inst_port3(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
         .s_axis_tuser(s_axis_tuser),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
-        .s_axis_tready(s_axis_tready),
         .s_axis_tlast(s_axis_tlast),
         .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[3]),
         .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[3]),
@@ -274,20 +279,21 @@ module scheduler_top_v0_1
         .m_axis_tuser(m_axis_3_tuser),
         .m_axis_tpifo(m_axis_3_tpifo),
         .m_is_buffer_almost_full(buffer_3_almost_full),
+        .m_is_pifo_full(pifo_3_full),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn)
     );
 
     // port 4 is cpu port
     wire                        buffer_4_almost_full;
-    output_queue_v1
+    wire                        pifo_4_full;
+    output_queue_v0_1
     output_queue_inst_port4(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
         .s_axis_tuser(s_axis_tuser),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
-        .s_axis_tready(s_axis_tready),
         .s_axis_tlast(s_axis_tlast),
         .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[4]),
         .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[4]),
@@ -299,12 +305,12 @@ module scheduler_top_v0_1
         .m_axis_tuser(m_axis_4_tuser),
         .m_axis_tpifo(m_axis_4_tpifo),
         .m_is_buffer_almost_full(buffer_4_almost_full),
+        .m_is_pifo_full(pifo_4_full),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn)
     );    
-    
-    
-    
-    
+
 assign w_buffer_almost_full_bit_array = {buffer_4_almost_full,buffer_3_almost_full,buffer_2_almost_full,buffer_1_almost_full,buffer_0_almost_full};
+assign w_pifo_full_bit_array = {pifo_4_full,pifo_3_full,pifo_2_full,pifo_1_full,pifo_0_full};
+
 endmodule

@@ -3,14 +3,14 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/04/2019 09:59:00 AM
+// Create Date: 10/17/2019 02:26:16 PM
 // Design Name: 
-// Module Name: pifo_calendar_v0_1
+// Module Name: pifo_calendar_v0_1_with_cpu
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description:  pifo calendar with atom. support single level scheduling.
-//  
+// Description: 
+// 
 // Dependencies: 
 // 
 // Revision:
@@ -20,8 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module pifo_calendar_v0_1
-    #(
+module pifo_calendar_v0_1_with_cpu
+
+ #(
     parameter PIFO_CALENDAR_SIZE = 1024,
     parameter PIFO_CALENDAR_INDEX_WIDTH = 10,
     parameter BUFFER_ADDR_WIDTH = 12,
@@ -49,11 +50,15 @@ module pifo_calendar_v0_1
         m_axis_buffer_addr, // pop result, buffer address
         m_axis_buffer_addr_valid, // indicate the value is valid.
         m_axis_bypass_en,
-        
-        m_axis_calendar_full,
-        
         // add cpu i/o later.
         
+        cpu_in_valid,
+        cpu_in_addr,
+        cpu_in_mode, // write for 1, read for 0
+        cpu_in_data,
+        cpu_out_valid,
+        cpu_out_result,
+
         // reset & clock
         rstn,
         clk
@@ -67,9 +72,20 @@ module pifo_calendar_v0_1
     output [BUFFER_ADDR_WIDTH-1:0] m_axis_buffer_addr;
     output                         m_axis_buffer_addr_valid;
     output                         m_axis_bypass_en;
-    output                         m_axis_calendar_full;
     input rstn;
     input clk;
+    
+    input cpu_in_valid;
+    input [PIFO_CALENDAR_INDEX_WIDTH-1:0] cpu_in_addr;
+    input [PIFO_ROOT_WIDTH-1:0] cpu_in_data;
+    input cpu_in_mode;
+    
+    output [PIFO_ROOT_WIDTH-1:0] cpu_out_result;
+    output cpu_out_valid;
+    
+
+    
+    
     
     // Registers
     
@@ -224,5 +240,8 @@ assign m_axis_buffer_addr_valid = w_pifo_atom_element[0][ROOT_PIFO_INFO_VALID_PO
 assign m_axis_bypass_en = w_pifo_atom_compare_result[0];
 assign w_ctl_insert = s_axis_insert_en;
 assign w_ctl_pop = s_axis_pop_en;
-assign m_axis_calendar_full = (r_pifo_element_count == PIFO_CALENDAR_SIZE) ? 1 : 0;
+
+assign cpu_out_valid = cpu_in_valid;
+assign cpu_out_result = w_pifo_atom_element[cpu_in_addr];
+
 endmodule

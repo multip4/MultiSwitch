@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ps / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -147,18 +147,18 @@ module addr_manager_v0_1
                 // if only write enabled, then decrease 1
                 // if only read enabled, then increase 1
                 // otherwise, remain same.
-                if (s_axis_wr_en & ~(s_axis_rd_en & ~s_axis_first_word_en)) 
+                if (s_axis_wr_en & ~s_axis_rd_en) 
                     begin
                         m_axis_remain_space_reg_next = m_axis_remain_space_reg - 1;
                     end
-                else if(~s_axis_wr_en & (s_axis_rd_en & ~s_axis_first_word_en)) 
+                else if(~s_axis_wr_en & s_axis_rd_en) 
                     begin
                         m_axis_remain_space_reg_next = m_axis_remain_space_reg + 1;
                     end
                 
                 //if the first word_en is 1, then move to FIRST_WORD state.
                 // and update current r_fl_tail link.
-                if(s_axis_rd_en & s_axis_first_word_en)
+                if(s_axis_first_word_en)
                     begin
                         r_fl_tail_next = s_axis_rd_addr;
                         port_b_input_addr = r_fl_tail;
@@ -167,7 +167,7 @@ module addr_manager_v0_1
                         // state transition to 
                         addr_manager_fsm_state_next = FIRST_WORD; 
                     end
-                else if(s_axis_rd_en & ~s_axis_first_word_en)
+                else if(s_axis_rd_en)
                     begin
                         // update r_fl_tail_next value.
                         r_fl_tail_next = port_b_out_value;

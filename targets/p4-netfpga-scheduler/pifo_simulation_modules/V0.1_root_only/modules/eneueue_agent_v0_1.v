@@ -52,11 +52,12 @@ module enqueue_agent_v0_1
         // from/to pipeline
         s_axis_tvalid,
         s_axis_tready,
-        s_axis_tuser, // sume_meta + pifo_info_root + pifo_info_child.
+        s_axis_tuser, // sume_meta.
         s_axis_tlast,
         
         // from each port queue status 
         s_axis_buffer_almost_full,
+        s_axis_pifo_full,
             
         m_axis_ctl_pifo_in_en,
         m_axis_ctl_buffer_wr_en,
@@ -72,6 +73,8 @@ module enqueue_agent_v0_1
     input                               s_axis_tlast; 
     
     input [QUEUE_NUM-1:0]               s_axis_buffer_almost_full;
+    input [QUEUE_NUM-1:0]               s_axis_pifo_full;
+        
     
     // combinational logic output
     output [QUEUE_NUM-1:0]              m_axis_ctl_pifo_in_en; 
@@ -110,6 +113,8 @@ module enqueue_agent_v0_1
     reg [QUEUE_NUM-1:0]                 m_axis_ctl_pifo_in_en_reg_next;
     reg [QUEUE_NUM-1:0]                 m_axis_ctl_buffer_wr_en_reg_next;
     
+    
+    
 
     // FSM 
     always @(s_axis_tvalid,  // valid signal from pipeline
@@ -121,37 +126,29 @@ module enqueue_agent_v0_1
                 axis_resetn // reset signal.
                 ) 
     begin
-        
+    
         s_axis_tready = 0;
         eq_agent_fsm_state_next = eq_agent_fsm_state;
         m_axis_ctl_pifo_in_en_reg_next = m_axis_ctl_pifo_in_en_reg;
         m_axis_ctl_buffer_wr_en_reg_next = m_axis_ctl_buffer_wr_en_reg;
         
-        if(axis_resetn) // axis_resetn active low, which means, value 1 indicates not reset.
-            begin
-                
                 case(eq_agent_fsm_state)
                     // initial state;
                     // move to enqueue state if input data valid and at least one txport is available.
                     // move to drop state if input data valid and (drop signal is 1 or all port is not available). 
                     IDLE:
                         begin
+                            m_axis_ctl_pifo_in_en_reg_next = 0;
+                            m_axis_ctl_buffer_wr_en_reg_next = 0;
                             if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire)) 
                                 begin
                                     eq_agent_fsm_state_next = DROP;
-                                    m_axis_ctl_pifo_in_en_reg_next = 0;
-                                    m_axis_ctl_buffer_wr_en_reg_next = 0;
                                 end
                             else if(s_axis_tvalid)
                                 begin
                                     eq_agent_fsm_state_next = ENQUEUE;
-                                    m_axis_ctl_pifo_in_en_reg_next = output_port_bit_array_wire;
-                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_bit_array_wire;
-                                end
-                            else
-                                begin
-                                    m_axis_ctl_pifo_in_en_reg_next = 0;
-                                    m_axis_ctl_buffer_wr_en_reg_next = 0;
+                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
+                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
                                 end
                         end
                     // Drop state;
@@ -160,7 +157,7 @@ module enqueue_agent_v0_1
                     DROP:
                         begin
                             s_axis_tready = 1;
-                            if(s_axis_tvalid & s_axis_tlast)
+                            if(s_axis_tlast)
                                 eq_agent_fsm_state_next = IDLE;
                         end
                     // Enqueue state:
@@ -170,16 +167,10 @@ module enqueue_agent_v0_1
                         begin
                             s_axis_tready = 1;
                             m_axis_ctl_pifo_in_en_reg_next = 0;
-                            m_axis_ctl_buffer_wr_en_reg_next = 0;
-                            if(s_axis_tvalid)
-                                begin
-                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_bit_array_wire;
-                                    if(s_axis_tlast)
-                                        eq_agent_fsm_state_next = IDLE;
-                                end
+                            if(s_axis_tlast)
+                                eq_agent_fsm_state_next = IDLE;
                         end
                 endcase
-            end
     end
       
     always @(posedge axis_aclk) 
@@ -196,7 +187,6 @@ module enqueue_agent_v0_1
                 eq_agent_fsm_state <= eq_agent_fsm_state_next;
                 m_axis_ctl_pifo_in_en_reg <=  m_axis_ctl_pifo_in_en_reg_next;
                 m_axis_ctl_buffer_wr_en_reg <=  m_axis_ctl_buffer_wr_en_reg_next;
-
             end
     end
     
@@ -217,7 +207,7 @@ module enqueue_agent_v0_1
     
     // and opration between output port bit array and buffer almost full array.
     assign output_port_not_full_bit_array_wire = 
-            output_port_bit_array_wire & ~s_axis_buffer_almost_full;
+            output_port_bit_array_wire & ~s_axis_buffer_almost_full & ~s_axis_pifo_full;
     
     // reduction or operator to indicate at least 1 output port is not full. 
     assign output_port_ready_wire = s_axis_tvalid & (| output_port_not_full_bit_array_wire);

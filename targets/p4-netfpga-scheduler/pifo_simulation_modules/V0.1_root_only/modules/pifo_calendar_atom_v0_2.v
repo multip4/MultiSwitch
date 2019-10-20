@@ -3,14 +3,14 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/04/2019 10:50:43 AM
+// Create Date: 10/14/2019 11:07:08 AM
 // Design Name: 
-// Module Name: pifo_calendar_atom_v0_1
+// Module Name: pifo_calendar_atom_v0_2
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
 // Description: 
-// The pifo calendar atom is sub unit of pifo calender,
+// 
 // Dependencies: 
 // 
 // Revision:
@@ -20,17 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-/*
-pifo calendar element structure:
-
-element {
-    valid:          1bit,
-    rank:           19bit,
-    buffer_addr:    12bit
-}
-
-*/
-module pifo_calendar_atom_v0_1
+module pifo_calendar_atom_v0_2
     #(
         parameter ELEMENT_WIDTH = 32,  // 30 for root element
         parameter ELEMENT_RANK_WIDTH = 19,
@@ -73,16 +63,23 @@ module pifo_calendar_atom_v0_1
         
         input clk;
         input rstn;
+        
+        localparam SELF = 0;
+        localparam INPUT = 1;
+        localparam TAIL = 2;
+        localparam HEAD = 3;
+        reg[1:0] data_update_next;
+        
+        
+        
                                 
         reg [ELEMENT_WIDTH-1:0] r_pifo_element;      // register 
-        reg [ELEMENT_WIDTH-1:0] r_pifo_element_next; // combinational logic for update register
                 
         wire [ELEMENT_RANK_WIDTH-1:0] w_s_axis_input_rank;
         wire [ELEMENT_RANK_WIDTH-1:0] w_element_rank;
         wire                          rank_compare_large;
         wire                          rank_compare_final;
-        wire                          in_pifo_valid;
-
+        
         
         wire                          is_shift_to_tail;
         wire                          is_shift_to_head;
@@ -90,52 +87,39 @@ module pifo_calendar_atom_v0_1
         
         always @(*)
             begin
-                // set init value.
-                r_pifo_element_next = r_pifo_element;
-                
+                // version v0.2 uses data_update_next to indicate next data update.
+                // try to save combinational logic output.
+                data_update_next = SELF;
+     
                 // three conditions
                 // if both insert and pop
                 // check self and tail side compare result,
                 //  
                 if(in_ctl_insert & in_ctl_pop)
                     begin
-                        case({in_pifo_valid, rank_compare_final, in_pifo_neighbour_compare_large_from_tail_direction})
-                            'b101: // update current value 
-                                r_pifo_element_next = in_pifo_input;
-                            'b100: // shift to head
-                                r_pifo_element_next = in_pifo_neighbour_element_from_tail_direction;
+                        case({rank_compare_final, in_pifo_neighbour_compare_large_from_tail_direction})
+                            'b01: // update current value 
+                                data_update_next = INPUT;
+                            'b00: // shift to head
+                                data_update_next = TAIL;
                         endcase
                     end
                 // insert only
                 // check self and head side compare result.    
                 else if (in_ctl_insert & ~in_ctl_pop)
                     begin
-                        case({in_pifo_valid,rank_compare_final,in_pifo_neighbour_compare_large_from_head_direction})
-                            'b110: // update current value
-                                r_pifo_element_next = in_pifo_input;
-                            'b111: // shift to tail
-                                r_pifo_element_next = in_pifo_neighbour_element_from_head_direction;
+                        case({rank_compare_final,in_pifo_neighbour_compare_large_from_head_direction})
+                            'b10: // update current value
+                                data_update_next = INPUT;
+                            'b11: // shift to tail
+                                data_update_next = HEAD;
                         endcase
                     end
                 // pop only    
                 else if(~in_ctl_insert & in_ctl_pop)
                     begin 
-                        //shift to head.
-                        r_pifo_element_next = in_pifo_neighbour_element_from_tail_direction;
+                        data_update_next = TAIL;
                     end
-                
-//                // if the update signal is 1, then just update the register
-//                if(is_update_value) r_pifo_element_next = in_pifo_input; 
-//                // else check wheter shift left or right
-//                else
-//                    begin
-//                        // if shift to head only
-//                        if(is_shift_to_head & ~is_shift_to_tail) 
-//                            r_pifo_element_next = in_pifo_neighbour_element_from_head_direction;
-//                        // if shift to tail only
-//                        else if(~is_shift_to_head & is_shift_to_tail)
-//                            r_pifo_element_next = in_pifo_neighbour_element_from_tail_direction;
-//                    end 
             end
             
         always @(posedge clk)
@@ -146,7 +130,17 @@ module pifo_calendar_atom_v0_1
                     end
                 else
                     begin
-                        r_pifo_element <= r_pifo_element_next;
+                    
+                        case(data_update_next)
+                            INPUT:
+                                r_pifo_element <= in_pifo_input;
+                            SELF:
+                                r_pifo_element <= r_pifo_element;
+                            TAIL:
+                                r_pifo_element <= in_pifo_neighbour_element_from_tail_direction;
+                            HEAD:
+                                r_pifo_element <= in_pifo_neighbour_element_from_head_direction;
+                        endcase    
                     end
             end
         
@@ -162,6 +156,5 @@ module pifo_calendar_atom_v0_1
         //out signal.
         assign out_pifo_compare_large = rank_compare_final;
         assign out_pifo_output = r_pifo_element;
-        assign in_pifo_valid = in_pifo_input[ELEMENT_WIDTH-1];
         
 endmodule
