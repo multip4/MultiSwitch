@@ -123,7 +123,8 @@ module enqueue_agent_v0_1
                 output_port_bit_array_wire, // output port bit array
                 output_port_ready_wire, // single bit for indicating at least one output port is valid
                 eq_agent_fsm_state, // current state state  of FSM
-                axis_resetn // reset signal.
+                m_axis_ctl_pifo_in_en_reg,
+                m_axis_ctl_buffer_wr_en_reg
                 ) 
     begin
     

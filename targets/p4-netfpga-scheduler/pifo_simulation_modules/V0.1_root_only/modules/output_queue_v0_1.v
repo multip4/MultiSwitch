@@ -195,7 +195,7 @@ module output_queue_v0_1
         .s_axis_wr_addr(addr_manager_out_buffer_fl_head),
         .s_axis_wr_en(ctl_buffer_write_no_bypass),
         .s_axis_rd_addr(r_buffer_rd_addr_next),
-        .s_axis_rd_en(r_buffer_rd_en_next),
+//        .s_axis_rd_en(r_buffer_rd_en_next),
         
         //.m_axis_valid(m_axis_tvalid),
         

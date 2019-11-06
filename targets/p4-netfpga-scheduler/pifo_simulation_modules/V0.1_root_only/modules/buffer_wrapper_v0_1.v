@@ -52,11 +52,12 @@ module buffer_wrapper_v0_1
     m_axis_tlast,
     m_axis_tuser,
     m_axis_tpifo,
+//    m_axis_tvalid,
     
     s_axis_wr_addr,
     s_axis_wr_en,
     s_axis_rd_addr,
-    s_axis_rd_en,
+//    s_axis_rd_en,
     
     //m_axis_valid,
     
@@ -75,10 +76,11 @@ module buffer_wrapper_v0_1
     input [C_S_AXIS_ADDR_WIDTH-1:0]   s_axis_wr_addr;
     input [C_S_AXIS_ADDR_WIDTH-1:0]   s_axis_rd_addr;
     input s_axis_wr_en;
-    input s_axis_rd_en;
+//    input s_axis_rd_en;
     
     input s_axis_sync_flag; // it this field is 1 then return sync value, else return async value.
     
+//    output                              m_axis_tvalid;
     output [C_M_AXIS_DATA_WIDTH-1:0]    m_axis_tdata;
     output [C_M_AXIS_DATA_WIDTH/8-1:0]  m_axis_tkeep;
     output                              m_axis_tlast;
@@ -111,7 +113,7 @@ module buffer_wrapper_v0_1
         
     
     buffer_pkt_289_4096
-    buffer_pkt(
+    buffer_pkt_inst(
     .dina({s_axis_tlast,s_axis_tkeep,s_axis_tdata}),
     .wea(s_axis_wr_en),
     .addra(s_axis_wr_addr),  // always write to the fl_head
@@ -124,7 +126,7 @@ module buffer_wrapper_v0_1
     );
 
     buffer_meta_128_4096
-    buffer_meta(
+    buffer_meta_inst(
     .dina(s_axis_tuser),
     .wea(s_axis_wr_en),
     .addra(s_axis_wr_addr),  // always write to the fl_head
@@ -135,7 +137,7 @@ module buffer_wrapper_v0_1
     );
     
     buffer_pifo_32_4096
-    buffer_pifo(
+    buffer_pifo_inst(
     .dina(s_axis_tpifo),
     .wea(s_axis_wr_en),
     .addra(s_axis_wr_addr),  // always write to the fl_head
@@ -167,14 +169,14 @@ module buffer_wrapper_v0_1
             end
     end
 
-// just return input value.
-assign m_axis_tvalid_async = s_axis_rd_en; 
+//// just return input value.
+//assign m_axis_tvalid_async = s_axis_rd_en; 
 
 assign m_axis_tdata = (s_axis_sync_flag)? m_axis_tdata_async : m_axis_tdata_reg;
 assign m_axis_tkeep = (s_axis_sync_flag)? m_axis_tkeep_async : m_axis_tkeep_reg;
 assign m_axis_tlast = (s_axis_sync_flag)? m_axis_tlast_async : m_axis_tlast_reg;
 assign m_axis_tuser = (s_axis_sync_flag)? m_axis_tuser_async : m_axis_tuser_reg;
 assign m_axis_tpifo = (s_axis_sync_flag)? m_axis_tpifo_async : m_axis_tpifo_reg;
-assign m_axis_tvalid = (s_axis_sync_flag)? m_axis_tvalid_async : m_axis_tvalid_reg;
+//assign m_axis_tvalid = (s_axis_sync_flag)? m_axis_tvalid_async : m_axis_tvalid_reg;
 
 endmodule

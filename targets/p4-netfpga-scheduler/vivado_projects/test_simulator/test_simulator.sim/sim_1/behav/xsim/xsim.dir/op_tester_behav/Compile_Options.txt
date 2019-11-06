@@ -1,1 +1,1 @@
--wto "c35e3ac660c34a3cbff7342fe2652454" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "op_tester_behav" "xil_defaultlib.op_tester" "xil_defaultlib.glbl" -log "elaborate.log" 
+-wto "c35e3ac660c34a3cbff7342fe2652454" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "op_tester_behav" "xil_defaultlib.op_tester" "xil_defaultlib.glbl" -log "elaborate.log" 

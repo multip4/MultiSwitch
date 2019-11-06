@@ -26,8 +26,17 @@
 
 module pifo_block_root_v1
     #(
-    // root pifo_info format {valid bit<1>, rank bit<16>, is_last bit<1>, field <12>}
-    parameter PIFO_INFO_WIDTH = 30,
+    // root pifo_info format {valid bit<1>, rank bit<16>, is_last bit<1>, field <11>}
+    /*
+    [28:28] valid
+    [27:12] rank
+    [11:11] islast,
+    [10:0] field,
+    
+    */
+    
+    
+    parameter PIFO_INFO_WIDTH = 29,
     parameter PIFO_DEPTH = 2048,
     parameter PIFO_INDEX_WIDTH = 11
          
@@ -87,36 +96,35 @@ module pifo_block_root_v1
     reg [PIFO_INDEX_WIDTH-1:0] pifo_counter;
     reg [PIFO_INDEX_WIDTH-1:0] pifo_counter_next;
         
-    
-    
+
     reg                         cur_state;
     reg                         cur_state_next;
     
     wire    pifo_empty_wire;
-    wire    priority_encoder_result_index;
+    wire    [PIFO_INDEX_WIDTH-1:0]   priority_encoder_result_index;
     wire    priority_encoder_result_valid;
-    
-    
-    
     
     // PIFO Root uses 1 bit FSM    
     // local parameter
     localparam IDLE = 0;
     localparam INSERT = 1;
     
-    localparam WRITE_ONLY = 2'b01; // case{read,write}
-    localparam READ_ONLY =  2'b10;
-    localparam READ_AND_WRITE = 2'b11;
+    localparam INSERT_ONLY = 2'b01; // case{read,write}
+    localparam POP_ONLY =  2'b10;
+    localparam POP_AND_INSERT = 2'b11;
     
-    localparam RANK_START_POS = 13;
-    localparam RANK_END_POS = 28;
-    localparam PIFO_INFO_VALID_POS = 29;
+    localparam RANK_START_POS = 12;
+    localparam RANK_END_POS = 27;
+    localparam PIFO_INFO_VALID_POS = 28;
         
     
              
     priority_encoder_v0_1
+    #(.ARRAY_LENGTH(PIFO_DEPTH),
+      .ADDR_WIDTH(PIFO_INDEX_WIDTH)
+    )
     priority_encoder_inst(
-        .s_axis_bit_array(insert_bit_array),
+        .s_axis_bit_array(insert_bit_array_reg_next),
         .m_axis_index(priority_encoder_result_index),
         .m_axis_valid(priority_encoder_result_valid)
     );
@@ -124,6 +132,12 @@ module pifo_block_root_v1
     integer j;
     always @(*)
         begin
+        
+        // manually set combinational logic output delay for simulation.
+        // synthesis translate_off
+        #100 // 0.1ns
+        // synthesis translate_on
+
         pifo_shift_slave_index_start = 0;
         pifo_shift_master_index_start = 0;
         pifo_shift_count = 0;
@@ -145,43 +159,14 @@ module pifo_block_root_v1
         offset_next = 0;
             if(rstn)
                 begin
- 
-                pifo_shift_slave_index_start = 0;
-                pifo_shift_master_index_start = 0;
-                pifo_shift_count = 0;
-                
-                pifo_calendar_update_index = 0;
-                pifo_calendar_update_value = pifo_calendar[0];
-                
-                // reset comparator bit array
-                insert_bit_array_reg_next = insert_bit_array_reg;
-                
-                // reset cur_state_next
-                cur_state_next = cur_state;
-                
-                // output reg.
-                m_axis_pifo_info_reg_next = m_axis_pifo_info_reg;
-                
-                // pifo_calendar counter
-                pifo_counter_next = pifo_counter;
-                offset_next = 0;
- 
-                    
-                    // manually set combinational logic output delay for simulation.
-                    // synthesis translate_off
-                    #100 // 0.1ns
-                    // synthesis translate_on
-                    
 
-                    
-                    
                     case(cur_state)
                         // Defalt Status.
                         IDLE:
                             begin
                             
                                 // generate compare bit array.
-                                for(j = 0; j < pifo_counter; j = j + 1)
+                                for(j = 0; j < PIFO_DEPTH; j = j + 1)
                                     begin
                                         // set bit array value to 1 if the new element's rank is smaller than target one.
                                         // or the target calendar element is not valid.
@@ -194,7 +179,7 @@ module pifo_block_root_v1
                                     
                                     // condition read only
                                     // note that, the read control signal is received when the pifo is not empty
-                                    READ_ONLY:
+                                    POP_ONLY:
                                         begin
                                             // in read mode, set output element value as clalendar[0]
                                             // ready to shift.
@@ -202,9 +187,7 @@ module pifo_block_root_v1
                                             pifo_counter_next = pifo_counter_next - 1;
                                             
                                             pifo_shift_slave_index_start = 0;
-//                                            pifo_shift_slave_index_end = pifo_counter-2;
                                             pifo_shift_master_index_start = 1;
-//                                            pifo_shift_master_index_end = pifo_counter-1;
                                             pifo_shift_count = pifo_counter-1;                                            
                                             
                                             pifo_calendar_update_index = pifo_counter-1;
@@ -213,7 +196,7 @@ module pifo_block_root_v1
                                             
                                         end
                                     // condition2. write only    
-                                    WRITE_ONLY:
+                                    INSERT_ONLY:
                                          begin
                                             
                                             // if pifo calendar is empty, then shift pifo calendar to left,
@@ -260,12 +243,14 @@ module pifo_block_root_v1
                                                             cur_state_next = INSERT;
                                                         end
                                                     
-                                                    // increment counter
-                                                    pifo_counter_next = pifo_counter_next + 1;
+
                                                 end
+                                            // increment counter
+                                            pifo_counter_next = pifo_counter_next + 1;                                                
+                                                
                                          end
                                     //condition3. read and write
-                                    READ_AND_WRITE:
+                                    POP_AND_INSERT:
                                         begin
                                             // if the write element has higher priority than the first element of pifo_calendar,
                                             // bypass the write element.
@@ -321,29 +306,26 @@ module pifo_block_root_v1
                         INSERT:
                             begin
                             
-                                // Insert Element. 
-                                pifo_calendar_update_index = priority_encoder_result_index - offset;
-                                pifo_calendar_update_value = s_axis_pifo_info;     
-                            
                                 // race condition.
                                 if(s_axis_pifo_pop_en)
                                     begin
-                                    
-
-                                    
+                                                      
                                     // shift element to head direction,
                                     // from 1 to priority_encoder_index.
                                      
                                     pifo_shift_slave_index_start = 0;
                                     pifo_shift_master_index_start = 1;
-                                    pifo_shift_count = priority_encoder_result_index - offset; 
+                                    pifo_shift_count = priority_encoder_result_index - offset - 1; 
                                     
                                     // set output value
                                     m_axis_pifo_info_reg_next = pifo_calendar[0];                                   
                                     
                                     // decrement counter
                                     pifo_counter_next = pifo_counter - 1;
-                                                                            
+                                    
+                                    // Insert Element. 
+                                    pifo_calendar_update_index = priority_encoder_result_index - offset -1;
+                                    pifo_calendar_update_value = s_axis_pifo_info;                                                                     
                                     end
                                 else
                                     begin
@@ -351,7 +333,15 @@ module pifo_block_root_v1
                                     pifo_shift_slave_index_start = priority_encoder_result_index + 1 - offset;
                                     pifo_shift_master_index_start = priority_encoder_result_index - offset;
                                     pifo_shift_count = pifo_counter - priority_encoder_result_index - 1; // minus 1 here because the pifo_counter is incremented in previous state 
+                                    
+                                    // Insert Element. 
+                                    pifo_calendar_update_index = priority_encoder_result_index - offset;
+                                    pifo_calendar_update_value = s_axis_pifo_info;     
+                                    
                                     end
+                                    
+                                    
+                            cur_state_next = IDLE;
                             end
                     
                     endcase
@@ -380,21 +370,22 @@ module pifo_block_root_v1
         else
             begin
 //                pifo_calendar[]
-
                 cur_state <= cur_state_next;
                 m_axis_pifo_info_reg <= m_axis_pifo_info_reg_next;
                 pifo_counter <=  pifo_counter_next;
                 offset <= offset_next;
                 insert_bit_array_reg <= insert_bit_array_reg_next;
                 
+                //shift
                 for(i = 0 ; i < pifo_shift_count; i = i+1 )
                     begin
-                        pifo_calendar[pifo_shift_slave_index_start] <= 
-                            pifo_calendar[pifo_shift_master_index_start];
+                        pifo_calendar[pifo_shift_slave_index_start+i] <= pifo_calendar[pifo_shift_master_index_start+i];
                     end
-                     
+                
+                // update single calendar element    
+                pifo_calendar[pifo_calendar_update_index] <= pifo_calendar_update_value;
+                
             end
-    
     end
     
     assign m_axis_pifo_info_async = m_axis_pifo_info_reg_next; // return async data.

@@ -1,8 +1,9 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../../../../../../../../Downloads/mod_sw/hdl/PIFO_MODULE.v" \
-"../../../../../../../../../../../Desktop/OperationVerilogs/adder.v" \
-"../../../../../../../../../../../Desktop/OperationVerilogs/op_tester.v" \
+"../../../../test_simulator.srcs/sources_1/ip/bram_pkt_native/sim/bram_pkt_native.v" \
+"../../../../../../pifo_simulation_modules/PIFO_MODULE.v" \
+"../../../../../../pifo_simulation_modules/testbench/TB_System_Stim.v" \
+"../../../../../../pifo_simulation_modules/testbench/op_tester.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

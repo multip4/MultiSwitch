@@ -337,7 +337,7 @@ module EnqueueAgent
                 end
             else 
                 begin 
-                    cur_status = cur_status_next;
+                    cur_status <= cur_status_next;
                 end
         
         end

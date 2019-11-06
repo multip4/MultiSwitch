@@ -99,7 +99,7 @@ module addr_manager_v0_1
     // PortA for FL Head (read only).
     // PortB for FL Tail (both read/write may occured)
     addr_table_12_4096_with_coe
-    addr_table_inst(
+    addr_table(
         .addra(port_a_input_addr),
         .dina(0),
         .douta(port_a_out_value),

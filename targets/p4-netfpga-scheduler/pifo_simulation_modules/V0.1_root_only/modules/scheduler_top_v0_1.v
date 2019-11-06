@@ -155,14 +155,18 @@ module scheduler_top_v0_1
     wire [NUM_QUEUES-1:0]               w_pifo_full_bit_array;
     wire [NUM_QUEUES-1:0]               w_buffer_write_en_bit_array; 
     wire [NUM_QUEUES-1:0]               w_pifo_insert_en_bit_array; 
-            
+    
+    wire [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta;
+    assign  w_sume_meta = s_axis_tuser[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
+    wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info;          
+    assign  w_pifo_info = s_axis_tuser[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
     
     enqueue_agent_v0_1
     enqueue_agent_inst(
             // from/to pipeline
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tready(s_axis_tready),
-        .s_axis_tuser(s_axis_tuser), // sume_meta + pifo_info_root + pifo_info_child.
+        .s_axis_tuser(w_sume_meta), // sume_meta + pifo_info_root + pifo_info_child.
         .s_axis_tlast(s_axis_tlast),
         
         // from each port queue status 
@@ -179,8 +183,7 @@ module scheduler_top_v0_1
     
 //    wire                        buffer_0_empty;
 
-    wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info;          
-    assign  w_pifo_info = s_axis_tuser[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];
+
     
 
     wire                        buffer_0_almost_full;
@@ -190,7 +193,7 @@ module scheduler_top_v0_1
     output_queue_inst_port0(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
-        .s_axis_tuser(s_axis_tuser),
+        .s_axis_tuser(w_sume_meta),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tlast(s_axis_tlast),
@@ -215,7 +218,7 @@ module scheduler_top_v0_1
     output_queue_inst_port1(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
-        .s_axis_tuser(s_axis_tuser),
+        .s_axis_tuser(w_sume_meta),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tlast(s_axis_tlast),
@@ -240,7 +243,7 @@ module scheduler_top_v0_1
     output_queue_inst_port2(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
-        .s_axis_tuser(s_axis_tuser),
+        .s_axis_tuser(w_sume_meta),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tlast(s_axis_tlast),
@@ -265,7 +268,7 @@ module scheduler_top_v0_1
     output_queue_inst_port3(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
-        .s_axis_tuser(s_axis_tuser),
+        .s_axis_tuser(w_sume_meta),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tlast(s_axis_tlast),
@@ -291,7 +294,7 @@ module scheduler_top_v0_1
     output_queue_inst_port4(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
-        .s_axis_tuser(s_axis_tuser),
+        .s_axis_tuser(w_sume_meta),
         .s_axis_tpifo(w_pifo_info),
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tlast(s_axis_tlast),

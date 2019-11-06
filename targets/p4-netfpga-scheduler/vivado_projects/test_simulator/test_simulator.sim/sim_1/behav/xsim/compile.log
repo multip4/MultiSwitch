@@ -1,7 +1,8 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Downloads/mod_sw/hdl/PIFO_MODULE.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module PIFO_MODULE
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Desktop/OperationVerilogs/adder.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module adder
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Desktop/OperationVerilogs/op_tester.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module op_tester
-WARNING: [VRFC 10-2019] loop variable declaration is not allowed in this mode of verilog [/home/jkchoi/Desktop/OperationVerilogs/op_tester.v:155]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/test_simulator/test_simulator.srcs/sources_1/ip/bram_pkt_payload_axi4/sim/bram_pkt_payload_axi4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bram_pkt_payload_axi4
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/test_simulator/test_simulator.srcs/sources_1/ip/bram_pkt_native_no_reg/sim/bram_pkt_native_no_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bram_pkt_native_no_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/BRAM_Buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BRAM_Buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/testbench/Macro_Test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Macro_Test
