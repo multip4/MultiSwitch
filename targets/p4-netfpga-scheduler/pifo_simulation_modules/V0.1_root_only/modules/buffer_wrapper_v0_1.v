@@ -37,7 +37,6 @@ module buffer_wrapper_v0_1
     parameter C_M_AXIS_PIFO_WIDTH=32,
     parameter C_S_AXIS_PIFO_WIDTH=32,
     parameter C_S_AXIS_ADDR_WIDTH=12
-    
     )
     (
     
@@ -52,14 +51,14 @@ module buffer_wrapper_v0_1
     m_axis_tlast,
     m_axis_tuser,
     m_axis_tpifo,
-//    m_axis_tvalid,
-    
+
     s_axis_wr_addr,
     s_axis_wr_en,
     s_axis_rd_addr,
-//    s_axis_rd_en,
+
     
-    //m_axis_valid,
+
+
     
     s_axis_sync_flag,
     clk,
@@ -121,6 +120,7 @@ module buffer_wrapper_v0_1
     
     .addrb(s_axis_rd_addr),
     .doutb({m_axis_tlast_async,m_axis_tkeep_async,m_axis_tdata_async}),
+    .web(0),
     .clka(clk),
     .clkb(clk)
     );

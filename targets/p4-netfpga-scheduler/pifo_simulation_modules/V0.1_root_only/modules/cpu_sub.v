@@ -134,7 +134,7 @@ wire [ADDR_OFFSET_WIDTH-1:0]        w_cpu_read_req_offset;
 wire [ADDR_INDEX_WIDTH-1:0]         w_cpu_read_req_index;
 
 assign {w_cpu_read_req_type, w_cpu_read_req_port, w_cpu_read_req_buffer_type, 
-        w_cpu_read_req_offset, w_cpu_read_req_index} = S_AXI_ARADDR;
+        w_cpu_read_req_index, w_cpu_read_req_offset} = S_AXI_ARADDR;
 
 // wire to decode cpu write addr.
 
@@ -145,7 +145,7 @@ wire [ADDR_OFFSET_WIDTH-1:0]        w_cpu_write_req_offset;
 wire [ADDR_INDEX_WIDTH-1:0]         w_cpu_write_req_index;
 
 assign {w_cpu_write_req_type, w_cpu_write_req_port, w_cpu_write_req_buffer_type, 
-        w_cpu_write_req_offset, w_cpu_write_req_index} = S_AXI_AWADDR;
+        w_cpu_write_req_index, w_cpu_write_req_offset} = S_AXI_AWADDR;
 
 // assign cpu2ip signals.
 
