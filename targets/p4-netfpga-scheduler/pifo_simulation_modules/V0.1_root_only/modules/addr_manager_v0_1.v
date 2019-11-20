@@ -101,9 +101,9 @@ module addr_manager_v0_1
     addr_table_12_4096_with_coe
     addr_table(
         .addra(port_a_input_addr),
-        .dina(0),
+        .dina('b0),
         .douta(port_a_out_value),
-        .wea(0), // no write for port a 
+        .wea('b0), // no write for port a 
         
         .addrb(port_b_input_addr),
         .dinb(port_b_input_value),

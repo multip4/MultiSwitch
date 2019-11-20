@@ -244,9 +244,9 @@ module buffer_wrapper_v1_0_with_cpu
     reg [C_S_AXIS_TUSER_WIDTH-1:0] r_meta_buffer_out_sync;
     reg [C_S_AXIS_PIFO_WIDTH-1:0] r_pifo_buffer_out_sync;
     
-    reg [C_S_AXIS_DATA_BUFFER_WIDTH-1:0] r_pkt_buffer_out_async;
-    reg [C_S_AXIS_TUSER_WIDTH-1:0] r_meta_buffer_out_async;
-    reg [C_S_AXIS_PIFO_WIDTH-1:0] r_pifo_buffer_out_async;
+    wire [C_S_AXIS_DATA_BUFFER_WIDTH-1:0] r_pkt_buffer_out_async;
+    wire [C_S_AXIS_TUSER_WIDTH-1:0] r_meta_buffer_out_async;
+    wire [C_S_AXIS_PIFO_WIDTH-1:0] r_pifo_buffer_out_async;
         
         
 
@@ -474,14 +474,14 @@ end
     
     buffer_pkt_289_4096
     buffer_pkt_inst(
-    .dina(pifo_buffer_dina),
-    .wea(pifo_buffer_wr_en),
+    .dina(pkt_buffer_dina),
+    .wea(pkt_buffer_wr_en),
     .addra(pkt_buffer_addra),  // always write to the fl_head
     .douta(r_pkt_buffer_out_async),  // porta output to pkt read result.
     
     .addrb(s_axis_rd_addr),
     .doutb({m_axis_tlast_async,m_axis_tkeep_async,m_axis_tdata_async}),
-    .web(0),
+    .web('b0),
     .clka(clk),
     .clkb(clk)
     );
@@ -495,7 +495,7 @@ end
     
     .addrb(s_axis_rd_addr),
     .doutb(m_axis_tuser_async),
-    .web(0),
+    .web('b0),
     
     .clka(clk),
     .clkb(clk)
@@ -510,7 +510,7 @@ end
     
     .addrb(s_axis_rd_addr),
     .doutb(m_axis_tpifo_async),
-    .web(0),
+    .web('b0),
     .clka(clk),
     .clkb(clk)
     );

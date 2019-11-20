@@ -22,10 +22,10 @@
 `include "top_scheduler_cpu_defines.v"
 module cpu_sub
 #(
-parameter C_S_AXI_ADDR_WIDTH = 22,
+parameter C_S_AXI_ADDR_WIDTH = 23,
 parameter C_S_AXI_DATA_WIDTH = 32,
 parameter ADDR_PORT_WIDTH = 3,
-parameter ADDR_BUFFER_TYPE_WIDTH = 2,
+parameter ADDR_BUFFER_TYPE_WIDTH = 3,
 parameter ADDR_OFFSET_WIDTH = 4,
 parameter ADDR_INDEX_WIDTH = 12,
 parameter PORT_NUM = 5,
@@ -38,9 +38,7 @@ parameter PIFO_CALENDAR_WIDTH = 32
     // AXI-LITE Interface
     // AXI Lite ports
     input                                     S_AXI_ACLK,
-    input                                     S_AXI_ARESETN,
-    // DataPath Clock for save register value
-    input                                     dp_clk,    
+    input                                     S_AXI_ARESETN, 
     // write channel
     input                                     S_AXI_BREADY,
     input                                     S_AXI_AWVALID,
@@ -68,27 +66,27 @@ parameter PIFO_CALENDAR_WIDTH = 32
     // read from pkt buffer
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pkt_buffer_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_pkt_buffer_req_valid,
-    input     [PKT_BUFFER_WIDTH-1:0]        ip2cpu_read_pkt_buffer_resp_value,
-    input                                   ip2cpu_read_pkt_buffer_resp_valid,
+    input      [PKT_BUFFER_WIDTH-1:0]        ip2cpu_read_pkt_buffer_resp_value,
+    input      [PORT_NUM-1:0]               ip2cpu_read_pkt_buffer_resp_valid,
         
     // read from sume meta buffer
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_sume_buffer_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_sume_buffer_req_valid,
     input       [SUME_BUFFER_WIDTH-1:0]     ip2cpu_read_sume_buffer_resp_value,
-    input                                   ip2cpu_read_sume_buffer_resp_valid,
+    input      [PORT_NUM-1:0]               ip2cpu_read_sume_buffer_resp_valid,
     
 
     // read from pifo info buffer
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pifo_buffer_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_pifo_buffer_req_valid,
     input      [PIFO_BUFFER_WIDTH-1:0]      ip2cpu_read_pifo_buffer_resp_value,
-    input                                   ip2cpu_read_pifo_buffer_resp_valid,
+    input      [PORT_NUM-1:0]                ip2cpu_read_pifo_buffer_resp_valid,
         
     // read from pifo calendar
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pifo_calendar_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_pifo_calendar_req_valid,
     input      [PIFO_CALENDAR_WIDTH-1:0]    ip2cpu_read_pifo_calendar_resp_value,
-    input                                   ip2cpu_read_pifo_calendar_resp_valid,    
+    input      [PORT_NUM-1:0]               ip2cpu_read_pifo_calendar_resp_valid,    
     
     
     // cpu2ip write    
@@ -98,21 +96,21 @@ parameter PIFO_CALENDAR_WIDTH = 32
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pkt_buffer_req_addr,
     output     [PKT_BUFFER_WIDTH-1:0]       cpu2ip_write_pkt_buffer_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pkt_buffer_req_valid,
-    input                                   ip2cpu_write_pkt_buffer_resp_valid,
+    input      [PORT_NUM-1:0]                ip2cpu_write_pkt_buffer_resp_valid,
         
     // write sume buffer
 
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_sume_buffer_req_addr,
     output     [SUME_BUFFER_WIDTH-1:0]      cpu2ip_write_sume_buffer_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_sume_buffer_req_valid,
-    input                                   ip2cpu_write_sume_buffer_resp_valid,    
+    input      [PORT_NUM-1:0]                ip2cpu_write_sume_buffer_resp_valid,    
     
     // write pifo buffer
 
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_buffer_req_addr,
     output     [PIFO_BUFFER_WIDTH-1:0]      cpu2ip_write_pifo_buffer_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pifo_buffer_req_valid,
-    input                                   ip2cpu_write_pifo_buffer_resp_valid,    
+    input      [PORT_NUM-1:0]               ip2cpu_write_pifo_buffer_resp_valid,    
     
     
     // write pifo calendar
@@ -120,7 +118,7 @@ parameter PIFO_CALENDAR_WIDTH = 32
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
     output     [PIFO_CALENDAR_WIDTH-1:0]    cpu2ip_write_pifo_calendar_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pifo_calendar_req_valid,
-    input                                   ip2cpu_write_pifo_calendar_resp_valid        
+    input      [PORT_NUM-1:0]               ip2cpu_write_pifo_calendar_resp_valid        
     
 );
 
@@ -615,7 +613,7 @@ begin
         r_write_resp_valid_clock_dp_next = 1;
 end
 
-always @(posedge dp_clk)
+always @(posedge S_AXI_ACLK)
 begin
     if(~S_AXI_ARESETN)
         begin

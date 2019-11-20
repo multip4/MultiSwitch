@@ -153,7 +153,7 @@ generate
                         .in_pifo_neighbour_element_from_tail_direction(w_pifo_atom_element[i+1]),          // element data
                          
                         // always set 0 for this value.
-                        .in_pifo_neighbour_compare_large_from_head_direction(0),
+                        .in_pifo_neighbour_compare_large_from_head_direction('b0),
                         .in_pifo_neighbour_compare_large_from_tail_direction(w_pifo_atom_compare_result[i+1]),                     
                         .in_ctl_insert(w_ctl_insert),
                         .in_ctl_pop(w_ctl_pop),
@@ -184,11 +184,11 @@ generate
                             // set previous data for this field,
                             .in_pifo_neighbour_element_from_head_direction(w_pifo_atom_element[i-1]),           // neighbour element data
                             // set 0 for next data. 
-                            .in_pifo_neighbour_element_from_tail_direction(0),          // element data
+                            .in_pifo_neighbour_element_from_tail_direction('b0),          // element data
                            
                             // get previous compare result.
                             .in_pifo_neighbour_compare_large_from_head_direction(w_pifo_atom_compare_result[i-1]),
-                            .in_pifo_neighbour_compare_large_from_tail_direction(1),                         
+                            .in_pifo_neighbour_compare_large_from_tail_direction('b1),                         
                             .in_ctl_insert(w_ctl_insert),
                             .in_ctl_pop(w_ctl_pop),
                             
