@@ -424,8 +424,6 @@ module output_queue_v0_1_with_cpu
                 begin
                     if(m_axis_tready) // port ready
                         begin
-
-                        
                             // set output value.
                             r_m_axis_tvalid_next = s_axis_tvalid;
                             r_m_axis_tdata_next = s_axis_tdata;
@@ -471,16 +469,15 @@ module output_queue_v0_1_with_cpu
             // goto IDLE state if get the eop chunck    
             READ_PKT:
                 begin
-                    
-                    // set output value.
-                    r_m_axis_tdata_next = w_buffer_wrapper_out_tdata;
-                    r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
-                    r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
-                    r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
-                    r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;      
-                
                     if(m_axis_tready)
                         begin
+                            // set output value.
+                            r_m_axis_tdata_next = w_buffer_wrapper_out_tdata;
+                            r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
+                            r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
+                            r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
+                            r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;     
+
                             r_m_axis_tvalid_next = 1;
  
                             if(w_buffer_wrapper_out_tlast)
@@ -526,7 +523,7 @@ module output_queue_v0_1_with_cpu
                 output_queue_fsm_state <= output_queue_fsm_state_next;
                 r_buffer_rd_en <= r_buffer_rd_en_next;
                 r_buffer_rd_en_d1 <= r_buffer_rd_en_d1_next;
-//                r_buffer_first_word_en <= r_buffer_first_word_en_next;
+//              r_buffer_first_word_en <= r_buffer_first_word_en_next;
                 r_buffer_rd_addr <= r_buffer_rd_addr_next;
                 r_sop_addr <= r_sop_addr_next;
                 

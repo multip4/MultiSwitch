@@ -85,13 +85,14 @@ module enqueue_agent_v0_1
     input                               axis_resetn;
     
     
-    // local parameters
+   // local parameters
     localparam DST_POS = 24; // first port position at user metadata.
     localparam DROP_POS = 32;
     localparam STATES_WIDTH = 2;
     localparam IDLE = 0;
-    localparam ENQUEUE = 1;
-    localparam DROP = 2;
+    localparam ENQUEUE_SOP = 1;
+    localparam ENQUEUE_REMAIN = 2;
+    localparam DROP = 3;
     
         
     
@@ -147,9 +148,9 @@ module enqueue_agent_v0_1
                                 end
                             else if(s_axis_tvalid)
                                 begin
-                                    eq_agent_fsm_state_next = ENQUEUE;
-                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
-                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
+                                    eq_agent_fsm_state_next = ENQUEUE_SOP;
+//                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
+//                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
                                 end
                         end
                     // Drop state;
@@ -164,12 +165,19 @@ module enqueue_agent_v0_1
                     // Enqueue state:
                     // write pkt chunks to buffer,
                     // move to IDLE state when find eop.
-                    ENQUEUE:
+                    ENQUEUE_REMAIN:
                         begin
                             s_axis_tready = 1;
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             if(s_axis_tlast)
                                 eq_agent_fsm_state_next = IDLE;
+                        end
+                    ENQUEUE_SOP:
+                        begin
+                            s_axis_tready = 1;
+                            m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
+                            m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
+                            eq_agent_fsm_state_next = ENQUEUE_REMAIN;      
                         end
                 endcase
     end
