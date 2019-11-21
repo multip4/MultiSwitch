@@ -1,31 +1,18 @@
-`timescale 1ps / 1ps
+`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: Zhenguo Cui
+// Engineer: 
 // 
-// Create Date: 08/28/2019 10:55:19 AM
+// Create Date: 11/20/2019 11:03:32 AM
 // Design Name: 
-// Module Name: output_queue_v1
+// Module Name: output_queue_v0_1_with_cpu
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
 // Description: 
-// the output_queue_v1 module conatains pkt buffer and pifo scheduler for single port
-// 
-// 3 major components:
-// - pifo_set for pkt scheduling,
-// - buffer for pkt and metadata
-// - addr_table for pkt link and free list link
-// - dequeue FSM for control signal
-// 
-// FSM States:
-// IDLE(Default);
-// BYPASS: Bypass Input signal to output.
-// UPDATE_FL_TAIL: Write FL_Tail Update,
-// READ_PKT: Start Read PKT from Buffer until EOP
 // 
 // Dependencies: 
-// inited from 
+// 
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
@@ -33,14 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module output_queue_v0_1
-    #(
+module output_queue_v0_1_with_cpu
+#(
     // Master AXI Stream Data Width
     parameter DATA_WIDTH=256,
+    parameter PKT_BUFFER_WIDTH = 289,
     parameter META_WIDTH=128,
     parameter PIFO_WIDTH=32,
     parameter BUFFER_ADDR_WIDTH = 12,
-    parameter BUFFER_OUTPUT_SYNC = 1,
+    parameter BUFFER_WORD_DEPTH = 4096,
+    parameter PIFO_WORD_DEPTH = 1024,
     parameter OUTPUT_SYNC = 1
     )
     (
@@ -74,7 +63,70 @@ module output_queue_v0_1
     output [PIFO_WIDTH-1:0]                         m_axis_tpifo,  // output pifo infomation.
     output                                          m_is_buffer_almost_full, // buffer almostfull signal
     output                                          m_is_pifo_full,
+    output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_remain_size,
 
+
+    //cpu signals
+    
+    // cpu2ip read signal
+    
+    // read from pkt buffer
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_read_pkt_buffer_req_addr,
+    input                                   cpu2ip_read_pkt_buffer_req_valid,
+    output    [PKT_BUFFER_WIDTH-1:0]        ip2cpu_read_pkt_buffer_resp_value,
+    output                                  ip2cpu_read_pkt_buffer_resp_valid,
+        
+    // read from sume meta buffer
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_read_sume_buffer_req_addr,
+    input                                   cpu2ip_read_sume_buffer_req_valid,
+    output      [META_WIDTH-1:0]            ip2cpu_read_sume_buffer_resp_value,
+    output                                  ip2cpu_read_sume_buffer_resp_valid,
+    
+
+    // read from pifo info buffer
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_read_pifo_buffer_req_addr,
+    input                                   cpu2ip_read_pifo_buffer_req_valid,
+    output      [PIFO_WIDTH-1:0]            ip2cpu_read_pifo_buffer_resp_value,
+    output                                  ip2cpu_read_pifo_buffer_resp_valid,
+        
+    // read from pifo calendar
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_read_pifo_calendar_req_addr,
+    input                                   cpu2ip_read_pifo_calendar_req_valid,
+    output    [PIFO_WIDTH-1:0]              ip2cpu_read_pifo_calendar_resp_value,
+    output                                  ip2cpu_read_pifo_calendar_resp_valid,    
+    
+    
+    // cpu2ip write    
+    
+    // write pkt buffer
+    
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_write_pkt_buffer_req_addr,
+    input     [PKT_BUFFER_WIDTH-1:0]        cpu2ip_write_pkt_buffer_req_value,
+    input                                   cpu2ip_write_pkt_buffer_req_valid,
+    output                                  ip2cpu_write_pkt_buffer_resp_valid,
+        
+    // write sume buffer
+
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_write_sume_buffer_req_addr,
+    input     [META_WIDTH-1:0]              cpu2ip_write_sume_buffer_req_value,
+    input                                   cpu2ip_write_sume_buffer_req_valid,
+    output                                  ip2cpu_write_sume_buffer_resp_valid,    
+    
+    // write pifo buffer
+
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_write_pifo_buffer_req_addr,
+    input     [PIFO_WIDTH-1:0]              cpu2ip_write_pifo_buffer_req_value,
+    input                                   cpu2ip_write_pifo_buffer_req_valid,
+    output                                  ip2cpu_write_pifo_buffer_resp_valid,    
+    
+    
+    // write pifo calendar
+    
+    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
+    input     [PIFO_WIDTH-1:0]              cpu2ip_write_pifo_calendar_req_value,
+    input                                   cpu2ip_write_pifo_calendar_req_valid,
+    output                                  ip2cpu_write_pifo_calendar_resp_valid,     
+    
     // clock and reset
     input axis_aclk,
     input axis_resetn
@@ -177,7 +229,7 @@ module output_queue_v0_1
     wire [META_WIDTH-1:0]                           w_buffer_wrapper_out_tuser; // output metadata 
     wire [PIFO_WIDTH-1:0]                           w_buffer_wrapper_out_tpifo;  // output pifo infomation.
     
-    buffer_wrapper_v0_1
+    buffer_wrapper_v1_0_with_cpu
     buffer_wrapper_inst
     (
         .s_axis_tdata(s_axis_tdata),
@@ -195,12 +247,37 @@ module output_queue_v0_1
         .s_axis_wr_addr(addr_manager_out_buffer_fl_head),
         .s_axis_wr_en(ctl_buffer_write_no_bypass),
         .s_axis_rd_addr(r_buffer_rd_addr_next),
-//        .s_axis_rd_en(r_buffer_rd_en_next),
-        
-        //.m_axis_valid(m_axis_tvalid),
-        
-        .s_axis_sync_flag(BUFFER_OUTPUT_SYNC),
-        
+
+        .cpu_rd_pkt_valid(cpu2ip_read_pkt_buffer_req_valid),                   
+        .cpu_rd_pkt_addr(cpu2ip_read_pkt_buffer_req_addr),                    
+        .cpu_rd_pkt_result_valid(ip2cpu_read_pkt_buffer_resp_valid),            
+        .cpu_rd_pkt_result_data(ip2cpu_read_pkt_buffer_resp_value),             
+                                            
+        .cpu_wr_pkt_valid(cpu2ip_write_pkt_buffer_req_valid),                   
+        .cpu_wr_pkt_addr(cpu2ip_write_pkt_buffer_req_addr),                    
+        .cpu_wr_pkt_data(cpu2ip_write_pkt_buffer_req_value),                    
+        .cpu_wr_pkt_result_valid(ip2cpu_write_pkt_buffer_resp_valid),            
+                                            
+        .cpu_rd_meta_valid(cpu2ip_read_sume_buffer_req_valid),                  
+        .cpu_rd_meta_addr(cpu2ip_read_sume_buffer_req_addr),                   
+        .cpu_rd_meta_result_valid(ip2cpu_read_sume_buffer_resp_valid),           
+        .cpu_rd_meta_result_data(ip2cpu_read_sume_buffer_resp_value),            
+                                            
+        .cpu_wr_meta_valid(cpu2ip_write_sume_buffer_req_valid),                  
+        .cpu_wr_meta_addr(cpu2ip_write_sume_buffer_req_addr),                   
+        .cpu_wr_meta_data(cpu2ip_write_sume_buffer_req_value),                   
+        .cpu_wr_meta_result_valid(ip2cpu_write_sume_buffer_resp_valid),           
+                                            
+        .cpu_rd_pifo_valid(cpu2ip_read_pifo_buffer_req_valid),                  
+        .cpu_rd_pifo_addr(cpu2ip_read_pifo_buffer_req_addr),                   
+        .cpu_rd_pifo_result_valid(ip2cpu_read_pifo_buffer_resp_valid),           
+        .cpu_rd_pifo_result_data(ip2cpu_read_pifo_buffer_resp_value),            
+                                            
+        .cpu_wr_pifo_valid(cpu2ip_write_pifo_buffer_req_valid),                  
+        .cpu_wr_pifo_addr(cpu2ip_write_pifo_buffer_req_addr),                   
+        .cpu_wr_pifo_data(cpu2ip_write_pifo_buffer_req_value),                   
+        .cpu_wr_pifo_result_valid(ip2cpu_write_pifo_buffer_resp_valid),           
+
         .clk(axis_aclk),
         .rstn(axis_resetn)    //active low    
     );   
@@ -225,7 +302,7 @@ module output_queue_v0_1
     
 
     
-    pifo_calendar_v0_1
+    pifo_calendar_v0_1_with_cpu
     pifo_calendar_inst
     (
         .s_axis_pifo_info_root(w_pifo_root_info_final),
@@ -237,6 +314,16 @@ module output_queue_v0_1
         .m_axis_bypass_en(w_pifo_calendar_out_bypass_en),
         .m_axis_calendar_full(w_pifo_calendar_out_caledar_full),
         // add cpu i/o later.
+        
+        .cpu_rd_valid(cpu2ip_read_pifo_calendar_req_valid),                  
+        .cpu_rd_addr(cpu2ip_read_pifo_calendar_req_addr),                   
+        .cpu_rd_result_valid(ip2cpu_read_pifo_calendar_resp_valid),           
+        .cpu_rd_result(ip2cpu_read_pifo_calendar_resp_value),                 
+                                       
+        .cpu_wr_valid(cpu2ip_write_pifo_calendar_req_valid),                  
+        .cpu_wr_addr(cpu2ip_write_pifo_calendar_req_addr),                   
+        .cpu_wr_data(cpu2ip_write_pifo_calendar_req_value),                   
+        .cpu_wr_result_valid(ip2cpu_write_pifo_calendar_resp_valid),           
         
         // reset & clock
         .clk(axis_aclk),
@@ -290,7 +377,9 @@ module output_queue_v0_1
                                     r_buffer_first_word_en_next = 1; // first word control signal set to 1.
                                     r_buffer_rd_en_next = 0;                                    
                                 end
-                            // if the input is valid also . then has few more conditions
+                            // if the buffer write signal from enqueue_agent valid.
+                            // (which means the input pkt's output queue is current output queue)
+                            // few more conditions to decide bypass or queueing.
                             else if(s_axis_buffer_wr_en)
                                 begin
                                     // if the buffer is empty then bypass or 
@@ -474,6 +563,7 @@ assign m_axis_tpifo = (OUTPUT_SYNC)? r_m_axis_tpifo: r_m_axis_tpifo_next;
 assign w_bypass_final = addr_manager_out_st_buffer_empty | w_pifo_calendar_out_bypass_en;
 assign m_is_buffer_almost_full = addr_manager_out_st_buffer_almost_full;
 assign m_is_pifo_full = w_pifo_calendar_out_caledar_full;
-
+assign m_buffer_remain_size = addr_manager_out_st_buffer_remain_space;
 
 endmodule
+
