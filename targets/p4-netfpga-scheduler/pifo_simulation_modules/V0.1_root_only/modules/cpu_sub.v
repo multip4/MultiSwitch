@@ -347,6 +347,8 @@ end
 always @(*)
 begin
 
+    r_axi_rresp_next = 0;
+
     r_axi_rdata_next = 0;
     r_axi_bresp_next = 0;
     

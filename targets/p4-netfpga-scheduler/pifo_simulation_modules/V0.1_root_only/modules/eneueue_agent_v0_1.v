@@ -54,6 +54,7 @@ module enqueue_agent_v0_1
         s_axis_tready,
         s_axis_tuser, // sume_meta.
         s_axis_tlast,
+        s_axis_tpifo_valid,
         
         // from each port queue status 
         s_axis_buffer_almost_full,
@@ -71,6 +72,8 @@ module enqueue_agent_v0_1
     output reg                          s_axis_tready; // ready signal to pipeline, combinational logic output.
     input [C_S_AXIS_TUSER_WIDTH-1:0]    s_axis_tuser; // user metadata, derive output port.
     input                               s_axis_tlast; 
+    input                               s_axis_tpifo_valid;
+    
     
     input [QUEUE_NUM-1:0]               s_axis_buffer_almost_full;
     input [QUEUE_NUM-1:0]               s_axis_pifo_full;
@@ -142,7 +145,7 @@ module enqueue_agent_v0_1
                         begin
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             m_axis_ctl_buffer_wr_en_reg_next = 0;
-                            if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire)) 
+                            if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire | ~s_axis_tpifo_valid)) 
                                 begin
                                     eq_agent_fsm_state_next = DROP;
                                 end

@@ -31,6 +31,7 @@ module scheduler_top_v0_1
     parameter C_M_AXIS_TUSER_WIDTH=128,
     //parameter C_S_AXIS_TUSER_WIDTH=128,
     parameter NUM_QUEUES=5,
+    parameter BUFFER_INDEX_WIDTH = 12,
     
     // AXI Registers Data Width
     parameter C_S_AXI_DATA_WIDTH    = 32,          
@@ -105,11 +106,11 @@ module scheduler_top_v0_1
     output                                      m_axis_4_tlast,
 
     // stats
-    output [QUEUE_DEPTH_BITS:0] nf0_q_size,
-    output [QUEUE_DEPTH_BITS:0] nf1_q_size,
-    output [QUEUE_DEPTH_BITS:0] nf2_q_size,
-    output [QUEUE_DEPTH_BITS:0] nf3_q_size,
-    output [QUEUE_DEPTH_BITS:0] dma_q_size,
+    output [QUEUE_DEPTH_BITS-1:0] nf0_q_size,
+    output [QUEUE_DEPTH_BITS-1:0] nf1_q_size,
+    output [QUEUE_DEPTH_BITS-1:0] nf2_q_size,
+    output [QUEUE_DEPTH_BITS-1:0] nf3_q_size,
+    output [QUEUE_DEPTH_BITS-1:0] dma_q_size,
 
     output reg  [C_S_AXI_DATA_WIDTH-1:0] bytes_stored,
     output reg  [NUM_QUEUES-1:0]         pkt_stored,
@@ -149,8 +150,6 @@ module scheduler_top_v0_1
     output reg [C_S_AXI_DATA_WIDTH-1:0]  bytes_dropped,
     output reg [NUM_QUEUES-1:0]          pkt_dropped
     );
-    
-    
     
     wire [NUM_QUEUES-1:0]               w_buffer_almost_full_bit_array; 
     wire [NUM_QUEUES-1:0]               w_pifo_full_bit_array;
@@ -206,12 +205,14 @@ module scheduler_top_v0_1
     wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pifo_calendar_resp_valid;
 
 
+
     enqueue_agent_v0_1
     enqueue_agent_inst(
             // from/to pipeline
         .s_axis_tvalid(s_axis_tvalid),
         .s_axis_tready(s_axis_tready),
-        .s_axis_tuser(w_sume_meta), // sume_meta + pifo_info_root + pifo_info_child.
+        .s_axis_tuser(w_sume_meta), // sume_meta.
+        .s_axis_tpifo_valid(w_pifo_info[PIFO_INFO_LENGTH-1]),//w_pifo_info[PIFO_INFO_LENGTH-1]
         .s_axis_tlast(s_axis_tlast),
         
         // from each port queue status 
@@ -224,16 +225,13 @@ module scheduler_top_v0_1
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn)
     );
-    
-    
-//    wire                        buffer_0_empty;
 
-
-    
-
+//    wire                        buffer_0_empty
     wire                        buffer_0_almost_full;
     wire                        pifo_0_full;
-        
+    wire [BUFFER_INDEX_WIDTH-1:0] buffer_0_queue_depth;
+    assign nf0_q_size = {4'b0, buffer_0_queue_depth}; 
+
     output_queue_v0_1_with_cpu
     #(
     .BUFFER_ADDR_WIDTH(12),  
@@ -259,7 +257,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_0_tpifo),
         .m_is_buffer_almost_full(buffer_0_almost_full),
         .m_is_pifo_full(pifo_0_full),
-        .m_buffer_remain_size(nf0_q_size),
+        .m_buffer_remain_size(buffer_0_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -306,6 +304,10 @@ module scheduler_top_v0_1
     
     wire                        buffer_1_almost_full;
     wire                        pifo_1_full;
+
+    wire [BUFFER_INDEX_WIDTH-1:0] buffer_1_queue_depth;
+    assign nf1_q_size = {4'b0, buffer_1_queue_depth}; 
+    
     output_queue_v0_1_with_cpu
     output_queue_inst_port1(
         .s_axis_tdata(s_axis_tdata),
@@ -325,7 +327,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_1_tpifo),
         .m_is_buffer_almost_full(buffer_1_almost_full),
         .m_is_pifo_full(pifo_1_full),
-        .m_buffer_remain_size(nf1_q_size),
+        .m_buffer_remain_size(buffer_1_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -374,6 +376,10 @@ module scheduler_top_v0_1
     
     wire                        buffer_2_almost_full;
     wire                        pifo_2_full;
+    
+    wire [BUFFER_INDEX_WIDTH-1:0] buffer_2_queue_depth;
+    assign nf2_q_size = {4'b0, buffer_2_queue_depth}; 
+    
     output_queue_v0_1_with_cpu
     output_queue_inst_port2(
         .s_axis_tdata(s_axis_tdata),
@@ -393,7 +399,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_2_tpifo),
         .m_is_buffer_almost_full(buffer_2_almost_full),
         .m_is_pifo_full(pifo_2_full),
-        .m_buffer_remain_size(nf2_q_size),
+        .m_buffer_remain_size(buffer_2_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -442,6 +448,9 @@ module scheduler_top_v0_1
     
     wire                        buffer_3_almost_full;
     wire                        pifo_3_full;
+    wire [BUFFER_INDEX_WIDTH-1:0] buffer_3_queue_depth;
+    assign nf3_q_size = {4'b0, buffer_3_queue_depth}; 
+    
     output_queue_v0_1_with_cpu
     output_queue_inst_port3(
         .s_axis_tdata(s_axis_tdata),
@@ -461,7 +470,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_3_tpifo),
         .m_is_buffer_almost_full(buffer_3_almost_full),
         .m_is_pifo_full(pifo_3_full),
-        .m_buffer_remain_size(nf3_q_size),
+        .m_buffer_remain_size(buffer_3_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -511,6 +520,10 @@ module scheduler_top_v0_1
     // port 4 is cpu port
     wire                        buffer_4_almost_full;
     wire                        pifo_4_full;
+    
+    wire [BUFFER_INDEX_WIDTH-1:0] buffer_4_queue_depth;
+    assign dma_q_size = {4'b0, buffer_4_queue_depth}; 
+    
     output_queue_v0_1_with_cpu
     output_queue_inst_port4(
         .s_axis_tdata(s_axis_tdata),
@@ -530,7 +543,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_4_tpifo),
         .m_is_buffer_almost_full(buffer_4_almost_full),
         .m_is_pifo_full(pifo_4_full),
-        .m_buffer_remain_size(dma_q_size),
+        .m_buffer_remain_size(buffer_4_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         

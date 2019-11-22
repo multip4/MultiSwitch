@@ -63,9 +63,6 @@ module pifo_calendar_v0_1_with_cpu
         rstn,
         clk,
         
-        cpu_rstn,
-        cpu_clk
-        
     
     );
     
@@ -91,13 +88,7 @@ module pifo_calendar_v0_1_with_cpu
 
     input rstn;
     input clk;
-    
-    input cpu_rstn;
-    input cpu_clk;
-    
 
-    
-    
     wire                        w_ctl_insert;
     wire                        w_ctl_pop;
     
@@ -318,9 +309,9 @@ always @(*)
 
 // sync logic block for CPU
 
-always @(posedge cpu_clk)
+always @(posedge clk)
     begin
-        if(~cpu_rstn)
+        if(~rstn)
             begin
                 r_cpu_write_data <= 0;
                 r_cpu_write_data_addr <= 0;
