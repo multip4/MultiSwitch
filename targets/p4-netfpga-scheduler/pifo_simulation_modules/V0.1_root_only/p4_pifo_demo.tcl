@@ -58,7 +58,7 @@ read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/buffer_wrapper_v1_0_wi
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_atom_v0_2.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/output_queue_v0_1_with_cpu.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/cpu_sub.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_v0_1.v"
+# read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_v0_1.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_v0_1_with_cpu.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/eneueue_agent_v0_1.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/top_scheduler_cpu_defines.v"
