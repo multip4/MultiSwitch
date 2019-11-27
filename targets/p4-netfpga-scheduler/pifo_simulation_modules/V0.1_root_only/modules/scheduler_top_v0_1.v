@@ -339,22 +339,22 @@ module scheduler_top_v0_1
         
         .cpu2ip_read_pkt_buffer_req_addr(w_cpu2ip_read_pkt_buffer_req_addr),     
         .cpu2ip_read_pkt_buffer_req_valid(w_cpu2ip_read_pkt_buffer_req_valid[1]),    
-        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
+//        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
         .ip2cpu_read_pkt_buffer_resp_valid(w_ip2cpu_read_pkt_buffer_resp_valid[1]),   
                                                                                  
         .cpu2ip_read_sume_buffer_req_addr(w_cpu2ip_read_sume_buffer_req_addr),    
         .cpu2ip_read_sume_buffer_req_valid(w_cpu2ip_read_sume_buffer_req_valid[1]),   
-        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
+//        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
         .ip2cpu_read_sume_buffer_resp_valid(w_ip2cpu_read_sume_buffer_resp_valid[1]),  
                                                                          
         .cpu2ip_read_pifo_buffer_req_addr(w_cpu2ip_read_pifo_buffer_req_addr),    
         .cpu2ip_read_pifo_buffer_req_valid(w_cpu2ip_read_pifo_buffer_req_valid[1]),   
-        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
+//        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
         .ip2cpu_read_pifo_buffer_resp_valid(w_ip2cpu_read_pifo_buffer_resp_valid[1]),  
                                 
         .cpu2ip_read_pifo_calendar_req_addr(w_cpu2ip_read_pifo_calendar_req_addr),  
         .cpu2ip_read_pifo_calendar_req_valid(w_cpu2ip_read_pifo_calendar_req_valid[1]), 
-        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
+//        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
         .ip2cpu_read_pifo_calendar_resp_valid(w_ip2cpu_read_pifo_calendar_resp_valid[1]),
                                                                               
         .cpu2ip_write_pkt_buffer_req_addr(w_cpu2ip_write_pkt_buffer_req_addr),    
@@ -415,22 +415,22 @@ module scheduler_top_v0_1
         
         .cpu2ip_read_pkt_buffer_req_addr(w_cpu2ip_read_pkt_buffer_req_addr),     
         .cpu2ip_read_pkt_buffer_req_valid(w_cpu2ip_read_pkt_buffer_req_valid[2]),    
-        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
+//        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
         .ip2cpu_read_pkt_buffer_resp_valid(w_ip2cpu_read_pkt_buffer_resp_valid[2]),   
                                                                                  
         .cpu2ip_read_sume_buffer_req_addr(w_cpu2ip_read_sume_buffer_req_addr),    
         .cpu2ip_read_sume_buffer_req_valid(w_cpu2ip_read_sume_buffer_req_valid[2]),   
-        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
+//        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
         .ip2cpu_read_sume_buffer_resp_valid(w_ip2cpu_read_sume_buffer_resp_valid[2]),  
                                                                          
         .cpu2ip_read_pifo_buffer_req_addr(w_cpu2ip_read_pifo_buffer_req_addr),    
         .cpu2ip_read_pifo_buffer_req_valid(w_cpu2ip_read_pifo_buffer_req_valid[2]),   
-        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
+//        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
         .ip2cpu_read_pifo_buffer_resp_valid(w_ip2cpu_read_pifo_buffer_resp_valid[2]),  
                                 
         .cpu2ip_read_pifo_calendar_req_addr(w_cpu2ip_read_pifo_calendar_req_addr),  
         .cpu2ip_read_pifo_calendar_req_valid(w_cpu2ip_read_pifo_calendar_req_valid[2]), 
-        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
+//        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
         .ip2cpu_read_pifo_calendar_resp_valid(w_ip2cpu_read_pifo_calendar_resp_valid[2]),
                                                                               
         .cpu2ip_write_pkt_buffer_req_addr(w_cpu2ip_write_pkt_buffer_req_addr),    
@@ -491,22 +491,22 @@ module scheduler_top_v0_1
         
         .cpu2ip_read_pkt_buffer_req_addr(w_cpu2ip_read_pkt_buffer_req_addr),     
         .cpu2ip_read_pkt_buffer_req_valid(w_cpu2ip_read_pkt_buffer_req_valid[3]),    
-        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
+//        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
         .ip2cpu_read_pkt_buffer_resp_valid(w_ip2cpu_read_pkt_buffer_resp_valid[3]),   
                                                                                  
         .cpu2ip_read_sume_buffer_req_addr(w_cpu2ip_read_sume_buffer_req_addr),    
         .cpu2ip_read_sume_buffer_req_valid(w_cpu2ip_read_sume_buffer_req_valid[3]),   
-        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
+//        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
         .ip2cpu_read_sume_buffer_resp_valid(w_ip2cpu_read_sume_buffer_resp_valid[3]),  
                                                                          
         .cpu2ip_read_pifo_buffer_req_addr(w_cpu2ip_read_pifo_buffer_req_addr),    
         .cpu2ip_read_pifo_buffer_req_valid(w_cpu2ip_read_pifo_buffer_req_valid[3]),   
-        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
+//        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
         .ip2cpu_read_pifo_buffer_resp_valid(w_ip2cpu_read_pifo_buffer_resp_valid[3]),  
                                 
         .cpu2ip_read_pifo_calendar_req_addr(w_cpu2ip_read_pifo_calendar_req_addr),  
         .cpu2ip_read_pifo_calendar_req_valid(w_cpu2ip_read_pifo_calendar_req_valid[3]), 
-        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
+//        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
         .ip2cpu_read_pifo_calendar_resp_valid(w_ip2cpu_read_pifo_calendar_resp_valid[3]),
                                                                               
         .cpu2ip_write_pkt_buffer_req_addr(w_cpu2ip_write_pkt_buffer_req_addr),    
@@ -570,22 +570,22 @@ module scheduler_top_v0_1
         
         .cpu2ip_read_pkt_buffer_req_addr(w_cpu2ip_read_pkt_buffer_req_addr),     
         .cpu2ip_read_pkt_buffer_req_valid(w_cpu2ip_read_pkt_buffer_req_valid[4]),    
-        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
+//        .ip2cpu_read_pkt_buffer_resp_value(w_ip2cpu_read_pkt_buffer_resp_value),   
         .ip2cpu_read_pkt_buffer_resp_valid(w_ip2cpu_read_pkt_buffer_resp_valid[4]),   
                                                                                  
         .cpu2ip_read_sume_buffer_req_addr(w_cpu2ip_read_sume_buffer_req_addr),    
         .cpu2ip_read_sume_buffer_req_valid(w_cpu2ip_read_sume_buffer_req_valid[4]),   
-        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
+//        .ip2cpu_read_sume_buffer_resp_value(w_ip2cpu_read_sume_buffer_resp_value),  
         .ip2cpu_read_sume_buffer_resp_valid(w_ip2cpu_read_sume_buffer_resp_valid[4]),  
                                                                          
         .cpu2ip_read_pifo_buffer_req_addr(w_cpu2ip_read_pifo_buffer_req_addr),    
         .cpu2ip_read_pifo_buffer_req_valid(w_cpu2ip_read_pifo_buffer_req_valid[4]),   
-        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
+//        .ip2cpu_read_pifo_buffer_resp_value(w_ip2cpu_read_pifo_buffer_resp_value),  
         .ip2cpu_read_pifo_buffer_resp_valid(w_ip2cpu_read_pifo_buffer_resp_valid[4]),  
                                 
         .cpu2ip_read_pifo_calendar_req_addr(w_cpu2ip_read_pifo_calendar_req_addr),  
         .cpu2ip_read_pifo_calendar_req_valid(w_cpu2ip_read_pifo_calendar_req_valid[4]), 
-        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
+//        .ip2cpu_read_pifo_calendar_resp_value(w_ip2cpu_read_pifo_calendar_resp_value),
         .ip2cpu_read_pifo_calendar_resp_valid(w_ip2cpu_read_pifo_calendar_resp_valid[4]),
                                                                               
         .cpu2ip_write_pkt_buffer_req_addr(w_cpu2ip_write_pkt_buffer_req_addr),    

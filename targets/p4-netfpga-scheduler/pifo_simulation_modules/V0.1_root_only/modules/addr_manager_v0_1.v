@@ -164,7 +164,6 @@ module addr_manager_v0_1
                 if(s_axis_first_word_en)
                     begin
                         r_fl_tail_next = s_axis_rd_addr;
-                        port_b_input_addr = r_fl_tail;
                         port_b_input_value = s_axis_rd_addr;
                         port_b_wr_en = 1;
                         // state transition to 
@@ -187,8 +186,6 @@ module addr_manager_v0_1
                 if(~s_axis_wr_en)
                     m_axis_remain_space_reg_next = m_axis_remain_space_reg + 1;
                 
-                //set read address
-                port_b_input_addr = s_axis_rd_addr;
                 addr_manager_fsm_state_next = IDLE;
                 end
         endcase
@@ -224,7 +221,7 @@ module addr_manager_v0_1
     assign m_axis_fl_head = r_fl_head;
     assign m_axis_fl_head_next = r_fl_head_next;
         
-    assign m_axis_rd_next_addr = r_fl_tail_next;
+    assign m_axis_rd_next_addr = r_fl_tail;
     assign m_axis_remain_space = m_axis_remain_space_reg;
     assign m_axis_is_empty = (m_axis_remain_space_reg == (ADDR_TABLE_DEPTH-1))? 1:0;
     assign port_a_input_addr = r_fl_head_next;
