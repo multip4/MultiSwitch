@@ -1,0 +1,63 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/wrapper/nf_sume_sdnet.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nf_sume_sdnet
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/sim/nf_sume_sdnet_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nf_sume_sdnet_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/fallthrough_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fallthrough_small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter_cpu_regs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module input_arbiter_cpu_regs
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module input_arbiter
+INFO: [VRFC 10-2458] undeclared symbol resetn_sync, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter.v:390]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/sim/input_arbiter_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module input_arbiter_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_ip_clk_wiz
+INFO: [VRFC 10-2458] undeclared symbol clk_out1_clk_wiz_ip_en_clk, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip_clk_wiz.v:207]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/addr_manager_v0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module addr_manager_v0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/axi_clocking.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_clocking
+INFO: [VRFC 10-2458] undeclared symbol clkin1, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/axi_clocking.v:64]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/buffer_wrapper_v1_0_with_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_wrapper_v1_0_with_cpu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/top_scheduler_cpu_defines.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/cpu_sub.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cpu_sub
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/eneueue_agent_v0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module enqueue_agent_v0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/nf_datapath.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nf_datapath
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/output_queue_v0_1_with_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module output_queue_v0_1_with_cpu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_atom_v0_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pifo_calendar_atom_v0_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_v0_1_with_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pifo_calendar_v0_1_with_cpu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/scheduler_top_v0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scheduler_top_v0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_v0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pifo_calendar_v0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_rxn, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:115]
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_rxp, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:116]
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_txn, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:117]
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_txp, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:118]
+INFO: [VRFC 10-2458] undeclared symbol rxp, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:121]
+INFO: [VRFC 10-2458] undeclared symbol rxn, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:122]
+INFO: [VRFC 10-2458] undeclared symbol txp, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:123]
+INFO: [VRFC 10-2458] undeclared symbol txn, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:124]
+INFO: [VRFC 10-2458] undeclared symbol i2c_clk, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:137]
+INFO: [VRFC 10-2458] undeclared symbol i2c_data, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:138]
+INFO: [VRFC 10-2458] undeclared symbol si5324_rst_n, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:139]
+INFO: [VRFC 10-2458] undeclared symbol led_0, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:146]
+INFO: [VRFC 10-2458] undeclared symbol led_1, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/hdl/top_tb.v:147]

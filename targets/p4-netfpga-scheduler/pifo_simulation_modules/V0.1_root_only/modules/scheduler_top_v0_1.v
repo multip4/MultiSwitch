@@ -45,9 +45,10 @@ module scheduler_top_v0_1
     // end for original parameter.
     
     // parameters for scheduler_top.
-    parameter BUFFER_WORD_DEPTH = 4096,
-    parameter PIFO_CALENDAR_DEPTH = 1024,
-    parameter PIFO_INFO_LENGTH = 32
+    parameter BUFFER_WORD_DEPTH = 512,
+    parameter PIFO_CALENDAR_DEPTH = 128,
+    parameter PIFO_INFO_LENGTH = 32,
+    parameter BUFFER_OUTPUT_SYNC=1
     )
     (
      
@@ -230,14 +231,13 @@ module scheduler_top_v0_1
     wire                        buffer_0_almost_full;
     wire                        pifo_0_full;
     wire [BUFFER_INDEX_WIDTH-1:0] buffer_0_queue_depth;
-    assign nf0_q_size = {4'b0, buffer_0_queue_depth}; 
-
+    
     output_queue_v0_1_with_cpu
     #(
-    .BUFFER_ADDR_WIDTH(12),  
-    .BUFFER_WORD_DEPTH(4096),
-    .PIFO_WORD_DEPTH(1024),  
-    .OUTPUT_SYNC(1)          
+    .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
+    .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
+    .PIFO_WORD_DEPTH(PIFO_CALENDAR_DEPTH),  
+    .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port0(
         .s_axis_tdata(s_axis_tdata),
@@ -257,7 +257,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_0_tpifo),
         .m_is_buffer_almost_full(buffer_0_almost_full),
         .m_is_pifo_full(pifo_0_full),
-        .m_buffer_remain_size(buffer_0_queue_depth),
+        .m_buffer_counter(buffer_0_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -306,9 +306,14 @@ module scheduler_top_v0_1
     wire                        pifo_1_full;
 
     wire [BUFFER_INDEX_WIDTH-1:0] buffer_1_queue_depth;
-    assign nf1_q_size = {4'b0, buffer_1_queue_depth}; 
-    
+
     output_queue_v0_1_with_cpu
+    #(
+    .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
+    .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
+    .PIFO_WORD_DEPTH(PIFO_CALENDAR_DEPTH),  
+    .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)            
+    )
     output_queue_inst_port1(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
@@ -327,7 +332,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_1_tpifo),
         .m_is_buffer_almost_full(buffer_1_almost_full),
         .m_is_pifo_full(pifo_1_full),
-        .m_buffer_remain_size(buffer_1_queue_depth),
+        .m_buffer_counter(buffer_1_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -378,9 +383,14 @@ module scheduler_top_v0_1
     wire                        pifo_2_full;
     
     wire [BUFFER_INDEX_WIDTH-1:0] buffer_2_queue_depth;
-    assign nf2_q_size = {4'b0, buffer_2_queue_depth}; 
     
     output_queue_v0_1_with_cpu
+    #(
+    .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
+    .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
+    .PIFO_WORD_DEPTH(PIFO_CALENDAR_DEPTH),  
+    .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)           
+    )
     output_queue_inst_port2(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
@@ -399,7 +409,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_2_tpifo),
         .m_is_buffer_almost_full(buffer_2_almost_full),
         .m_is_pifo_full(pifo_2_full),
-        .m_buffer_remain_size(buffer_2_queue_depth),
+        .m_buffer_counter(buffer_2_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -449,9 +459,14 @@ module scheduler_top_v0_1
     wire                        buffer_3_almost_full;
     wire                        pifo_3_full;
     wire [BUFFER_INDEX_WIDTH-1:0] buffer_3_queue_depth;
-    assign nf3_q_size = {4'b0, buffer_3_queue_depth}; 
-    
+
     output_queue_v0_1_with_cpu
+    #(
+    .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
+    .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
+    .PIFO_WORD_DEPTH(PIFO_CALENDAR_DEPTH),  
+    .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)            
+    )
     output_queue_inst_port3(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
@@ -470,7 +485,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_3_tpifo),
         .m_is_buffer_almost_full(buffer_3_almost_full),
         .m_is_pifo_full(pifo_3_full),
-        .m_buffer_remain_size(buffer_3_queue_depth),
+        .m_buffer_counter(buffer_3_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -522,9 +537,14 @@ module scheduler_top_v0_1
     wire                        pifo_4_full;
     
     wire [BUFFER_INDEX_WIDTH-1:0] buffer_4_queue_depth;
-    assign dma_q_size = {4'b0, buffer_4_queue_depth}; 
-    
+
     output_queue_v0_1_with_cpu
+     #(
+    .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
+    .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
+    .PIFO_WORD_DEPTH(PIFO_CALENDAR_DEPTH),  
+    .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)              
+    )
     output_queue_inst_port4(
         .s_axis_tdata(s_axis_tdata),
         .s_axis_tkeep(s_axis_tkeep),
@@ -543,7 +563,7 @@ module scheduler_top_v0_1
         .m_axis_tpifo(m_axis_4_tpifo),
         .m_is_buffer_almost_full(buffer_4_almost_full),
         .m_is_pifo_full(pifo_4_full),
-        .m_buffer_remain_size(buffer_4_queue_depth),
+        .m_buffer_counter(buffer_4_queue_depth),
         .axis_aclk(axis_aclk),
         .axis_resetn(axis_resetn),
         
@@ -591,9 +611,6 @@ module scheduler_top_v0_1
         
         
     );    
-
-
-
 
     cpu_sub
     cpu_sub_inst(
@@ -664,5 +681,11 @@ module scheduler_top_v0_1
 
 assign w_buffer_almost_full_bit_array = {buffer_4_almost_full,buffer_3_almost_full,buffer_2_almost_full,buffer_1_almost_full,buffer_0_almost_full};
 assign w_pifo_full_bit_array = {pifo_4_full,pifo_3_full,pifo_2_full,pifo_1_full,pifo_0_full};
+assign nf0_q_size = {4'b0, buffer_0_queue_depth};
+assign nf1_q_size = {4'b0, buffer_1_queue_depth};
+assign nf2_q_size = {4'b0, buffer_2_queue_depth};
+assign nf3_q_size = {4'b0, buffer_3_queue_depth};
+assign dma_q_size = {4'b0, buffer_4_queue_depth}; 
+ 
 
 endmodule

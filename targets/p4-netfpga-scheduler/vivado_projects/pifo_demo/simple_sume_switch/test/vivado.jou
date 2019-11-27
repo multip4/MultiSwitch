@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Nov 27 11:05:15 2019
+# Process ID: 15140
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/test
+# Command line: vivado -mode gui -source /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/tcl/simple_sume_switch_sim.tcl -tclargs sim_switch_default
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/test/vivado.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/test/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/tcl/simple_sume_switch_sim.tcl
+source top_tb.tcl
+restart
+run 100 us
+restart
+run 100 us
+save_wave_config {/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg
+set_property xsim.view /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg [get_filesets sim_1]
+close_sim
+launch_simulation
+open_wave_config /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg
+source top_tb.tcl
+restart
+run 100 us
+close_sim
+launch_simulation
+open_wave_config /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg
+source top_tb.tcl
+restart
+run 100 us
+close_sim
+launch_simulation
+open_wave_config /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg
+source top_tb.tcl
+restart
+run 100 us
+save_wave_config {/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/extern_module4/simple_sume_switch/hw/project/top_tb_behav.wcfg}
+close_sim

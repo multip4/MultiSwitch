@@ -1,0 +1,90 @@
+//----------------------------------------------------------------------------
+//   This file is owned and controlled by Xilinx and must be used solely    //
+//   for design, simulation, implementation and creation of design files    //
+//   limited to Xilinx devices or technologies. Use with non-Xilinx         //
+//   devices or technologies is expressly prohibited and immediately        //
+//   terminates your license.                                               //
+//                                                                          //
+//   XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" SOLELY   //
+//   FOR USE IN DEVELOPING PROGRAMS AND SOLUTIONS FOR XILINX DEVICES.  BY   //
+//   PROVIDING THIS DESIGN, CODE, OR INFORMATION AS ONE POSSIBLE            //
+//   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR STANDARD, XILINX IS     //
+//   MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION IS FREE FROM ANY     //
+//   CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE FOR OBTAINING ANY      //
+//   RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.  XILINX EXPRESSLY      //
+//   DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO THE ADEQUACY OF THE  //
+//   IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OR         //
+//   REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE FROM CLAIMS OF        //
+//   INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A  //
+//   PARTICULAR PURPOSE.                                                    //
+//                                                                          //
+//   Xilinx products are not intended for use in life support appliances,   //
+//   devices, or systems.  Use in such applications are expressly           //
+//   prohibited.                                                            //
+//                                                                          //
+//   (c) Copyright 1995-2015 Xilinx, Inc.                                   //
+//   All rights reserved.                                                   //
+//----------------------------------------------------------------------------
+// Xilinx SDNet Compiler version 2018.2, build 2342300
+//----------------------------------------------------------------------------
+`pragma protect begin_protected
+`pragma protect version = 1
+`pragma protect encrypt_agent = "XILINX"
+`pragma protect encrypt_agent_info = "Xilinx Encryption Tool 2014"
+`pragma protect key_keyowner = "Xilinx", key_keyname= "xilinx_2014_03", key_method = "rsa"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 256)
+`pragma protect key_block
+ClS7lnZswqEpSmYVS80KnC7Li8l4dJy0QQ1FopESURFRem+JA+mwQoDzlRlqcGHvckzfdXzM86qL
+adI/272EZouDn+2VFWzxWdRmL1QJx3ZTPS+zu9QCskMCJbO4yjSQNSDove6ul0NH04BCKUbQrhro
+o1GAxzW8n7wqQcv4tOcTcaxebtLhHq2B3ZXDBQG2Ai+PXVig/pg2E6gQU2BLjB0kvUdvjdfrqBHQ
+9Yy4ojbJOK3M2dCRpzyK3pIBR8ZGme+SkI24ON1vY2u62UQruHAnag2V9QZPMnxnturx9jFTtDoK
+aNTu5QLj6bHmlHw/mdb4gLFs76sez5o/iyZLwQ==
+
+`pragma protect key_keyowner = "Cadence Design Systems.", key_keyname= "cds_rsa_key", key_method = "rsa"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 64)
+`pragma protect key_block
+bVql8eKMRsfC04tT0oeYe969uXug2+AtA7Vk4NQyWVKU0m0sJs0JPNneoQaDtW/RIswSY4WVlj5I
+G2PxBANikg==
+
+`pragma protect key_keyowner = "Mentor Graphics Corporation", key_keyname= "MGC-VERIF-SIM-RSA-1", key_method = "rsa"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 128)
+`pragma protect key_block
+hffW7bCsGxpad5uVE7Z59y/7J9gXc/kM6fzGbPHj8CloDWjtW0zBL9I3RXieBzvqQFYiLHJ8xkRL
+gXu8ThBXHShcjFR4zij3Qc6NEdsRynbUNvzpNzcK/ke9PZME9lfcq/KOVjDktBoUjDg/nksbo3hm
+j9N7r3Cjw2yiZB1qIVo=
+
+`pragma protect key_keyowner = "Synopsys", key_keyname= "SNPS-VCS-RSA-1", key_method = "rsa"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 128)
+`pragma protect key_block
+iXLQ7kHYqkzfM0kND9kycGJ989DGu+dWU1BD60dHpYICQ84NJq6YtzevU1J6coEjwM6mxjMzLKOQ
+3O2mYsK4LKXDOjSPjDx6UmlesGE35o1tk30noOXgLA2SJZWDSSNXsA8SyoAyCPeVHdl86TntKe1m
+PE4H1kwY28wQ2MmWSb0=
+
+`pragma protect key_keyowner = "Synplicity", key_keyname= "SYNP05_001", key_method = "rsa"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 256)
+`pragma protect key_block
+o9RpV3nkXxpM2/dAosgvivlheAikAZNzce040Kz02lADoYuPaIJO68lCUYIPoXdGaDVN202PY9lH
+0maWgey5BI4kmSj9gcoUxJ2Sra5lm6YfVaee7nt93j+kUP2w5BMrZPkKksKvEL8Gy5uInbhVpo3+
+SiPI1EeBCv7z441P6wFT7IMBCn+jjIyic9kPUkXl7WrK+6xTozdFTMVXibHph6YLH42qdHtB8m4e
+U6MBbJg/1/zr/Wua4tSY4HImiP6bWXV+MAq99PvedcBC25dULfRkj3si8bmMLjJ1GmuPx/eoeqYj
+MgFYg2Bh8eKdIAjDPz7ooGRXDJIY67+5/bNg0A==
+
+`pragma protect key_keyowner = "Aldec", key_keyname= "ALDEC08_001", key_method = "rsa"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 256)
+`pragma protect key_block
+EfTs1RuMxzYgsdj2h6npnJIx7KFwrbA4z+bKnXMVPD2x6eDqDgemM/kdABSAUKiigk5DdFi252bq
+Jm7PIHG2muQflKGq0Hw20EjbLomYniY/j8DRlX/sDFfzAH94VKW+0zCKkpNTyF/TeXmUTkjne13+
+UHLBboUC6lNdB51mrT1Wi280af4fW49RXdtInrRmwJPNbsWFrjLmbSVOQZnAw9gIVAAMexALyhuz
+OldAW7koNBElO9UGdoVT9eaB9FMqe4AhQzrRRQd4Jc2GLtQgt0uk0ZS5pdxoBrO1s9O4IdYKZ1C/
+3f8Li09HhyZxqAXvQok8eLRI/4UBPnVwqRijAw==
+
+`pragma protect data_method = "AES128-CBC"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 240)
+`pragma protect data_block
+rlv+SttBcsUwFbQBsHNE2gy17aTs3kDB2U7pIhgMhc7TNmqhWNBHEDInOt8Q5QmgrCROfsmQ/knm
+rSQfkwYXVHAoQE7tyKtQafQyzbDLu52F3XSGNAgi32Kkv2/NriC8T/ZYRLOysarNSlzMGkrg3VCq
+/Yf+ZktPgvYUGLwD/ipPO2Zdlpy7U6hFwIlziUZkMsHkC2gK2XPD6hfK1zyVP1/iEcM5ZaObuSW/
+adNoTRg6esBA7lNuBj87pWbtr5DMZrIG/b4ccOe+SQGxDBznOxnAqkyC/83nUZEE7cb9sIE1N9cT
+6DR4eiETeuKKj/Zg
+`pragma protect end_protected
+

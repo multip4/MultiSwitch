@@ -1,0 +1,392 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue Nov 19 09:58:53 2019
+# Process ID: 7267
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores/nf_riffa_dma_v1_0_0
+# Command line: vivado -mode batch -source nf_riffa_dma_tcl.tcl
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores/nf_riffa_dma_v1_0_0/vivado.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores/nf_riffa_dma_v1_0_0/vivado.jou
+#-----------------------------------------------------------
+source nf_riffa_dma_tcl.tcl
+# set device 		{xc7vx690tffg1761-3}
+# set ip_name 		{nf_riffa_dma}
+# set lib_name 		{NetFPGA}
+# set vendor_name 	{NetFPGA}
+# set ip_display_name 	{nf_riffa_dma}
+# set ip_description 	{RIFFA DMA engine for NetFPGA SUME}
+# set vendor_display_name {NetFPGA}
+# set vendor_company_url 	{http://www.netfpga.org}
+# set ip_version 		{1.0}
+# set proj_dir 		./ip_proj
+# set repo_dir 		../
+# set xil_ip  		{axis_fifo_2clk_32d_4u}	
+# set axis_fifo_params [dict create CONFIG.INTERFACE_TYPE {AXI_STREAM} \
+# 			 	  CONFIG.Clock_Type_AXI {Independent_Clock} \
+# 			 	  CONFIG.TDATA_NUM_BYTES {4} \
+# 		  		  CONFIG.FIFO_Implementation_axis {Independent_Clocks_Distributed_RAM} \
+# 			 	  CONFIG.Input_Depth_axis {16} \
+# 	  			  CONFIG.TSTRB_WIDTH {4} \
+# 			 	  CONFIG.TKEEP_WIDTH {4} \
+# 	  			  CONFIG.FIFO_Implementation_wach {Independent_Clocks_Distributed_RAM} \
+# 	 			  CONFIG.Full_Threshold_Assert_Value_wach {15} \
+# 				  CONFIG.Empty_Threshold_Assert_Value_wach {13} \
+# 				  CONFIG.FIFO_Implementation_wdch {Independent_Clocks_Block_RAM} \
+#  			 	  CONFIG.Empty_Threshold_Assert_Value_wdch {1021} \
+# 				  CONFIG.FIFO_Implementation_wrch {Independent_Clocks_Distributed_RAM} \
+# 				  CONFIG.Full_Threshold_Assert_Value_wrch {15} \
+#   				  CONFIG.Empty_Threshold_Assert_Value_wrch {13} \
+# 	  			  CONFIG.FIFO_Implementation_rach {Independent_Clocks_Distributed_RAM} \
+# 				  CONFIG.Full_Threshold_Assert_Value_rach {15} \
+# 				  CONFIG.Empty_Threshold_Assert_Value_rach {13} \
+# 				  CONFIG.FIFO_Implementation_rdch {Independent_Clocks_Block_RAM} \
+# 				  CONFIG.Empty_Threshold_Assert_Value_rdch {1021} \
+# 	  			  CONFIG.Full_Threshold_Assert_Value_axis {15} \
+# 		  		  CONFIG.Empty_Threshold_Assert_Value_axis {13}]
+# set_param project.singleFileAddWarning.Threshold 500				
+# set subcore_names {\
+# 		fallthrough_small_fifo\
+# }
+# set source_dir { \
+# 		hdl\
+# }		
+# set VerilogFiles [list]
+# set VerilogFiles [concat \
+# 			[glob -nocomplain hdl/sume/*]\
+# 			[glob -nocomplain hdl/riffa/*]]
+# set rtl_dirs	[list]
+# set rtl_dirs	[concat \
+# 			hdl/sume \
+# 			hdl/riffa ]
+# set top_module_name {nf_riffa_dma}
+# set top_module_file ./hdl/sume/$top_module_name.v
+# puts "top_file: $top_module_file \n"
+top_file: ./hdl/sume/nf_riffa_dma.v 
+
+# set bus_interfaces {\
+# 	xilinx.com:interface:aximm_rtl:1.0\
+# 	xilinx.com:interface:axis_rtl:1.0\
+# 	xilinx.com:interface:pcie3_cfg_msi_rtl:1.0\
+# 	xilinx.com:interface:pcie_cfg_fc_rtl:1.0\
+# 	xilinx.com:interface:pcie3_cfg_status_rtl:1.0\
+# 	xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0\
+# }
+# create_project -name ${ip_name} -force -dir "./${proj_dir}" -part ${device} 
+# set_property source_mgmt_mode All [current_project] 
+# set_property top $top_module_name [current_fileset]
+# set_property ip_repo_paths $repo_dir [current_fileset]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository '/home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is '/home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores/nf_riffa_dma_v1_0_0/ip_proj'.)
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.2/data/ip'.
+# foreach rtl_dir $rtl_dirs {
+#         set_property include_dirs $rtl_dirs [current_fileset]
+# }
+# foreach verilog_file $VerilogFiles {
+# 	add_files ${verilog_file}	
+# }
+# create_ip -name fifo_generator -vendor xilinx.com -library ip -version 13.2 -module_name ${xil_ip}
+# foreach item [dict keys $axis_fifo_params] {
+# 	set val [dict get $axis_fifo_params $item]	
+# 	set_property $item $val [get_ips ${xil_ip}]				
+# }
+# set xil_ip_xci [append xil_ip ".xci"]
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+# ipx::package_project -force -import_files $xil_ip_xci
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-4656] Synthesis file group is packaged with a Dependency property value 'hdl/sume' although it may not be recognized as a synthesis -include_dir property after IP delivery.
+WARNING: [IP_Flow 19-4656] Synthesis file group is packaged with a Dependency property value 'hdl/riffa' although it may not be recognized as a synthesis -include_dir property after IP delivery.
+WARNING: [IP_Flow 19-5226] Project source file '/home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores/nf_riffa_dma_v1_0_0/hdl/riffa/README' ignored by IP packager.
+INFO: [IP_Flow 19-5169] Module 'nf_riffa_dma' uses SystemVerilog sources with a Verilog top file. These SystemVerilog files will not be analysed by the packager.
+CRITICAL WARNING: [HDL 9-806] Syntax error near "generate". [/home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/std/cores/nf_riffa_dma_v1_0_0/hdl/riffa/schedules.vh:97]
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/functions.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/widths.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/riffa.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/types.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/trellis.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/ultrascale.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/sume/nf_riffa_dma_cpu_regs_defines.v" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/tlp.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/riffa/schedules.vh" from the top-level HDL file.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axis_cq' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axis_rc' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axis_xge_tx' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_cc' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_rq' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_xge_rx' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axi_lite' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_lite' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axi_lite_aresetn' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'user_reset' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axi_lite_aclk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'user_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'm_axi_lite_aresetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'm_axi_lite_aclk': Added interface parameter 'ASSOCIATED_BUSIF' with value 'm_axi_lite'.
+INFO: [IP_Flow 19-4728] Bus Interface 'm_axi_lite_aclk': Added interface parameter 'ASSOCIATED_RESET' with value 'm_axi_lite_aresetn'.
+INFO: [IP_Flow 19-4728] Bus Interface 'user_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'user_reset'.
+WARNING: [IP_Flow 19-3158] Bus Interface 'm_axis_cq': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 'm_axis_rc': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 'm_axis_xge_tx': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_cc': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_rq': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_xge_rx': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axi_lite': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3153] Bus Interface 'user_clk': ASSOCIATED_BUSIF bus parameter is missing.
+INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
+INFO: [IP_Flow 19-2187] The Product Guide file is missing.
+# set_property name 			${ip_name} [ipx::current_core]
+# set_property library 			${lib_name} [ipx::current_core]
+# set_property vendor_display_name 	${vendor_display_name} [ipx::current_core]
+# set_property company_url 		${vendor_company_url} [ipx::current_core]
+# set_property vendor 			${vendor_name} [ipx::current_core]
+# set_property supported_families 	{{virtex7} {Production}} [ipx::current_core]
+# set_property taxonomy 			{{/NetFPGA/Generic}} [ipx::current_core]
+# set_property version 			${ip_version} [ipx::current_core]
+# set_property display_name 		${ip_display_name} [ipx::current_core]
+# set_property description 		${ip_description} [ipx::current_core]
+# foreach subcore ${subcore_names} {
+# 	set subcore_regex NAME=~*$subcore*
+# 	set subcore_ipdef [get_ipdefs -filter ${subcore_regex}]
+# 
+# 	ipx::add_subcore ${subcore_ipdef} [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
+# 	ipx::add_subcore ${subcore_ipdef}  [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
+# 	puts "Adding the following subcore: $subcore_ipdef \n"		
+# 
+# }
+Adding the following subcore: NetFPGA:NetFPGA:fallthrough_small_fifo:1.00 
+
+# set_property processing_order early [ipx::get_files *.vh -of_objects [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]]
+# set_property processing_order early [ipx::get_files *.vh -of_objects [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]]
+# ipx::remove_all_hdl_parameter [ipx::current_core]
+# ipx::add_model_parameters_from_hdl [ipx::current_core] -top_level_hdl_file $top_module_file -top_module_name $top_module_name
+# ipx::infer_user_parameters [ipx::current_core]
+# ipx::remove_all_port [ipx::current_core]
+# ipx::add_ports_from_hdl [ipx::current_core] -top_level_hdl_file $top_module_file -top_module_name $top_module_name
+# foreach bus_standard ${bus_interfaces} {
+# 	ipx::infer_bus_interfaces ${bus_standard} [ipx::current_core]
+# }
+INFO: [IP_Flow 19-3164] Bus Interface 'm_axi_lite': References existing address space 'm_axi_lite'.
+INFO: [IP_Flow 19-3166] Bus Interface 's_axi_lite': References existing memory map 's_axi_lite'.
+INFO: [IP_Flow 19-3164] Bus Interface 'm_axi_lite': References existing address space 'm_axi_lite'.
+INFO: [IP_Flow 19-3166] Bus Interface 's_axi_lite': References existing memory map 's_axi_lite'.
+INFO: [IP_Flow 19-5151] The Range '5:0' is present in all ports of the interface 'cfg_interrupt_msi_vf'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5151] The Range '1:0' is present in all ports of the interface 'cfg_obff'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5151] The Range '1:0' is present in all ports of the interface 'cfg_tph_requester'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5151] The Range '5:0' is present in all ports of the interface 'cfg_vf_tph_requester'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi' of definition 'xilinx.com:interface:pcie3_cfg_msi:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-3164] Bus Interface 'm_axi_lite': References existing address space 'm_axi_lite'.
+INFO: [IP_Flow 19-3166] Bus Interface 's_axi_lite': References existing memory map 's_axi_lite'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_fc' of definition 'xilinx.com:interface:pcie_cfg_fc:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-3164] Bus Interface 'm_axi_lite': References existing address space 'm_axi_lite'.
+INFO: [IP_Flow 19-3166] Bus Interface 's_axi_lite': References existing memory map 's_axi_lite'.
+INFO: [IP_Flow 19-5151] The Range '5:0' is present in all ports of the interface 'pcie_count'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg' of definition 'xilinx.com:interface:pcie3_cfg_status:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-3164] Bus Interface 'm_axi_lite': References existing address space 'm_axi_lite'.
+INFO: [IP_Flow 19-3166] Bus Interface 's_axi_lite': References existing memory map 's_axi_lite'.
+INFO: [IP_Flow 19-5151] The Range '63:0' is present in all ports of the interface 'cfg_interrupt_msi_status'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_0' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_1' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_10' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_11' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_12' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_13' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_14' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_15' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_16' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_17' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_18' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_19' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_2' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_20' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_21' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_22' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_23' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_24' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_25' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_26' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_27' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_28' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_29' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_3' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_30' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_31' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_32' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_33' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_34' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_35' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_36' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_37' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_38' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_39' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_4' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_40' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_41' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_42' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_43' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_44' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_45' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_46' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_47' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_48' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_49' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_5' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_50' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_51' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_52' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_53' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_54' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_55' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_56' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_57' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_58' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_59' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_6' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_60' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_61' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_62' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_63' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_7' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_8' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'cfg_interrupt_msi_status_9' of definition 'xilinx.com:interface:pcie3_cfg_interrupt:1.0' (from TCL Argument).
+INFO: [IP_Flow 19-3164] Bus Interface 'm_axi_lite': References existing address space 'm_axi_lite'.
+INFO: [IP_Flow 19-3166] Bus Interface 's_axi_lite': References existing memory map 's_axi_lite'.
+# ipx::add_port_map INTx_VECTOR [ipx::get_bus_interfaces cfg_interrupt -of_objects [ipx::current_core]]
+# set_property physical_name cfg_interrupt_int [ipx::get_port_maps INTx_VECTOR -of_objects [ipx::get_bus_interfaces cfg_interrupt -of_objects [ipx::current_core]]]
+# ipx::add_port_map int_vector [ipx::get_bus_interfaces cfg_interrupt_msi -of_objects [ipx::current_core]]
+# set_property physical_name cfg_interrupt_msi_int [ipx::get_port_maps int_vector -of_objects [ipx::get_bus_interfaces cfg_interrupt_msi -of_objects [ipx::current_core]]]
+# update_compile_order -fileset sources_1
+# ipx::remove_bus_interface pcie [ipx::current_core]
+# ipx::add_port_map rq_seq_num [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]
+# set_property physical_name pcie_rq_seq_num [ipx::get_port_maps rq_seq_num -of_objects [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]]
+# ipx::add_port_map cq_np_req [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]
+# set_property physical_name pcie_cq_np_req [ipx::get_port_maps cq_np_req -of_objects [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]]
+# ipx::add_port_map cq_np_req_count [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]
+# set_property physical_name pcie_cq_np_req_count [ipx::get_port_maps cq_np_req_count -of_objects [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]]
+# ipx::add_port_map rq_seq_num_vld [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]
+# set_property physical_name pcie_rq_seq_num_vld [ipx::get_port_maps rq_seq_num_vld -of_objects [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]]
+# ipx::add_port_map rq_tag_vld [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]
+# set_property physical_name pcie_rq_tag_vld [ipx::get_port_maps rq_tag_vld -of_objects [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]]
+# ipx::add_port_map rq_tag [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]
+# set_property physical_name pcie_rq_tag [ipx::get_port_maps rq_tag -of_objects [ipx::get_bus_interfaces cfg -of_objects [ipx::current_core]]]
+# ipx::add_bus_interface user_clk [ipx::current_core]
+# set_property abstraction_type_vlnv xilinx.com:signal:clock_rtl:1.0 [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]
+# set_property bus_type_vlnv xilinx.com:signal:clock:1.0 [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]
+# ipx::add_port_map CLK [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]
+# set_property physical_name user_clk [ipx::get_port_maps CLK -of_objects [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter ASSOCIATED_BUSIF [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]
+# ipx::add_bus_parameter ASSOCIATED_RESET [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]
+# set_property value user_clk [ipx::get_bus_parameters ASSOCIATED_BUSIF -of_objects [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]]
+# set_property value user_reset [ipx::get_bus_parameters ASSOCIATED_RESET -of_objects [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]]
+# ipx::add_bus_interface user_reset [ipx::current_core]
+# set_property abstraction_type_vlnv xilinx.com:signal:reset_rtl:1.0 [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]
+# set_property bus_type_vlnv xilinx.com:signal:reset:1.0 [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]
+# ipx::add_port_map RST [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]
+# set_property physical_name user_reset [ipx::get_port_maps RST -of_objects [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter POLARITY [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]
+# set_property value ACTIVE_HIGH [ipx::get_bus_parameters POLARITY -of_objects [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]]
+# set_property value ACTIVE_LOW [ipx::get_bus_parameters POLARITY -of_objects [ipx::get_bus_interfaces m_axi_lite_aresetn -of_objects [ipx::current_core]]]
+# set_property value ACTIVE_HIGH [ipx::get_bus_parameters POLARITY -of_objects [ipx::get_bus_interfaces user_reset -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axi_lite -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axi_lite -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter ASSOCIATED_BUSIF [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]
+# set_property value user_clk [ipx::get_bus_parameters ASSOCIATED_BUSIF -of_objects [ipx::get_bus_interfaces user_clk -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_cq -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces m_axis_cq -of_objects [ipx::current_core]]]
+# set_property value 250000000 [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces m_axis_cq -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_rc -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces m_axis_rc -of_objects [ipx::current_core]]]
+# set_property value 250000000 [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces m_axis_rc -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_cc -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axis_cc -of_objects [ipx::current_core]]]
+# set_property value 250000000 [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axis_cc -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_rq -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axis_rq -of_objects [ipx::current_core]]]
+# set_property value 250000000 [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axis_rq -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_xge_tx -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces m_axis_xge_tx -of_objects [ipx::current_core]]]
+# set_property value 250000000 [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces m_axis_xge_tx -of_objects [ipx::current_core]]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_xge_rx -of_objects [ipx::current_core]]
+# set_property description {Clock frequency (Hertz)} [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axis_xge_rx -of_objects [ipx::current_core]]]
+# set_property value 250000000 [ipx::get_bus_parameters FREQ_HZ -of_objects [ipx::get_bus_interfaces s_axis_xge_rx -of_objects [ipx::current_core]]]
+# ipx::check_integrity [ipx::current_core]
+CRITICAL WARNING: [IP_Flow 19-3834] Port 'm_axis_xge_tx_tdata': Port mapped to the logical port 'TDATA' of 'xilinx.com:interface:axis:1.0' interface must have a width of multiples of 8 bits.  The current port width is '1'.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_0': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_1': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_10': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_11': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_12': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_13': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_14': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_15': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_16': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_17': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_18': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_19': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_2': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_20': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_21': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_22': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_23': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_24': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_25': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_26': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_27': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_28': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_29': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_3': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_30': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_31': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_32': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_33': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_34': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_35': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_36': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_37': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_38': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_39': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_4': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_40': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_41': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_42': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_43': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_44': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_45': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_46': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_47': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_48': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_49': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_5': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_50': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_51': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_52': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_53': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_54': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_55': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_56': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_57': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_58': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_59': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_6': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_60': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_61': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_62': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_63': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_7': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_8': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+WARNING: [IP_Flow 19-1965] Bus Interface 'cfg_interrupt_msi_status_9': A port map to the required logical port "INTx_VECTOR" of the bus abstraction "xilinx.com:interface:pcie3_cfg_interrupt_rtl:1.0" is missing.
+INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
+INFO: [IP_Flow 19-2187] The Product Guide file is missing.
+INFO: [Ipptcl 7-1486] check_integrity: Integrity check passed.
+# write_peripheral [ipx::current_core]
+# ipx::create_xgui_files [ipx::current_core]
+# ipx::update_checksums [ipx::current_core]
+# ipx::save_core [ipx::current_core]
+# update_ip_catalog -rebuild -repo_path $repo_dir 
+INFO: [IP_Flow 19-725] Reloaded user IP repository '../'
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 19 09:59:08 2019...

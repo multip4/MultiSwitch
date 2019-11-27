@@ -37,7 +37,8 @@ module addr_manager_v0_1
         m_axis_fl_head_next,
         m_axis_rd_next_addr,  // next readable address, the value of index at r_fl_tail
         
-        m_axis_remain_space, // statistics for buffer spae
+        m_axis_remain_space, // statistics for buffer space
+        m_axis_buffer_counter,
         m_axis_almost_full,  // buffer almost full signal. 
         m_axis_is_empty,     // buffer empty signal
         
@@ -58,6 +59,8 @@ module addr_manager_v0_1
     output                  m_axis_almost_full;
     output                  m_axis_is_empty;
     output [ADDR_WIDTH-1:0] m_axis_remain_space;
+    output [ADDR_WIDTH-1:0] m_axis_buffer_counter;
+        
 
     input clk;
     input rstn;    
@@ -225,5 +228,5 @@ module addr_manager_v0_1
     assign m_axis_remain_space = m_axis_remain_space_reg;
     assign m_axis_is_empty = (m_axis_remain_space_reg == (ADDR_TABLE_DEPTH-1))? 1:0;
     assign port_a_input_addr = r_fl_head_next;
-    
+    assign m_axis_buffer_counter = ADDR_TABLE_DEPTH - m_axis_remain_space - 1;
 endmodule

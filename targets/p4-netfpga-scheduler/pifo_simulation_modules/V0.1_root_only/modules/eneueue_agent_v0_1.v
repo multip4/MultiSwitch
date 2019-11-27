@@ -128,7 +128,9 @@ module enqueue_agent_v0_1
                 output_port_ready_wire, // single bit for indicating at least one output port is valid
                 eq_agent_fsm_state, // current state state  of FSM
                 m_axis_ctl_pifo_in_en_reg,
-                m_axis_ctl_buffer_wr_en_reg
+                m_axis_ctl_buffer_wr_en_reg,
+                s_axis_tpifo_valid,
+                output_port_not_full_bit_array_wire
                 ) 
     begin
     

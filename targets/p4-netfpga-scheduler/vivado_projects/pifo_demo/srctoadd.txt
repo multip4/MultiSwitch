@@ -1,0 +1,23 @@
+//These script are adding to the nfSimpleSiwtch/SimpleSumeSwitch/SimpleSumeSwitch.v  below internal_rst_done,
+==============================================================================================================
+,
+    last_pkt_info0, 	    //1000 lim add adding last dq info wire.
+    last_pkt_info1, 
+    last_pkt_info2, 
+    last_pkt_info3, 
+    last_pkt_info4  
+);
+
+input [31:0] last_pkt_info0;
+input [31:0] last_pkt_info1; 
+input [31:0] last_pkt_info2;
+input [31:0] last_pkt_info3;
+input [31:0] last_pkt_info4; //1000 lim add adding last dq info wire.
+
+
+==============================
+.last_pkt_info0(last_pkt_info0),
+.last_pkt_info1(last_pkt_info1),
+.last_pkt_info2(last_pkt_info2),
+.last_pkt_info3(last_pkt_info3),
+.last_pkt_info4(last_pkt_info4)

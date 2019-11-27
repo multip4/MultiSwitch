@@ -332,12 +332,6 @@ module nf_datapath #(
     (* mark_debug = "true" *) wire [C_S_AXI_DATA_WIDTH-1:0] bytes_dropped;
     (* mark_debug = "true" *) wire [5-1:0] pkt_dropped; 
 
-    assign nf0_q_size = 'd0;
-    assign nf1_q_size = 'd0;
-    assign nf2_q_size = 'd0;
-    assign nf3_q_size = 'd0;
-    assign dma_q_size = 'd0;
-
            //Output queues
        scheduler_top_v0_1  
      scheduler_top_1 (

@@ -631,11 +631,11 @@ end
 //// just return input value.
 //assign m_axis_tvalid_async = s_axis_rd_en; 
 
-assign m_axis_tdata = (OUTPUT_SYNC)? m_axis_tdata_async : m_axis_tdata_reg;
-assign m_axis_tkeep = (OUTPUT_SYNC)? m_axis_tkeep_async : m_axis_tkeep_reg;
-assign m_axis_tlast = (OUTPUT_SYNC)? m_axis_tlast_async : m_axis_tlast_reg;
-assign m_axis_tuser = (OUTPUT_SYNC)? m_axis_tuser_async : m_axis_tuser_reg;
-assign m_axis_tpifo = (OUTPUT_SYNC)? m_axis_tpifo_async : m_axis_tpifo_reg;
+assign m_axis_tdata = (~OUTPUT_SYNC)? m_axis_tdata_async : m_axis_tdata_reg;
+assign m_axis_tkeep = (~OUTPUT_SYNC)? m_axis_tkeep_async : m_axis_tkeep_reg;
+assign m_axis_tlast = (~OUTPUT_SYNC)? m_axis_tlast_async : m_axis_tlast_reg;
+assign m_axis_tuser = (~OUTPUT_SYNC)? m_axis_tuser_async : m_axis_tuser_reg;
+assign m_axis_tpifo = (~OUTPUT_SYNC)? m_axis_tpifo_async : m_axis_tpifo_reg;
 //assign m_axis_tvalid = (OUTPUT_SYNC)? m_axis_tvalid_async : m_axis_tvalid_reg;
 
 

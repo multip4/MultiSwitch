@@ -309,46 +309,17 @@ localparam IDLE = 0;
 localparam RECEIVE_REMAIN = 1;
 
 
-// combinational logic to handle AXI signals.
+// combinational block to handle input/ output data.
 always @(*)
 begin
+
 
     r_axi_awready_next = 0;
     r_axi_wready_next  = 0;
     r_axi_bvalid_next  = 0;
     r_axi_arready_next = 0;
     r_axi_rvalid_next  = 0;
-
-    // set read ready if the read request is valid
-    if(S_AXI_ARVALID) r_axi_arready_next = 1;
-    
-    // set write ready if both the write addr and valud is valid 
-    if(S_AXI_WVALID & S_AXI_AWVALID) 
-        begin
-            r_axi_awready_next = 1;
-            r_axi_wready_next = 1;
-        end
-    
-    // set read response valid, if the response input signal is valid.
-    
-    if(ip2cpu_read_pkt_buffer_resp_valid | ip2cpu_read_sume_buffer_resp_valid | 
-        ip2cpu_read_pifo_buffer_resp_valid | ip2cpu_read_pifo_calendar_resp_valid)  r_axi_rvalid_next = 0;
-
-        
-    // set write response valid,
-    
-    if(ip2cpu_write_pkt_buffer_resp_valid | ip2cpu_write_sume_buffer_resp_valid |
-       ip2cpu_write_pifo_buffer_resp_valid | ip2cpu_write_pifo_calendar_resp_valid) r_axi_bvalid_next = 0;
-end
-
-
-
-// combinational block to handle input/ output data.
-always @(*)
-begin
-
     r_axi_rresp_next = 0;
-
     r_axi_rdata_next = 0;
     r_axi_bresp_next = 0;
     
@@ -377,6 +348,28 @@ begin
     r_pkt_buffer_write_req_valud_last_index_next = r_pkt_buffer_write_req_valud_last_index;
     r_sume_buffer_write_req_valud_last_index_next = r_sume_buffer_write_req_valud_last_index;
     
+     // set read ready if the read request is valid
+    if(S_AXI_ARVALID) r_axi_arready_next = 1;
+    
+    // set write ready if both the write addr and valud is valid 
+    if(S_AXI_WVALID & S_AXI_AWVALID) 
+        begin
+            r_axi_awready_next = 1;
+            r_axi_wready_next = 1;
+        end
+    
+    // set read response valid, if the response input signal is valid.
+    
+    if(ip2cpu_read_pkt_buffer_resp_valid | ip2cpu_read_sume_buffer_resp_valid | 
+        ip2cpu_read_pifo_buffer_resp_valid | ip2cpu_read_pifo_calendar_resp_valid)  r_axi_rvalid_next = 0;
+
+        
+    // set write response valid,
+    
+    if(ip2cpu_write_pkt_buffer_resp_valid | ip2cpu_write_sume_buffer_resp_valid |
+       ip2cpu_write_pifo_buffer_resp_valid | ip2cpu_write_pifo_calendar_resp_valid) r_axi_bvalid_next = 0;
+
+ 
     
     // CPU2IP Read request
     // generate read valid signal

@@ -1,0 +1,38 @@
+# compile vhdl design source files
+vhdl lib_pkg_v1_0_2  \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/lib_pkg_v1_0_2/hdl/lib_pkg_v1_0_rfs.vhd" \
+
+vhdl lib_srl_fifo_v1_0_2  \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/lib_srl_fifo_v1_0_2/hdl/lib_srl_fifo_v1_0_rfs.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axis_sim_pkg/axis_sim_pkg.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/transactor_fifos.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/sim/axi_sim_transactor_ip.vhd" \
+
+vhdl fifo_generator_v13_2_2  \
+"../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/hdl/fifo_generator_v13_2_rfs.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_pkg/axis_sim_pkg.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/sim/axis_sim_stim_ip4.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip3/hdl/axis_sim_pkg/axis_sim_pkg.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip3/hdl/axis_sim_stim.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip3/sim/axis_sim_stim_ip3.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip2/hdl/axis_sim_pkg/axis_sim_pkg.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip2/hdl/axis_sim_stim.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip2/sim/axis_sim_stim_ip2.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip1/hdl/axis_sim_pkg/axis_sim_pkg.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip1/hdl/axis_sim_stim.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip1/sim/axis_sim_stim_ip1.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip0/hdl/axis_sim_pkg/axis_sim_pkg.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip0/hdl/axis_sim_stim.vhd" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip0/sim/axis_sim_stim_ip0.vhd" \
+
+vhdl fifo_generator_v13_2_2  \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.vhd" \
+
+# Do not sort compile order
+nosort

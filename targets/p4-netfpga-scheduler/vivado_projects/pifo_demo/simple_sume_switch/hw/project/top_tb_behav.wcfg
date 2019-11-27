@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axis_sim_pkg" />
+            <top_module name="glbl" />
+            <top_module name="lib_pkg" />
+            <top_module name="top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="13414916666fs"></ZoomStartTime>
+      <ZoomEndTime time="13502616667fs"></ZoomEndTime>
+      <Cursor1Time time="13488000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="249"></NameColumnWidth>
+      <ValueColumnWidth column_width="375"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/nf0_q_size">
+      <obj_property name="ElementShortName">nf0_q_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">nf0_q_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/nf1_q_size">
+      <obj_property name="ElementShortName">nf1_q_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">nf1_q_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/nf2_q_size">
+      <obj_property name="ElementShortName">nf2_q_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">nf2_q_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/nf3_q_size">
+      <obj_property name="ElementShortName">nf3_q_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">nf3_q_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/dma_q_size">
+      <obj_property name="ElementShortName">dma_q_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dma_q_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/last_pkt_info0">
+      <obj_property name="ElementShortName">last_pkt_info0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pkt_info0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/last_pkt_info1">
+      <obj_property name="ElementShortName">last_pkt_info1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pkt_info1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/last_pkt_info2">
+      <obj_property name="ElementShortName">last_pkt_info2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pkt_info2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/last_pkt_info3">
+      <obj_property name="ElementShortName">last_pkt_info3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pkt_info3[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/last_pkt_info4">
+      <obj_property name="ElementShortName">last_pkt_info4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pkt_info4[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/bytes_dropped">
+      <obj_property name="ElementShortName">bytes_dropped[31:0]</obj_property>
+      <obj_property name="ObjectShortName">bytes_dropped[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/pkt_dropped">
+      <obj_property name="ElementShortName">pkt_dropped[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pkt_dropped[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider128" type="divider">
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/scheduler_top_1/nf0_q_size">
+      <obj_property name="ElementShortName">nf0_q_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">nf0_q_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/top_sim/nf_datapath_0/scheduler_top_1/buffer_0_queue_depth">
+      <obj_property name="ElementShortName">buffer_0_queue_depth[11:0]</obj_property>
+      <obj_property name="ObjectShortName">buffer_0_queue_depth[11:0]</obj_property>
+   </wvobject>
+</wave_config>

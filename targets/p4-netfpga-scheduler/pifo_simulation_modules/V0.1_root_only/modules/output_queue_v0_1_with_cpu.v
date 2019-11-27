@@ -64,7 +64,8 @@ module output_queue_v0_1_with_cpu
     output                                          m_is_buffer_almost_full, // buffer almostfull signal
     output                                          m_is_pifo_full,
     output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_remain_size,
-
+    output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_counter,
+        
 
     //cpu signals
     
@@ -198,6 +199,7 @@ module output_queue_v0_1_with_cpu
     
     // buffer manager module inst
     addr_manager_v0_1
+    #(.ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
     addr_manager_inst
     (
     .s_axis_wr_en(ctl_buffer_write_no_bypass), // write signal for fl_head transition
@@ -213,6 +215,7 @@ module output_queue_v0_1_with_cpu
     .m_axis_remain_space(addr_manager_out_st_buffer_remain_space), // statistics for buffer spae
     .m_axis_almost_full(addr_manager_out_st_buffer_almost_full),  // buffer almost full signal. 
     .m_axis_is_empty(addr_manager_out_st_buffer_empty),     // buffer empty signal
+    .m_axis_buffer_counter(m_buffer_counter),
     
     .clk(axis_aclk),
     .rstn(axis_resetn)    //active low    
@@ -303,6 +306,9 @@ module output_queue_v0_1_with_cpu
 
     
     pifo_calendar_v0_1_with_cpu
+    #(
+    .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH)
+    )
     pifo_calendar_inst
     (
         .s_axis_pifo_info_root(w_pifo_root_info_final),

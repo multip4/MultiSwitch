@@ -1,0 +1,74 @@
+digraph SimpleSumeSwitch {
+rankdir = LR;
+_IN_[label = "IN", shape=box, color = gray24,  fontname="times:italic"  ];
+_OUT_[label = "OUT", shape=box, color = gray24,  fontname="times:italic"  ];
+TopParser[style = filled, fillcolor = papayawhip ];
+TopPipe_lvl[style = filled, fillcolor = darkseagreen ];
+table_calc[style = filled, fillcolor = gold ];
+TopPipe_lvl_0[style = filled, fillcolor = darkseagreen ];
+my_pifo_rank_calc_0[style = filled, fillcolor = salmon2 ];
+TopPipe_lvl_1[style = filled, fillcolor = darkseagreen ];
+TopDeparser[style = filled, fillcolor = orange2 ];
+S_BRIDGER_for_table_calc_tuple_in_request[label = "bridge", style = filled, fillcolor=gray75 ];
+S_BRIDGER_for_my_pifo_rank_calc_0_tuple_in_my_pifo_rank_calc_input[label = "bridge", style = filled, fillcolor=gray75 ];
+S_PROTOCOL_ADAPTER_INGRESS[label = "adapter", style = filled, fillcolor=gray75 ];
+S_PROTOCOL_ADAPTER_EGRESS[label = "adapter", style = filled, fillcolor=gray75 ];
+TopPipe_lvl -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl -> S_BRIDGER_for_table_calc_tuple_in_request [color=green2] ;
+S_BRIDGER_for_table_calc_tuple_in_request -> table_calc [color=green2] ;
+table_calc -> TopPipe_lvl_0 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> TopPipe_lvl_1 [color=green2] ;
+TopPipe_lvl_0 -> S_BRIDGER_for_my_pifo_rank_calc_0_tuple_in_my_pifo_rank_calc_input [color=green2] ;
+S_BRIDGER_for_my_pifo_rank_calc_0_tuple_in_my_pifo_rank_calc_input -> my_pifo_rank_calc_0 [color=green2] ;
+my_pifo_rank_calc_0 -> TopPipe_lvl_1 [color=green2] ;
+TopParser -> TopPipe_lvl [color=green2] ;
+TopPipe_lvl_1 -> TopDeparser [color=green2] ;
+TopParser -> TopPipe_lvl [color=green2] ;
+TopPipe_lvl_1 -> TopDeparser [color=green2] ;
+TopParser -> TopPipe_lvl [color=green2] ;
+TopPipe_lvl_1 -> TopDeparser [color=green2] ;
+TopDeparser -> _OUT_ [color=green2] ;
+_IN_ -> TopParser [color=green2] ;
+TopParser -> TopPipe_lvl [color=green2] ;
+TopPipe_lvl_1 -> TopDeparser [color=green2] ;
+TopDeparser -> _OUT_ [color=green2] ;
+_IN_ -> S_PROTOCOL_ADAPTER_INGRESS [color=blue, style = bold] ;
+S_PROTOCOL_ADAPTER_INGRESS -> TopParser [color=blue, style = bold] ;
+TopParser -> TopDeparser [color=blue, style = bold] ;
+TopDeparser -> S_PROTOCOL_ADAPTER_EGRESS [color=blue, style = bold] ;
+S_PROTOCOL_ADAPTER_EGRESS -> _OUT_ [color=blue, style = bold] ;
+TopParser -> TopDeparser [color=green2] ;
+subgraph cluster_0 { 
+    node [shape=plaintext];
+    
+    k3 [label = "Tuple" ];
+    k2 [label = "Packet" ];
+
+    d2 [label = "" ];
+    d3 [label = "" ];
+
+    anchor [label = "" ];
+    
+    anchor -> k2 [style=invis];
+    anchor -> k3 [style=invis];  
+    
+    k2 -> d2 [color=blue, style=bold];
+    k3 -> d3 [color=green2];
+    
+    label = "Legend"; fontname="times:bold";
+    color=SlateGray
+}
+_OUT_ -> anchor [style=invis];
+
+}

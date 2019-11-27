@@ -61,9 +61,7 @@ module pifo_calendar_v0_1_with_cpu
 
         // reset & clock
         rstn,
-        clk,
-        
-    
+        clk
     );
     
     input [PIFO_ROOT_WIDTH-1:0]  s_axis_pifo_info_root;

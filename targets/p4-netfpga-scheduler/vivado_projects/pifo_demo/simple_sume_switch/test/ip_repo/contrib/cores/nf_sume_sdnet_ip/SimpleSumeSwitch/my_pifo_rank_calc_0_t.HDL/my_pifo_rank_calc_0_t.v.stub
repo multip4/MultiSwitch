@@ -1,0 +1,125 @@
+//----------------------------------------------------------------------------
+//   This file is owned and controlled by Xilinx and must be used solely    //
+//   for design, simulation, implementation and creation of design files    //
+//   limited to Xilinx devices or technologies. Use with non-Xilinx         //
+//   devices or technologies is expressly prohibited and immediately        //
+//   terminates your license.                                               //
+//                                                                          //
+//   XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" SOLELY   //
+//   FOR USE IN DEVELOPING PROGRAMS AND SOLUTIONS FOR XILINX DEVICES.  BY   //
+//   PROVIDING THIS DESIGN, CODE, OR INFORMATION AS ONE POSSIBLE            //
+//   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR STANDARD, XILINX IS     //
+//   MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION IS FREE FROM ANY     //
+//   CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE FOR OBTAINING ANY      //
+//   RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.  XILINX EXPRESSLY      //
+//   DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO THE ADEQUACY OF THE  //
+//   IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OR         //
+//   REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE FROM CLAIMS OF        //
+//   INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A  //
+//   PARTICULAR PURPOSE.                                                    //
+//                                                                          //
+//   Xilinx products are not intended for use in life support appliances,   //
+//   devices, or systems.  Use in such applications are expressly           //
+//   prohibited.                                                            //
+//                                                                          //
+//   (c) Copyright 1995-2015 Xilinx, Inc.                                   //
+//   All rights reserved.                                                   //
+//----------------------------------------------------------------------------
+// Xilinx SDNet Compiler version 2018.2, build 2342300
+//----------------------------------------------------------------------------
+/*
+
+*/
+
+`timescale 1 ps / 1 ps
+
+module my_pifo_rank_calc_0_t (
+	clk_lookup,
+	clk_control,
+	clk_lookup_rst_high,
+	clk_control_rst_low,
+	tuple_in_my_pifo_rank_calc_input_VALID,
+	tuple_in_my_pifo_rank_calc_input_DATA,
+	tuple_out_my_pifo_rank_calc_output_VALID,
+	tuple_out_my_pifo_rank_calc_output_DATA,
+	control_S_AXI_AWADDR,
+	control_S_AXI_AWVALID,
+	control_S_AXI_AWREADY,
+	control_S_AXI_WDATA,
+	control_S_AXI_WSTRB,
+	control_S_AXI_WVALID,
+	control_S_AXI_WREADY,
+	control_S_AXI_BRESP,
+	control_S_AXI_BVALID,
+	control_S_AXI_BREADY,
+	control_S_AXI_ARADDR,
+	control_S_AXI_ARVALID,
+	control_S_AXI_ARREADY,
+	control_S_AXI_RDATA,
+	control_S_AXI_RRESP,
+	control_S_AXI_RVALID,
+	control_S_AXI_RREADY
+);
+
+input clk_lookup /* unused */ ;
+input clk_control /* unused */ ;
+input clk_lookup_rst_high /* unused */ ;
+input clk_control_rst_low /* unused */ ;
+input tuple_in_my_pifo_rank_calc_input_VALID /* unused */ ;
+input [13:0] tuple_in_my_pifo_rank_calc_input_DATA /* unused */ ;
+output tuple_out_my_pifo_rank_calc_output_VALID /* undriven */ ;
+output [31:0] tuple_out_my_pifo_rank_calc_output_DATA /* undriven */ ;
+input [7:0] control_S_AXI_AWADDR /* unused */ ;
+input control_S_AXI_AWVALID /* unused */ ;
+output control_S_AXI_AWREADY /* undriven */ ;
+input [31:0] control_S_AXI_WDATA /* unused */ ;
+input [3:0] control_S_AXI_WSTRB /* unused */ ;
+input control_S_AXI_WVALID /* unused */ ;
+output control_S_AXI_WREADY /* undriven */ ;
+output [1:0] control_S_AXI_BRESP /* undriven */ ;
+output control_S_AXI_BVALID /* undriven */ ;
+input control_S_AXI_BREADY /* unused */ ;
+input [7:0] control_S_AXI_ARADDR /* unused */ ;
+input control_S_AXI_ARVALID /* unused */ ;
+output control_S_AXI_ARREADY /* undriven */ ;
+output [31:0] control_S_AXI_RDATA /* undriven */ ;
+output [1:0] control_S_AXI_RRESP /* undriven */ ;
+output control_S_AXI_RVALID /* undriven */ ;
+input control_S_AXI_RREADY /* unused */ ;
+
+wire tuple_out_my_pifo_rank_calc_output_VALID /* undriven */ ;
+wire [31:0] tuple_out_my_pifo_rank_calc_output_DATA /* undriven */ ;
+wire control_S_AXI_AWREADY /* undriven */ ;
+wire control_S_AXI_WREADY /* undriven */ ;
+wire [1:0] control_S_AXI_BRESP /* undriven */ ;
+wire control_S_AXI_BVALID /* undriven */ ;
+wire control_S_AXI_ARREADY /* undriven */ ;
+wire [31:0] control_S_AXI_RDATA /* undriven */ ;
+wire [1:0] control_S_AXI_RRESP /* undriven */ ;
+wire control_S_AXI_RVALID /* undriven */ ;
+
+
+
+
+/* Tuple format for input: tuple_in_my_pifo_rank_calc_input
+ 	[13:13]	: stateful_valid
+	[12:5]	: field1
+	[4:0]	: field2
+
+*/
+
+
+
+
+/* Tuple format for output: tuple_out_my_pifo_rank_calc_output
+ 	[31:0]	: result
+
+*/
+
+
+endmodule
+
+// machine-generated file - do NOT modify by hand !
+// File created on 2019/11/21 22:45:48
+// by Barista HDL generation library, version TRUNK @ 1007984
+

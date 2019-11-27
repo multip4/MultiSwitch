@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Oct 17 00:15:50 2019
+# Process ID: 27755
+# Current directory: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/templates/externs/pifo_rank_calc/hdl
+# Command line: vivado
+# Log file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/templates/externs/pifo_rank_calc/hdl/vivado.log
+# Journal file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/templates/externs/pifo_rank_calc/hdl/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/extern_func/simple_sume_switch/hw/project/simple_sume_switch.xpr
