@@ -121,17 +121,7 @@ module enqueue_agent_v0_1
     
 
     // FSM 
-    always @(s_axis_tvalid,  // valid signal from pipeline
-                s_axis_tlast, // eop signal from pipeline
-                is_drop_wire,  // drop signal from sume metadata 
-                output_port_bit_array_wire, // output port bit array
-                output_port_ready_wire, // single bit for indicating at least one output port is valid
-                eq_agent_fsm_state, // current state state  of FSM
-                m_axis_ctl_pifo_in_en_reg,
-                m_axis_ctl_buffer_wr_en_reg,
-                s_axis_tpifo_valid,
-                output_port_not_full_bit_array_wire
-                ) 
+    always @(*) 
     begin
     
         s_axis_tready = 0;
@@ -175,7 +165,10 @@ module enqueue_agent_v0_1
                             s_axis_tready = 1;
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             if(s_axis_tlast)
-                                eq_agent_fsm_state_next = IDLE;
+                                begin
+                                    eq_agent_fsm_state_next = IDLE;
+                                    m_axis_ctl_buffer_wr_en_reg_next = 0;
+                                end
                         end
                     ENQUEUE_SOP:
                         begin
@@ -228,7 +221,7 @@ module enqueue_agent_v0_1
     
     
     // assign output control signal 
-    assign m_axis_ctl_pifo_in_en = m_axis_ctl_pifo_in_en_reg_next;
-    assign m_axis_ctl_buffer_wr_en = m_axis_ctl_buffer_wr_en_reg_next;
+    assign m_axis_ctl_pifo_in_en = m_axis_ctl_pifo_in_en_reg;
+    assign m_axis_ctl_buffer_wr_en = m_axis_ctl_buffer_wr_en_reg;
     
 endmodule

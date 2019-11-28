@@ -211,11 +211,16 @@ module scheduler_top_v0_1
     reg                                       s_axis_tlast_d1;
 
 
+    reg                                       m_axis_0_tready_d1;
+    reg                                       m_axis_1_tready_d1;
+    reg                                       m_axis_2_tready_d1;
+    reg                                       m_axis_3_tready_d1;        
+    reg                                       m_axis_4_tready_d1;
 
     enqueue_agent_v0_1
     enqueue_agent_inst(
             // from/to pipeline
-        .s_axis_tvalid(s_axis_tvalid_d1),
+        .s_axis_tvalid(s_axis_tvalid_d1), 
         .s_axis_tready(s_axis_tready),
         .s_axis_tuser(w_sume_meta), // sume_meta.
         .s_axis_tpifo_valid(w_pifo_info[PIFO_INFO_LENGTH-1]),//w_pifo_info[PIFO_INFO_LENGTH-1]
@@ -692,15 +697,30 @@ begin
             s_axis_tuser_d1  <= 0; 
             s_axis_tvalid_d1 <= 0;
             s_axis_tlast_d1  <= 0; 
+            
+            m_axis_0_tready_d1 <= 0;
+            m_axis_1_tready_d1 <= 0;
+            m_axis_2_tready_d1 <= 0;
+            m_axis_3_tready_d1 <= 0;
+            m_axis_4_tready_d1 <= 0;
+            
+            
         
         end
     else
         begin
-            s_axis_tdata_d1  <=  s_axis_tdata; 
+            s_axis_tdata_d1  <= s_axis_tdata; 
             s_axis_tkeep_d1  <= s_axis_tkeep; 
             s_axis_tuser_d1  <= s_axis_tuser; 
             s_axis_tvalid_d1 <= s_axis_tvalid;
             s_axis_tlast_d1  <= s_axis_tlast; 
+            
+            m_axis_0_tready_d1 <= m_axis_0_tready;
+            m_axis_1_tready_d1 <= m_axis_1_tready;
+            m_axis_2_tready_d1 <= m_axis_2_tready;
+            m_axis_3_tready_d1 <= m_axis_3_tready;
+            m_axis_4_tready_d1 <= m_axis_4_tready;
+            
         end
 
 end

@@ -197,6 +197,9 @@ module output_queue_v0_1_with_cpu
     reg [PIFO_WIDTH-1:0]                         r_m_axis_tpifo_next;  // output pifo infomation.
  
     
+    // output result for sop pkt addr 
+    wire [BUFFER_ADDR_WIDTH-1:0] w_pifo_calendar_out_addr; 
+    
     // buffer manager module inst
     addr_manager_v0_1
     #(.ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
@@ -205,12 +208,12 @@ module output_queue_v0_1_with_cpu
     .s_axis_wr_en(ctl_buffer_write_no_bypass), // write signal for fl_head transition
     .s_axis_rd_en(r_buffer_rd_en_next),    // read signal 
         
-    .s_axis_rd_addr(r_buffer_rd_addr_next), // read address for sop 
+    .s_axis_rd_pkt_sop_addr(w_pifo_calendar_out_addr), // read address for sop 
     .s_axis_first_word_en(r_buffer_first_word_en_next), // the first word signal, for fl_tail value update.
     
     .m_axis_fl_head(addr_manager_out_buffer_fl_head),       // next writable available address, same as free list head.
     .m_axis_fl_head_next(addr_manager_out_buffer_fl_head_next),
-    .m_axis_rd_next_addr(addr_manager_out_buffer_next_rd_addr),  // next readable address, the value of index at fl_tail
+    .m_axis_fl_tail_next(addr_manager_out_buffer_next_rd_addr),  // next readable address, the value of index at fl_tail
     
     .m_axis_remain_space(addr_manager_out_st_buffer_remain_space), // statistics for buffer spae
     .m_axis_almost_full(addr_manager_out_st_buffer_almost_full),  // buffer almost full signal. 
@@ -290,8 +293,7 @@ module output_queue_v0_1_with_cpu
     reg [BUFFER_ADDR_WIDTH-1:0] r_sop_addr;
     reg [BUFFER_ADDR_WIDTH-1:0] r_sop_addr_next;
         
-    // output result for sop pkt addr 
-    wire [BUFFER_ADDR_WIDTH-1:0] w_pifo_calendar_out_addr; 
+
     wire                         w_pifo_calendar_out_valid;
     wire                         w_pifo_calendar_out_bypass_en;
     wire                         w_pifo_calendar_out_caledar_full;
@@ -464,10 +466,10 @@ module output_queue_v0_1_with_cpu
             UPDATE_FL_TAIL:
                 begin
                     output_queue_fsm_state_next = READ_PKT;
-                    
+                    r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;                   
                     if(m_axis_tready)
                         begin
-                            r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;
+
                             r_buffer_rd_en_next = 1;                           
                         end
                 end

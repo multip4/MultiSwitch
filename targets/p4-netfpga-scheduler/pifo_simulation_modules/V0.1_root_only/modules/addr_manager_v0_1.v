@@ -31,11 +31,11 @@ module addr_manager_v0_1
         s_axis_rd_en,    // read signal 
         s_axis_first_word_en, // the first word signal, for r_fl_tail value update.
         
-        s_axis_rd_addr, // read address for sop 
+        s_axis_rd_pkt_sop_addr, // read address for sop 
         
         m_axis_fl_head,       // next writable available address, same as free list head.
         m_axis_fl_head_next,
-        m_axis_rd_next_addr,  // next readable address, the value of index at r_fl_tail
+        m_axis_fl_tail_next,  // next readable address, the value of index at r_fl_tail
         
         m_axis_remain_space, // statistics for buffer space
         m_axis_buffer_counter,
@@ -50,11 +50,11 @@ module addr_manager_v0_1
     input s_axis_wr_en; // write to buffer signal,
     input s_axis_rd_en; // read from buffer signal
     input s_axis_first_word_en;
-    input [ADDR_WIDTH-1:0] s_axis_rd_addr;
+    input [ADDR_WIDTH-1:0] s_axis_rd_pkt_sop_addr;
     
     output [ADDR_WIDTH-1:0] m_axis_fl_head;
     output [ADDR_WIDTH-1:0] m_axis_fl_head_next;
-    output [ADDR_WIDTH-1:0] m_axis_rd_next_addr;
+    output [ADDR_WIDTH-1:0] m_axis_fl_tail_next;
 
     output                  m_axis_almost_full;
     output                  m_axis_is_empty;
@@ -67,8 +67,8 @@ module addr_manager_v0_1
         
  
     // register for read next address
-//    reg [ADDR_WIDTH-1:0] m_axis_rd_next_addr_reg;
-//    reg [ADDR_WIDTH-1:0] m_axis_rd_next_addr_reg_next;
+//    reg [ADDR_WIDTH-1:0] m_axis_fl_tail_next_reg;
+//    reg [ADDR_WIDTH-1:0] m_axis_fl_tail_next_reg_next;
     
     // register for store remain space(unit: words)
     reg [ADDR_WIDTH-1:0] m_axis_remain_space_reg;
@@ -163,8 +163,8 @@ module addr_manager_v0_1
                 // and update current r_fl_tail link.
                 if(s_axis_first_word_en)
                     begin
-                        r_fl_tail_next = s_axis_rd_addr;
-                        port_b_input_value = s_axis_rd_addr;
+                        r_fl_tail_next = s_axis_rd_pkt_sop_addr;
+                        port_b_input_value = s_axis_rd_pkt_sop_addr;
                         port_b_wr_en = 1;
                         // state transition to 
                         addr_manager_fsm_state_next = FIRST_WORD; 
@@ -175,7 +175,7 @@ module addr_manager_v0_1
                         r_fl_tail_next = port_b_out_value;
                         port_b_input_addr = port_b_out_value;
                         // update next read addr when read enable and not first word. 
-//                        m_axis_rd_next_addr_reg_next = port_b_out_value;
+//                        m_axis_fl_tail_next_reg_next = port_b_out_value;
                     end
                 end                               
             FIRST_WORD:
@@ -201,7 +201,7 @@ module addr_manager_v0_1
                 r_fl_head <= 0;
                 r_fl_tail <= ADDR_TABLE_DEPTH-1;
                 m_axis_remain_space_reg <= ADDR_TABLE_DEPTH-1;
-//                m_axis_rd_next_addr_reg <= ADDR_TABLE_DEPTH-1;
+//                m_axis_fl_tail_next_reg <= ADDR_TABLE_DEPTH-1;
                 addr_manager_fsm_state <= IDLE;
                 
             end
@@ -210,7 +210,7 @@ module addr_manager_v0_1
                 r_fl_head <= r_fl_head_next;
                 r_fl_tail <= r_fl_tail_next;
                 m_axis_remain_space_reg <= m_axis_remain_space_reg_next;
-//                m_axis_rd_next_addr_reg <= m_axis_rd_next_addr_reg_next;
+//                m_axis_fl_tail_next_reg <= m_axis_fl_tail_next_reg_next;
                 addr_manager_fsm_state <= addr_manager_fsm_state_next;
             end
             
@@ -221,7 +221,7 @@ module addr_manager_v0_1
     assign m_axis_fl_head = r_fl_head;
     assign m_axis_fl_head_next = r_fl_head_next;
         
-    assign m_axis_rd_next_addr = r_fl_tail;
+    assign m_axis_fl_tail_next = r_fl_tail_next;
     assign m_axis_remain_space = m_axis_remain_space_reg;
     assign m_axis_is_empty = (m_axis_remain_space_reg == (ADDR_TABLE_DEPTH-1))? 1:0;
     assign port_a_input_addr = r_fl_head_next;

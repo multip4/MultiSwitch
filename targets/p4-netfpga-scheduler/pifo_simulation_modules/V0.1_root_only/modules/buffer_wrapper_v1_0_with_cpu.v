@@ -30,7 +30,7 @@ module buffer_wrapper_v1_0_with_cpu
     parameter C_M_AXIS_PIFO_WIDTH=32,
     parameter C_S_AXIS_PIFO_WIDTH=32,
     parameter C_S_AXIS_ADDR_WIDTH=12,
-    parameter OUTPUT_SYNC = 1
+    parameter OUTPUT_SYNC = 0
     )
     (
     
