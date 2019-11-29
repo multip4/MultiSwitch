@@ -7,6 +7,18 @@ MAC_DST3="01:33:33:33:33:01"
 MAC_SRC1="01:01:01:01:01:01"
 MAC_SRC2="02:02:02:02:02:02"
 
-pkt = Ether(src=MAC_SRC1,dst=MAC_DST1)/IP()/TCP()/"hello"
+def pad_pkt(pkt, size, padstr):
+    if len(pkt) >= size:
+        return pkt
+    else:
+        return pkt / (padstr*(size - len(pkt)))
 
-sendp(pkt, iface="nf1", count=1)
+def test_calc_packet_l2(SMAC, DMAC, port_name,length, pad_str='\x00'):
+    global pktCnt
+    pktCnt += 1
+    pkt = Ether(dst=DMAC, src=SMAC)/IP()
+    pkt = pad_pkt(pkt, length,pad_str)
+    return pkt
+
+pkt = test_calc_packet_l2("01:11:11:11:11:01", "01:11:11:11:11:01",'nf0',64, pad_str='\x01')
+sendp(pkt, iface="nf0", count=1)
