@@ -132,7 +132,7 @@ generate_target all [get_ips identifier_ip]
 source $::env(P4_PROJECT_PIFO_MODULES_DIR)/$::env(P4_PROJECT_DEMO_TCL).tcl
 
 read_verilog "./hdl/axi_clocking.v"
-read_verilog "./hdl/nf_datapath.v"
+#read_verilog "./hdl/nf_datapath.v"
 read_verilog "./hdl/top.v"
 
 

@@ -161,7 +161,7 @@ source $::env(NF_DESIGN_DIR)/hw/tcl/control_sub_sim.tcl
 source $::env(P4_PROJECT_PIFO_MODULES_DIR)/$::env(P4_PROJECT_DEMO_TCL).tcl
 
 read_verilog "$::env(NF_DESIGN_DIR)/hw/hdl/axi_clocking.v"
-read_verilog "$::env(NF_DESIGN_DIR)/hw/hdl/nf_datapath.v"
+# read_verilog "$::env(NF_DESIGN_DIR)/hw/hdl/nf_datapath.v"
 read_verilog "$::env(NF_DESIGN_DIR)/hw/hdl/top_sim.v"
 read_verilog "$::env(NF_DESIGN_DIR)/hw/hdl/top_tb.v"
 
