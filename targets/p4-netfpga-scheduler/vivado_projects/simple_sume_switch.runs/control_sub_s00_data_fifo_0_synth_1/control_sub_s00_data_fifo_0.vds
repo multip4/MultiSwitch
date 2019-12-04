@@ -1,0 +1,292 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Dec  4 20:45:05 2019
+# Process ID: 23779
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1
+# Command line: vivado -log control_sub_s00_data_fifo_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source control_sub_s00_data_fifo_0.tcl
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/control_sub_s00_data_fifo_0.vds
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source control_sub_s00_data_fifo_0.tcl -notrace
+Command: synth_design -top control_sub_s00_data_fifo_0 -part xc7vx690tffg1761-3 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7vx690t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7vx690t'
+INFO: [Common 17-86] Your Synthesis license expires in 24 day(s)
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 23894 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1309.047 ; gain = 88.000 ; free physical = 2324 ; free virtual = 13024
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'control_sub_s00_data_fifo_0' [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ip/control_sub_s00_data_fifo_0/synth/control_sub_s00_data_fifo_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_16_axi_data_fifo' [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/247d/hdl/axi_data_fifo_v2_1_vl_rfs.v:1283]
+	Parameter C_FAMILY bound to: virtex7 - type: string 
+	Parameter C_AXI_PROTOCOL bound to: 2 - type: integer 
+	Parameter C_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_AXI_SUPPORTS_USER_SIGNALS bound to: 0 - type: integer 
+	Parameter C_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXI_WRITE_FIFO_DEPTH bound to: 32 - type: integer 
+	Parameter C_AXI_WRITE_FIFO_TYPE bound to: lut - type: string 
+	Parameter C_AXI_WRITE_FIFO_DELAY bound to: 0 - type: integer 
+	Parameter C_AXI_READ_FIFO_DEPTH bound to: 32 - type: integer 
+	Parameter C_AXI_READ_FIFO_TYPE bound to: lut - type: string 
+	Parameter C_AXI_READ_FIFO_DELAY bound to: 0 - type: integer 
+	Parameter P_WIDTH_RACH bound to: 63 - type: integer 
+	Parameter P_WIDTH_WACH bound to: 63 - type: integer 
+	Parameter P_WIDTH_RDCH bound to: 37 - type: integer 
+	Parameter P_WIDTH_WDCH bound to: 38 - type: integer 
+	Parameter P_WIDTH_WRCH bound to: 4 - type: integer 
+	Parameter P_PRIM_FIFO_TYPE bound to: 512x72 - type: string 
+	Parameter P_AXI4 bound to: 0 - type: integer 
+	Parameter P_AXI3 bound to: 1 - type: integer 
+	Parameter P_AXILITE bound to: 2 - type: integer 
+	Parameter P_WRITE_FIFO_DEPTH_LOG bound to: 5 - type: integer 
+	Parameter P_READ_FIFO_DEPTH_LOG bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_16_axi_data_fifo' (1#1) [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/247d/hdl/axi_data_fifo_v2_1_vl_rfs.v:1283]
+INFO: [Synth 8-6155] done synthesizing module 'control_sub_s00_data_fifo_0' (2#1) [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ip/control_sub_s00_data_fifo_0/synth/control_sub_s00_data_fifo_0.v:58]
+WARNING: [Synth 8-3331] design axi_data_fifo_v2_1_16_axi_data_fifo has unconnected port aclk
+WARNING: [Synth 8-3331] design axi_data_fifo_v2_1_16_axi_data_fifo has unconnected port aresetn
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:24 . Memory (MB): peak = 1439.672 ; gain = 218.625 ; free physical = 2335 ; free virtual = 13036
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:24 . Memory (MB): peak = 1439.672 ; gain = 218.625 ; free physical = 2336 ; free virtual = 13036
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:24 . Memory (MB): peak = 1439.672 ; gain = 218.625 ; free physical = 2336 ; free virtual = 13036
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7vx690tffg1761-3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ip/control_sub_s00_data_fifo_0/control_sub_s00_data_fifo_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ip/control_sub_s00_data_fifo_0/control_sub_s00_data_fifo_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 1809.055 ; gain = 0.000 ; free physical = 1899 ; free virtual = 12606
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:43 ; elapsed = 00:01:29 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1987 ; free virtual = 12693
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7vx690tffg1761-3
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:43 ; elapsed = 00:01:29 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1986 ; free virtual = 12693
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:01:29 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1986 ; free virtual = 12693
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:43 ; elapsed = 00:01:29 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1987 ; free virtual = 12694
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 3600 (col length:200)
+BRAMs: 2940 (col length: RAMB18 200 RAMB36 100)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design axi_data_fifo_v2_1_16_axi_data_fifo has unconnected port aclk
+WARNING: [Synth 8-3331] design axi_data_fifo_v2_1_16_axi_data_fifo has unconnected port aresetn
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:01:30 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1985 ; free virtual = 12693
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+
+Report Instance Areas: 
++------+---------+------------------------------------+------+
+|      |Instance |Module                              |Cells |
++------+---------+------------------------------------+------+
+|1     |top      |                                    |     0|
+|2     |  inst   |axi_data_fifo_v2_1_16_axi_data_fifo |     0|
++------+---------+------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1864 ; free virtual = 12572
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 1809.055 ; gain = 218.625 ; free physical = 1918 ; free virtual = 12626
+Synthesis Optimization Complete : Time (s): cpu = 00:00:49 ; elapsed = 00:01:37 . Memory (MB): peak = 1809.055 ; gain = 588.008 ; free physical = 1918 ; free virtual = 12626
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+14 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:01:39 . Memory (MB): peak = 1831.039 ; gain = 635.594 ; free physical = 1891 ; free virtual = 12600
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/control_sub_s00_data_fifo_0.dcp' has been generated.
+INFO: [Coretcl 2-1482] Added synthesis output to IP cache for IP /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ip/control_sub_s00_data_fifo_0/control_sub_s00_data_fifo_0.xci
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_s00_data_fifo_0_synth_1/control_sub_s00_data_fifo_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file control_sub_s00_data_fifo_0_utilization_synth.rpt -pb control_sub_s00_data_fifo_0_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.67 ; elapsed = 00:00:00.68 . Memory (MB): peak = 1831.039 ; gain = 0.000 ; free physical = 1890 ; free virtual = 12598
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  4 20:46:55 2019...

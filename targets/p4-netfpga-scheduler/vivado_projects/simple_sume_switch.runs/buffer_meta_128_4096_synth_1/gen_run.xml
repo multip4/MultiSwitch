@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="buffer_meta_128_4096_synth_1" LaunchPart="xc7vx690tffg1761-3" LaunchTime="1575459902">
+  <File Type="VDS-TIMING-PB" Name="buffer_meta_128_4096_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="buffer_meta_128_4096_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="buffer_meta_128_4096.dcp"/>
+  <File Type="REPORTS-TCL" Name="buffer_meta_128_4096_reports.tcl"/>
+  <File Type="PA-TCL" Name="buffer_meta_128_4096.tcl"/>
+  <File Type="RDS-RDS" Name="buffer_meta_128_4096.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="buffer_meta_128_4096_drc_synth.rpt"/>
+  <File Type="RDS-UTIL" Name="buffer_meta_128_4096_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="buffer_meta_128_4096_utilization_synth.pb"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/buffer_meta_128_4096">
+    <File Path="$PSRCDIR/sources_1/ip/buffer_meta_128_4096/buffer_meta_128_4096.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="buffer_meta_128_4096"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/buffer_meta_128_4096">
+    <File Path="$PSRCDIR/sources_1/ip/buffer_meta_128_4096/buffer_meta_128_4096.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="buffer_meta_128_4096"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
