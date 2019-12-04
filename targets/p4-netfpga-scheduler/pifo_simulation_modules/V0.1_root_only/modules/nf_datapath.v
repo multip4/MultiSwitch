@@ -200,7 +200,7 @@ module nf_datapath #(
      
     (* mark_debug = "true" *) wire [C_M_AXIS_DATA_WIDTH - 1:0]         s_axis_opl_tdata;
     (* mark_debug = "true" *) wire [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] s_axis_opl_tkeep;
-    (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH-1:0]          s_axis_opl_tuser;
+    (* mark_debug = "true" *) wire [C_S_AXIS_TUSER_WIDTH-1:0]          s_axis_opl_tuser;
     (* mark_debug = "true" *) wire                                     s_axis_opl_tvalid;
     (* mark_debug = "true" *) wire                                     s_axis_opl_tready;
     (* mark_debug = "true" *) wire                                     s_axis_opl_tlast;
@@ -297,7 +297,7 @@ module nf_datapath #(
       .m_axis_tlast (m_axis_opl_tlast), 
       .s_axis_tdata (s_axis_opl_tdata), 
       .s_axis_tkeep (s_axis_opl_tkeep), 
-      .s_axis_tuser ({dma_q_size, nf3_q_size, nf2_q_size, nf1_q_size, nf0_q_size, s_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH-DIGEST_WIDTH-1:0]}), 
+      .s_axis_tuser ({32'h00000000,dma_q_size, nf3_q_size, nf2_q_size, nf1_q_size, nf0_q_size, s_axis_opl_tuser[C_S_AXIS_TUSER_WIDTH-DIGEST_WIDTH-1:0]}), 
       .s_axis_tvalid(s_axis_opl_tvalid), 
       .s_axis_tready(s_axis_opl_tready), 
       .s_axis_tlast (s_axis_opl_tlast),
@@ -332,6 +332,8 @@ module nf_datapath #(
     (* mark_debug = "true" *) wire [C_S_AXI_DATA_WIDTH-1:0] bytes_dropped;
     (* mark_debug = "true" *) wire [5-1:0] pkt_dropped; 
 
+    wire [C_M_AXIS_TUSER_WIDTH-1:0] scheduler_tuser = m_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH-1:0];
+
            //Output queues
        scheduler_top_v0_1  
      scheduler_top_1 (
@@ -339,7 +341,7 @@ module nf_datapath #(
       .axis_resetn(axis_resetn), 
       .s_axis_tdata   (m_axis_opl_tdata), 
       .s_axis_tkeep   (m_axis_opl_tkeep), 
-      .s_axis_tuser   (m_axis_opl_tuser), 
+      .s_axis_tuser   (scheduler_tuser), 
       .s_axis_tvalid  (m_axis_opl_tvalid), 
       .s_axis_tready  (m_axis_opl_tready), 
       .s_axis_tlast   (m_axis_opl_tlast), 
