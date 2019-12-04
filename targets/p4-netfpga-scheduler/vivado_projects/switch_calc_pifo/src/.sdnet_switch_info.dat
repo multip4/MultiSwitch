@@ -1,0 +1,226 @@
+{
+  "TopParser" : {
+    "px_io_tuples" : {
+      "1" : {
+        "px_name" : "p",
+        "p4_name" : "p",
+        "px_type_name" : "p_t",
+        "direction" : "out"
+      },
+      "2" : {
+        "px_name" : "user_metadata",
+        "p4_name" : "user_metadata",
+        "px_type_name" : "user_metadata_t_0",
+        "direction" : "out"
+      },
+      "3" : {
+        "px_name" : "digest_data",
+        "p4_name" : "digest_data",
+        "px_type_name" : "digest_data_t_0",
+        "direction" : "out"
+      },
+      "4" : {
+        "px_name" : "sume_metadata",
+        "p4_name" : "sume_metadata",
+        "px_type_name" : "sume_metadata_t_0",
+        "direction" : "inout"
+      }
+    },
+    "px_engines" : [
+      {
+        "px_name" : "TopParser",
+        "px_type_name" : "TopParser_t"
+      }
+    ],
+    "px_system_connections" : []
+  },
+  "TopPipe" : {
+    "px_io_tuples" : {
+      "0" : {
+        "px_name" : "p",
+        "p4_name" : "p",
+        "px_type_name" : "p_t_0",
+        "direction" : "inout"
+      },
+      "1" : {
+        "px_name" : "user_metadata",
+        "p4_name" : "user_metadata",
+        "px_type_name" : "user_metadata_t_1",
+        "direction" : "inout"
+      },
+      "2" : {
+        "px_name" : "digest_data",
+        "p4_name" : "digest_data",
+        "px_type_name" : "digest_data_t_1",
+        "direction" : "inout"
+      },
+      "3" : {
+        "px_name" : "sume_metadata",
+        "p4_name" : "sume_metadata",
+        "px_type_name" : "sume_metadata_t_1",
+        "direction" : "inout"
+      }
+    },
+    "px_engines" : [
+      {
+        "px_name" : "TopPipe_lvl",
+        "px_type_name" : "TopPipe_lvl_t"
+      },
+      {
+        "px_name" : "TopPipe_lvl_0",
+        "px_type_name" : "TopPipe_lvl_0_t"
+      },
+      {
+        "px_name" : "lookup_table",
+        "px_type_name" : "lookup_table_t"
+      },
+      {
+        "px_name" : "TopPipe_lvl_1",
+        "px_type_name" : "TopPipe_lvl_1_t"
+      },
+      {
+        "px_name" : "jk_reg_rw_0",
+        "px_type_name" : "jk_reg_rw_0_t"
+      },
+      {
+        "px_name" : "TopPipe_lvl_2",
+        "px_type_name" : "TopPipe_lvl_2_t"
+      }
+    ],
+    "px_system_connections" : ["TopPipe_lvl_0.TopPipe_fl = TopPipe_lvl.TopPipe_fl", "TopPipe_lvl_0.digest_data = TopPipe_lvl.digest_data", "TopPipe_lvl_0.local_state = TopPipe_lvl.local_state", "TopPipe_lvl_0.p = TopPipe_lvl.p", "TopPipe_lvl_0.sume_metadata = TopPipe_lvl.sume_metadata", "TopPipe_lvl_0.user_metadata = TopPipe_lvl.user_metadata", "TopPipe_lvl_1.TopPipe_fl = TopPipe_lvl_0.TopPipe_fl", "TopPipe_lvl_1.digest_data = TopPipe_lvl_0.digest_data", "TopPipe_lvl_1.local_state = TopPipe_lvl_0.local_state", "TopPipe_lvl_1.p = TopPipe_lvl_0.p", "TopPipe_lvl_1.sume_metadata = TopPipe_lvl_0.sume_metadata", "TopPipe_lvl_1.user_metadata = TopPipe_lvl_0.user_metadata", "lookup_table.request = TopPipe_lvl_0.lookup_table_req", "TopPipe_lvl_1.lookup_table_resp = lookup_table.response", "TopPipe_lvl_2.TopPipe_fl = TopPipe_lvl_1.TopPipe_fl", "TopPipe_lvl_2.digest_data = TopPipe_lvl_1.digest_data", "TopPipe_lvl_2.local_state = TopPipe_lvl_1.local_state", "TopPipe_lvl_2.lookup_table_resp = TopPipe_lvl_1.lookup_table_resp", "TopPipe_lvl_2.p = TopPipe_lvl_1.p", "TopPipe_lvl_2.sume_metadata = TopPipe_lvl_1.sume_metadata", "TopPipe_lvl_2.user_metadata = TopPipe_lvl_1.user_metadata", "jk_reg_rw_0.jk_reg_rw_input = TopPipe_lvl_1.jk_reg_rw_input", "TopPipe_lvl_2.jk_reg_rw_output = jk_reg_rw_0.jk_reg_rw_output"],
+    "px_lookups" : [
+      {
+        "px_name" : "lookup_table",
+        "p4_name" : "lookup_table",
+        "px_class" : "LookupEngine",
+        "px_type_name" : "lookup_table_t",
+        "match_type" : "EM",
+        "action_ids" : {
+          "TopPipe.set_result" : 1,
+          "TopPipe.set_result_default" : 2
+        },
+        "response_fields" : [
+          {
+            "px_name" : "hit",
+            "type" : "bits",
+            "size" : 1
+          },
+          {
+            "px_name" : "action_run",
+            "type" : "bits",
+            "size" : 2
+          },
+          {
+            "px_name" : "set_result_0",
+            "type" : "struct",
+            "fields" : [
+              {
+                "px_name" : "data",
+                "type" : "bits",
+                "size" : 32
+              }
+            ],
+            "p4_action" : "TopPipe.set_result"
+          }
+        ],
+        "request_fields" : [
+          {
+            "px_name" : "lookup_request_key",
+            "p4_name" : "p.calc.op1",
+            "type" : "bits",
+            "size" : 32
+          }
+        ],
+        "annotations" : {
+          "name" : ["TopPipe.lookup_table"],
+          "Xilinx_ExternallyConnected" : ["0"],
+          "Xilinx_LookupEngineType" : ["EM"]
+        }
+      }
+    ],
+    "px_user_engines" : [
+      {
+        "px_name" : "jk_reg_rw_0",
+        "p4_name" : "jk_reg_rw_0",
+        "px_class" : "UserEngine",
+        "px_type_name" : "jk_reg_rw_0_t",
+        "input_decl" : {
+          "px_name" : "jk_reg_rw_input",
+          "px_type_name" : "jk_reg_rw_input_t"
+        },
+        "output_decl" : {
+          "px_name" : "jk_reg_rw_output",
+          "px_type_name" : "jk_reg_rw_output_t"
+        },
+        "input_fields" : [
+          {
+            "px_name" : "stateful_valid",
+            "type" : "bits",
+            "size" : 1
+          },
+          {
+            "px_name" : "index",
+            "type" : "bits",
+            "size" : 4
+          },
+          {
+            "px_name" : "newVal",
+            "type" : "bits",
+            "size" : 32
+          },
+          {
+            "px_name" : "opCode",
+            "type" : "bits",
+            "size" : 8
+          }
+        ],
+        "output_fields" : [
+          {
+            "px_name" : "result",
+            "type" : "bits",
+            "size" : 32
+          }
+        ],
+        "annotations" : {
+          "Xilinx_MaxLatency" : ["64"],
+          "Xilinx_ControlWidth" : ["4"]
+        }
+      }
+    ]
+  },
+  "TopDeparser" : {
+    "px_io_tuples" : {
+      "1" : {
+        "px_name" : "p",
+        "p4_name" : "p",
+        "px_type_name" : "p_t_1",
+        "direction" : "in"
+      },
+      "2" : {
+        "px_name" : "user_metadata",
+        "p4_name" : "user_metadata",
+        "px_type_name" : "user_metadata_t_2",
+        "direction" : "in"
+      },
+      "3" : {
+        "px_name" : "digest_data",
+        "p4_name" : "digest_data",
+        "px_type_name" : "digest_data_t_2",
+        "direction" : "inout"
+      },
+      "4" : {
+        "px_name" : "sume_metadata",
+        "p4_name" : "sume_metadata",
+        "px_type_name" : "sume_metadata_t_2",
+        "direction" : "inout"
+      }
+    },
+    "px_engines" : [
+      {
+        "px_name" : "TopDeparser",
+        "px_type_name" : "TopDeparser_t"
+      }
+    ],
+    "px_system_connections" : []
+  }
+}

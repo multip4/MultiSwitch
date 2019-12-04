@@ -1,0 +1,115 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Dec  4 19:00:53 2019
+# Process ID: 8760
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test
+# Command line: vivado -mode batch -source /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/tcl/simple_sume_switch_sim.tcl -tclargs sim_switch_default
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/vivado.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/vivado.jou
+#-----------------------------------------------------------
+source /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/tcl/simple_sume_switch_sim.tcl
+# set design $::env(NF_PROJECT_NAME)
+# set top top_sim
+# set sim_top top_tb
+# set device  xc7vx690t-3-ffg1761
+# set proj_dir ./project
+# set public_repo_dir $::env(SUME_FOLDER)/lib/hw/
+# set xilinx_repo_dir $::env(XILINX_VIVADO)/data/ip/xilinx/
+# set repo_dir ./ip_repo
+# set bit_settings $::env(CONSTRAINTS)/generic_bit.xdc 
+# set project_constraints $::env(NF_DESIGN_DIR)/hw/constraints/nf_sume_general.xdc
+# set nf_10g_constraints $::env(NF_DESIGN_DIR)/hw/constraints/nf_sume_10g.xdc
+# set test_name [lindex $argv 0] 
+# source $::env(NF_DESIGN_DIR)/hw/tcl/$::env(NF_PROJECT_NAME)_defines.tcl
+## set MICROBLAZE_AXI_IIC_BASEADDR 0x40800000
+## set MICROBLAZE_AXI_IIC_HIGHADDR 0x4080FFFF
+## set MICROBLAZE_AXI_IIC_SIZEADDR 0x10000
+## set MICROBLAZE_UARTLITE_BASEADDR 0x40600000
+## set MICROBLAZE_UARTLITE_HIGHADDR 0x4060FFFF
+## set MICROBLAZE_UARTLITE_SIZEADDR 0x10000
+## set MICROBLAZE_DLMB_BRAM_BASEADDR 0x00000000
+## set MICROBLAZE_DLMB_BRAM_HIGHADDR 0x0000FFFF
+## set MICROBLAZE_DLMB_BRAM_SIZEADDR 0x10000
+## set MICROBLAZE_ILMB_BRAM_BASEADDR 0x00000000
+## set MICROBLAZE_ILMB_BRAM_HIGHADDR 0x0000FFFF
+## set MICROBLAZE_ILMB_BRAM_SIZEADDR 0x10000
+## set MICROBLAZE_AXI_INTC_BASEADDR 0x41200000
+## set MICROBLAZE_AXI_INTC_HIGHADDR 0x4120FFFF
+## set MICROBLAZE_AXI_INTC_SIZEADDR 0x10000
+## set M00_BASEADDR 0x44000000
+## set M00_HIGHADDR 0x44000FFF
+## set M00_SIZEADDR 0x1000
+## set M01_BASEADDR 0x44010000
+## set M01_HIGHADDR 0x44010FFF
+## set M01_SIZEADDR 0x1000
+## set M02_BASEADDR 0x44020000
+## set M02_HIGHADDR 0x44020FFF
+## set M02_SIZEADDR 0x1000
+## set M03_BASEADDR 0x43000000
+## set M03_HIGHADDR 0x43FFFFFF
+## set M03_SIZEADDR 0x1000000
+## set M04_BASEADDR 0x44040000
+## set M04_HIGHADDR 0x44040FFF
+## set M04_SIZEADDR 0x1000
+## set M05_BASEADDR 0x44050000
+## set M05_HIGHADDR 0x44050FFF
+## set M05_SIZEADDR 0x1000
+## set M06_BASEADDR 0x44060000
+## set M06_HIGHADDR 0x44060FFF
+## set M06_SIZEADDR 0x1000
+## set M07_BASEADDR 0x44070000
+## set M07_HIGHADDR 0x44070FFF
+## set M07_SIZEADDR 0x1000
+## set M08_BASEADDR 0x44080000
+## set M08_HIGHADDR 0x44080FFF
+## set M08_SIZEADDR 0x1000
+## set IDENTIFIER_BASEADDR $M00_BASEADDR
+## set IDENTIFIER_HIGHADDR $M00_HIGHADDR
+## set IDENTIFIER_SIZEADDR $M00_SIZEADDR
+## set INPUT_ARBITER_BASEADDR $M01_BASEADDR
+## set INPUT_ARBITER_HIGHADDR $M01_HIGHADDR
+## set INPUT_ARBITER_SIZEADDR $M01_SIZEADDR
+## set OUTPUT_QUEUES_BASEADDR $M03_BASEADDR
+## set OUTPUT_QUEUES_HIGHADDR $M03_HIGHADDR
+## set OUTPUT_QUEUES_SIZEADDR $M03_SIZEADDR
+## set OUTPUT_PORT_LOOKUP_BASEADDR $M02_BASEADDR
+## set OUTPUT_PORT_LOOKUP_HIGHADDR $M02_HIGHADDR
+## set OUTPUT_PORT_LOOKUP_SIZEADDR $M02_SIZEADDR
+## set NF_10G_INTERFACE0_BASEADDR $M04_BASEADDR
+## set NF_10G_INTERFACE0_HIGHADDR $M04_HIGHADDR
+## set NF_10G_INTERFACE0_SIZEADDR $M04_SIZEADDR
+## set NF_10G_INTERFACE1_BASEADDR $M05_BASEADDR
+## set NF_10G_INTERFACE1_HIGHADDR $M05_HIGHADDR
+## set NF_10G_INTERFACE1_SIZEADDR $M05_SIZEADDR
+## set NF_10G_INTERFACE2_BASEADDR $M06_BASEADDR
+## set NF_10G_INTERFACE2_HIGHADDR $M06_HIGHADDR
+## set NF_10G_INTERFACE2_SIZEADDR $M06_SIZEADDR
+## set NF_10G_INTERFACE3_BASEADDR $M07_BASEADDR
+## set NF_10G_INTERFACE3_HIGHADDR $M07_HIGHADDR
+## set NF_10G_INTERFACE3_SIZEADDR $M07_SIZEADDR
+## set NF_RIFFA_DMA_BASEADDR $M08_BASEADDR
+## set NF_RIFFA_DMA_HIGHADDR $M08_HIGHADDR
+## set NF_RIFFA_DMA_SIZEADDR $M08_SIZEADDR
+# create_project -name ${design} -force -dir "$::env(NF_DESIGN_DIR)/hw/${proj_dir}" -part ${device}
+# set_property source_mgmt_mode DisplayOnly [current_project]  
+# set_property top ${top} [current_fileset]
+# puts "Creating User Datapath reference project"
+Creating User Datapath reference project
+# create_fileset -constrset -quiet constraints
+# file copy ${public_repo_dir}/ ${repo_dir}
+# set_property ip_repo_paths ${repo_dir} [current_fileset]
+# add_files -fileset constraints -norecurse ${bit_settings}
+# add_files -fileset constraints -norecurse ${project_constraints}
+# add_files -fileset constraints -norecurse ${nf_10g_constraints}
+# set_property is_enabled true [get_files ${project_constraints}]
+# set_property is_enabled true [get_files ${bit_settings}]
+# set_property is_enabled true [get_files ${project_constraints}]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.2/data/ip'.
+# create_ip -name nf_sume_sdnet -vendor NetFPGA -library NetFPGA -module_name nf_sume_sdnet_ip
+ERROR: [Coretcl 2-1134] No IP matching VLNV 'NetFPGA:NetFPGA:nf_sume_sdnet:*' was found. Please check your repository configuration.
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  4 19:01:01 2019...

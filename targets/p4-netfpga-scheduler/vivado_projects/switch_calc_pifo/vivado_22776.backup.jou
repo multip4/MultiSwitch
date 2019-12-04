@@ -1,0 +1,78 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Oct  7 12:26:37 2019
+# Process ID: 22776
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc
+# Command line: vivado
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc/vivado.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top enqueue_agent_v0_1 [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -datasheet -name timing_1
+export_ip_user_files -of_objects  [get_files /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.srcs/constrs_1/new/device_temp1.xdc] -no_script -reset -force -quiet
+remove_files  -fileset constrs_1 /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.srcs/constrs_1/new/device_temp1.xdc
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -datasheet -name timing_2
+close_design
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/sim/eq_agent_sim_v0_1.v w ]
+add_files -fileset sim_1 /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/sim/eq_agent_sim_v0_1.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top eq_agent_sim_v0_1 [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top addr_manager_v0_1 [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -datasheet -name timing_1
+close_design
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top output_queue_v0_1 [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+set_property -dict [list CONFIG.Enable_B {Always_Enabled}] [get_ips buffer_pkt_289_4096]
+generate_target all [get_files  /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.srcs/sources_1/ip/buffer_pkt_289_4096/buffer_pkt_289_4096.xci]
+catch { config_ip_cache -export [get_ips -all buffer_pkt_289_4096] }
+export_ip_user_files -of_objects [get_files /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.srcs/sources_1/ip/buffer_pkt_289_4096/buffer_pkt_289_4096.xci] -no_script -sync -force -quiet
+reset_run buffer_pkt_289_4096_synth_1
+launch_runs -jobs 4 buffer_pkt_289_4096_synth_1
+export_simulation -of_objects [get_files /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.srcs/sources_1/ip/buffer_pkt_289_4096/buffer_pkt_289_4096.xci] -directory /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.ip_user_files/sim_scripts -ip_user_files_dir /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.ip_user_files -ipstatic_source_dir /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.ip_user_files/ipstatic -lib_map_path [list {modelsim=/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.cache/compile_simlib/modelsim} {questa=/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.cache/compile_simlib/questa} {ies=/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.cache/compile_simlib/ies} {xcelium=/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.cache/compile_simlib/xcelium} {vcs=/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.cache/compile_simlib/vcs} {riviera=/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/project_pifo_calendar_root_only/project_pifo_calendar_root_only.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1

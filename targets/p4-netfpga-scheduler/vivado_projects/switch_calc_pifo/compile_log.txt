@@ -1,0 +1,78 @@
+On branch compile_test_1
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_const_reg_rw_0_tuple_in_const_reg_rw_input.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_const_reg_rw_0_tuple_in_const_reg_rw_input.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_lookup_table_tuple_in_request.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_lookup_table_tuple_in_request.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/glbl.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/xpm_cdc.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/xpm_fifo.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/xpm_memory.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_CONTROLLERs.HDL/S_CONTROLLER_SimpleSumeSwitch.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_CONTROLLERs.HDL/S_CONTROLLER_SimpleSumeSwitch.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_control.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_line.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_lookup.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_TopDeparser.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopDeparser.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopParser.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for__OUT_.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/glbl.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_cdc.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_fifo.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.h
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.info
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch_0.dot
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch_0_elaborated.dot
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch_vivado_packager.tcl
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/CAM.c
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/CAM.h
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/CAM_INST0.h
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/Check.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/SimpleSumeSwitch_tb.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/TB_System_Stim.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/cam_prog.tcl
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/cam_update.tcl
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/dpi.h
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/rw_procs.tcl
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/user.c
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_2_t.HDL/TopPipe_lvl_2_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_2_t.HDL/TopPipe_lvl_2_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/const_reg_rw_0_t.HDL/const_reg_rw_0_t.v.stub
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/lookup_table_t.HDL/lookup_table_t.v
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/lookup_table_t.HDL/lookup_table_t.vp
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/lookup_table_t.HDL/xpm_cdc.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/lookup_table_t.HDL/xpm_memory.sv
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/questa.bash
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/questa_waveform.bash
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/run_dot.bash
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/vcs.bash
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/vcs_waveform.bash
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/vivado_sim.bash
+	new file:   nf_sume_sdnet_ip/SimpleSumeSwitch/vivado_sim_waveform.bash
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	compile_log.txt
+

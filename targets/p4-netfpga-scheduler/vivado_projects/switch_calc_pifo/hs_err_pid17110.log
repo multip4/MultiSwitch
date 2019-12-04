@@ -1,0 +1,14 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/tools/Xilinx/Vivado/2018.2/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x923da9) [0x7f4da21ceda9]
+/tools/Xilinx/Vivado/2018.2/tps/lnx64/jre/lib/amd64/server/libjvm.so(JVM_handle_linux_signal+0xb6) [0x7f4da21d53f6]
+/tools/Xilinx/Vivado/2018.2/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x9209d3) [0x7f4da21cb9d3]
+/lib/x86_64-linux-gnu/libc.so.6(+0x354b0) [0x7f4de09684b0]
+/tools/Xilinx/Vivado/2018.2/lib/lnx64.o/libtcmalloc.so.4(tcmalloc::ThreadCache::ReleaseToCentralCache(tcmalloc::ThreadCache::FreeList*, unsigned long, int)+0xf3) [0x7f4de261d973]
+/tools/Xilinx/Vivado/2018.2/lib/lnx64.o/libtcmalloc.so.4(tcmalloc::ThreadCache::Cleanup()+0x4d) [0x7f4de261da1d]
+/tools/Xilinx/Vivado/2018.2/lib/lnx64.o/libtcmalloc.so.4(tcmalloc::ThreadCache::DeleteCache(tcmalloc::ThreadCache*)+0xf) [0x7f4de261e08f]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x6439) [0x7f4de071c439]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x7870) [0x7f4de071d870]
+/lib/x86_64-linux-gnu/libc.so.6(clone+0x6d) [0x7f4de0a3a41d]

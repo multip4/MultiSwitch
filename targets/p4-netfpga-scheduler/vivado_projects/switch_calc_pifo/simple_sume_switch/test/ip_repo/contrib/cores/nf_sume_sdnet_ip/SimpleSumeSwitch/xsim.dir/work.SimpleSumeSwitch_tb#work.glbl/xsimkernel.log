@@ -1,0 +1,7 @@
+Running: xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/xsimk -runall -simmode gui -wdb work.SimpleSumeSwitch_tb#work.glbl.wdb -simrunnum 0 -socket 38603
+Design successfully loaded
+Design Loading Memory Usage: 65024 KB (Peak: 65024 KB)
+Design Loading CPU Usage: 80 ms
+Simulation completed
+Simulation Memory Usage: 159052 KB (Peak: 212296 KB)
+Simulation CPU Usage: 2500 ms
