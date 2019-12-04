@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="addr_table_12_4096_with_coe_synth_1" LaunchPart="xc7vx690tffg1761-3" LaunchTime="1575459902">
+  <File Type="VDS-TIMING-PB" Name="addr_table_12_4096_with_coe_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="addr_table_12_4096_with_coe_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="addr_table_12_4096_with_coe.dcp"/>
+  <File Type="REPORTS-TCL" Name="addr_table_12_4096_with_coe_reports.tcl"/>
+  <File Type="PA-TCL" Name="addr_table_12_4096_with_coe.tcl"/>
+  <File Type="RDS-RDS" Name="addr_table_12_4096_with_coe.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="addr_table_12_4096_with_coe_drc_synth.rpt"/>
+  <File Type="RDS-UTIL" Name="addr_table_12_4096_with_coe_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="addr_table_12_4096_with_coe_utilization_synth.pb"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/addr_table_12_4096_with_coe">
+    <File Path="$PSRCDIR/sources_1/ip/addr_table_12_4096_with_coe/addr_table_12_4096_with_coe.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="addr_table_12_4096_with_coe"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/addr_table_12_4096_with_coe">
+    <File Path="$PSRCDIR/sources_1/ip/addr_table_12_4096_with_coe/addr_table_12_4096_with_coe.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="addr_table_12_4096_with_coe"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

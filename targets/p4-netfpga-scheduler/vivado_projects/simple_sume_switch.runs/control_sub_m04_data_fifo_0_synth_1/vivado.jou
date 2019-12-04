@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Dec  4 21:31:59 2019
+# Process ID: 774
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_m04_data_fifo_0_synth_1
+# Command line: vivado -log control_sub_m04_data_fifo_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source control_sub_m04_data_fifo_0.tcl
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_m04_data_fifo_0_synth_1/control_sub_m04_data_fifo_0.vds
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.runs/control_sub_m04_data_fifo_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source control_sub_m04_data_fifo_0.tcl -notrace
