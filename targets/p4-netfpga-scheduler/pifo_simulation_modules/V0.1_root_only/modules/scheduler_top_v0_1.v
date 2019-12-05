@@ -58,21 +58,21 @@ module scheduler_top_v0_1
     input axis_resetn,
 
     // Slave Stream Ports (interface to data path)
-    input [DATA_WIDTH - 1:0]                    s_axis_tdata,
-    input [(DATA_WIDTH / 8) - 1:0]              s_axis_tkeep,
-    input [C_S_AXIS_TUSER_WIDTH-1:0]            s_axis_tuser,
-    input                                       s_axis_tvalid,
-    input                                       s_axis_tlast,
-    output                                      s_axis_tready,   
+    (* mark_debug = "true" *) input [DATA_WIDTH - 1:0]                    s_axis_tdata,
+    (* mark_debug = "true" *) input [(DATA_WIDTH / 8) - 1:0]              s_axis_tkeep,
+    (* mark_debug = "true" *) input [C_S_AXIS_TUSER_WIDTH-1:0]            s_axis_tuser,
+    (* mark_debug = "true" *) input                                       s_axis_tvalid,
+    (* mark_debug = "true" *) input                                       s_axis_tlast,
+    (* mark_debug = "true" *) output                                      s_axis_tready,   
     
     // Master Stream Ports (interface to TX queues)
-    input                                       m_axis_0_tready,
-    output [DATA_WIDTH - 1:0]                   m_axis_0_tdata,
-    output [(DATA_WIDTH / 8) - 1:0]             m_axis_0_tkeep,
-    output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_0_tuser,
-    output [PIFO_INFO_LENGTH-1:0]               m_axis_0_tpifo,
-    output                                      m_axis_0_tvalid,
-    output                                      m_axis_0_tlast,
+    (* mark_debug = "true" *) input                                       m_axis_0_tready,
+    (* mark_debug = "true" *) output [DATA_WIDTH - 1:0]                   m_axis_0_tdata,
+    (* mark_debug = "true" *) output [(DATA_WIDTH / 8) - 1:0]             m_axis_0_tkeep,
+    (* mark_debug = "true" *) output [C_M_AXIS_TUSER_WIDTH-1:0]           m_axis_0_tuser,
+    (* mark_debug = "true" *) output [PIFO_INFO_LENGTH-1:0]               m_axis_0_tpifo,
+    (* mark_debug = "true" *) output                                      m_axis_0_tvalid,
+    (* mark_debug = "true" *) output                                      m_axis_0_tlast,
     
     input                                       m_axis_1_tready,
     output [DATA_WIDTH - 1:0]                   m_axis_1_tdata,
@@ -107,11 +107,11 @@ module scheduler_top_v0_1
     output                                      m_axis_4_tlast,
 
     // stats
-    output [QUEUE_DEPTH_BITS-1:0] nf0_q_size,
-    output [QUEUE_DEPTH_BITS-1:0] nf1_q_size,
-    output [QUEUE_DEPTH_BITS-1:0] nf2_q_size,
-    output [QUEUE_DEPTH_BITS-1:0] nf3_q_size,
-    output [QUEUE_DEPTH_BITS-1:0] dma_q_size,
+    (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] nf0_q_size,
+    (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] nf1_q_size,
+    (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] nf2_q_size,
+    (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] nf3_q_size,
+    (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] dma_q_size,
 
     output reg  [C_S_AXI_DATA_WIDTH-1:0] bytes_stored,
     output reg  [NUM_QUEUES-1:0]         pkt_stored,
@@ -152,13 +152,13 @@ module scheduler_top_v0_1
     output reg [NUM_QUEUES-1:0]          pkt_dropped
     );
     
-    wire [NUM_QUEUES-1:0]               w_buffer_almost_full_bit_array; 
-    wire [NUM_QUEUES-1:0]               w_pifo_full_bit_array;
-    wire [NUM_QUEUES-1:0]               w_buffer_write_en_bit_array; 
-    wire [NUM_QUEUES-1:0]               w_pifo_insert_en_bit_array; 
+    (* mark_debug = "true" *) wire [NUM_QUEUES-1:0]               w_buffer_almost_full_bit_array; 
+    (* mark_debug = "true" *) wire [NUM_QUEUES-1:0]               w_pifo_full_bit_array;
+    (* mark_debug = "true" *) wire [NUM_QUEUES-1:0]               w_buffer_write_en_bit_array; 
+    (* mark_debug = "true" *) wire [NUM_QUEUES-1:0]               w_pifo_insert_en_bit_array; 
     
-    wire [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta;
-    wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info;      
+    (* mark_debug = "true" *) wire [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta;
+    (* mark_debug = "true" *) wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info;      
         
 
 

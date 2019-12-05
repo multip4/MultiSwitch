@@ -251,6 +251,8 @@ SimpleSumeSwitch SimpleSumeSwitch_inst (
  *     [39:32]   drop; // only bit 32 is used
  *     [47:40]   send_dig_to_cpu; // only bit 40 is used
  *     [127:48]  digest_data;
+
+ *     [159:128] pifo_info; // extended field.
  */
 
 assign m_axis_tuser = {digest_tuple_out_DATA[C_M_AXIS_TUSER_WIDTH-C_S_AXIS_TUSER_WIDTH-1:0], sume_tuple_out_DATA}; //zhenguo cui

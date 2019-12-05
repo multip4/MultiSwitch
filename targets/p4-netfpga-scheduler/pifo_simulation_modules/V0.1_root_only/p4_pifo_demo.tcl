@@ -7,12 +7,12 @@ set RC_BRAM_A_OP "READ_FIRST"
 set RC_BRAM_B_WIDTH 32
 
 
-#Adding Block Ram Forest.1000
-create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name blk_mem_gen_0
-set_property -dict [list CONFIG.Memory_Type {Simple_Dual_Port_RAM} CONFIG.Write_Width_A ${RC_BRAM_A_WIDTH} CONFIG.Write_Depth_A ${RC_BRAM_A_DEPTH} CONFIG.Read_Width_A ${RC_BRAM_A_WIDTH} CONFIG.Operating_Mode_A ${RC_BRAM_A_OP} CONFIG.Enable_A {Always_Enabled} CONFIG.Write_Width_B ${RC_BRAM_B_WIDTH} CONFIG.Read_Width_B ${RC_BRAM_B_WIDTH} CONFIG.Enable_B {Always_Enabled} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Register_PortB_Output_of_Memory_Primitives {false} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Enable_Rate {100}] [get_ips blk_mem_gen_0]
-#set_property generate_synth_checkpoint false [get_files blk_mem_gen_0.xci]
-reset_target all [get_ips blk_mem_gen_0]
-generate_target all [get_ips blk_mem_gen_0]
+# #Adding Block Ram Forest.1000
+# create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name blk_mem_gen_0
+# set_property -dict [list CONFIG.Memory_Type {Simple_Dual_Port_RAM} CONFIG.Write_Width_A ${RC_BRAM_A_WIDTH} CONFIG.Write_Depth_A ${RC_BRAM_A_DEPTH} CONFIG.Read_Width_A ${RC_BRAM_A_WIDTH} CONFIG.Operating_Mode_A ${RC_BRAM_A_OP} CONFIG.Enable_A {Always_Enabled} CONFIG.Write_Width_B ${RC_BRAM_B_WIDTH} CONFIG.Read_Width_B ${RC_BRAM_B_WIDTH} CONFIG.Enable_B {Always_Enabled} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Register_PortB_Output_of_Memory_Primitives {false} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Enable_Rate {100}] [get_ips blk_mem_gen_0]
+# #set_property generate_synth_checkpoint false [get_files blk_mem_gen_0.xci]
+# reset_target all [get_ips blk_mem_gen_0]
+# generate_target all [get_ips blk_mem_gen_0]
 
 
 set SCHE_BUFFER_DEPTH 512
@@ -28,7 +28,7 @@ exec python $::env(P4_PROJECT_PIFO_MODULES_DIR)/addr_table_coe_gen.py ${SCHE_BUF
 # Porting Jinkook's tcl source.
 #1. pkt addr coe
 create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name addr_table_12_4096_with_coe
-set_property -dict [list CONFIG.Component_Name {addr_table_12_4096_with_coe} CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Assume_Synchronous_Clk {true} CONFIG.Write_Width_A ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Write_Depth_A ${SCHE_BUFFER_DEPTH} CONFIG.Read_Width_A ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Operating_Mode_A {READ_FIRST} CONFIG.Enable_A {Always_Enabled} CONFIG.Write_Width_B ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Read_Width_B ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Operating_Mode_B {READ_FIRST} CONFIG.Enable_B {Always_Enabled} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Register_PortB_Output_of_Memory_Primitives {false} CONFIG.Load_Init_File {true} CONFIG.Coe_File $::env(P4_PROJECT_PIFO_MODULES_DIR)/coe/addr_table.coe CONFIG.Port_B_Clock {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Port_B_Enable_Rate {100}] [get_ips addr_table_12_4096_with_coe]
+set_property -dict [list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Assume_Synchronous_Clk {true} CONFIG.Write_Width_A ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Write_Depth_A ${SCHE_BUFFER_DEPTH} CONFIG.Read_Width_A ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Operating_Mode_A {READ_FIRST} CONFIG.Enable_A {Always_Enabled} CONFIG.Write_Width_B ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Read_Width_B ${SCHE_ADDR_TABLE_WIDTH} CONFIG.Operating_Mode_B {READ_FIRST} CONFIG.Enable_B {Always_Enabled} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Register_PortB_Output_of_Memory_Primitives {false} CONFIG.Load_Init_File {true} CONFIG.Coe_File $::env(P4_PROJECT_PIFO_MODULES_DIR)/coe/addr_table.coe CONFIG.Port_B_Clock {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Port_B_Enable_Rate {100}] [get_ips addr_table_12_4096_with_coe]
 generate_target all [get_ips addr_table_12_4096_with_coe]
 
 #2. pkt buffer
@@ -47,6 +47,7 @@ create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_
 set_property -dict [list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Assume_Synchronous_Clk {true} CONFIG.Write_Width_A ${SCHE_PIFO_BUFFER_WIDTH} CONFIG.Write_Depth_A ${SCHE_BUFFER_DEPTH} CONFIG.Read_Width_A ${SCHE_PIFO_BUFFER_WIDTH} CONFIG.Enable_A {Always_Enabled} CONFIG.Write_Width_B ${SCHE_PIFO_BUFFER_WIDTH} CONFIG.Read_Width_B ${SCHE_PIFO_BUFFER_WIDTH} CONFIG.Operating_Mode_B {READ_FIRST} CONFIG.Enable_B {Always_Enabled} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Register_PortB_Output_of_Memory_Primitives {false} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Port_B_Enable_Rate {100}] [get_ips buffer_pifo_32_4096]
 generate_target all [get_ips buffer_pifo_32_4096]
 
+# input arbiter to sdnet_ip.
 set_property -dict [list CONFIG.C_S_AXIS_TUSER_WIDTH {160}] [get_ips nf_sume_sdnet_ip]
 
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/scheduler_top_v0_1.v"

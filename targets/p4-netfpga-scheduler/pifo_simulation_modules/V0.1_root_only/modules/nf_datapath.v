@@ -50,8 +50,9 @@ module nf_datapath #(
     // Master AXI Stream Data Width
     parameter C_M_AXIS_DATA_WIDTH=256,
     parameter C_S_AXIS_DATA_WIDTH=256,
-    parameter C_M_AXIS_TUSER_WIDTH=160,
+    parameter C_M_AXIS_TUSER_WIDTH=128,
     parameter C_S_AXIS_TUSER_WIDTH=128,
+    parameter PIFO_WIDTH=32,
     parameter NUM_QUEUES=5,
     parameter DIGEST_WIDTH =80
 )
@@ -200,7 +201,7 @@ module nf_datapath #(
      
     (* mark_debug = "true" *) wire [C_M_AXIS_DATA_WIDTH - 1:0]         s_axis_opl_tdata;
     (* mark_debug = "true" *) wire [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] s_axis_opl_tkeep;
-    (* mark_debug = "true" *) wire [C_S_AXIS_TUSER_WIDTH-1:0]          s_axis_opl_tuser;
+    (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH-1:0]          s_axis_opl_tuser;
     (* mark_debug = "true" *) wire                                     s_axis_opl_tvalid;
     (* mark_debug = "true" *) wire                                     s_axis_opl_tready;
     (* mark_debug = "true" *) wire                                     s_axis_opl_tlast;
@@ -282,7 +283,7 @@ module nf_datapath #(
       .pkt_fwd() 
     );
     
-    
+   (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0] w_sume_meta_with_pifo = {32'h00000000,dma_q_size, nf3_q_size, nf2_q_size, nf1_q_size, nf0_q_size, s_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH-DIGEST_WIDTH-1:0]};    
     
      // SUME SDNet Module
        nf_sume_sdnet_ip
@@ -297,7 +298,7 @@ module nf_datapath #(
       .m_axis_tlast (m_axis_opl_tlast), 
       .s_axis_tdata (s_axis_opl_tdata), 
       .s_axis_tkeep (s_axis_opl_tkeep), 
-      .s_axis_tuser ({32'h00000000,dma_q_size, nf3_q_size, nf2_q_size, nf1_q_size, nf0_q_size, s_axis_opl_tuser[C_S_AXIS_TUSER_WIDTH-DIGEST_WIDTH-1:0]}), 
+      .s_axis_tuser (w_sume_meta_with_pifo), 
       .s_axis_tvalid(s_axis_opl_tvalid), 
       .s_axis_tready(s_axis_opl_tready), 
       .s_axis_tlast (s_axis_opl_tlast),
@@ -328,11 +329,10 @@ module nf_datapath #(
 	  .last_pkt_info4(last_pkt_info4)
     );
 
-       
     (* mark_debug = "true" *) wire [C_S_AXI_DATA_WIDTH-1:0] bytes_dropped;
     (* mark_debug = "true" *) wire [5-1:0] pkt_dropped; 
 
-    wire [C_M_AXIS_TUSER_WIDTH-1:0] scheduler_tuser = m_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH-1:0];
+   (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0] scheduler_tuser = m_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0];
 
            //Output queues
        scheduler_top_v0_1  
