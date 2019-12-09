@@ -30,7 +30,6 @@
 #
 
 
-# Program the switch with the bit file and then configure the tables
-${SUME_SDNET}/tools/program_switch.sh simple_sume_switch.bit config_writes.sh
-
+# Program the switch with the bit file and then configure the table
+${SUME_SDNET}/tools/program_switch.sh simple_sume_switch.bit config_writes2.sh
 

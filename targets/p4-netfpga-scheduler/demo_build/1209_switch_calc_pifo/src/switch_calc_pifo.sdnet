@@ -1,0 +1,869 @@
+
+struct sume_metadata_t {
+  pifo_valid : 1,
+  pifo_rank : 19,
+  pifo_field : 12,
+  dma_q_size : 16,
+  nf3_q_size : 16,
+  nf2_q_size : 16,
+  nf1_q_size : 16,
+  nf0_q_size : 16,
+  send_dig_to_cpu : 8,
+  drop : 8,
+  dst_port : 8,
+  src_port : 8,
+  pkt_len : 16 }
+struct Ethernet_h {
+  isValid : 1,
+  dstAddr : 48,
+  srcAddr : 48,
+  etherType : 16 }
+struct Calc_h {
+  isValid : 1,
+  op1 : 32,
+  opCode : 8,
+  op2 : 32,
+  result : 32 }
+struct IPv4_h {
+  isValid : 1,
+  version : 4,
+  ihl : 4,
+  tos : 8,
+  totalLen : 16,
+  identification : 16,
+  flags : 3,
+  fragOffset : 13,
+  ttl : 8,
+  protocol : 8,
+  hdrChecksum : 16,
+  srcAddr : 32,
+  dstAddr : 32 }
+struct Parsed_packet {
+  ethernet : Ethernet_h,
+  calc : Calc_h,
+  ipv4 : IPv4_h }
+struct user_metadata_t {
+  unused : 8 }
+struct digest_data_t {
+  unused : 256 }
+class digest_data_t_0::Tuple(out) {
+  struct {
+    unused : 256 } }
+class sume_metadata_t_0::Tuple(inout) {
+  struct {
+    pifo_valid : 1,
+    pifo_rank : 19,
+    pifo_field : 12,
+    dma_q_size : 16,
+    nf3_q_size : 16,
+    nf2_q_size : 16,
+    nf1_q_size : 16,
+    nf0_q_size : 16,
+    send_dig_to_cpu : 8,
+    drop : 8,
+    dst_port : 8,
+    src_port : 8,
+    pkt_len : 16 } }
+class TopParser_t::ParsingEngine(1024,3,start) {
+  class p_t::Tuple(out) {
+    struct {
+      ethernet : Ethernet_h,
+      calc : Calc_h,
+      ipv4 : IPv4_h } }
+  class user_metadata_t_0::Tuple(out) {
+    struct {
+      unused : 8 } }
+  class digest_data_t_0::Tuple(out) {
+    struct {
+      unused : 256 } }
+  class sume_metadata_t_0::Tuple(inout) {
+    struct {
+      pifo_valid : 1,
+      pifo_rank : 19,
+      pifo_field : 12,
+      dma_q_size : 16,
+      nf3_q_size : 16,
+      nf2_q_size : 16,
+      nf1_q_size : 16,
+      nf0_q_size : 16,
+      send_dig_to_cpu : 8,
+      drop : 8,
+      dst_port : 8,
+      src_port : 8,
+      pkt_len : 16 } }
+  class TopParser_extracts_t::Tuple(out) {
+    struct {
+      size : 32 } }
+  p_t p;
+  user_metadata_t_0 user_metadata;
+  digest_data_t_0 digest_data;
+  sume_metadata_t_0 sume_metadata;
+  TopParser_extracts_t TopParser_extracts;
+  class start::Section(1) {
+    struct {
+      dstAddr_0 : 48,
+      srcAddr_0 : 48,
+      etherType_0 : 16 }
+    map transition_0 {
+      (4626, parse_calc),
+      (2048, parse_ipv4),
+      reject }
+    method update = {
+      p.ethernet.isValid = 1,
+      p.ethernet.dstAddr = dstAddr_0,
+      p.ethernet.srcAddr = srcAddr_0,
+      p.ethernet.etherType = etherType_0,
+      TopParser_extracts.size = (TopParser_extracts.size + 112),
+      user_metadata.unused = 0,
+      digest_data.unused = 0 }
+    method move_to_section = transition_0(etherType_0);
+    method increment_offset = 112; }
+  class parse_calc::Section(2) {
+    struct {
+      op1_0 : 32,
+      opCode_0 : 8,
+      op2_0 : 32,
+      result_0 : 32 }
+    method update = {
+      p.calc.isValid = 1,
+      p.calc.op1 = op1_0,
+      p.calc.opCode = opCode_0,
+      p.calc.op2 = op2_0,
+      p.calc.result = result_0,
+      TopParser_extracts.size = (TopParser_extracts.size + 104) }
+    method move_to_section = accept;
+    method increment_offset = 104; }
+  class parse_ipv4::Section(2) {
+    struct {
+      version_0 : 4,
+      ihl_0 : 4,
+      tos_0 : 8,
+      totalLen_0 : 16,
+      identification_0 : 16,
+      flags_0 : 3,
+      fragOffset_0 : 13,
+      ttl_0 : 8,
+      protocol_0 : 8,
+      hdrChecksum_0 : 16,
+      srcAddr_1 : 32,
+      dstAddr_1 : 32 }
+    method update = {
+      p.ipv4.isValid = 1,
+      p.ipv4.version = version_0,
+      p.ipv4.ihl = ihl_0,
+      p.ipv4.tos = tos_0,
+      p.ipv4.totalLen = totalLen_0,
+      p.ipv4.identification = identification_0,
+      p.ipv4.flags = flags_0,
+      p.ipv4.fragOffset = fragOffset_0,
+      p.ipv4.ttl = ttl_0,
+      p.ipv4.protocol = protocol_0,
+      p.ipv4.hdrChecksum = hdrChecksum_0,
+      p.ipv4.srcAddr = srcAddr_1,
+      p.ipv4.dstAddr = dstAddr_1,
+      TopParser_extracts.size = (TopParser_extracts.size + 160) }
+    method move_to_section = accept;
+    method increment_offset = 160; }
+  class accept::Section(3) {
+    method move_to_section = done(0);
+    method increment_offset = 0; }
+  class reject::Section(2) {
+    method move_to_section = done(0);
+    method increment_offset = 0; } }
+struct l2_set_output_port_0_cp {
+  port_num : 8 }
+struct l3_set_output_port_0_cp {
+  port_num : 8 }
+struct set_result_0_cp {
+  data : 32 }
+struct set_pifo_rank_0_cp {
+  pifo_rank : 19 }
+class TopPipe_lvl_t::TupleEngine(1,setup) {
+  class TopPipe_fl_t::Tuple(out) {
+    struct {
+      temp : 48,
+      index_1 : 4,
+      newVal_1 : 32,
+      opCode_1 : 8,
+      regVal : 32 } }
+  class digest_data_t_1::Tuple(inout) {
+    struct {
+      unused : 256 } }
+  class local_state_t::Tuple(out) {
+    struct {
+      id : 16 } }
+  class p_t_0::Tuple(inout) {
+    struct {
+      ethernet : Ethernet_h,
+      calc : Calc_h,
+      ipv4 : IPv4_h } }
+  class sume_metadata_t_1::Tuple(inout) {
+    struct {
+      pifo_valid : 1,
+      pifo_rank : 19,
+      pifo_field : 12,
+      dma_q_size : 16,
+      nf3_q_size : 16,
+      nf2_q_size : 16,
+      nf1_q_size : 16,
+      nf0_q_size : 16,
+      send_dig_to_cpu : 8,
+      drop : 8,
+      dst_port : 8,
+      src_port : 8,
+      pkt_len : 16 } }
+  class user_metadata_t_1::Tuple(inout) {
+    struct {
+      unused : 8 } }
+  class table_l2_req_t::Tuple(out) {
+    struct {
+      lookup_request_key_2 : 48 } }
+  class table_l3_req_t::Tuple(out) {
+    struct {
+      lookup_request_key_1 : 32 } }
+  TopPipe_fl_t TopPipe_fl;
+  digest_data_t_1 digest_data;
+  local_state_t local_state;
+  p_t_0 p;
+  sume_metadata_t_1 sume_metadata;
+  user_metadata_t_1 user_metadata;
+  table_l2_req_t table_l2_req;
+  table_l3_req_t table_l3_req;
+  class setup::Section(1) {
+    method update = {
+      table_l3_req.lookup_request_key_1 = p.ipv4.dstAddr,
+      table_l2_req.lookup_request_key_2 = p.ethernet.dstAddr }
+    method move_to_section = done(0);
+    method increment_offset = 0; } }
+class table_l3_t::LookupEngine(EM,64,32,10,1,0) {
+  class table_l3_req_t::Tuple(in) {
+    struct {
+      lookup_request_key_1 : 32 } }
+  class table_l3_resp_t::Tuple(out) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l3_set_output_port_0 : l3_set_output_port_0_cp } }
+  table_l3_req_t request;
+  table_l3_resp_t response;
+  method send_request = { key = request }
+  method receive_response = { response = value } }
+class table_l2_t::LookupEngine(EM,64,48,10,1,0) {
+  class table_l2_req_t::Tuple(in) {
+    struct {
+      lookup_request_key_2 : 48 } }
+  class table_l2_resp_t::Tuple(out) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l2_set_output_port_0 : l2_set_output_port_0_cp } }
+  table_l2_req_t request;
+  table_l2_resp_t response;
+  method send_request = { key = request }
+  method receive_response = { response = value } }
+class TopPipe_lvl_0_t::TupleEngine(8,table_l2_sec) {
+  class TopPipe_fl_t::Tuple(inout) {
+    struct {
+      temp : 48,
+      index_1 : 4,
+      newVal_1 : 32,
+      opCode_1 : 8,
+      regVal : 32 } }
+  class digest_data_t_1::Tuple(inout) {
+    struct {
+      unused : 256 } }
+  class local_state_t::Tuple(inout) {
+    struct {
+      id : 16 } }
+  class p_t_0::Tuple(inout) {
+    struct {
+      ethernet : Ethernet_h,
+      calc : Calc_h,
+      ipv4 : IPv4_h } }
+  class sume_metadata_t_1::Tuple(inout) {
+    struct {
+      pifo_valid : 1,
+      pifo_rank : 19,
+      pifo_field : 12,
+      dma_q_size : 16,
+      nf3_q_size : 16,
+      nf2_q_size : 16,
+      nf1_q_size : 16,
+      nf0_q_size : 16,
+      send_dig_to_cpu : 8,
+      drop : 8,
+      dst_port : 8,
+      src_port : 8,
+      pkt_len : 16 } }
+  class user_metadata_t_1::Tuple(inout) {
+    struct {
+      unused : 8 } }
+  class lookup_table_req_t::Tuple(out) {
+    struct {
+      lookup_request_key : 32 } }
+  class table_pifo_req_t::Tuple(out) {
+    struct {
+      lookup_request_key_0 : 48 } }
+  class table_l3_resp_t::Tuple(inout) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l3_set_output_port_0 : l3_set_output_port_0_cp } }
+  class table_l2_resp_t::Tuple(inout) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l2_set_output_port_0 : l2_set_output_port_0_cp } }
+  TopPipe_fl_t TopPipe_fl;
+  digest_data_t_1 digest_data;
+  local_state_t local_state;
+  p_t_0 p;
+  sume_metadata_t_1 sume_metadata;
+  user_metadata_t_1 user_metadata;
+  lookup_table_req_t lookup_table_req;
+  table_pifo_req_t table_pifo_req;
+  table_l3_resp_t table_l3_resp;
+  table_l2_resp_t table_l2_resp;
+  class NoAction_0_sec::Section(2) {
+    method move_to_section = condition_sec_6;
+    method increment_offset = 0; }
+  class NoAction_4_sec::Section(5) {
+    method move_to_section = swap_eth_addresses_0_sec;
+    method increment_offset = 0; }
+  class act_sec::Section(7) {
+    method update = {
+      sume_metadata.pifo_valid = 1,
+      table_pifo_req.lookup_request_key_0 = p.ethernet.dstAddr,
+      local_state.id = 10 }
+    method move_to_section = local_end;
+    method increment_offset = 0; }
+  class condition_sec_6::Section(3) {
+    method move_to_section = if (p.ipv4.isValid) table_l3_sec else swap_eth_addresses_0_sec;
+    method increment_offset = 0; }
+  class l2_set_output_port_0_sec::Section(2) {
+    method update = {
+      sume_metadata.dst_port = table_l2_resp.l2_set_output_port_0.port_num }
+    method move_to_section = condition_sec_6;
+    method increment_offset = 0; }
+  class l3_set_output_port_0_sec::Section(5) {
+    method update = {
+      sume_metadata.dst_port = table_l3_resp.l3_set_output_port_0.port_num }
+    method move_to_section = swap_eth_addresses_0_sec;
+    method increment_offset = 0; }
+  class local_end::Section(8) {
+    method update = {
+      lookup_table_req.lookup_request_key = p.calc.op1 }
+    method move_to_section = done(0);
+    method increment_offset = 0; }
+  class swap_eth_addresses_0_sec::Section(6) {
+    method update = {
+      TopPipe_fl.temp = p.ethernet.dstAddr,
+      p.ethernet.dstAddr = p.ethernet.srcAddr,
+      p.ethernet.srcAddr = p.ethernet.dstAddr }
+    method move_to_section = act_sec;
+    method increment_offset = 0; }
+  class table_l2_sec::Section(1) {
+    map action_select_2 {
+      (1, l2_set_output_port_0_sec),
+      (2, NoAction_0_sec),
+      NoAction_0_sec }
+    method move_to_section = if ((table_l2_resp.hit == 1)) action_select_2(table_l2_resp.action_run) else NoAction_0_sec;
+    method increment_offset = 0; }
+  class table_l3_sec::Section(4) {
+    map action_select_1 {
+      (1, l3_set_output_port_0_sec),
+      (2, NoAction_4_sec),
+      NoAction_4_sec }
+    method move_to_section = if ((table_l3_resp.hit == 1)) action_select_1(table_l3_resp.action_run) else NoAction_4_sec;
+    method increment_offset = 0; } }
+class table_pifo_t::LookupEngine(EM,64,48,21,1,0) {
+  class table_pifo_req_t::Tuple(in) {
+    struct {
+      lookup_request_key_0 : 48 } }
+  class table_pifo_resp_t::Tuple(out) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      set_pifo_rank_0 : set_pifo_rank_0_cp } }
+  table_pifo_req_t request;
+  table_pifo_resp_t response;
+  method send_request = { key = request }
+  method receive_response = { response = value } }
+class lookup_table_t::LookupEngine(EM,64,32,34,1,0) {
+  class lookup_table_req_t::Tuple(in) {
+    struct {
+      lookup_request_key : 32 } }
+  class lookup_table_resp_t::Tuple(out) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      set_result_0 : set_result_0_cp } }
+  lookup_table_req_t request;
+  lookup_table_resp_t response;
+  method send_request = { key = request }
+  method receive_response = { response = value } }
+class TopPipe_lvl_1_t::TupleEngine(13,local_start) {
+  class TopPipe_fl_t::Tuple(inout) {
+    struct {
+      temp : 48,
+      index_1 : 4,
+      newVal_1 : 32,
+      opCode_1 : 8,
+      regVal : 32 } }
+  class digest_data_t_1::Tuple(inout) {
+    struct {
+      unused : 256 } }
+  class local_state_t::Tuple(inout) {
+    struct {
+      id : 16 } }
+  class p_t_0::Tuple(inout) {
+    struct {
+      ethernet : Ethernet_h,
+      calc : Calc_h,
+      ipv4 : IPv4_h } }
+  class sume_metadata_t_1::Tuple(inout) {
+    struct {
+      pifo_valid : 1,
+      pifo_rank : 19,
+      pifo_field : 12,
+      dma_q_size : 16,
+      nf3_q_size : 16,
+      nf2_q_size : 16,
+      nf1_q_size : 16,
+      nf0_q_size : 16,
+      send_dig_to_cpu : 8,
+      drop : 8,
+      dst_port : 8,
+      src_port : 8,
+      pkt_len : 16 } }
+  class table_l2_resp_t::Tuple(inout) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l2_set_output_port_0 : l2_set_output_port_0_cp } }
+  class table_l3_resp_t::Tuple(inout) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l3_set_output_port_0 : l3_set_output_port_0_cp } }
+  class user_metadata_t_1::Tuple(inout) {
+    struct {
+      unused : 8 } }
+  class jk_reg_rw_input_t::Tuple(out) {
+    struct {
+      stateful_valid : 1,
+      index : 4,
+      newVal : 32,
+      opCode : 8 } }
+  class table_pifo_resp_t::Tuple(inout) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      set_pifo_rank_0 : set_pifo_rank_0_cp } }
+  class lookup_table_resp_t::Tuple(inout) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      set_result_0 : set_result_0_cp } }
+  TopPipe_fl_t TopPipe_fl;
+  digest_data_t_1 digest_data;
+  local_state_t local_state;
+  p_t_0 p;
+  sume_metadata_t_1 sume_metadata;
+  table_l2_resp_t table_l2_resp;
+  table_l3_resp_t table_l3_resp;
+  user_metadata_t_1 user_metadata;
+  jk_reg_rw_input_t jk_reg_rw_input;
+  table_pifo_resp_t table_pifo_resp;
+  lookup_table_resp_t lookup_table_resp;
+  class NoAction_5_sec::Section(3) {
+    method move_to_section = condition_sec_5;
+    method increment_offset = 0; }
+  class act_2_sec::Section(11) {
+    method update = {
+      TopPipe_fl.newVal_1 = 0,
+      TopPipe_fl.opCode_1 = 0 }
+    method move_to_section = act_6_sec;
+    method increment_offset = 0; }
+  class act_3_sec::Section(11) {
+    method update = {
+      TopPipe_fl.newVal_1 = p.calc.op2,
+      TopPipe_fl.opCode_1 = 1 }
+    method move_to_section = act_6_sec;
+    method increment_offset = 0; }
+  class act_4_sec::Section(9) {
+    method update = {
+      TopPipe_fl.index_1 = ((p.calc.op1 & 15) >> 0) }
+    method move_to_section = condition_sec_0;
+    method increment_offset = 0; }
+  class act_6_sec::Section(12) {
+    method update = {
+      jk_reg_rw_input.stateful_valid = 1,
+      jk_reg_rw_input.index = TopPipe_fl.index_1,
+      jk_reg_rw_input.newVal = TopPipe_fl.newVal_1,
+      jk_reg_rw_input.opCode = TopPipe_fl.opCode_1,
+      local_state.id = 26 }
+    method move_to_section = local_end_0;
+    method increment_offset = 0; }
+  class condition_sec_0::Section(10) {
+    method move_to_section = if ((p.calc.opCode == 3)) act_2_sec else act_3_sec;
+    method increment_offset = 0; }
+  class condition_sec_1::Section(8) {
+    method update = {
+      local_state.id = 31 }
+    method move_to_section = if (((p.calc.opCode == 3) || (p.calc.opCode == 4))) act_4_sec else local_end_0;
+    method increment_offset = 0; }
+  class condition_sec_2::Section(7) {
+    method move_to_section = if ((p.calc.opCode == 2)) lookup_table_sec else condition_sec_1;
+    method increment_offset = 0; }
+  class condition_sec_3::Section(6) {
+    method update = {
+      local_state.id = 29 }
+    method move_to_section = if ((p.calc.opCode == 1)) local_end_0 else condition_sec_2;
+    method increment_offset = 0; }
+  class condition_sec_4::Section(5) {
+    method update = {
+      local_state.id = 30 }
+    method move_to_section = if ((p.calc.opCode == 0)) local_end_0 else condition_sec_3;
+    method increment_offset = 0; }
+  class condition_sec_5::Section(4) {
+    method update = {
+      local_state.id = 31 }
+    method move_to_section = if (p.calc.isValid) condition_sec_4 else local_end_0;
+    method increment_offset = 0; }
+  class local_end_0::Section(13) {
+    method move_to_section = done(0);
+    method increment_offset = 0; }
+  class local_start::Section(1) {
+    map transition {
+      (10, table_pifo_sec),
+      local_end_0 }
+    method move_to_section = transition(local_state.id);
+    method increment_offset = 0; }
+  class lookup_table_sec::Section(8) {
+    map action_select {
+      (1, set_result_0_sec),
+      (2, set_result_default_0_sec),
+      set_result_default_0_sec }
+    method move_to_section = if ((lookup_table_resp.hit == 1)) action_select(lookup_table_resp.action_run) else set_result_default_0_sec;
+    method increment_offset = 0; }
+  class set_pifo_rank_0_sec::Section(3) {
+    method update = {
+      sume_metadata.pifo_rank = table_pifo_resp.set_pifo_rank_0.pifo_rank }
+    method move_to_section = condition_sec_5;
+    method increment_offset = 0; }
+  class set_result_0_sec::Section(9) {
+    method update = {
+      p.calc.result = lookup_table_resp.set_result_0.data,
+      local_state.id = 31 }
+    method move_to_section = local_end_0;
+    method increment_offset = 0; }
+  class set_result_default_0_sec::Section(9) {
+    method update = {
+      p.calc.result = 0,
+      local_state.id = 31 }
+    method move_to_section = local_end_0;
+    method increment_offset = 0; }
+  class table_pifo_sec::Section(2) {
+    map action_select_0 {
+      (1, set_pifo_rank_0_sec),
+      (2, NoAction_5_sec),
+      NoAction_5_sec }
+    method move_to_section = if ((table_pifo_resp.hit == 1)) action_select_0(table_pifo_resp.action_run) else NoAction_5_sec;
+    method increment_offset = 0; } }
+class jk_reg_rw_0_t::UserEngine(64, 4) {
+  class jk_reg_rw_input_t::Tuple(in) {
+    struct {
+      stateful_valid : 1,
+      index : 4,
+      newVal : 32,
+      opCode : 8 } }
+  jk_reg_rw_input_t jk_reg_rw_input;
+  class jk_reg_rw_output_t::Tuple(out) {
+    struct {
+      result : 32 } }
+  jk_reg_rw_output_t jk_reg_rw_output; }
+class TopPipe_lvl_2_t::TupleEngine(5,local_start_0) {
+  class TopPipe_fl_t::Tuple(in) {
+    struct {
+      temp : 48,
+      index_1 : 4,
+      newVal_1 : 32,
+      opCode_1 : 8,
+      regVal : 32 } }
+  class digest_data_t_1::Tuple(inout) {
+    struct {
+      unused : 256 } }
+  class local_state_t::Tuple(in) {
+    struct {
+      id : 16 } }
+  class lookup_table_resp_t::Tuple(in) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      set_result_0 : set_result_0_cp } }
+  class p_t_0::Tuple(inout) {
+    struct {
+      ethernet : Ethernet_h,
+      calc : Calc_h,
+      ipv4 : IPv4_h } }
+  class sume_metadata_t_1::Tuple(inout) {
+    struct {
+      pifo_valid : 1,
+      pifo_rank : 19,
+      pifo_field : 12,
+      dma_q_size : 16,
+      nf3_q_size : 16,
+      nf2_q_size : 16,
+      nf1_q_size : 16,
+      nf0_q_size : 16,
+      send_dig_to_cpu : 8,
+      drop : 8,
+      dst_port : 8,
+      src_port : 8,
+      pkt_len : 16 } }
+  class table_l2_resp_t::Tuple(in) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l2_set_output_port_0 : l2_set_output_port_0_cp } }
+  class table_l3_resp_t::Tuple(in) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      l3_set_output_port_0 : l3_set_output_port_0_cp } }
+  class table_pifo_resp_t::Tuple(in) {
+    struct {
+      hit : 1,
+      action_run : 2,
+      set_pifo_rank_0 : set_pifo_rank_0_cp } }
+  class user_metadata_t_1::Tuple(inout) {
+    struct {
+      unused : 8 } }
+  class jk_reg_rw_output_t::Tuple(in) {
+    struct {
+      result : 32 } }
+  TopPipe_fl_t TopPipe_fl;
+  digest_data_t_1 digest_data;
+  local_state_t local_state;
+  lookup_table_resp_t lookup_table_resp;
+  p_t_0 p;
+  sume_metadata_t_1 sume_metadata;
+  table_l2_resp_t table_l2_resp;
+  table_l3_resp_t table_l3_resp;
+  table_pifo_resp_t table_pifo_resp;
+  user_metadata_t_1 user_metadata;
+  jk_reg_rw_output_t jk_reg_rw_output;
+  class act_0_sec::Section(2) {
+    method update = {
+      p.calc.result = (p.calc.op1 + p.calc.op2) }
+    method move_to_section = sink;
+    method increment_offset = 0; }
+  class act_1_sec::Section(2) {
+    method update = {
+      p.calc.result = (p.calc.op1 - p.calc.op2) }
+    method move_to_section = sink;
+    method increment_offset = 0; }
+  class act_5_sec::Section(4) {
+    method update = {
+      p.calc.result = (p.calc.op2 + TopPipe_fl.regVal) }
+    method move_to_section = sink;
+    method increment_offset = 0; }
+  class condition_sec::Section(3) {
+    method move_to_section = if ((p.calc.opCode == 3)) act_5_sec else sink;
+    method increment_offset = 0; }
+  class jk_reg_rw_sec::Section(2) {
+    method update = {
+      TopPipe_fl.regVal = jk_reg_rw_output.result }
+    method move_to_section = condition_sec;
+    method increment_offset = 0; }
+  class local_start_0::Section(1) {
+    map transition {
+      (30, act_0_sec),
+      (29, act_1_sec),
+      (26, jk_reg_rw_sec),
+      (31, sink),
+      done(0) }
+    method move_to_section = transition(local_state.id);
+    method increment_offset = 0; }
+  class sink::Section(5) {
+    method move_to_section = done(0);
+    method increment_offset = 0; } }
+class TopDeparser_t::EditingEngine(1024,9,extract_headers_sec) {
+  class p_t_1::Tuple(in) {
+    struct {
+      ethernet : Ethernet_h,
+      calc : Calc_h,
+      ipv4 : IPv4_h } }
+  class user_metadata_t_2::Tuple(in) {
+    struct {
+      unused : 8 } }
+  class digest_data_t_2::Tuple(inout) {
+    struct {
+      unused : 256 } }
+  class sume_metadata_t_2::Tuple(inout) {
+    struct {
+      pifo_valid : 1,
+      pifo_rank : 19,
+      pifo_field : 12,
+      dma_q_size : 16,
+      nf3_q_size : 16,
+      nf2_q_size : 16,
+      nf1_q_size : 16,
+      nf0_q_size : 16,
+      send_dig_to_cpu : 8,
+      drop : 8,
+      dst_port : 8,
+      src_port : 8,
+      pkt_len : 16 } }
+  class TopDeparser_extracts_t::Tuple(in) {
+    struct {
+      size : 32 } }
+  p_t_1 p;
+  user_metadata_t_2 user_metadata;
+  digest_data_t_2 digest_data;
+  sume_metadata_t_2 sume_metadata;
+  TopDeparser_extracts_t TopDeparser_extracts;
+  class act_7_sec::Section(5) {
+    method move_to_section = emit_1;
+    method increment_offset = 0; }
+  class act_8_sec::Section(2) {
+    method move_to_section = emit_2;
+    method increment_offset = 0; }
+  class act_9_sec::Section(8) {
+    method move_to_section = emit_0;
+    method increment_offset = 0; }
+  class condition_sec_7::Section(7) {
+    method move_to_section = if (p.ipv4.isValid) act_9_sec else done(0);
+    method increment_offset = 0; }
+  class condition_sec_8::Section(4) {
+    method move_to_section = if (p.calc.isValid) act_7_sec else condition_sec_7;
+    method increment_offset = 0; }
+  class emit_0::Section(9) {
+    struct {
+      version : 4,
+      ihl : 4,
+      tos : 8,
+      totalLen : 16,
+      identification : 16,
+      flags : 3,
+      fragOffset : 13,
+      ttl : 8,
+      protocol : 8,
+      hdrChecksum : 16,
+      srcAddr : 32,
+      dstAddr : 32 }
+    method insert = if (p.ipv4.isValid) 160 else 0;
+    method update = {
+      version = p.ipv4.version,
+      ihl = p.ipv4.ihl,
+      tos = p.ipv4.tos,
+      totalLen = p.ipv4.totalLen,
+      identification = p.ipv4.identification,
+      flags = p.ipv4.flags,
+      fragOffset = p.ipv4.fragOffset,
+      ttl = p.ipv4.ttl,
+      protocol = p.ipv4.protocol,
+      hdrChecksum = p.ipv4.hdrChecksum,
+      srcAddr = p.ipv4.srcAddr,
+      dstAddr = p.ipv4.dstAddr }
+    method move_to_section = done(0);
+    method increment_offset = 0; }
+  class emit_1::Section(6) {
+    struct {
+      op1 : 32,
+      opCode : 8,
+      op2 : 32,
+      result : 32 }
+    method insert = if (p.calc.isValid) 104 else 0;
+    method update = {
+      op1 = p.calc.op1,
+      opCode = p.calc.opCode,
+      op2 = p.calc.op2,
+      result = p.calc.result }
+    method move_to_section = condition_sec_7;
+    method increment_offset = 0; }
+  class emit_2::Section(3) {
+    struct {
+      dstAddr : 48,
+      srcAddr : 48,
+      etherType : 16 }
+    method insert = if (p.ethernet.isValid) 112 else 0;
+    method update = {
+      dstAddr = p.ethernet.dstAddr,
+      srcAddr = p.ethernet.srcAddr,
+      etherType = p.ethernet.etherType }
+    method move_to_section = condition_sec_8;
+    method increment_offset = 0; }
+  class extract_headers_sec::Section(1) {
+    method remove = TopDeparser_extracts.size;
+    method move_to_section = act_8_sec;
+    method increment_offset = 0; } }
+class Packet_input::Packet(in) {}
+class Packet_output::Packet(out) {}
+class SimpleSumeSwitch::System {
+  digest_data_t_0 digest_data;
+  sume_metadata_t_0 sume_metadata;
+  TopParser_t TopParser;
+  TopPipe_lvl_t TopPipe_lvl;
+  table_l3_t table_l3;
+  table_l2_t table_l2;
+  TopPipe_lvl_0_t TopPipe_lvl_0;
+  table_pifo_t table_pifo;
+  lookup_table_t lookup_table;
+  TopPipe_lvl_1_t TopPipe_lvl_1;
+  jk_reg_rw_0_t jk_reg_rw_0;
+  TopPipe_lvl_2_t TopPipe_lvl_2;
+  TopDeparser_t TopDeparser;
+  Packet_input packet_in;
+  Packet_output packet_out;
+  method connect = {
+    TopPipe_lvl_0.TopPipe_fl = TopPipe_lvl.TopPipe_fl,
+    TopPipe_lvl_0.digest_data = TopPipe_lvl.digest_data,
+    TopPipe_lvl_0.local_state = TopPipe_lvl.local_state,
+    TopPipe_lvl_0.p = TopPipe_lvl.p,
+    TopPipe_lvl_0.sume_metadata = TopPipe_lvl.sume_metadata,
+    TopPipe_lvl_0.user_metadata = TopPipe_lvl.user_metadata,
+    table_l3.request = TopPipe_lvl.table_l3_req,
+    table_l2.request = TopPipe_lvl.table_l2_req,
+    TopPipe_lvl_0.table_l3_resp = table_l3.response,
+    TopPipe_lvl_0.table_l2_resp = table_l2.response,
+    TopPipe_lvl_1.TopPipe_fl = TopPipe_lvl_0.TopPipe_fl,
+    TopPipe_lvl_1.digest_data = TopPipe_lvl_0.digest_data,
+    TopPipe_lvl_1.local_state = TopPipe_lvl_0.local_state,
+    TopPipe_lvl_1.p = TopPipe_lvl_0.p,
+    TopPipe_lvl_1.sume_metadata = TopPipe_lvl_0.sume_metadata,
+    TopPipe_lvl_1.table_l2_resp = TopPipe_lvl_0.table_l2_resp,
+    TopPipe_lvl_1.table_l3_resp = TopPipe_lvl_0.table_l3_resp,
+    TopPipe_lvl_1.user_metadata = TopPipe_lvl_0.user_metadata,
+    table_pifo.request = TopPipe_lvl_0.table_pifo_req,
+    lookup_table.request = TopPipe_lvl_0.lookup_table_req,
+    TopPipe_lvl_1.table_pifo_resp = table_pifo.response,
+    TopPipe_lvl_1.lookup_table_resp = lookup_table.response,
+    TopPipe_lvl_2.TopPipe_fl = TopPipe_lvl_1.TopPipe_fl,
+    TopPipe_lvl_2.digest_data = TopPipe_lvl_1.digest_data,
+    TopPipe_lvl_2.local_state = TopPipe_lvl_1.local_state,
+    TopPipe_lvl_2.lookup_table_resp = TopPipe_lvl_1.lookup_table_resp,
+    TopPipe_lvl_2.p = TopPipe_lvl_1.p,
+    TopPipe_lvl_2.sume_metadata = TopPipe_lvl_1.sume_metadata,
+    TopPipe_lvl_2.table_l2_resp = TopPipe_lvl_1.table_l2_resp,
+    TopPipe_lvl_2.table_l3_resp = TopPipe_lvl_1.table_l3_resp,
+    TopPipe_lvl_2.table_pifo_resp = TopPipe_lvl_1.table_pifo_resp,
+    TopPipe_lvl_2.user_metadata = TopPipe_lvl_1.user_metadata,
+    jk_reg_rw_0.jk_reg_rw_input = TopPipe_lvl_1.jk_reg_rw_input,
+    TopPipe_lvl_2.jk_reg_rw_output = jk_reg_rw_0.jk_reg_rw_output,
+    TopPipe_lvl.p = TopParser.p,
+    TopDeparser.p = TopPipe_lvl_2.p,
+    TopPipe_lvl.user_metadata = TopParser.user_metadata,
+    TopDeparser.user_metadata = TopPipe_lvl_2.user_metadata,
+    TopPipe_lvl.digest_data = TopParser.digest_data,
+    TopDeparser.digest_data = TopPipe_lvl_2.digest_data,
+    digest_data = TopDeparser.digest_data,
+    TopParser.sume_metadata = sume_metadata,
+    TopPipe_lvl.sume_metadata = TopParser.sume_metadata,
+    TopDeparser.sume_metadata = TopPipe_lvl_2.sume_metadata,
+    sume_metadata = TopDeparser.sume_metadata,
+    TopParser.packet_in = packet_in,
+    TopDeparser.packet_in = TopParser.packet_out,
+    packet_out = TopDeparser.packet_out,
+    TopDeparser.TopDeparser_extracts = TopParser.TopParser_extracts } }

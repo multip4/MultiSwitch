@@ -31,6 +31,6 @@
 
 
 # Program the switch with the bit file and then configure the tables
-${SUME_SDNET}/tools/program_switch.sh ${P4_PROJECT_NAME}.bit config_writes.sh
+${SUME_SDNET}/tools/program_switch.sh pifo_demo.bit config_writes.sh
 
 
