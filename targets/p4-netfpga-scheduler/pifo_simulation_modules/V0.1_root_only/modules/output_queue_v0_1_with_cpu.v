@@ -430,8 +430,7 @@ module output_queue_v0_1_with_cpu
             // then go to UPDATE_FL_TAIL state
             BYPASS:
                 begin
-                    if(m_axis_tready) // port ready
-                        begin
+
                             // set output value.
                             r_m_axis_tvalid_next = s_axis_tvalid;
                             r_m_axis_tdata_next = s_axis_tdata;
@@ -439,7 +438,9 @@ module output_queue_v0_1_with_cpu
                             r_m_axis_tlast_next = s_axis_tlast;
                             r_m_axis_tuser_next = s_axis_tuser;
                             r_m_axis_tpifo_next = s_axis_tpifo;                            
-                            
+
+                    if(m_axis_tready) // port ready
+                        begin                            
                             // set buffer write signal to 0.
                             ctl_buffer_write_no_bypass = 0;
                             
@@ -458,7 +459,6 @@ module output_queue_v0_1_with_cpu
                             r_buffer_rd_en_next = 0;                          
                             
                         end
-                    
                 end
                 
             //  in UPDATE_FL_TAIL state, update fl_tail link,
@@ -466,7 +466,10 @@ module output_queue_v0_1_with_cpu
             UPDATE_FL_TAIL:
                 begin
                     output_queue_fsm_state_next = READ_PKT;
-                    r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;                   
+                    r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;    
+
+                    r_m_axis_tvalid_next = 1;
+
                     if(m_axis_tready)
                         begin
 
@@ -477,6 +480,9 @@ module output_queue_v0_1_with_cpu
             // goto IDLE state if get the eop chunck    
             READ_PKT:
                 begin
+
+                    r_m_axis_tvalid_next = 1;
+
                     if(m_axis_tready)
                         begin
                             // set output value.
@@ -486,7 +492,7 @@ module output_queue_v0_1_with_cpu
                             r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
                             r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;     
 
-                            r_m_axis_tvalid_next = 1;
+
  
                             if(w_buffer_wrapper_out_tlast)
                                 output_queue_fsm_state_next = IDLE;
@@ -523,7 +529,6 @@ module output_queue_v0_1_with_cpu
                 r_m_axis_tlast <=0;
                 r_m_axis_tuser <=0;
                 r_m_axis_tpifo <=0;
-                
                 
             end
         else
