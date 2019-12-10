@@ -186,8 +186,20 @@ module addr_manager_v0_1
                 if(~s_axis_wr_en)
                     m_axis_remain_space_reg_next = m_axis_remain_space_reg + 1;
                 
+                
+                if(s_axis_rd_en)
+                    begin
+                        r_fl_tail_next = port_b_out_value;
+                        port_b_input_addr = port_b_out_value;
+                    end
+                
+                
                 addr_manager_fsm_state_next = IDLE;
                 end
+                
+                
+                
+                
         endcase
         
         

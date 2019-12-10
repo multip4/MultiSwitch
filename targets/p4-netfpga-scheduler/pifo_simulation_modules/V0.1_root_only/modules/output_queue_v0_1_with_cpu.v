@@ -468,13 +468,11 @@ module output_queue_v0_1_with_cpu
                     output_queue_fsm_state_next = READ_PKT;
                     r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;    
 
-                    r_m_axis_tvalid_next = 1;
-
-                    if(m_axis_tready)
-                        begin
-
+//                    if(m_axis_tready)
+//                        begin
+                            r_m_axis_tvalid_next = 1;
                             r_buffer_rd_en_next = 1;                           
-                        end
+//                        end
                 end
             // read pkt from buffer until get the eop chunk
             // goto IDLE state if get the eop chunck    
@@ -494,7 +492,8 @@ module output_queue_v0_1_with_cpu
 
 
  
-                            if(w_buffer_wrapper_out_tlast)
+                            //if(w_buffer_wrapper_out_tlast) //
+                            if(r_m_axis_tlast)
                                 output_queue_fsm_state_next = IDLE;
                             else
                                 begin

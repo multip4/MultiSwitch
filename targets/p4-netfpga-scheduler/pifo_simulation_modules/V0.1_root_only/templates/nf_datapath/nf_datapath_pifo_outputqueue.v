@@ -334,6 +334,7 @@ module nf_datapath #(
 
    (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0] scheduler_tuser = m_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0];
 
+
            //Output queues
        scheduler_top_v0_1  
      scheduler_top_1 (
@@ -423,7 +424,7 @@ module nf_datapath #(
       .m_axis_4_tpifo(last_pkt_info4)
     ); 
 
-      //Output queues
+/*      //Output queues
        sss_output_queues_ip  
      bram_output_queues_1 (
       .axis_aclk(axis_aclk), 
@@ -432,13 +433,38 @@ module nf_datapath #(
       .s_axis_tkeep   (m_axis_opl_tkeep), 
       .s_axis_tuser   (scheduler_tuser), 
       .s_axis_tvalid  (m_axis_opl_tvalid), 
-//      .s_axis_tready  (m_axis_opl_tready), 
+      .s_axis_tready  (m_axis_opl_tready), 
       .s_axis_tlast   (m_axis_opl_tlast), 
+      .m_axis_0_tdata (m_axis_0_tdata), 
+      .m_axis_0_tkeep (m_axis_0_tkeep), 
+      .m_axis_0_tuser (m_axis_0_tuser), 
+      .m_axis_0_tvalid(m_axis_0_tvalid), 
       .m_axis_0_tready(m_axis_0_tready), 
+      .m_axis_0_tlast (m_axis_0_tlast), 
+      .m_axis_1_tdata (m_axis_1_tdata), 
+      .m_axis_1_tkeep (m_axis_1_tkeep), 
+      .m_axis_1_tuser (m_axis_1_tuser), 
+      .m_axis_1_tvalid(m_axis_1_tvalid), 
       .m_axis_1_tready(m_axis_1_tready), 
+      .m_axis_1_tlast (m_axis_1_tlast), 
+      .m_axis_2_tdata (m_axis_2_tdata), 
+      .m_axis_2_tkeep (m_axis_2_tkeep), 
+      .m_axis_2_tuser (m_axis_2_tuser), 
+      .m_axis_2_tvalid(m_axis_2_tvalid), 
       .m_axis_2_tready(m_axis_2_tready), 
+      .m_axis_2_tlast (m_axis_2_tlast), 
+      .m_axis_3_tdata (m_axis_3_tdata), 
+      .m_axis_3_tkeep (m_axis_3_tkeep), 
+      .m_axis_3_tuser (m_axis_3_tuser), 
+      .m_axis_3_tvalid(m_axis_3_tvalid), 
       .m_axis_3_tready(m_axis_3_tready), 
+      .m_axis_3_tlast (m_axis_3_tlast), 
+      .m_axis_4_tdata (m_axis_4_tdata), 
+      .m_axis_4_tkeep (m_axis_4_tkeep), 
+      .m_axis_4_tuser (m_axis_4_tuser), 
+      .m_axis_4_tvalid(m_axis_4_tvalid), 
       .m_axis_4_tready(m_axis_4_tready), 
+      .m_axis_4_tlast (m_axis_4_tlast), 
 
 
       .nf0_q_size(nf0_q_size),
@@ -482,7 +508,7 @@ module nf_datapath #(
       .S_AXI_ACLK (axi_aclk), 
       .S_AXI_ARESETN(axi_resetn)
     ); 
-    
+*/    
     
     
     

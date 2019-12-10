@@ -46,6 +46,8 @@
 module enqueue_agent_v0_1
     #(
         parameter C_S_AXIS_TUSER_WIDTH = 128,
+        parameter C_S_AXI_DATA_WIDTH = 32,
+        parameter C_S_AXI_ADDR_WIDTH = 8, // AXI addr for read drop count , src = [7:4], dst = [3:0]
         parameter QUEUE_NUM = 5          
     )
     (
@@ -62,6 +64,13 @@ module enqueue_agent_v0_1
             
         m_axis_ctl_pifo_in_en,
         m_axis_ctl_buffer_wr_en,
+        
+        // cpu req/resp
+        s_axi_addr,      
+        s_axi_req_valid, 
+                         
+        m_axi_data,      
+        m_axi_resp_valid,
         
         axis_aclk,
         axis_resetn
@@ -84,11 +93,38 @@ module enqueue_agent_v0_1
     // combinational logic output
     output [QUEUE_NUM-1:0]              m_axis_ctl_buffer_wr_en;
     
+    input [C_S_AXI_ADDR_WIDTH-1:0]      s_axi_addr;    
+    input                               s_axi_req_valid;
+    
+    output [C_S_AXI_DATA_WIDTH-1:0]     m_axi_data;
+    output                              m_axi_resp_valid;
+        
+    
+    
     input                               axis_aclk;
     input                               axis_resetn;
     
     
+    // this register is for record pkt drop.
+    // r_nf0_pkt_drop[1] means 
+    // pkt drop count at nf0 which is from nf1.
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf0_pkt_drop[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf1_pkt_drop[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf2_pkt_drop[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf3_pkt_drop[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf4_pkt_drop[0:QUEUE_NUM-1];
+ 
+ 
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf0_pkt_drop_next[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf1_pkt_drop_next[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf2_pkt_drop_next[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf3_pkt_drop_next[0:QUEUE_NUM-1];
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_nf4_pkt_drop_next[0:QUEUE_NUM-1];
+                    
+    
+    
    // local parameters
+    localparam SRC_POS = 16;
     localparam DST_POS = 24; // first port position at user metadata.
     localparam DROP_POS = 32;
     localparam STATES_WIDTH = 2;
@@ -118,7 +154,11 @@ module enqueue_agent_v0_1
     reg [QUEUE_NUM-1:0]                 m_axis_ctl_buffer_wr_en_reg_next;
     
     
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data;
+    reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data_next;
+    reg                          r_cpu_read_resp_valid;    
     
+    integer i;
 
     // FSM 
     always @(*) 
@@ -128,7 +168,18 @@ module enqueue_agent_v0_1
         eq_agent_fsm_state_next = eq_agent_fsm_state;
         m_axis_ctl_pifo_in_en_reg_next = m_axis_ctl_pifo_in_en_reg;
         m_axis_ctl_buffer_wr_en_reg_next = m_axis_ctl_buffer_wr_en_reg;
+ 
         
+        for(i=0;i<QUEUE_NUM;i=i+1) begin
+            r_nf0_pkt_drop_next[i] = r_nf0_pkt_drop[i];
+            r_nf1_pkt_drop_next[i] = r_nf1_pkt_drop[i];
+            r_nf2_pkt_drop_next[i] = r_nf2_pkt_drop[i];
+            r_nf3_pkt_drop_next[i] = r_nf3_pkt_drop[i];
+            r_nf4_pkt_drop_next[i] = r_nf4_pkt_drop[i];
+        end
+        
+        
+ 
                 case(eq_agent_fsm_state)
                     // initial state;
                     // move to enqueue state if input data valid and at least one txport is available.
@@ -140,6 +191,82 @@ module enqueue_agent_v0_1
                             if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire | ~s_axis_tpifo_valid)) 
                                 begin
                                     eq_agent_fsm_state_next = DROP;
+                                    
+                                    // count the pkt drop register;
+                                    
+                                    case(s_axis_tuser[DST_POS-1:SRC_POS])
+                                        
+                                        'b00000001:
+                                            begin
+                                                
+                                                if(output_port_bit_array_wire[0])
+                                                    r_nf0_pkt_drop_next[0] = r_nf0_pkt_drop[0] + 1;
+                                                if(output_port_bit_array_wire[1])
+                                                    r_nf1_pkt_drop_next[0] = r_nf1_pkt_drop[0] + 1;
+                                                if(output_port_bit_array_wire[2])
+                                                    r_nf2_pkt_drop_next[0] = r_nf2_pkt_drop[0] + 1;
+                                                if(output_port_bit_array_wire[3])
+                                                    r_nf3_pkt_drop_next[0] = r_nf3_pkt_drop[0] + 1;
+                                                if(output_port_bit_array_wire[4])
+                                                    r_nf4_pkt_drop_next[0] = r_nf4_pkt_drop[0] + 1;
+                                                                                            
+                                            end
+                                        'b00000100:
+                                            begin
+                                                if(output_port_bit_array_wire[0])
+                                                    r_nf0_pkt_drop_next[1] = r_nf0_pkt_drop[1] + 1;
+                                                if(output_port_bit_array_wire[1])
+                                                    r_nf1_pkt_drop_next[1] = r_nf1_pkt_drop[1] + 1;
+                                                if(output_port_bit_array_wire[2])
+                                                    r_nf2_pkt_drop_next[1] = r_nf2_pkt_drop[1] + 1;
+                                                if(output_port_bit_array_wire[3])
+                                                    r_nf3_pkt_drop_next[1] = r_nf3_pkt_drop[1] + 1;
+                                                if(output_port_bit_array_wire[4])
+                                                    r_nf4_pkt_drop_next[1] = r_nf4_pkt_drop[1] + 1;                                            
+                                            end
+                                        'b00010000:
+                                            begin
+                                                if(output_port_bit_array_wire[0])                  
+                                                    r_nf0_pkt_drop_next[2] = r_nf0_pkt_drop[2] + 1;
+                                                if(output_port_bit_array_wire[1])                  
+                                                    r_nf1_pkt_drop_next[2] = r_nf1_pkt_drop[2] + 1;
+                                                if(output_port_bit_array_wire[2])                  
+                                                    r_nf2_pkt_drop_next[2] = r_nf2_pkt_drop[2] + 1;
+                                                if(output_port_bit_array_wire[3])                  
+                                                    r_nf3_pkt_drop_next[2] = r_nf3_pkt_drop[2] + 1;
+                                                if(output_port_bit_array_wire[4])                  
+                                                    r_nf4_pkt_drop_next[2] = r_nf4_pkt_drop[2] + 1;
+                                            end
+                                        'b01000000:
+                                            begin
+                                                if(output_port_bit_array_wire[0])                  
+                                                    r_nf0_pkt_drop_next[3] = r_nf0_pkt_drop[3] + 1;
+                                                if(output_port_bit_array_wire[1])                  
+                                                    r_nf1_pkt_drop_next[3] = r_nf1_pkt_drop[3] + 1;
+                                                if(output_port_bit_array_wire[2])                  
+                                                    r_nf2_pkt_drop_next[3] = r_nf2_pkt_drop[3] + 1;
+                                                if(output_port_bit_array_wire[3])                  
+                                                    r_nf3_pkt_drop_next[3] = r_nf3_pkt_drop[3] + 1;
+                                                if(output_port_bit_array_wire[4])                  
+                                                    r_nf4_pkt_drop_next[3] = r_nf4_pkt_drop[3] + 1;
+                                            end
+                                         default:
+                                            begin
+                                                if(output_port_bit_array_wire[0])                  
+                                                    r_nf0_pkt_drop_next[4] = r_nf0_pkt_drop[4] + 1;
+                                                if(output_port_bit_array_wire[1])                  
+                                                    r_nf1_pkt_drop_next[4] = r_nf1_pkt_drop[4] + 1;
+                                                if(output_port_bit_array_wire[2])                  
+                                                    r_nf2_pkt_drop_next[4] = r_nf2_pkt_drop[4] + 1;
+                                                if(output_port_bit_array_wire[3])                  
+                                                    r_nf3_pkt_drop_next[4] = r_nf3_pkt_drop[4] + 1;
+                                                if(output_port_bit_array_wire[4])                  
+                                                    r_nf4_pkt_drop_next[4] = r_nf4_pkt_drop[4] + 1;
+                                            
+                                            end                                           
+                                    endcase             
+                                           
+                                                    
                                 end
                             else if(s_axis_tvalid)
                                 begin
@@ -179,6 +306,42 @@ module enqueue_agent_v0_1
                         end
                 endcase
     end
+    
+    // cpu combinational logic
+    
+    wire [3:0] addr_src = s_axi_addr [7:4];
+    wire [3:0] addr_dst = s_axi_addr [3:0];
+        
+    always @(*)
+    begin
+        
+        case(addr_dst)
+            0:
+                begin
+                    r_cpu_read_data_next = r_nf0_pkt_drop[addr_src];           
+                end
+            1:
+                begin
+                    r_cpu_read_data_next = r_nf1_pkt_drop[addr_src]; 
+                end
+            2:
+                begin
+                    r_cpu_read_data_next = r_nf2_pkt_drop[addr_src]; 
+                end
+            3:  
+                begin
+                    r_cpu_read_data_next = r_nf3_pkt_drop[addr_src]; 
+                end 
+            default:
+                begin
+                    r_cpu_read_data_next = r_nf4_pkt_drop[addr_src]; 
+                end
+            
+        endcase
+        
+    end
+    
+    
       
     always @(posedge axis_aclk) 
     
@@ -188,12 +351,37 @@ module enqueue_agent_v0_1
                 eq_agent_fsm_state <= IDLE;
                 m_axis_ctl_pifo_in_en_reg <= 0;
                 m_axis_ctl_buffer_wr_en_reg <= 0;
+                
+                r_cpu_read_data <= 0;
+                r_cpu_read_resp_valid <= 0;
+                for(i=0; i<QUEUE_NUM; i=i+1) begin
+                    r_nf0_pkt_drop[i] <= 0;
+                    r_nf1_pkt_drop[i] <= 0;
+                    r_nf2_pkt_drop[i] <= 0;
+                    r_nf3_pkt_drop[i] <= 0;
+                    r_nf4_pkt_drop[i] <= 0;
+                end
+                
+                
             end
         else 
             begin
                 eq_agent_fsm_state <= eq_agent_fsm_state_next;
                 m_axis_ctl_pifo_in_en_reg <=  m_axis_ctl_pifo_in_en_reg_next;
                 m_axis_ctl_buffer_wr_en_reg <=  m_axis_ctl_buffer_wr_en_reg_next;
+                
+                r_cpu_read_data <= r_cpu_read_data_next;
+                r_cpu_read_resp_valid <= s_axi_req_valid; 
+                
+                
+                for(i=0; i<QUEUE_NUM; i=i+1) begin
+                    r_nf0_pkt_drop[i] <= r_nf0_pkt_drop_next[i];
+                    r_nf1_pkt_drop[i] <= r_nf1_pkt_drop_next[i];
+                    r_nf2_pkt_drop[i] <= r_nf2_pkt_drop_next[i];
+                    r_nf3_pkt_drop[i] <= r_nf3_pkt_drop_next[i];
+                    r_nf4_pkt_drop[i] <= r_nf4_pkt_drop_next[i];
+                end
+                
             end
     end
     
@@ -208,6 +396,8 @@ module enqueue_agent_v0_1
                    s_axis_tuser[DST_POS + 3] | 
                    s_axis_tuser[DST_POS + 5] | 
                    s_axis_tuser[DST_POS + 7]) << 4); // port 4, cpu.
+    
+    
     
     // get drop signal from metadata  
     assign is_drop_wire = s_axis_tuser[DROP_POS];
@@ -224,4 +414,7 @@ module enqueue_agent_v0_1
     assign m_axis_ctl_pifo_in_en = m_axis_ctl_pifo_in_en_reg;
     assign m_axis_ctl_buffer_wr_en = m_axis_ctl_buffer_wr_en_reg;
     
+    // assgin cpu result
+    assign m_axi_data = r_cpu_read_data;      
+    assign m_axi_resp_valid = r_cpu_read_resp_valid;
 endmodule

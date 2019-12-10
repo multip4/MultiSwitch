@@ -63,6 +63,12 @@ reg rstn;
     wire [7:0] output_port;
     wire       drop_signal;
 
+    reg [3:0] src_port;
+    reg [3:0] dst_port;
+    reg       cpu_req_valid;
+    
+    wire      cpu_resp_valid;
+    wire [31:0] cpu_resp_data; 
 
 
 // end.Enqueue Agent Reg/Wires
@@ -83,12 +89,23 @@ enq(
     .m_axis_ctl_pifo_in_en(m_axis_pifo_in_en),
     .m_axis_ctl_buffer_wr_en(m_axis_buffer_wr_en),
     
+    
+    .s_axi_addr({src_port,dst_port}),      
+    .s_axi_req_valid(cpu_req_valid), 
+                     
+    .m_axi_data(cpu_resp_data),      
+    .m_axi_resp_valid(cpu_resp_valid),
+    
     .axis_aclk(clk),
     .axis_resetn(rstn)
 );
 
 // ============================
 
+localparam SRC_POS_PORT0 = 16;
+localparam SRC_POS_PORT1 = 18;
+localparam SRC_POS_PORT2 = 20;
+localparam SRC_POS_PORT3 = 22;
 
 localparam DST_POS_PORT0 = 24;
 localparam DST_POS_PORT1 = 26;
@@ -116,6 +133,10 @@ initial begin
     s_axis_sume_meta = 0;
     s_axis_pifo_almost_full_bit_array = 0;
     s_axis_buffer_almost_full_bit_array = 0;
+
+    src_port = 0;     
+    dst_port = 0;     
+    cpu_req_valid = 0;
 
     # 100000
     rstn = 1;
@@ -219,6 +240,10 @@ initial begin
     s_axis_sume_meta[DST_POS_PORT1] = 'b1;
     s_axis_sume_meta[DST_POS_PORT2] = 'b1;
     s_axis_sume_meta[DST_POS_PORT3] = 'b1;
+    
+    s_axis_sume_meta[SRC_POS_PORT1] = 'b1;
+
+    
         
     s_axis_pifo_almost_full_bit_array  = 'b01110; // port 1,2,3 is full               
     
@@ -234,6 +259,39 @@ initial begin
     s_axis_sume_meta = 0;
     s_axis_pifo_almost_full_bit_array = 0;
     s_axis_buffer_almost_full_bit_array = 0;
+
+// read drop counter from cpu channel
+#100000
+
+    #5000
+    
+    src_port = 1;     
+    dst_port = 0;     
+    cpu_req_valid = 1;
+
+    #5000
+    
+    src_port = 1;     
+    dst_port = 1;     
+    cpu_req_valid = 1;
+
+    #5000
+    
+    src_port = 1;     
+    dst_port = 2;     
+    cpu_req_valid = 1;
+
+    #5000
+    
+    src_port = 1;     
+    dst_port = 3;     
+    cpu_req_valid = 1;
+
+    # 5000 // reset all signal.
+
+    src_port = 0;     
+    dst_port = 0;     
+    cpu_req_valid = 0;
 
 
 #100000

@@ -118,7 +118,18 @@ parameter PIFO_CALENDAR_WIDTH = 32
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
     output     [PIFO_CALENDAR_WIDTH-1:0]    cpu2ip_write_pifo_calendar_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pifo_calendar_req_valid,
-    input      [PORT_NUM-1:0]               ip2cpu_write_pifo_calendar_resp_valid        
+    input      [PORT_NUM-1:0]               ip2cpu_write_pifo_calendar_resp_valid,        
+    
+    
+    // read enqueue agent status
+    
+    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_stat_enqueue_agent_req_addr,  
+    output                                  cpu2ip_read_stat_enqueue_agent_req_valid, 
+    input      [C_S_AXI_DATA_WIDTH-1:0]     ip2cpu_read_stat_enqueue_agent_resp_value,
+    input                                   ip2cpu_read_stat_enqueue_agent_resp_valid
+    
+    
+    
     
 );
 
