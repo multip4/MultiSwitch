@@ -30,7 +30,7 @@ module output_queue_v0_1_with_cpu
     parameter BUFFER_ADDR_WIDTH = 12,
     parameter BUFFER_WORD_DEPTH = 4096,
     parameter PIFO_WORD_DEPTH = 1024,
-    parameter OUTPUT_SYNC = 1
+    parameter OUTPUT_SYNC = 0
     )
     (
     
@@ -169,7 +169,9 @@ module output_queue_v0_1_with_cpu
     reg [BUFFER_ADDR_WIDTH-1:0]     r_buffer_rd_addr;
     (* mark_debug = "true" *) reg [BUFFER_ADDR_WIDTH-1:0]     r_buffer_rd_addr_next;
         
-    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_next_rd_addr;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_tail;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_tail_next;
+        
     (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_head;
     (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_head_next;
         
@@ -199,21 +201,22 @@ module output_queue_v0_1_with_cpu
     
     // output result for sop pkt addr 
     wire [BUFFER_ADDR_WIDTH-1:0] w_pifo_calendar_out_addr; 
-    
+    reg [BUFFER_ADDR_WIDTH-1:0] sop_addr;
     // buffer manager module inst
-    addr_manager_v0_1
+    addr_manager_v0_2
     #(.ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
     addr_manager_inst
     (
     .s_axis_wr_en(ctl_buffer_write_no_bypass), // write signal for fl_head transition
     .s_axis_rd_en(r_buffer_rd_en_next),    // read signal 
         
-    .s_axis_rd_pkt_sop_addr(w_pifo_calendar_out_addr), // read address for sop 
-    .s_axis_first_word_en(r_buffer_first_word_en_next), // the first word signal, for fl_tail value update.
+    .s_axis_rd_pkt_sop_addr(sop_addr), // read address for sop 
+    .s_axis_rd_first_word_en(r_buffer_first_word_en_next), // the first word signal, for fl_tail value update.
     
     .m_axis_fl_head(addr_manager_out_buffer_fl_head),       // next writable available address, same as free list head.
     .m_axis_fl_head_next(addr_manager_out_buffer_fl_head_next),
-    .m_axis_fl_tail_next(addr_manager_out_buffer_next_rd_addr),  // next readable address, the value of index at fl_tail
+    .m_axis_fl_tail(addr_manager_out_buffer_fl_tail),
+    .m_axis_fl_tail_next(addr_manager_out_buffer_fl_tail_next),  // next readable address, the value of index at fl_tail
     
     .m_axis_remain_space(addr_manager_out_st_buffer_remain_space), // statistics for buffer spae
     .m_axis_almost_full(addr_manager_out_st_buffer_almost_full),  // buffer almost full signal. 
@@ -222,7 +225,6 @@ module output_queue_v0_1_with_cpu
     
     .clk(axis_aclk),
     .rstn(axis_resetn)    //active low    
-    
     );
  
     // buffer wrapper module inst
@@ -355,6 +357,9 @@ module output_queue_v0_1_with_cpu
         r_sop_addr_next = r_sop_addr;
         bypass_by_buffer_empty = 0;
         
+        sop_addr = w_pifo_calendar_out_addr;
+        
+        
         r_m_axis_tvalid_next = 0;
         r_m_axis_tdata_next = r_m_axis_tdata;
         r_m_axis_tkeep_next = r_m_axis_tkeep;
@@ -454,6 +459,7 @@ module output_queue_v0_1_with_cpu
                         begin
                             // update sop address.
                             output_queue_fsm_state_next = UPDATE_FL_TAIL;
+                            sop_addr = addr_manager_out_buffer_fl_head;
                             r_buffer_rd_addr_next = addr_manager_out_buffer_fl_head;
                             r_buffer_first_word_en_next = 1; // first word control signal set to 1.
                             r_buffer_rd_en_next = 0;                          
@@ -465,12 +471,13 @@ module output_queue_v0_1_with_cpu
             // then go to READ_PKT state.
             UPDATE_FL_TAIL:
                 begin
-                    output_queue_fsm_state_next = READ_PKT;
-                    r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;    
+
 
 //                    if(m_axis_tready)
 //                        begin
-                            r_m_axis_tvalid_next = 1;
+                            output_queue_fsm_state_next = READ_PKT;
+//                            r_buffer_rd_addr_next = addr_manager_out_buffer_fl_tail;                                                   
+//                            r_m_axis_tvalid_next = 1;
                             r_buffer_rd_en_next = 1;                           
 //                        end
                 end
@@ -481,25 +488,24 @@ module output_queue_v0_1_with_cpu
 
                     r_m_axis_tvalid_next = 1;
 
+                    r_m_axis_tdata_next = w_buffer_wrapper_out_tdata;
+                    r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
+                    r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
+                    r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
+                    r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;
+
                     if(m_axis_tready)
                         begin
                             // set output value.
-                            r_m_axis_tdata_next = w_buffer_wrapper_out_tdata;
-                            r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
-                            r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
-                            r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
-                            r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;     
+     
 
-
- 
                             //if(w_buffer_wrapper_out_tlast) //
-                            if(r_m_axis_tlast)
+                            if(r_m_axis_tlast_next)
                                 output_queue_fsm_state_next = IDLE;
                             else
                                 begin
                                     r_buffer_rd_en_next = 1;
-                                    r_buffer_rd_addr_next = addr_manager_out_buffer_next_rd_addr;
-                                    
+                                    r_buffer_rd_addr_next = addr_manager_out_buffer_fl_tail_next;
                                 end
                         end
                 end
@@ -562,7 +568,8 @@ module output_queue_v0_1_with_cpu
 
 //assign w_buffer_write_no_bypass = (w_bypass_en)? 0 : s_axis_buffer_wr_en;
 
-assign m_axis_tvalid = (OUTPUT_SYNC)? r_m_axis_tvalid: r_m_axis_tvalid_next;
+assign m_axis_tvalid =  (OUTPUT_SYNC)? r_m_axis_tvalid & m_axis_tready : r_m_axis_tvalid_next & m_axis_tready;
+//assign m_axis_tvalid = (OUTPUT_SYNC)? r_m_axis_tvalid: r_m_axis_tvalid_next;
 assign m_axis_tdata = (OUTPUT_SYNC)? r_m_axis_tdata: r_m_axis_tdata_next;
 assign m_axis_tkeep = (OUTPUT_SYNC)? r_m_axis_tkeep: r_m_axis_tkeep_next;
 assign m_axis_tlast = (OUTPUT_SYNC)? r_m_axis_tlast: r_m_axis_tlast_next;

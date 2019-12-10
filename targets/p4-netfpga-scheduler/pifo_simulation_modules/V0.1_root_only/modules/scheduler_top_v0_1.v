@@ -48,7 +48,7 @@ module scheduler_top_v0_1
     parameter BUFFER_WORD_DEPTH = 512,
     parameter PIFO_CALENDAR_DEPTH = 128,
     parameter PIFO_INFO_LENGTH = 32,
-    parameter BUFFER_OUTPUT_SYNC=1
+    parameter BUFFER_OUTPUT_SYNC=0
     )
     (
      
@@ -217,8 +217,8 @@ module scheduler_top_v0_1
 // enqueue agent handles real data(not delayed input data),
 // to check whether drop or enqueue.
 
-wire  [PIFO_INFO_LENGTH-1:0] w_pifo_info = s_axis_tuser_d1[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
-wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta = s_axis_tuser_d1[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
+wire  [PIFO_INFO_LENGTH-1:0] w_pifo_info = s_axis_tuser[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
+wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta = s_axis_tuser[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
 
     enqueue_agent_v0_1
     enqueue_agent_inst(
@@ -700,8 +700,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta = s_axis_tuser_d1[
         .cpu2ip_read_stat_enqueue_agent_req_addr(),
         .cpu2ip_read_stat_enqueue_agent_req_valid(),
         .ip2cpu_read_stat_enqueue_agent_resp_value(),
-        .ip2cpu_read_stat_enqueue_agent_resp_valid(),
-
+        .ip2cpu_read_stat_enqueue_agent_resp_valid()
     );
 
 

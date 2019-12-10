@@ -78,7 +78,7 @@ module enqueue_agent_v0_1
     
     // input/output signal from/to pipeline. 
     input                               s_axis_tvalid; // valid bit.
-    output reg                          s_axis_tready; // ready signal to pipeline, combinational logic output.
+    output                              s_axis_tready; // ready signal to pipeline, combinational logic output.
     input [C_S_AXIS_TUSER_WIDTH-1:0]    s_axis_tuser; // user metadata, derive output port.
     input                               s_axis_tlast; 
     input                               s_axis_tpifo_valid;
@@ -120,8 +120,9 @@ module enqueue_agent_v0_1
     reg [C_S_AXI_DATA_WIDTH-1:0] r_nf2_pkt_drop_next[0:QUEUE_NUM-1];
     reg [C_S_AXI_DATA_WIDTH-1:0] r_nf3_pkt_drop_next[0:QUEUE_NUM-1];
     reg [C_S_AXI_DATA_WIDTH-1:0] r_nf4_pkt_drop_next[0:QUEUE_NUM-1];
-                    
     
+    reg                          r_axis_tready_next;
+    reg                          r_axis_tready;
     
    // local parameters
     localparam SRC_POS = 16;
@@ -164,7 +165,7 @@ module enqueue_agent_v0_1
     always @(*) 
     begin
     
-        s_axis_tready = 0;
+        r_axis_tready_next = 0;
         eq_agent_fsm_state_next = eq_agent_fsm_state;
         m_axis_ctl_pifo_in_en_reg_next = m_axis_ctl_pifo_in_en_reg;
         m_axis_ctl_buffer_wr_en_reg_next = m_axis_ctl_buffer_wr_en_reg;
@@ -280,7 +281,7 @@ module enqueue_agent_v0_1
                     // move to IDLE state when the last bit is 1
                     DROP:
                         begin
-                            s_axis_tready = 1;
+                            r_axis_tready_next = 1;
                             if(s_axis_tlast)
                                 eq_agent_fsm_state_next = IDLE;
                         end
@@ -289,7 +290,7 @@ module enqueue_agent_v0_1
                     // move to IDLE state when find eop.
                     ENQUEUE_REMAIN:
                         begin
-                            s_axis_tready = 1;
+                            r_axis_tready_next = 1;
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             if(s_axis_tlast)
                                 begin
@@ -299,7 +300,7 @@ module enqueue_agent_v0_1
                         end
                     ENQUEUE_SOP:
                         begin
-                            s_axis_tready = 1;
+                            r_axis_tready_next = 1;
                             m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
                             m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
                             eq_agent_fsm_state_next = ENQUEUE_REMAIN;      
@@ -360,6 +361,7 @@ module enqueue_agent_v0_1
                     r_nf2_pkt_drop[i] <= 0;
                     r_nf3_pkt_drop[i] <= 0;
                     r_nf4_pkt_drop[i] <= 0;
+                    r_axis_tready <= 0 ;
                 end
                 
                 
@@ -372,7 +374,7 @@ module enqueue_agent_v0_1
                 
                 r_cpu_read_data <= r_cpu_read_data_next;
                 r_cpu_read_resp_valid <= s_axi_req_valid; 
-                
+                r_axis_tready <= r_axis_tready_next;
                 
                 for(i=0; i<QUEUE_NUM; i=i+1) begin
                     r_nf0_pkt_drop[i] <= r_nf0_pkt_drop_next[i];
@@ -417,4 +419,5 @@ module enqueue_agent_v0_1
     // assgin cpu result
     assign m_axi_data = r_cpu_read_data;      
     assign m_axi_resp_valid = r_cpu_read_resp_valid;
+    assign s_axis_tready = r_axis_tready;
 endmodule

@@ -56,11 +56,7 @@ end
 
 
 
-output_queue_v0_1
-#(
-.OUTPUT_SYNC(0)
-)
-
+output_queue_v0_1_with_cpu
 output_queue_inst(
     .s_axis_tdata(s_axis_tdata),
     .s_axis_tkeep(s_axis_tkeep),
@@ -147,7 +143,27 @@ s_axis_tvalid = 1;
 s_axis_tlast = 1;
 s_axis_buffer_wr_en = 1;
 s_axis_pifo_insert_en = 0;
+m_axis_tready = 0;
+
+#5000
+s_axis_tdata = 0;
+s_axis_tkeep = 0;
+s_axis_tuser = 0;
+s_axis_tpifo = 0;
+s_axis_tvalid = 0;
+s_axis_tlast = 0;
+s_axis_buffer_wr_en = 0;
+s_axis_pifo_insert_en = 0;
+m_axis_tready = 0;
+pifo_root = 0;
+
+
+#50000
 m_axis_tready = 1;
+
+#50000
+m_axis_tready = 0;
+
 
 #5000
 s_axis_tdata = 0;
