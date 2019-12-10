@@ -189,6 +189,9 @@ module enqueue_agent_v0_1
                         begin
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             m_axis_ctl_buffer_wr_en_reg_next = 0;
+
+                            if(s_axis_tvalid) r_axis_tready_next = 1;
+
                             if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire | ~s_axis_tpifo_valid)) 
                                 begin
                                     eq_agent_fsm_state_next = DROP;
@@ -361,9 +364,9 @@ module enqueue_agent_v0_1
                     r_nf2_pkt_drop[i] <= 0;
                     r_nf3_pkt_drop[i] <= 0;
                     r_nf4_pkt_drop[i] <= 0;
-                    r_axis_tready <= 0 ;
+
                 end
-                
+                r_axis_tready <= 0 ;
                 
             end
         else 

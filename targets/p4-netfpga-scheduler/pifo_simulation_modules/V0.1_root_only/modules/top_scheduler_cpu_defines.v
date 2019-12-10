@@ -37,4 +37,6 @@
 `define  PIFO_CALENDAR_DATA_BITS		    31:0
 `define  PIFO_CALENDAR_WORD_COUNT		    1
 
+`define  STAT_EQ_AGENT                      0
+
 

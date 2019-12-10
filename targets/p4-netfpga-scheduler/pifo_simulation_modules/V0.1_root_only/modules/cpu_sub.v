@@ -124,7 +124,7 @@ parameter PIFO_CALENDAR_WIDTH = 32
     // read enqueue agent status
     
     output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_stat_enqueue_agent_req_addr,  
-    output                                  cpu2ip_read_stat_enqueue_agent_req_valid, 
+    output     reg                              cpu2ip_read_stat_enqueue_agent_req_valid, 
     input      [C_S_AXI_DATA_WIDTH-1:0]     ip2cpu_read_stat_enqueue_agent_resp_value,
     input                                   ip2cpu_read_stat_enqueue_agent_resp_valid
     
@@ -163,6 +163,10 @@ assign cpu2ip_read_sume_buffer_req_addr = w_cpu_read_req_index;
 assign cpu2ip_read_pifo_buffer_req_addr = w_cpu_read_req_index;
 assign cpu2ip_read_pifo_calendar_req_addr = w_cpu_read_req_index;
 
+// read stat
+assign cpu2ip_read_stat_enqueue_agent_req_addr = w_cpu_read_req_index;
+
+
 assign cpu2ip_write_pkt_buffer_req_addr = w_cpu_write_req_index;
 assign cpu2ip_write_sume_buffer_req_addr = w_cpu_write_req_index;
 assign cpu2ip_write_pifo_buffer_req_addr = w_cpu_write_req_index;
@@ -177,6 +181,13 @@ reg [PORT_NUM-1:0]                  r_cpu2ip_read_pifo_buffer_req_valid;
 reg [PORT_NUM-1:0]                  r_cpu2ip_read_pifo_buffer_req_valid_next; 
 reg [PORT_NUM-1:0]                  r_cpu2ip_read_pifo_calendar_req_valid;
 reg [PORT_NUM-1:0]                  r_cpu2ip_read_pifo_calendar_req_valid_next; 
+
+reg                                 r_cpu2ip_read_enqueue_agent_req_valid;
+reg                                 r_cpu2ip_read_enqueue_agent_req_valid_next;
+
+
+                              
+
 
 
 assign cpu2ip_read_pkt_buffer_req_valid = r_cpu2ip_read_pkt_buffer_req_valid;
@@ -340,6 +351,9 @@ begin
     r_cpu2ip_read_pifo_buffer_req_valid_next = 0;            
     r_cpu2ip_read_pifo_calendar_req_valid_next = 0;
     
+    r_cpu2ip_read_enqueue_agent_req_valid_next = 0;
+    cpu2ip_read_stat_enqueue_agent_req_valid = 0;
+    
     // write valid
     r_cpu2ip_write_pkt_buffer_req_valid_next = 0;
     r_cpu2ip_write_sume_buffer_req_valid_next = 0;
@@ -367,6 +381,18 @@ begin
         begin
             r_axi_awready_next = 1;
             r_axi_wready_next = 1;
+        end
+    
+    // stat read for enqueue agent
+    if(w_cpu_read_req_type == 1 && w_cpu_read_req_buffer_type == `STAT_EQ_AGENT)
+        begin
+            cpu2ip_read_stat_enqueue_agent_req_valid = 1;
+        end
+    // stat read response handling
+    if( ip2cpu_read_stat_enqueue_agent_resp_valid )
+        begin
+            r_axi_rdata_next = ip2cpu_read_stat_enqueue_agent_resp_value;
+            r_axi_rvalid_next = ip2cpu_read_stat_enqueue_agent_resp_valid;
         end
     
     // set read response valid, if the response input signal is valid.

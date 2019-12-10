@@ -80,8 +80,10 @@ wire [127:0]    m_axis_4_tuser;
 wire            m_axis_4_tvalid;
 wire            m_axis_4_tlast;
 
-
-
+reg  [31:0]     axi_araddr;           
+reg             axi_arvalid;
+wire [31:0]     axi_rdata;
+wire            axi_rvalid;
 
 
 
@@ -146,8 +148,23 @@ top_sim
 .m_axis_4_tuser(m_axis_4_tuser),
 .m_axis_4_tpifo(m_axis_4_tpifo),
 .m_axis_4_tvalid(m_axis_4_tvalid),
-.m_axis_4_tlast(m_axis_4_tlast)          
+.m_axis_4_tlast(m_axis_4_tlast),
+
+.S_AXI_ARADDR(axi_araddr),
+.S_AXI_ARVALID(axi_arvalid),
+.S_AXI_RREADY(),
+.S_AXI_ARREADY(),
+.S_AXI_RDATA(axi_rdata), 
+.S_AXI_RRESP(), 
+.S_AXI_RVALID(axi_rvalid),  
+.S_AXI_ACLK (clk), 
+.S_AXI_ARESETN(rstn)
 );
+
+localparam SRC_POS_PORT0 = 16;
+localparam SRC_POS_PORT1 = 18;
+localparam SRC_POS_PORT2 = 20;
+localparam SRC_POS_PORT3 = 22;
 
 localparam DST_POS_PORT0 = 24;
 localparam DST_POS_PORT1 = 26;
@@ -165,7 +182,8 @@ s_axis_tuser = 0;
 s_axis_tpifo = 0;
 s_axis_tuser_final = 0;
 m_axis_0_tready = 0;
-
+axi_araddr = 0;
+axi_arvalid = 0;
 
 # 100000
 rstn = 1;
@@ -591,6 +609,27 @@ m_axis_0_tready = 1;
 m_axis_0_tready = 0;
 
 // end scenario 5.
+
+
+// scenario 6, 
+// cpu read test from enqueue agent drop sig.
+
+//            type  3'b port  3'b buffer_type, (4+8)'b index, 4 offset 
+#5000
+axi_araddr = {1'b1, 3'b0, 3'b0, 4'b0, 8'h11, 4'b0 };
+axi_arvalid = 1;
+
+#5000
+axi_araddr = {1'b1, 3'b0, 3'b0, 4'b0, 8'h22, 4'b0 };
+axi_arvalid = 1;
+
+#5000
+axi_araddr = {1'b1, 3'b0, 3'b0, 4'b0, 8'h33, 4'b0 };
+axi_arvalid = 1;
+
+# 10000
+axi_arvalid = 0;
+
 
 end
 

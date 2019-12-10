@@ -495,7 +495,7 @@ end
     .addra(meta_buffer_addra),  // always write to the fl_head
     .douta(r_meta_buffer_out_async),
     
-    .dinb(289'b0),
+    .dinb(128'b0),
     .addrb(s_axis_rd_addr),
     .doutb(m_axis_tuser_async),
     .web('b0),
