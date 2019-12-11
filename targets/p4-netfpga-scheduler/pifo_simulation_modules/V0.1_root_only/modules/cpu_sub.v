@@ -24,10 +24,14 @@ module cpu_sub
 #(
 parameter C_S_AXI_ADDR_WIDTH = 23,
 parameter C_S_AXI_DATA_WIDTH = 32,
+parameter C_S_AXI_INDEX_WIDTH = 12,
 parameter ADDR_PORT_WIDTH = 3,
 parameter ADDR_BUFFER_TYPE_WIDTH = 3,
 parameter ADDR_OFFSET_WIDTH = 4,
-parameter ADDR_INDEX_WIDTH = 12,
+parameter BUFFER_ADDR_INDEX_WIDTH   = 12,
+parameter PIFO_ADDR_INDEX_WIDTH     = 12,
+parameter EQ_AGENT_INDEX_WIDTH      = 8,
+
 parameter PORT_NUM = 5,
 parameter PKT_BUFFER_WIDTH = 289,
 parameter SUME_BUFFER_WIDTH = 128,
@@ -64,26 +68,26 @@ parameter PIFO_CALENDAR_WIDTH = 32
     // cpu2ip read signal
     
     // read from pkt buffer
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pkt_buffer_req_addr,
+    output     [BUFFER_ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pkt_buffer_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_pkt_buffer_req_valid,
     input      [PKT_BUFFER_WIDTH-1:0]        ip2cpu_read_pkt_buffer_resp_value,
     input      [PORT_NUM-1:0]               ip2cpu_read_pkt_buffer_resp_valid,
         
     // read from sume meta buffer
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_sume_buffer_req_addr,
+    output     [BUFFER_ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_sume_buffer_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_sume_buffer_req_valid,
     input       [SUME_BUFFER_WIDTH-1:0]     ip2cpu_read_sume_buffer_resp_value,
     input      [PORT_NUM-1:0]               ip2cpu_read_sume_buffer_resp_valid,
     
 
     // read from pifo info buffer
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pifo_buffer_req_addr,
+    output     [BUFFER_ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pifo_buffer_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_pifo_buffer_req_valid,
     input      [PIFO_BUFFER_WIDTH-1:0]      ip2cpu_read_pifo_buffer_resp_value,
     input      [PORT_NUM-1:0]                ip2cpu_read_pifo_buffer_resp_valid,
         
     // read from pifo calendar
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pifo_calendar_req_addr,
+    output     [PIFO_ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_pifo_calendar_req_addr,
     output     [PORT_NUM-1:0]               cpu2ip_read_pifo_calendar_req_valid,
     input      [PIFO_CALENDAR_WIDTH-1:0]    ip2cpu_read_pifo_calendar_resp_value,
     input      [PORT_NUM-1:0]               ip2cpu_read_pifo_calendar_resp_valid,    
@@ -93,21 +97,21 @@ parameter PIFO_CALENDAR_WIDTH = 32
     
     // write pkt buffer
     
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pkt_buffer_req_addr,
+    output     [BUFFER_ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pkt_buffer_req_addr,
     output     [PKT_BUFFER_WIDTH-1:0]       cpu2ip_write_pkt_buffer_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pkt_buffer_req_valid,
     input      [PORT_NUM-1:0]                ip2cpu_write_pkt_buffer_resp_valid,
         
     // write sume buffer
 
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_sume_buffer_req_addr,
+    output     [BUFFER_ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_sume_buffer_req_addr,
     output     [SUME_BUFFER_WIDTH-1:0]      cpu2ip_write_sume_buffer_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_sume_buffer_req_valid,
     input      [PORT_NUM-1:0]                ip2cpu_write_sume_buffer_resp_valid,    
     
     // write pifo buffer
 
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_buffer_req_addr,
+    output     [BUFFER_ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_buffer_req_addr,
     output     [PIFO_BUFFER_WIDTH-1:0]      cpu2ip_write_pifo_buffer_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pifo_buffer_req_valid,
     input      [PORT_NUM-1:0]               ip2cpu_write_pifo_buffer_resp_valid,    
@@ -115,7 +119,7 @@ parameter PIFO_CALENDAR_WIDTH = 32
     
     // write pifo calendar
     
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
+    output     [PIFO_ADDR_INDEX_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
     output     [PIFO_CALENDAR_WIDTH-1:0]    cpu2ip_write_pifo_calendar_req_value,
     output     [PORT_NUM-1:0]               cpu2ip_write_pifo_calendar_req_valid,
     input      [PORT_NUM-1:0]               ip2cpu_write_pifo_calendar_resp_valid,        
@@ -123,8 +127,8 @@ parameter PIFO_CALENDAR_WIDTH = 32
     
     // read enqueue agent status
     
-    output     [ADDR_INDEX_WIDTH-1:0]       cpu2ip_read_stat_enqueue_agent_req_addr,  
-    output     reg                              cpu2ip_read_stat_enqueue_agent_req_valid, 
+    output     [EQ_AGENT_INDEX_WIDTH-1:0]       cpu2ip_read_stat_enqueue_agent_req_addr,  
+    output     reg                          cpu2ip_read_stat_enqueue_agent_req_valid, 
     input      [C_S_AXI_DATA_WIDTH-1:0]     ip2cpu_read_stat_enqueue_agent_resp_value,
     input                                   ip2cpu_read_stat_enqueue_agent_resp_valid
     
@@ -140,7 +144,7 @@ wire                                w_cpu_read_req_type;  // states or buffer
 wire [ADDR_PORT_WIDTH-1:0]          w_cpu_read_req_port;
 wire [ADDR_BUFFER_TYPE_WIDTH-1:0]   w_cpu_read_req_buffer_type;
 wire [ADDR_OFFSET_WIDTH-1:0]        w_cpu_read_req_offset;
-wire [ADDR_INDEX_WIDTH-1:0]         w_cpu_read_req_index;
+wire [C_S_AXI_INDEX_WIDTH-1:0]         w_cpu_read_req_index;
 
 assign {w_cpu_read_req_type, w_cpu_read_req_port, w_cpu_read_req_buffer_type, 
         w_cpu_read_req_index, w_cpu_read_req_offset} = S_AXI_ARADDR;
@@ -151,26 +155,26 @@ wire                                w_cpu_write_req_type;  // states or buffer
 wire [ADDR_PORT_WIDTH-1:0]          w_cpu_write_req_port;
 wire [ADDR_BUFFER_TYPE_WIDTH-1:0]   w_cpu_write_req_buffer_type;
 wire [ADDR_OFFSET_WIDTH-1:0]        w_cpu_write_req_offset;
-wire [ADDR_INDEX_WIDTH-1:0]         w_cpu_write_req_index;
+wire [C_S_AXI_INDEX_WIDTH-1:0]         w_cpu_write_req_index;
 
 assign {w_cpu_write_req_type, w_cpu_write_req_port, w_cpu_write_req_buffer_type, 
         w_cpu_write_req_index, w_cpu_write_req_offset} = S_AXI_AWADDR;
 
 // assign cpu2ip signals.
 
-assign cpu2ip_read_pkt_buffer_req_addr = w_cpu_read_req_index;
-assign cpu2ip_read_sume_buffer_req_addr = w_cpu_read_req_index;
-assign cpu2ip_read_pifo_buffer_req_addr = w_cpu_read_req_index;
-assign cpu2ip_read_pifo_calendar_req_addr = w_cpu_read_req_index;
+assign cpu2ip_read_pkt_buffer_req_addr = w_cpu_read_req_index[BUFFER_ADDR_INDEX_WIDTH-1:0];
+assign cpu2ip_read_sume_buffer_req_addr = w_cpu_read_req_index[BUFFER_ADDR_INDEX_WIDTH-1:0];
+assign cpu2ip_read_pifo_buffer_req_addr = w_cpu_read_req_index[BUFFER_ADDR_INDEX_WIDTH-1:0];
+assign cpu2ip_read_pifo_calendar_req_addr = w_cpu_read_req_index[PIFO_ADDR_INDEX_WIDTH-1:0];
 
 // read stat
-assign cpu2ip_read_stat_enqueue_agent_req_addr = w_cpu_read_req_index;
+assign cpu2ip_read_stat_enqueue_agent_req_addr = w_cpu_read_req_index[EQ_AGENT_INDEX_WIDTH-1:0];
 
 
-assign cpu2ip_write_pkt_buffer_req_addr = w_cpu_write_req_index;
-assign cpu2ip_write_sume_buffer_req_addr = w_cpu_write_req_index;
-assign cpu2ip_write_pifo_buffer_req_addr = w_cpu_write_req_index;
-assign cpu2ip_write_pifo_calendar_req_addr = w_cpu_write_req_index;
+assign cpu2ip_write_pkt_buffer_req_addr = w_cpu_write_req_index[BUFFER_ADDR_INDEX_WIDTH-1:0];
+assign cpu2ip_write_sume_buffer_req_addr = w_cpu_write_req_index[BUFFER_ADDR_INDEX_WIDTH-1:0];
+assign cpu2ip_write_pifo_buffer_req_addr = w_cpu_write_req_index[BUFFER_ADDR_INDEX_WIDTH-1:0];
+assign cpu2ip_write_pifo_calendar_req_addr = w_cpu_write_req_index[PIFO_ADDR_INDEX_WIDTH-1:0];
 
 // register for read valid signal
 reg [PORT_NUM-1:0]                  r_cpu2ip_read_pkt_buffer_req_valid;

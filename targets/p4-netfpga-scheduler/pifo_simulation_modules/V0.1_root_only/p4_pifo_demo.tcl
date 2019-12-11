@@ -18,7 +18,7 @@ set RC_BRAM_B_WIDTH 32
 set SCHE_BUFFER_DEPTH 512
 set SCHE_PIFO_CALENDAR_DEPTH 128
 
-set SCHE_ADDR_TABLE_WIDTH 12
+set SCHE_ADDR_TABLE_WIDTH 9
 set SCHE_PKT_BUFFER_WIDTH 289
 set SCHE_META_BUFFER_WIDTH 128
 set SCHE_PIFO_BUFFER_WIDTH 32
@@ -66,6 +66,13 @@ read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_v0_1_wit
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/eneueue_agent_v0_1.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/top_scheduler_cpu_defines.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/nf_datapath/nf_datapath.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/sss_output_queue_single/hdl/sss_output_queue_single.v"
+
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/fallthrough_small_fifo_v1_0_0/hdl/fallthrough_small_fifo.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/fallthrough_small_fifo_v1_0_0/hdl/small_fifo.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/sss_fallthrough_small_fifo_v1_0_0/hdl/sss_fallthrough_small_fifo.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/sss_fallthrough_small_fifo_v1_0_0/hdl/sss_small_fifo.v"
+
 
 
 # create_ip -name scheduler_top_v0_1 -vendor NetFPGA -library NetFPGA -module_name scheduler_top_v0_1_ip

@@ -56,6 +56,7 @@ module enqueue_agent_v0_1
         s_axis_tready,
         s_axis_tuser, // sume_meta.
         s_axis_tlast,
+        s_axis_tlast_f1,
         s_axis_tpifo_valid,
         
         // from each port queue status 
@@ -80,7 +81,9 @@ module enqueue_agent_v0_1
     input                               s_axis_tvalid; // valid bit.
     output                              s_axis_tready; // ready signal to pipeline, combinational logic output.
     input [C_S_AXIS_TUSER_WIDTH-1:0]    s_axis_tuser; // user metadata, derive output port.
-    input                               s_axis_tlast; 
+    input                               s_axis_tlast;
+    input                               s_axis_tlast_f1; // front 1 delay than s_axis_tlast;
+         
     input                               s_axis_tpifo_valid;
     
     
@@ -190,8 +193,6 @@ module enqueue_agent_v0_1
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             m_axis_ctl_buffer_wr_en_reg_next = 0;
 
-                            if(s_axis_tvalid) r_axis_tready_next = 1;
-
                             if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire | ~s_axis_tpifo_valid)) 
                                 begin
                                     eq_agent_fsm_state_next = DROP;
@@ -272,33 +273,49 @@ module enqueue_agent_v0_1
                                            
                                                     
                                 end
-                            else if(s_axis_tvalid)
+                            else if(s_axis_tvalid & ~r_axis_tready)
                                 begin
+                                    r_axis_tready_next = 1;
                                     eq_agent_fsm_state_next = ENQUEUE_SOP;
 //                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
 //                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
                                 end
+//                            else if(s_axis_tvalid & r_axis_tready)
+//                                begin
+//                                    r_axis_tready_next = 1;
+//                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
+//                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
+//                                    eq_agent_fsm_state_next = ENQUEUE_REMAIN;   
+                                
+//                                end
                         end
                     // Drop state;
                     // drop all chunck to the EOP,
                     // move to IDLE state when the last bit is 1
                     DROP:
                         begin
-                            r_axis_tready_next = 1;
+                            //set ready signal to 1 only if the s_axis_tlast_f1 and s_axis_tlast value is not 0.
+                            if(~(s_axis_tlast_f1 | s_axis_tlast)) r_axis_tready_next = 1;
                             if(s_axis_tlast)
-                                eq_agent_fsm_state_next = IDLE;
+                                begin
+                                    eq_agent_fsm_state_next = IDLE;
+                                    //r_axis_tready_next = 0;
+                                end
                         end
                     // Enqueue state:
                     // write pkt chunks to buffer,
                     // move to IDLE state when find eop.
                     ENQUEUE_REMAIN:
                         begin
-                            r_axis_tready_next = 1;
+                            //set ready signal to 1 only if the s_axis_tlast_f1 and s_axis_tlast value is not 0.
+                            if(~(s_axis_tlast_f1 | s_axis_tlast)) r_axis_tready_next = 1;
+                            
                             m_axis_ctl_pifo_in_en_reg_next = 0;
                             if(s_axis_tlast)
                                 begin
                                     eq_agent_fsm_state_next = IDLE;
                                     m_axis_ctl_buffer_wr_en_reg_next = 0;
+                                    //r_axis_tready_next = 0;
                                 end
                         end
                     ENQUEUE_SOP:

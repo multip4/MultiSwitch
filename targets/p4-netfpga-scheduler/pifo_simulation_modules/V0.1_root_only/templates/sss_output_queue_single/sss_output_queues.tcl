@@ -30,8 +30,8 @@
 
 # Vivado Launch Script
 #### Change design settings here #######
-set design sss_output_queues
-set top sss_output_queues
+set design sss_output_queue_single
+set top sss_output_queue_single
 set device xc7vx690t-3-ffg1761
 set proj_dir ./ip_proj
 set ip_version 1.00
@@ -47,14 +47,13 @@ create_project -name ${design} -force -dir "./${proj_dir}" -part ${device} -ip
 set_property source_mgmt_mode All [current_project]  
 set_property top ${top} [current_fileset]
 set_property ip_repo_paths $::env(SUME_FOLDER)/lib/hw/  [current_fileset]
-puts "Creating Output Queues IP"
+puts "Creating Output Queues Single IP"
 # Project Constraints
 #####################################
 # Project Structure & IP Build
 #####################################
-read_verilog "./hdl/sss_output_queues_cpu_regs_defines.v"
-read_verilog "./hdl/sss_output_queues_cpu_regs.v"
-read_verilog "./hdl/sss_output_queues.v"
+
+read_verilog "./hdl/sss_output_queue_single.v"
 
 update_compile_order -fileset sources_1
 update_compile_order -fileset sim_1
@@ -95,36 +94,6 @@ set_property display_name {C_S_AXIS_TUSER_WIDTH} [ipx::get_user_parameter C_S_AX
 set_property value {128} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
 set_property value_format {long} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
 
-ipx::add_user_parameter {NUM_QUEUES} [ipx::current_core]
-set_property value_resolve_type {user} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
-set_property display_name {NUM_QUEUES} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
-set_property value {5} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
-set_property value_format {long} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
-
-ipx::add_user_parameter {C_S_AXI_DATA_WIDTH} [ipx::current_core]
-set_property value_resolve_type {user} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
-set_property display_name {C_S_AXI_DATA_WIDTH} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
-set_property value {32} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
-set_property value_format {long} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
-
-ipx::add_user_parameter {C_S_AXI_ADDR_WIDTH} [ipx::current_core]
-set_property value_resolve_type {user} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
-set_property display_name {C_S_AXI_ADDR_WIDTH} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
-set_property value {32} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
-set_property value_format {long} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
-
-ipx::add_user_parameter {C_BASEADDR} [ipx::current_core]
-set_property value_resolve_type {user} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
-set_property display_name {C_BASEADDR} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
-set_property value {0x00000000} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
-set_property value_format {bitstring} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
-
-ipx::add_user_parameter {QUEUE_DEPTH_BITS} [ipx::current_core]
-set_property value_resolve_type {user} [ipx::get_user_parameter QUEUE_DEPTH_BITS [ipx::current_core]]
-set_property display_name {QUEUE_DEPTH_BITS} [ipx::get_user_parameter QUEUE_DEPTH_BITS [ipx::current_core]]
-set_property value {16} [ipx::get_user_parameter QUEUE_DEPTH_BITS [ipx::current_core]]
-set_property value_format {bitstring} [ipx::get_user_parameter QUEUE_DEPTH_BITS [ipx::current_core]]
-
 ipx::add_subcore NetFPGA:NetFPGA:sss_fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
 ipx::add_subcore NetFPGA:NetFPGA:sss_fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
 
@@ -132,14 +101,9 @@ ipx::add_subcore NetFPGA:NetFPGA:fallthrough_small_fifo:1.00 [ipx::get_file_grou
 ipx::add_subcore NetFPGA:NetFPGA:fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
 
 ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis -of_objects [ipx::current_core]]
-ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_0 -of_objects [ipx::current_core]]
-ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_1 -of_objects [ipx::current_core]]
-ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_2 -of_objects [ipx::current_core]]
-ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_3 -of_objects [ipx::current_core]]
-ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis_4 -of_objects [ipx::current_core]]
+ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis -of_objects [ipx::current_core]]
 
 ipx::infer_user_parameters [ipx::current_core]
-
 
 ipx::check_integrity [ipx::current_core]
 ipx::save_core [ipx::current_core]

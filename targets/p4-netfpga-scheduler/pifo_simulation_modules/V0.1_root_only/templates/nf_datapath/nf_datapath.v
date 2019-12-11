@@ -44,7 +44,7 @@
 module nf_datapath #(
     //Slave AXI parameters
     parameter C_S_AXI_DATA_WIDTH    = 32,          
-    parameter C_S_AXI_ADDR_WIDTH    = 32,          
+    parameter C_S_AXI_ADDR_WIDTH    = 23,          
      parameter C_BASEADDR            = 32'h00000000,
 
     // Master AXI Stream Data Width
@@ -335,7 +335,8 @@ module nf_datapath #(
    (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0] scheduler_tuser = m_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0];
 
            //Output queues
-       scheduler_top_v0_1  
+       scheduler_top_v0_1
+       #(.C_S_AXI_ADDR_WIDTH(C_S_AXI_ADDR_WIDTH))  
      scheduler_top_1 (
       .axis_aclk(axis_aclk), 
       .axis_resetn(axis_resetn), 

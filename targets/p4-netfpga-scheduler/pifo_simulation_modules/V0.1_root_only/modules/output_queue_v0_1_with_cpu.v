@@ -28,6 +28,7 @@ module output_queue_v0_1_with_cpu
     parameter META_WIDTH=128,
     parameter PIFO_WIDTH=32,
     parameter BUFFER_ADDR_WIDTH = 12,
+    parameter PIFO_ADDR_WIDTH = 10,
     parameter BUFFER_WORD_DEPTH = 4096,
     parameter PIFO_WORD_DEPTH = 1024,
     parameter OUTPUT_SYNC = 0
@@ -91,7 +92,7 @@ module output_queue_v0_1_with_cpu
     output                                  ip2cpu_read_pifo_buffer_resp_valid,
         
     // read from pifo calendar
-    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_read_pifo_calendar_req_addr,
+    input     [PIFO_ADDR_WIDTH-1:0]       cpu2ip_read_pifo_calendar_req_addr,
     input                                   cpu2ip_read_pifo_calendar_req_valid,
     output    [PIFO_WIDTH-1:0]              ip2cpu_read_pifo_calendar_resp_value,
     output                                  ip2cpu_read_pifo_calendar_resp_valid,    
@@ -123,7 +124,7 @@ module output_queue_v0_1_with_cpu
     
     // write pifo calendar
     
-    input     [BUFFER_ADDR_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
+    input     [PIFO_ADDR_WIDTH-1:0]       cpu2ip_write_pifo_calendar_req_addr,
     input     [PIFO_WIDTH-1:0]              cpu2ip_write_pifo_calendar_req_value,
     input                                   cpu2ip_write_pifo_calendar_req_valid,
     output                                  ip2cpu_write_pifo_calendar_resp_valid,     
@@ -204,7 +205,9 @@ module output_queue_v0_1_with_cpu
     reg [BUFFER_ADDR_WIDTH-1:0] sop_addr;
     // buffer manager module inst
     addr_manager_v0_2
-    #(.ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
+    #(
+    .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
+    .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
     addr_manager_inst
     (
     .s_axis_wr_en(ctl_buffer_write_no_bypass), // write signal for fl_head transition
@@ -238,6 +241,7 @@ module output_queue_v0_1_with_cpu
     wire [PIFO_WIDTH-1:0]                           w_buffer_wrapper_out_tpifo;  // output pifo infomation.
     
     buffer_wrapper_v1_0_with_cpu
+    #(.C_S_AXIS_ADDR_WIDTH(BUFFER_ADDR_WIDTH))
     buffer_wrapper_inst
     (
         .s_axis_tdata(s_axis_tdata),
@@ -311,7 +315,9 @@ module output_queue_v0_1_with_cpu
     
     pifo_calendar_v0_1_with_cpu
     #(
-    .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH)
+    .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH),
+    .BUFFER_ADDR_WIDTH(BUFFER_ADDR_WIDTH),
+    .PIFO_CALENDAR_INDEX_WIDTH(PIFO_ADDR_WIDTH)
     )
     pifo_calendar_inst
     (
