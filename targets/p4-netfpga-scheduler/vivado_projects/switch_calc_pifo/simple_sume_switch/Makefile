@@ -51,6 +51,11 @@ all:    clean
 	make -C ${SW} compile
 	make -C ${HW} load_elf
 
+skip_project:
+	make -C ${HW} export_to_sdk
+	make -C ${SW} project
+	make -C ${SW} compile
+	make -C ${HW} load_elf
 
 clean:
 	make -C ${HW} distclean

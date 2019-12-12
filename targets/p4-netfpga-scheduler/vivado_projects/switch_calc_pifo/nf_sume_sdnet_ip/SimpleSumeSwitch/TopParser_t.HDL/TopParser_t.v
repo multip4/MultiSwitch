@@ -34,22 +34,35 @@
  max latency = 26 (cycles)
 
 input/output tuple 'control'
-	section 4-bit field @ [19:16]
+	section 5-bit field @ [20:16]
 	activeBank 1-bit field @ [15:15]
 	offset 11-bit field @ [14:4]
 	done 1-bit field @ [3:3]
 	errorCode 3-bit field @ [2:0]
 
 output tuple 'p'
-	ethernet_isValid 1-bit field @ [217:217]
-	ethernet_dstAddr 48-bit field @ [216:169]
-	ethernet_srcAddr 48-bit field @ [168:121]
-	ethernet_etherType 16-bit field @ [120:105]
-	calc_isValid 1-bit field @ [104:104]
-	calc_op1 32-bit field @ [103:72]
-	calc_opCode 8-bit field @ [71:64]
-	calc_op2 32-bit field @ [63:32]
-	calc_result 32-bit field @ [31:0]
+	ethernet_isValid 1-bit field @ [378:378]
+	ethernet_dstAddr 48-bit field @ [377:330]
+	ethernet_srcAddr 48-bit field @ [329:282]
+	ethernet_etherType 16-bit field @ [281:266]
+	calc_isValid 1-bit field @ [265:265]
+	calc_op1 32-bit field @ [264:233]
+	calc_opCode 8-bit field @ [232:225]
+	calc_op2 32-bit field @ [224:193]
+	calc_result 32-bit field @ [192:161]
+	ipv4_isValid 1-bit field @ [160:160]
+	ipv4_version 4-bit field @ [159:156]
+	ipv4_ihl 4-bit field @ [155:152]
+	ipv4_tos 8-bit field @ [151:144]
+	ipv4_totalLen 16-bit field @ [143:128]
+	ipv4_identification 16-bit field @ [127:112]
+	ipv4_flags 3-bit field @ [111:109]
+	ipv4_fragOffset 13-bit field @ [108:96]
+	ipv4_ttl 8-bit field @ [95:88]
+	ipv4_protocol 8-bit field @ [87:80]
+	ipv4_hdrChecksum 16-bit field @ [79:64]
+	ipv4_srcAddr 32-bit field @ [63:32]
+	ipv4_dstAddr 32-bit field @ [31:0]
 
 output tuple 'user_metadata'
 	unused 8-bit field @ [7:0]
@@ -58,7 +71,9 @@ output tuple 'digest_data'
 	unused 256-bit field @ [255:0]
 
 input/output tuple 'sume_metadata'
-	pifo_info 32-bit field @ [159:128]
+	pifo_valid 1-bit field @ [159:159]
+	pifo_rank 19-bit field @ [158:140]
+	pifo_field 12-bit field @ [139:128]
 	dma_q_size 16-bit field @ [127:112]
 	nf3_q_size 16-bit field @ [111:96]
 	nf2_q_size 16-bit field @ [95:80]
@@ -122,7 +137,7 @@ input packet_in_ERR ;
 input [5:0] packet_in_CNT ;
 input [255:0] packet_in_DAT ;
 input tuple_in_control_VALID ;
-input [19:0] tuple_in_control_DATA ;
+input [20:0] tuple_in_control_DATA ;
 input tuple_in_sume_metadata_VALID /* unused */ ;
 input [159:0] tuple_in_sume_metadata_DATA ;
 input packet_out_RDY /* unused */ ;
@@ -133,9 +148,9 @@ output packet_out_ERR ;
 output [5:0] packet_out_CNT ;
 output [255:0] packet_out_DAT ;
 output tuple_out_control_VALID ;
-output [19:0] tuple_out_control_DATA ;
+output [20:0] tuple_out_control_DATA ;
 output tuple_out_p_VALID ;
-output [217:0] tuple_out_p_DATA ;
+output [378:0] tuple_out_p_DATA ;
 output tuple_out_user_metadata_VALID ;
 output [7:0] tuple_out_user_metadata_DATA ;
 output tuple_out_digest_data_VALID ;
@@ -147,7 +162,7 @@ output [31:0] tuple_out_TopParser_extracts_DATA ;
 
 wire packet_in_RDY ;
 wire tuple_in_valid ;
-reg [19:0] tuple_in_control_i ;
+reg [20:0] tuple_in_control_i ;
 wire [159:0] tuple_in_sume_metadata ;
 wire packet_out_VAL ;
 wire packet_out_SOF ;
@@ -157,11 +172,11 @@ wire [5:0] packet_out_CNT ;
 wire [255:0] packet_out_DAT ;
 wire tuple_out_control_VALID ;
 wire tuple_out_valid ;
-reg [19:0] tuple_out_control_DATA ;
-wire [19:0] tuple_out_control_i ;
+reg [20:0] tuple_out_control_DATA ;
+wire [20:0] tuple_out_control_i ;
 wire tuple_out_p_VALID ;
-wire [217:0] tuple_out_p_DATA ;
-wire [217:0] tuple_out_p ;
+wire [378:0] tuple_out_p_DATA ;
+wire [378:0] tuple_out_p ;
 wire tuple_out_user_metadata_VALID ;
 wire [7:0] tuple_out_user_metadata_DATA ;
 wire [7:0] tuple_out_user_metadata ;
@@ -180,7 +195,7 @@ assign tuple_in_valid = tuple_in_control_VALID ;
 always @* begin
 	tuple_in_control_i = 0 ;
 	if ( ( tuple_in_control_DATA[3] == 0 ) ) begin
-		tuple_in_control_i[19:16] = 1 ;
+		tuple_in_control_i[20:16] = 1 ;
 	end
 end
 
@@ -191,10 +206,10 @@ assign tuple_out_control_VALID = tuple_out_valid ;
 always @* begin
 	tuple_out_control_DATA = tuple_out_control_i ;
 	tuple_out_control_DATA[3] = 0 ;
-	tuple_out_control_DATA[19:16] = 0 ;
+	tuple_out_control_DATA[20:16] = 0 ;
 	tuple_out_control_DATA[14:4] = 0 ;
 	if ( ( tuple_out_control_i[2:0] == 0 ) ) begin
-		if ( ( ( tuple_out_control_i[3] == 0 ) || ( tuple_out_control_i[19:16] != 0 ) ) ) begin
+		if ( ( ( tuple_out_control_i[3] == 0 ) || ( tuple_out_control_i[20:16] != 0 ) ) ) begin
 			tuple_out_control_DATA[2:0] = 1 ;
 		end
 	end
@@ -255,6 +270,6 @@ TopParser_t_inst
 endmodule
 
 // machine-generated file - do NOT modify by hand !
-// File created on 2019/12/04 18:15:48
+// File created on 2019/12/09 21:12:13
 // by Barista HDL generation library, version TRUNK @ 1007984
 

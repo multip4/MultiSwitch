@@ -38,9 +38,10 @@
 
 typedef bit<48> EthAddr_t; 
 typedef bit<32> calcField_t;
+typedef bit<32> IPv4Addr_t;
 
 #define CALC_TYPE   0x1212
-#define PORT_0 8w1
+#define IPV4_TYPE   0x0800
 
 #define REG_READ 8w0
 #define REG_WRITE 8w1
@@ -76,11 +77,27 @@ header Calc_h {
     calcField_t result;
 }
 
+// IPv4 header without options
+header IPv4_h {
+    bit<4> version;
+    bit<4> ihl;
+    bit<8> tos; 
+    bit<16> totalLen; 
+    bit<16> identification; 
+    bit<3> flags;
+    bit<13> fragOffset; 
+    bit<8> ttl;
+    bit<8> protocol; 
+    bit<16> hdrChecksum; 
+    IPv4Addr_t srcAddr; 
+    IPv4Addr_t dstAddr;
+}
 
 // List of all recognized headers
 struct Parsed_packet { 
     Ethernet_h ethernet; 
     Calc_h calc;
+    IPv4_h ipv4;
 }
 
 // user defined metadata: can be used to share information between
@@ -107,6 +124,7 @@ parser TopParser(packet_in b,
         digest_data.unused = 0;
         transition select(p.ethernet.etherType) {
             CALC_TYPE: parse_calc;
+            IPV4_TYPE: parse_ipv4;
             default: reject;
         } 
     }
@@ -115,6 +133,12 @@ parser TopParser(packet_in b,
         b.extract(p.calc);
         transition accept; 
     }
+
+    state parse_ipv4 {
+        b.extract(p.ipv4);
+        transition accept;
+    }
+
 }
 
 // match-action pipeline
@@ -129,10 +153,14 @@ control TopPipe(inout Parsed_packet p,
         p.ethernet.srcAddr = temp;
     }
 
-    action set_output_port() {
-        sume_metadata.dst_port = PORT_0;
+    action l2_set_output_port(bit<8> port_num) {
+        sume_metadata.dst_port = port_num;
     }
- 
+
+    action l3_set_output_port(bit<8> port_num) {
+        sume_metadata.dst_port = port_num;
+    }
+
     action set_result(calcField_t data) {
         p.calc.result = data;
     }
@@ -152,50 +180,98 @@ control TopPipe(inout Parsed_packet p,
         default_action = set_result_default;
     }
 
+    table table_l2 {
+        key = { p.ethernet.dstAddr: exact; }
+        actions = {
+            l2_set_output_port;
+            NoAction;
+        }
+        size = 64;
+        default_action = NoAction;
+
+    }
+
+    action set_pifo_rank (bit<19> pifo_rank){
+
+        sume_metadata.pifo_rank = pifo_rank;
+    }
+
+    table table_l3 {
+        key = {p.ipv4.dstAddr : exact;}
+        actions = {
+            l3_set_output_port;
+            NoAction;
+        }
+        size = 64;
+        default_action = NoAction;
+    }
+
+    table table_pifo{
+
+        key = {p.ethernet.dstAddr: exact ;}
+        actions = {
+            set_pifo_rank;
+            NoAction;
+
+        }
+        size = 64;
+        default_action = NoAction;
+    }
+
+
     apply {
+
+        table_l2.apply();
+
+        if(p.ipv4.isValid()){
+            table_l3.apply();}
 
         // bounce packet back to sender
         swap_eth_addresses();
-        set_output_port();
 
         //set pifo rank
-        sume_metadata.pifo_info = 1 << 31;
+        sume_metadata.pifo_valid = 1;
 
-        // based on the opCode, set the result or state appropriately
-        if (p.calc.opCode == ADD_OP) {
-            // TODO: addition
-            p.calc.result = p.calc.op1 + p.calc.op2;
-        } else if (p.calc.opCode == SUB_OP) {
-            // TODO: subtraction
-            p.calc.result = p.calc.op1 - p.calc.op2;
-        } else if (p.calc.opCode == LOOKUP_OP) {
-            // TODO: Key-Value lookup
-            lookup_table.apply(); 
-        } else if (p.calc.opCode == ADD_REG_OP || p.calc.opCode == SET_REG_OP) {
-            // Read or write register
- 
-            // Pre-register access: define metadata
-            bit<INDEX_WIDTH> index = p.calc.op1[INDEX_WIDTH-1:0];
-            calcField_t newVal;
-            bit<8> opCode;
-            calcField_t regVal;
-            
-            // Pre-register access: set metadata appropriately
-            if (p.calc.opCode == ADD_REG_OP) {
-                newVal = 0;
-                opCode = REG_READ;
-            } else {
-                newVal = p.calc.op2;
-                opCode = REG_WRITE;
-            }
-            // Register access!
-            jk_reg_rw(index, newVal, opCode, regVal);
+        table_pifo.apply();
 
-            // set result for ADD_REG operation
-            if (p.calc.opCode == ADD_REG_OP) {
-                p.calc.result = p.calc.op2 + regVal;
-            }
-        } 
+        if(p.calc.isValid()){
+
+            // based on the opCode, set the result or state appropriately
+            if (p.calc.opCode == ADD_OP) {
+                // TODO: addition
+                p.calc.result = p.calc.op1 + p.calc.op2;
+            } else if (p.calc.opCode == SUB_OP) {
+                // TODO: subtraction
+                p.calc.result = p.calc.op1 - p.calc.op2;
+            } else if (p.calc.opCode == LOOKUP_OP) {
+                // TODO: Key-Value lookup
+                lookup_table.apply(); 
+            } else if (p.calc.opCode == ADD_REG_OP || p.calc.opCode == SET_REG_OP) {
+                // Read or write register
+     
+                // Pre-register access: define metadata
+                bit<INDEX_WIDTH> index = p.calc.op1[INDEX_WIDTH-1:0];
+                calcField_t newVal;
+                bit<8> opCode;
+                calcField_t regVal;
+                
+                // Pre-register access: set metadata appropriately
+                if (p.calc.opCode == ADD_REG_OP) {
+                    newVal = 0;
+                    opCode = REG_READ;
+                } else {
+                    newVal = p.calc.op2;
+                    opCode = REG_WRITE;
+                }
+                // Register access!
+                jk_reg_rw(index, newVal, opCode, regVal);
+
+                // set result for ADD_REG operation
+                if (p.calc.opCode == ADD_REG_OP) {
+                    p.calc.result = p.calc.op2 + regVal;
+                }
+            } 
+        }
     }
 }
 
@@ -208,7 +284,8 @@ control TopDeparser(packet_out b,
                     inout sume_metadata_t sume_metadata) { 
     apply {
         b.emit(p.ethernet); 
-        b.emit(p.calc);
+        if(p.calc.isValid()) b.emit(p.calc);
+        if(p.ipv4.isValid()) b.emit(p.ipv4);
     }
 }
 

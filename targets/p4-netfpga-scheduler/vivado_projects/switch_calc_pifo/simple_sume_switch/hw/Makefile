@@ -65,12 +65,12 @@ project: identifier
 		fi;\
 	fi;\
 
-projectgui:
+projectgui: clean identifier
 	echo "Create reference project under folder /project";\
 	if test -d project/; then\
 		echo "Project already exists"; \
 	else \
-		vivado -mode gui -source tcl/${PROJ}.tcl;\
+		vivado -mode gui -source tcl/${PROJ}_gui.tcl;\
 		if [ -f patch/${PROJ}.patch ]; then\
 			patch -p1 < patch/${PROJ}.patch;\
 		fi;\

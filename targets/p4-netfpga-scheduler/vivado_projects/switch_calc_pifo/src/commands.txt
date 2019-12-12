@@ -32,3 +32,29 @@ table_cam_add_entry lookup_table set_result 0x00000001 => 0x00000010
 table_cam_add_entry lookup_table set_result 0x00000002 => 0x00000100
 table_cam_add_entry lookup_table set_result 0x00000003 => 0x00001000
 
+
+//rule for real line test
+table_cam_add_entry table_l3 l3_set_output_port 10.0.0.1 => 0b00000001
+table_cam_add_entry table_l3 l3_set_output_port 10.0.0.2 => 0b00000100
+table_cam_add_entry table_l3 l3_set_output_port 10.0.0.3 => 0b00010000
+
+table_cam_add_entry table_l2 l2_set_output_port 0x011234567801 => 0b00000001
+table_cam_add_entry table_l2 l2_set_output_port 0x011122334401 => 0b00000100
+table_cam_add_entry table_l2 l2_set_output_port 0x014433221101 => 0b00010000
+
+// rule for scapy test
+table_cam_add_entry table_l2 l2_set_output_port 0x021234567802 => 0b00000010
+table_cam_add_entry table_l2 l2_set_output_port 0x021122334402 => 0b00001000
+table_cam_add_entry table_l2 l2_set_output_port 0x024433221102 => 0b00100000
+
+table_cam_add_entry table_l3 l3_set_output_port 100.0.0.1 => 0b00000010
+table_cam_add_entry table_l3 l3_set_output_port 100.0.0.2 => 0b00001000
+table_cam_add_entry table_l3 l3_set_output_port 100.0.0.3 => 0b00100000
+
+
+table_cam_add_entry table_pifo set_pifo_rank 0x021234567802 => 10
+table_cam_add_entry table_pifo set_pifo_rank 0x021122334402 => 100
+
+
+
+

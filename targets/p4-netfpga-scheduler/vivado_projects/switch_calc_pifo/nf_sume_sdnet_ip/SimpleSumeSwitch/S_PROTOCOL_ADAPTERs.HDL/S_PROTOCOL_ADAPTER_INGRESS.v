@@ -61,7 +61,7 @@ input clk_line ;
 input rst ;
 input plain_in_init ;
 output tuple_out_control_VALID ;
-output [19:0] tuple_out_control_DATA ;
+output [20:0] tuple_out_control_DATA ;
 input packet_in_TLAST ;
 input packet_in_TVALID ;
 output packet_in_TREADY ;
@@ -76,7 +76,7 @@ output packet_out_ERR ;
 output [5:0] packet_out_CNT ;
 
 reg tuple_out_control_VALID ;
-wire [19:0] tuple_out_control_DATA ;
+wire [20:0] tuple_out_control_DATA ;
 wire packet_in_TREADY ;
 wire [255:0] packet_in_TDATA_i /* undriven */ ;
 wire [31:0] packet_in_TKEEP_i /* undriven */ ;
@@ -93,7 +93,7 @@ reg [5:0] packet_out_CNT ;
 reg [2:0] state ;
 reg [2:0] nxt_state ;
 
-assign tuple_out_control_DATA = ( plain_in_init ? { 20{1'd0} } : { 20{1'd1} } ) ;
+assign tuple_out_control_DATA = ( plain_in_init ? { 21{1'd0} } : { 21{1'd1} } ) ;
 
 always @( posedge clk_line ) begin
 	TLAST_1 <= packet_in_TLAST ;
@@ -222,6 +222,6 @@ for (i=0; i<32; i=i+1) assign packet_in_TKEEP_i[i] = packet_in_TKEEP[31-i];
 endmodule
 
 // machine-generated file - do NOT modify by hand !
-// File created on 2019/12/04 18:15:51
+// File created on 2019/12/09 21:12:16
 // by Barista HDL generation library, version TRUNK @ 1007984
 

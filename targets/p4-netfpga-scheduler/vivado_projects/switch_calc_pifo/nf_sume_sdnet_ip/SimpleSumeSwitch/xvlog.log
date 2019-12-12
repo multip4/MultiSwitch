@@ -1,1 +1,8 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.vp" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/table_l3_t.HDL/xpm_cdc.sv" into library work
+INFO: [VRFC 10-311] analyzing module xpm_cdc_single
+INFO: [VRFC 10-311] analyzing module xpm_cdc_gray
+INFO: [VRFC 10-311] analyzing module xpm_cdc_handshake
+INFO: [VRFC 10-311] analyzing module xpm_cdc_pulse
+INFO: [VRFC 10-311] analyzing module xpm_cdc_array_single
+INFO: [VRFC 10-311] analyzing module xpm_cdc_sync_rst
+INFO: [VRFC 10-311] analyzing module xpm_cdc_async_rst

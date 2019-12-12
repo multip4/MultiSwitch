@@ -29,12 +29,12 @@
 //----------------------------------------------------------------------------
 /*
 
- tx latency = 15 (cycles)
- min latency = 16 (cycles)
- max latency = 16 (cycles)
+ tx latency = 14 (cycles)
+ min latency = 15 (cycles)
+ max latency = 15 (cycles)
 
 input/output tuple 'control'
-	section 4-bit field @ [19:16]
+	section 5-bit field @ [20:16]
 	activeBank 1-bit field @ [15:15]
 	offset 11-bit field @ [14:4]
 	done 1-bit field @ [3:3]
@@ -54,18 +54,33 @@ input/output tuple 'local_state'
 	id 16-bit field @ [15:0]
 
 input/output tuple 'p'
-	ethernet_isValid 1-bit field @ [217:217]
-	ethernet_dstAddr 48-bit field @ [216:169]
-	ethernet_srcAddr 48-bit field @ [168:121]
-	ethernet_etherType 16-bit field @ [120:105]
-	calc_isValid 1-bit field @ [104:104]
-	calc_op1 32-bit field @ [103:72]
-	calc_opCode 8-bit field @ [71:64]
-	calc_op2 32-bit field @ [63:32]
-	calc_result 32-bit field @ [31:0]
+	ethernet_isValid 1-bit field @ [378:378]
+	ethernet_dstAddr 48-bit field @ [377:330]
+	ethernet_srcAddr 48-bit field @ [329:282]
+	ethernet_etherType 16-bit field @ [281:266]
+	calc_isValid 1-bit field @ [265:265]
+	calc_op1 32-bit field @ [264:233]
+	calc_opCode 8-bit field @ [232:225]
+	calc_op2 32-bit field @ [224:193]
+	calc_result 32-bit field @ [192:161]
+	ipv4_isValid 1-bit field @ [160:160]
+	ipv4_version 4-bit field @ [159:156]
+	ipv4_ihl 4-bit field @ [155:152]
+	ipv4_tos 8-bit field @ [151:144]
+	ipv4_totalLen 16-bit field @ [143:128]
+	ipv4_identification 16-bit field @ [127:112]
+	ipv4_flags 3-bit field @ [111:109]
+	ipv4_fragOffset 13-bit field @ [108:96]
+	ipv4_ttl 8-bit field @ [95:88]
+	ipv4_protocol 8-bit field @ [87:80]
+	ipv4_hdrChecksum 16-bit field @ [79:64]
+	ipv4_srcAddr 32-bit field @ [63:32]
+	ipv4_dstAddr 32-bit field @ [31:0]
 
 input/output tuple 'sume_metadata'
-	pifo_info 32-bit field @ [159:128]
+	pifo_valid 1-bit field @ [159:159]
+	pifo_rank 19-bit field @ [158:140]
+	pifo_field 12-bit field @ [139:128]
 	dma_q_size 16-bit field @ [127:112]
 	nf3_q_size 16-bit field @ [111:96]
 	nf2_q_size 16-bit field @ [95:80]
@@ -82,6 +97,19 @@ input/output tuple 'user_metadata'
 
 output tuple 'lookup_table_req'
 	lookup_request_key 32-bit field @ [31:0]
+
+output tuple 'table_pifo_req'
+	lookup_request_key_0 48-bit field @ [47:0]
+
+input/output tuple 'table_l3_resp'
+	hit 1-bit field @ [10:10]
+	action_run 2-bit field @ [9:8]
+	l3_set_output_port_0_port_num 8-bit field @ [7:0]
+
+input/output tuple 'table_l2_resp'
+	hit 1-bit field @ [10:10]
+	action_run 2-bit field @ [9:8]
+	l2_set_output_port_0_port_num 8-bit field @ [7:0]
 
 */
 
@@ -102,6 +130,10 @@ module TopPipe_lvl_0_t (
 	tuple_in_sume_metadata_DATA,
 	tuple_in_user_metadata_VALID,
 	tuple_in_user_metadata_DATA,
+	tuple_in_table_l3_resp_VALID,
+	tuple_in_table_l3_resp_DATA,
+	tuple_in_table_l2_resp_VALID,
+	tuple_in_table_l2_resp_DATA,
 	tuple_out_TopPipe_fl_VALID,
 	tuple_out_TopPipe_fl_DATA,
 	tuple_out_digest_data_VALID,
@@ -115,7 +147,13 @@ module TopPipe_lvl_0_t (
 	tuple_out_user_metadata_VALID,
 	tuple_out_user_metadata_DATA,
 	tuple_out_lookup_table_req_VALID,
-	tuple_out_lookup_table_req_DATA
+	tuple_out_lookup_table_req_DATA,
+	tuple_out_table_pifo_req_VALID,
+	tuple_out_table_pifo_req_DATA,
+	tuple_out_table_l3_resp_VALID,
+	tuple_out_table_l3_resp_DATA,
+	tuple_out_table_l2_resp_VALID,
+	tuple_out_table_l2_resp_DATA
 );
 
 input rst ;
@@ -127,11 +165,15 @@ input [255:0] tuple_in_digest_data_DATA ;
 input tuple_in_local_state_VALID /* unused */ ;
 input [15:0] tuple_in_local_state_DATA ;
 input tuple_in_p_VALID /* unused */ ;
-input [217:0] tuple_in_p_DATA ;
+input [378:0] tuple_in_p_DATA ;
 input tuple_in_sume_metadata_VALID /* unused */ ;
 input [159:0] tuple_in_sume_metadata_DATA ;
 input tuple_in_user_metadata_VALID /* unused */ ;
 input [7:0] tuple_in_user_metadata_DATA ;
+input tuple_in_table_l3_resp_VALID /* unused */ ;
+input [10:0] tuple_in_table_l3_resp_DATA ;
+input tuple_in_table_l2_resp_VALID /* unused */ ;
+input [10:0] tuple_in_table_l2_resp_DATA ;
 output tuple_out_TopPipe_fl_VALID ;
 output [123:0] tuple_out_TopPipe_fl_DATA ;
 output tuple_out_digest_data_VALID ;
@@ -139,23 +181,31 @@ output [255:0] tuple_out_digest_data_DATA ;
 output tuple_out_local_state_VALID ;
 output [15:0] tuple_out_local_state_DATA ;
 output tuple_out_p_VALID ;
-output [217:0] tuple_out_p_DATA ;
+output [378:0] tuple_out_p_DATA ;
 output tuple_out_sume_metadata_VALID ;
 output [159:0] tuple_out_sume_metadata_DATA ;
 output tuple_out_user_metadata_VALID ;
 output [7:0] tuple_out_user_metadata_DATA ;
 output tuple_out_lookup_table_req_VALID ;
 output [31:0] tuple_out_lookup_table_req_DATA ;
+output tuple_out_table_pifo_req_VALID ;
+output [47:0] tuple_out_table_pifo_req_DATA ;
+output tuple_out_table_l3_resp_VALID ;
+output [10:0] tuple_out_table_l3_resp_DATA ;
+output tuple_out_table_l2_resp_VALID ;
+output [10:0] tuple_out_table_l2_resp_DATA ;
 
-wire [19:0] tuple_in_control_DATA ;
+wire [20:0] tuple_in_control_DATA ;
 wire tuple_in_valid ;
-reg [19:0] tuple_in_control_i ;
+reg [20:0] tuple_in_control_i ;
 wire [123:0] tuple_in_TopPipe_fl ;
 wire [255:0] tuple_in_digest_data ;
 wire [15:0] tuple_in_local_state ;
-wire [217:0] tuple_in_p ;
+wire [378:0] tuple_in_p ;
 wire [159:0] tuple_in_sume_metadata ;
 wire [7:0] tuple_in_user_metadata ;
+wire [10:0] tuple_in_table_l3_resp ;
+wire [10:0] tuple_in_table_l2_resp ;
 wire tuple_out_valid ;
 wire tuple_out_TopPipe_fl_VALID ;
 wire [123:0] tuple_out_TopPipe_fl_DATA ;
@@ -167,8 +217,8 @@ wire tuple_out_local_state_VALID ;
 wire [15:0] tuple_out_local_state_DATA ;
 wire [15:0] tuple_out_local_state ;
 wire tuple_out_p_VALID ;
-wire [217:0] tuple_out_p_DATA ;
-wire [217:0] tuple_out_p ;
+wire [378:0] tuple_out_p_DATA ;
+wire [378:0] tuple_out_p ;
 wire tuple_out_sume_metadata_VALID ;
 wire [159:0] tuple_out_sume_metadata_DATA ;
 wire [159:0] tuple_out_sume_metadata ;
@@ -178,6 +228,15 @@ wire [7:0] tuple_out_user_metadata ;
 wire tuple_out_lookup_table_req_VALID ;
 wire [31:0] tuple_out_lookup_table_req_DATA ;
 wire [31:0] tuple_out_lookup_table_req ;
+wire tuple_out_table_pifo_req_VALID ;
+wire [47:0] tuple_out_table_pifo_req_DATA ;
+wire [47:0] tuple_out_table_pifo_req ;
+wire tuple_out_table_l3_resp_VALID ;
+wire [10:0] tuple_out_table_l3_resp_DATA ;
+wire [10:0] tuple_out_table_l3_resp ;
+wire tuple_out_table_l2_resp_VALID ;
+wire [10:0] tuple_out_table_l2_resp_DATA ;
+wire [10:0] tuple_out_table_l2_resp ;
 
 assign tuple_in_control_DATA = 0 ;
 
@@ -186,7 +245,7 @@ assign tuple_in_valid = tuple_in_TopPipe_fl_VALID ;
 always @* begin
 	tuple_in_control_i = 0 ;
 	if ( ( tuple_in_control_DATA[3] == 0 ) ) begin
-		tuple_in_control_i[19:16] = 9 ;
+		tuple_in_control_i[20:16] = 9 ;
 	end
 end
 
@@ -201,6 +260,10 @@ assign tuple_in_p = tuple_in_p_DATA ;
 assign tuple_in_sume_metadata = tuple_in_sume_metadata_DATA ;
 
 assign tuple_in_user_metadata = tuple_in_user_metadata_DATA ;
+
+assign tuple_in_table_l3_resp = tuple_in_table_l3_resp_DATA ;
+
+assign tuple_in_table_l2_resp = tuple_in_table_l2_resp_DATA ;
 
 assign tuple_out_TopPipe_fl_VALID = tuple_out_valid ;
 
@@ -230,6 +293,18 @@ assign tuple_out_lookup_table_req_VALID = tuple_out_valid ;
 
 assign tuple_out_lookup_table_req_DATA = tuple_out_lookup_table_req ;
 
+assign tuple_out_table_pifo_req_VALID = tuple_out_valid ;
+
+assign tuple_out_table_pifo_req_DATA = tuple_out_table_pifo_req ;
+
+assign tuple_out_table_l3_resp_VALID = tuple_out_valid ;
+
+assign tuple_out_table_l3_resp_DATA = tuple_out_table_l3_resp ;
+
+assign tuple_out_table_l2_resp_VALID = tuple_out_valid ;
+
+assign tuple_out_table_l2_resp_DATA = tuple_out_table_l2_resp ;
+
 TopPipe_lvl_0_t_Engine
 TopPipe_lvl_0_t_inst
 (
@@ -252,6 +327,11 @@ TopPipe_lvl_0_t_inst
 	.RX_TUPLE_user_metadata	( tuple_in_user_metadata ),
 	.TX_TUPLE_user_metadata	( tuple_out_user_metadata ),
 	.TX_TUPLE_lookup_table_req	( tuple_out_lookup_table_req ),
+	.TX_TUPLE_table_pifo_req	( tuple_out_table_pifo_req ),
+	.RX_TUPLE_table_l3_resp	( tuple_in_table_l3_resp ),
+	.TX_TUPLE_table_l3_resp	( tuple_out_table_l3_resp ),
+	.RX_TUPLE_table_l2_resp	( tuple_in_table_l2_resp ),
+	.TX_TUPLE_table_l2_resp	( tuple_out_table_l2_resp ),
 	.RX_PKT_RDY          	(  ),
 	.TX_PKT_RDY          	( 1'd1 ),
 	.RX_PKT_VLD          	( tuple_in_valid ),
@@ -272,6 +352,6 @@ TopPipe_lvl_0_t_inst
 endmodule
 
 // machine-generated file - do NOT modify by hand !
-// File created on 2019/12/04 18:15:49
+// File created on 2019/12/09 21:12:14
 // by Barista HDL generation library, version TRUNK @ 1007984
 

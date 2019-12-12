@@ -55,7 +55,7 @@ module S_PROTOCOL_ADAPTER_EGRESS (
 input clk_line ;
 input rst ;
 input tuple_in_control_VALID /* unused */ ;
-input [19:0] tuple_in_control_DATA /* unused */ ;
+input [20:0] tuple_in_control_DATA /* unused */ ;
 input packet_in_SOF ;
 input packet_in_EOF ;
 input packet_in_VAL ;
@@ -115,6 +115,6 @@ for (i=0; i<32; i=i+1) assign packet_out_TKEEP[i] = packet_out_TKEEP_i[31-i];
 endmodule
 
 // machine-generated file - do NOT modify by hand !
-// File created on 2019/12/04 18:15:51
+// File created on 2019/12/09 21:12:16
 // by Barista HDL generation library, version TRUNK @ 1007984
 

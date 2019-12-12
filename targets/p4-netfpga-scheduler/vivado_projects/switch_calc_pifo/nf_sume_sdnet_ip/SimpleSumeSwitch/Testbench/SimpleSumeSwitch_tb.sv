@@ -36,19 +36,19 @@
 module SimpleSumeSwitch_tb;
 
 
-reg clk_lookup /* undriven */ ;
-reg clk_line /* undriven */ ;
 reg clk_control /* undriven */ ;
+reg clk_line /* undriven */ ;
+reg clk_lookup /* undriven */ ;
 reg clk_line_rst /* undriven */ ;
 reg clk_lookup_rst /* undriven */ ;
 reg clk_control_rst /* undriven */ ;
-reg [8:0] control_S_AXI_AWADDR /* undriven */ ;
+reg [10:0] control_S_AXI_AWADDR /* undriven */ ;
 reg [0:0] control_S_AXI_AWVALID /* undriven */ ;
 reg [31:0] control_S_AXI_WDATA /* undriven */ ;
 reg [3:0] control_S_AXI_WSTRB /* undriven */ ;
 reg [0:0] control_S_AXI_WVALID /* undriven */ ;
 reg [0:0] control_S_AXI_BREADY /* undriven */ ;
-reg [8:0] control_S_AXI_ARADDR /* undriven */ ;
+reg [10:0] control_S_AXI_ARADDR /* undriven */ ;
 reg [0:0] control_S_AXI_ARVALID /* undriven */ ;
 reg [0:0] control_S_AXI_RREADY /* undriven */ ;
 wire [0:0] packet_in_packet_in_TVALID ;
@@ -214,8 +214,8 @@ end
 
 
 always begin 
-  #(6666 / 2) clk_lookup =  0; 
-  #(6666 / 2) clk_lookup =  1; 
+  #(10000 / 2) clk_control =  0; 
+  #(10000 / 2) clk_control =  1; 
 end
 
 
@@ -226,8 +226,8 @@ end
 
 
 always begin 
-  #(10000 / 2) clk_control =  0; 
-  #(10000 / 2) clk_control =  1; 
+  #(6666 / 2) clk_lookup =  0; 
+  #(6666 / 2) clk_lookup =  1; 
 end
 
 
@@ -345,7 +345,7 @@ endtask: axi4_lite_master_read_request_control
 
 
 ////////////// Update from file/////////////////
-task update_lookup_table_from_file(input string file_name);
+task update_table_l3_from_file(input string file_name);
     integer fileid;
     integer count; 
     string  line; 
@@ -392,6 +392,159 @@ task update_lookup_table_from_file(input string file_name);
     for (int i=0;i <index;i++)  begin
         $display("CAM UPDATE %d: KEY(hex) = %s VALUE(hex) = %s",i,key[i],value[i]);
         CAM_WriteEntry (0, key[i], value[i], 0);    end
+endtask :  update_table_l3_from_file
+
+
+////////////// Update from file/////////////////
+task update_table_l2_from_file(input string file_name);
+    integer fileid;
+    integer count; 
+    string  line; 
+    integer index;
+    string key[];
+    int address[];
+    string value[];
+    string temp_key;
+    int temp_address;
+    string temp_value;
+
+    fileid = $fopen(file_name, "r"); 
+    if (fileid == 0) begin
+        $display($sformatf("failed to open %s file",file_name));
+        $finish;
+    end
+    index = 0;
+    while(!$feof(fileid)) begin
+        if($fgets(line, fileid)) begin
+            if (line[0] != "#") begin //not a commented line
+                count = $sscanf(line, "%s %s", temp_key,temp_value);
+                if (count != 2) begin
+                    $display("error in %s:%d : invalid format of string %s, expected key(hex) value(hex)\n", file_name, index, line);
+                    $finish;
+                end
+                index = index + 1;
+            end
+        end
+    end
+    $fclose(fileid);
+    key = new[index];
+    value = new[index];
+    
+    index = 0;
+    fileid = $fopen(file_name, "r"); 
+    while(!$feof(fileid)) begin
+        if($fgets(line, fileid)) begin
+            if (line[0] != "#") begin //not a commented line
+                count = $sscanf(line, "%s %s", key[index],value[index]);
+                index = index + 1;            end
+        end        
+    end
+    $fclose(fileid);
+    for (int i=0;i <index;i++)  begin
+        $display("CAM UPDATE %d: KEY(hex) = %s VALUE(hex) = %s",i,key[i],value[i]);
+        CAM_WriteEntry (1, key[i], value[i], 0);    end
+endtask :  update_table_l2_from_file
+
+
+////////////// Update from file/////////////////
+task update_table_pifo_from_file(input string file_name);
+    integer fileid;
+    integer count; 
+    string  line; 
+    integer index;
+    string key[];
+    int address[];
+    string value[];
+    string temp_key;
+    int temp_address;
+    string temp_value;
+
+    fileid = $fopen(file_name, "r"); 
+    if (fileid == 0) begin
+        $display($sformatf("failed to open %s file",file_name));
+        $finish;
+    end
+    index = 0;
+    while(!$feof(fileid)) begin
+        if($fgets(line, fileid)) begin
+            if (line[0] != "#") begin //not a commented line
+                count = $sscanf(line, "%s %s", temp_key,temp_value);
+                if (count != 2) begin
+                    $display("error in %s:%d : invalid format of string %s, expected key(hex) value(hex)\n", file_name, index, line);
+                    $finish;
+                end
+                index = index + 1;
+            end
+        end
+    end
+    $fclose(fileid);
+    key = new[index];
+    value = new[index];
+    
+    index = 0;
+    fileid = $fopen(file_name, "r"); 
+    while(!$feof(fileid)) begin
+        if($fgets(line, fileid)) begin
+            if (line[0] != "#") begin //not a commented line
+                count = $sscanf(line, "%s %s", key[index],value[index]);
+                index = index + 1;            end
+        end        
+    end
+    $fclose(fileid);
+    for (int i=0;i <index;i++)  begin
+        $display("CAM UPDATE %d: KEY(hex) = %s VALUE(hex) = %s",i,key[i],value[i]);
+        CAM_WriteEntry (2, key[i], value[i], 0);    end
+endtask :  update_table_pifo_from_file
+
+
+////////////// Update from file/////////////////
+task update_lookup_table_from_file(input string file_name);
+    integer fileid;
+    integer count; 
+    string  line; 
+    integer index;
+    string key[];
+    int address[];
+    string value[];
+    string temp_key;
+    int temp_address;
+    string temp_value;
+
+    fileid = $fopen(file_name, "r"); 
+    if (fileid == 0) begin
+        $display($sformatf("failed to open %s file",file_name));
+        $finish;
+    end
+    index = 0;
+    while(!$feof(fileid)) begin
+        if($fgets(line, fileid)) begin
+            if (line[0] != "#") begin //not a commented line
+                count = $sscanf(line, "%s %s", temp_key,temp_value);
+                if (count != 2) begin
+                    $display("error in %s:%d : invalid format of string %s, expected key(hex) value(hex)\n", file_name, index, line);
+                    $finish;
+                end
+                index = index + 1;
+            end
+        end
+    end
+    $fclose(fileid);
+    key = new[index];
+    value = new[index];
+    
+    index = 0;
+    fileid = $fopen(file_name, "r"); 
+    while(!$feof(fileid)) begin
+        if($fgets(line, fileid)) begin
+            if (line[0] != "#") begin //not a commented line
+                count = $sscanf(line, "%s %s", key[index],value[index]);
+                index = index + 1;            end
+        end        
+    end
+    $fclose(fileid);
+    for (int i=0;i <index;i++)  begin
+        $display("CAM UPDATE %d: KEY(hex) = %s VALUE(hex) = %s",i,key[i],value[i]);
+        CAM_WriteEntry (3, key[i], value[i], 0);    end
 endtask :  update_lookup_table_from_file
 
 
@@ -420,8 +573,17 @@ initial begin
     end_sim_after_check = 1;
     wait(internal_rst_done);
     #10000 
-    CAM_Init(0,6667,32,34,64,0);
+    CAM_Init(0,6667,32,10,64,0);
     CAM_EnableDevice(0);
+    update_table_l3_from_file("table_l3.tbl");
+    CAM_Init(1,6667,48,10,64,0);
+    CAM_EnableDevice(1);
+    update_table_l2_from_file("table_l2.tbl");
+    CAM_Init(2,6667,48,21,64,0);
+    CAM_EnableDevice(2);
+    update_table_pifo_from_file("table_pifo.tbl");
+    CAM_Init(3,6667,32,34,64,0);
+    CAM_EnableDevice(3);
     update_lookup_table_from_file("lookup_table.tbl");
     #1000 fw_done = 1;
 end
@@ -431,6 +593,6 @@ end
 endmodule
 
 // machine-generated file - do NOT modify by hand !
-// File created on 2019/12/04 18:15:53
+// File created on 2019/12/09 21:12:17
 // by Barista HDL generation library, version TRUNK @ 1007984
 

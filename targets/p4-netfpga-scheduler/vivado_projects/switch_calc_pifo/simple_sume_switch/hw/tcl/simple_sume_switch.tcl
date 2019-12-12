@@ -132,7 +132,7 @@ generate_target all [get_ips identifier_ip]
 source $::env(P4_PROJECT_PIFO_MODULES_DIR)/$::env(P4_PROJECT_DEMO_TCL).tcl
 
 read_verilog "./hdl/axi_clocking.v"
-#read_verilog "./hdl/nf_datapath.v"
+# read_verilog "./hdl/nf_datapath.v"
 read_verilog "./hdl/top.v"
 
 
@@ -155,6 +155,10 @@ set_property STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.DIRECTIVE AggressiveExplore [
 ### Solves synthesis crash in 2013.2
 ##set_param synth.filterSetMaxDelayWithDataPathOnly true
 set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
+
+
+#file copy ${SUME_SYNTH_DIR}/ project/simple_sume_switch.runs/
+
 launch_runs synth
 wait_on_run synth
 launch_runs impl_1 -to_step write_bitstream

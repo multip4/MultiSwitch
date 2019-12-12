@@ -1,1 +1,0 @@
--L "work" --debug "all" -sv_lib "dpi.so" "SimpleSumeSwitch_tb" "glbl" 

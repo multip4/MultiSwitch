@@ -34,8 +34,8 @@
 `timescale 1 ps / 1 ps
 
 module jk_reg_rw_0_t (
-	clk_lookup,
 	clk_control,
+	clk_lookup,
 	clk_lookup_rst_high,
 	clk_control_rst_low,
 	tuple_in_jk_reg_rw_input_VALID,
@@ -61,8 +61,8 @@ module jk_reg_rw_0_t (
 	control_S_AXI_RREADY
 );
 
-input clk_lookup /* unused */ ;
 input clk_control /* unused */ ;
+input clk_lookup /* unused */ ;
 input clk_lookup_rst_high /* unused */ ;
 input clk_control_rst_low /* unused */ ;
 input tuple_in_jk_reg_rw_input_VALID /* unused */ ;
@@ -121,6 +121,6 @@ wire control_S_AXI_RVALID /* undriven */ ;
 endmodule
 
 // machine-generated file - do NOT modify by hand !
-// File created on 2019/12/04 18:15:50
+// File created on 2019/12/09 21:12:15
 // by Barista HDL generation library, version TRUNK @ 1007984
 

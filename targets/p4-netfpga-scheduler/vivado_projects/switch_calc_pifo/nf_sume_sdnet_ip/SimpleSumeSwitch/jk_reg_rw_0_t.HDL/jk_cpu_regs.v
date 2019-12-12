@@ -58,7 +58,7 @@ parameter INDEX_WIDTH           = 4
    // Register ports
     // Read Interface
     input      [C_S_AXI_DATA_WIDTH-1:0]              ip2cpu_jk_reg_data,
-    input      [`REG_jk_INDEX_BITS]       ip2cpu_jk_reg_index, //unused
+    input      [`REG_jk_INDEX_BITS]       ip2cpu_jk_reg_index,
     input                                            ip2cpu_jk_reg_valid,
     output reg [`REG_jk_INDEX_BITS]    ipReadReq_jk_reg_index,
     output reg                                    ipReadReq_jk_reg_valid,

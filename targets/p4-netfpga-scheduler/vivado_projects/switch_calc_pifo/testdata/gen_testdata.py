@@ -56,6 +56,7 @@ nf_expected[1] = []
 nf_expected[2] = []
 nf_expected[3] = []
 
+
 nf_port_map = {"nf0":0b00000001, "nf1":0b00000100, "nf2":0b00010000, "nf3":0b01000000, "dma0":0b00000010}
 nf_id_map = {"nf0":0, "nf1":1, "nf2":2, "nf3":3}
 
@@ -104,10 +105,17 @@ def write_pcap_files():
 # generate testdata #
 #####################
 
-MAC1 = "08:11:11:11:11:08"
-MAC2 = "08:22:22:22:22:08"
+MAC0 = "01:12:34:56:78:01"
+MAC1 = "01:11:22:33:44:01"
+MAC2 = "01:44:33:22:11:01"
+
+
+IP0 = "10.0.0.1"
+IP1 = "10.0.0.2"
+IP2 = "10.0.0.3"
+
 pktCnt = 0
-PKT_SIZE = 64
+PKT_SIZE = 128
 
 INDEX_WIDTH = 4
 REG_DEPTH = 2**INDEX_WIDTH
@@ -120,7 +128,7 @@ def pad_pkt(pkt, size, str):
         return pkt
     else:
         return pkt / (str*(size - len(pkt)))
-
+        
 
 # Test the addition functionality
 def test_add(OP1, OP2): 
@@ -134,16 +142,16 @@ def test_add(OP1, OP2):
     pktCnt += 1
     pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=OP1, opCode=ADD_OP, op2=OP2, result=OP1+OP2)
     pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
-    expPkt(pkt, 'nf0')
+    expPkt(pkt, 'nf2')
 
 # Test the subtraction functionality
 def test_sub(OP1, OP2):
     global pktCnt
-    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=OP1, opCode=SUB_OP, op2=OP2, result=0)
+    pkt = Ether(dst=MAC0, src=MAC1) / Calc(op1=OP1, opCode=SUB_OP, op2=OP2, result=0)
     pkt = pad_pkt(pkt, PKT_SIZE,'\x02')
-    applyPkt(pkt, 'nf1', pktCnt)
+    applyPkt(pkt, 'nf2', pktCnt)
     pktCnt += 1
-    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=OP1, opCode=SUB_OP, op2=OP2, result=OP1-OP2)
+    pkt = Ether(dst=MAC1, src=MAC0) / Calc(op1=OP1, opCode=SUB_OP, op2=OP2, result=OP1-OP2)
     pkt = pad_pkt(pkt, PKT_SIZE,'\x02')
     expPkt(pkt, 'nf0')
 
@@ -151,13 +159,13 @@ def test_sub(OP1, OP2):
 def test_lookup(OP1):
     global pktCnt
     key = (OP1 % NUM_KEYS)
-    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=key, opCode=LOOKUP_OP, op2=0, result=0)
+    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=key, opCode=LOOKUP_OP, op2=0, result=0)
     pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
-    applyPkt(pkt, 'nf2', pktCnt)
+    applyPkt(pkt, 'nf3', pktCnt)
     pktCnt += 1
-    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=key, opCode=LOOKUP_OP, op2=0, result=lookup_table[key])
+    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=key, opCode=LOOKUP_OP, op2=0, result=lookup_table[key])
     pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
-    expPkt(pkt, 'nf0')   
+    expPkt(pkt, 'nf1')   
 
 # Test the register functionality
 def test_reg(OP1, OP2): 
@@ -166,20 +174,32 @@ def test_reg(OP1, OP2):
     val = OP2
     # test set reg
     pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=index, opCode=SET_REG_OP, op2=val, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x04')
-    applyPkt(pkt, 'nf3', pktCnt)
+    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
+    applyPkt(pkt, 'nf0', pktCnt)
     pktCnt += 1
     pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=index, opCode=SET_REG_OP, op2=val, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x04')
-    expPkt(pkt, 'nf0')
+    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
+    expPkt(pkt, 'nf2')
     # test add reg
     pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=index, opCode=ADD_REG_OP, op2=val, result=0) 
-    pkt = pad_pkt(pkt, PKT_SIZE)
-    applyPkt(pkt, 'nf3', pktCnt,'\x04')
+    pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
+    applyPkt(pkt, 'nf0', pktCnt)
     pktCnt += 1
     pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=index, opCode=ADD_REG_OP, op2=val, result=val+val) 
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x04')
-    expPkt(pkt, 'nf0')
+    pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
+    expPkt(pkt, 'nf2')
+
+
+def test_ip(srcIP,dstIP, sport,dport):
+    global pktCnt
+    pkt = Ether(dst=MAC1, src=MAC1)/IP(src=srcIP, dst=dstIP)
+    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')       
+    applyPkt(pkt, sport, pktCnt)
+    pktCnt += 1    
+    pkt = Ether(dst=MAC1, src=MAC1)/IP(src=srcIP, dst=dstIP)
+    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')       
+    expPkt(pkt, dport)
+
 
 for i in range(5):
     op1 = random.randint(0,2**31) 
@@ -189,6 +209,9 @@ for i in range(5):
     test_add(op1, op2)
     test_sub(op1, op2)
     test_lookup(op1)
-    # test_reg(op1, op2)
+    test_reg(op1, op2)
+    test_ip(IP1,IP2,'nf1','nf2')
+    test_ip(IP0,IP1,'nf0','nf1')
 
 write_pcap_files()
+

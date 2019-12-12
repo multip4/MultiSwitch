@@ -12,11 +12,17 @@
 // ******************************************************
 
 // global context vars
+CAM_CONTEXT CAM_CONTEXT_table_l3_context;
+CAM_CONTEXT CAM_CONTEXT_table_l2_context;
+CAM_CONTEXT CAM_CONTEXT_table_pifo_context;
 CAM_CONTEXT CAM_CONTEXT_lookup_table_context;
 uint32_t log_level=0;
 
 // enumeration
-  #define TABLE_lookup_table 0
+  #define TABLE_table_l3 0
+ #define TABLE_table_l2 1
+ #define TABLE_table_pifo 2
+ #define TABLE_lookup_table 3
 
 // user-level wrapper functions for SV
 // NOTE: needed to provide an function pointer for context
@@ -79,10 +85,33 @@ CAM_Init(int tableID, int clk_period,int k, int v, int depth, int aging) {
 	void( * register_write)(uint32_t addr, uint32_t data); 
 	uint32_t( * register_read)(uint32_t addr);
 	int baseAddr = 0;
-	cx = &CAM_CONTEXT_lookup_table_context;
-	register_read  = &register_read_control;
-	register_write = &register_write_control;
-	baseAddr = 0;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		register_read  = &register_read_control;
+		register_write = &register_write_control;
+		baseAddr = 0;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		register_read  = &register_read_control;
+		register_write = &register_write_control;
+		baseAddr = 256;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		register_read  = &register_read_control;
+		register_write = &register_write_control;
+		baseAddr = 512;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		register_read  = &register_read_control;
+		register_write = &register_write_control;
+		baseAddr = 768;
+		break;
+	}
+
     printf("[SW] CAM_Init() - start\n");
 
     if(CAM_Init_ValidateContext(cx,baseAddr,256,depth,k,clk_period,v,aging,register_write, register_read, &log_msg, log_level))
@@ -98,7 +127,21 @@ CAM_Init(int tableID, int clk_period,int k, int v, int depth, int aging) {
 int
 CAM_GetSize(int tableID, int* size_out) {
 	CAM_CONTEXT * cx; 
-	cx = &CAM_CONTEXT_lookup_table_context;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		break;
+	}
+
     uint32_t size;
     printf("[SW] CAM_GetSize() - start\n");
     size =  CAM_Mgt_GetSize(cx);
@@ -111,7 +154,21 @@ CAM_GetSize(int tableID, int* size_out) {
 int
 CAM_SetLogLevel(int tableID, int msg_level) {
 	CAM_CONTEXT * cx; 
-	cx = &CAM_CONTEXT_lookup_table_context;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		break;
+	}
+
     int error_code=0;
     printf("[SW] CAM_SetLogLevel() - start\n");
     error_code = CAM_Init_SetLogLevel(cx,msg_level);
@@ -122,7 +179,21 @@ CAM_SetLogLevel(int tableID, int msg_level) {
 int
 CAM_EnableDevice(int tableID) {
 	CAM_CONTEXT * cx; 
-	cx = &CAM_CONTEXT_lookup_table_context;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		break;
+	}
+
     int error_code=0;
     printf("[SW] CAM_EnableDevice() - start\n");
     error_code = CAM_Init_Activate(cx);
@@ -134,7 +205,21 @@ CAM_EnableDevice(int tableID) {
 int
 CAM_WriteEntry(int tableID, const char* key, const char* value, int static_flag) {
 	CAM_CONTEXT * cx; 
-	cx = &CAM_CONTEXT_lookup_table_context;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		break;
+	}
+
     int error_code=0;
     bool stat_flag = (bool)static_flag;
     printf("[SW] CAM_WriteEntry() - start\n");
@@ -146,7 +231,21 @@ CAM_WriteEntry(int tableID, const char* key, const char* value, int static_flag)
 int
 CAM_EraseEntry (int tableID, const char* key) {
 	CAM_CONTEXT * cx; 
-	cx = &CAM_CONTEXT_lookup_table_context;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		break;
+	}
+
     int error_code=0;
     printf("[SW] CAM_EraseEntry() - start\n");
     error_code = CAM_Mgt_RemoveEntry(cx, key);
@@ -170,7 +269,21 @@ int returnFound() {
 int
 CAM_ReadEntry(int tableID, const char* key) {
 	CAM_CONTEXT * cx; 
-	cx = &CAM_CONTEXT_lookup_table_context;
+	switch (tableID) {
+	case 0:
+		cx = &CAM_CONTEXT_table_l3_context;
+		break;
+	case 1:
+		cx = &CAM_CONTEXT_table_l2_context;
+		break;
+	case 2:
+		cx = &CAM_CONTEXT_table_pifo_context;
+		break;
+	case 3:
+		cx = &CAM_CONTEXT_lookup_table_context;
+		break;
+	}
+
     printf("[SW] CAM_ReadEntry() - start\n");
     bool static_flag = 0; 
     int no_of_value_regs = (cx->value_width%32 == 0) ? (cx->value_width/32) : ((cx->value_width/32)+1);
