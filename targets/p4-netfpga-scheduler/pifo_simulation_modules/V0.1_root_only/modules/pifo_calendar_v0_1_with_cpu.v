@@ -39,10 +39,8 @@ module pifo_calendar_v0_1_with_cpu
         s_axis_insert_en,
         s_axis_pop_en,
         
-        m_axis_buffer_addr, // pop result, buffer address
-        m_axis_buffer_addr_valid, // indicate the value is valid.
-        m_axis_bypass_en,
-        
+        m_axis_pifo_calendar_top,
+        m_axis_buffer_addr, // pop result, buffer address    
         m_axis_calendar_full,
         
         // add cpu i/o later.
@@ -69,10 +67,8 @@ module pifo_calendar_v0_1_with_cpu
     input                        s_axis_pop_en;
     
     output [BUFFER_ADDR_WIDTH-1:0] m_axis_buffer_addr;
-    output                         m_axis_buffer_addr_valid;
-    output                         m_axis_bypass_en;
-
-    output                          m_axis_calendar_full;
+    output [PIFO_ROOT_WIDTH-1:0]   m_axis_pifo_calendar_top;
+    output                         m_axis_calendar_full;
 
     input                                   cpu_rd_valid;
     input [PIFO_CALENDAR_INDEX_WIDTH-1:0]   cpu_rd_addr;
@@ -331,11 +327,10 @@ always @(posedge clk)
 
 
 assign m_axis_buffer_addr = w_pifo_atom_element[0][BUFFER_ADDR_WIDTH-1:0];
-assign m_axis_buffer_addr_valid = w_pifo_atom_element[0][ROOT_PIFO_INFO_VALID_POS];
-assign m_axis_bypass_en = w_pifo_atom_compare_result[0];
 assign w_ctl_insert = s_axis_insert_en;
 assign w_ctl_pop = s_axis_pop_en;
 
+assign m_axis_pifo_calendar_top = w_pifo_atom_element[0];
 assign cpu_rd_result_valid = r_cpu_read_result_valid;
 assign cpu_rd_result = r_cpu_read_data;
 assign cpu_wr_result_valid = r_cpu_write_result_valid;

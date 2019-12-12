@@ -62,7 +62,9 @@ module sss_output_queue_single
     parameter C_M_AXIS_DATA_WIDTH=256,
     parameter C_S_AXIS_DATA_WIDTH=256,
     parameter C_M_AXIS_TUSER_WIDTH=128,
-    parameter C_S_AXIS_TUSER_WIDTH=128
+    parameter C_S_AXIS_TUSER_WIDTH=128,
+    parameter QUEUE_BUFFER_SIZE = 128,
+    parameter QUEUE_BUFFER_THRESHOLD = 64
 )
 (
     // Part 1: System side signals
@@ -100,9 +102,9 @@ module sss_output_queue_single
    // ------------ Internal Params --------
 
 
-   localparam BUFFER_SIZE         = 128; // enough for about 100us of buffering  //4096; // Buffer size 4096B
+   localparam BUFFER_SIZE         = QUEUE_BUFFER_SIZE; // enough for about 100us of buffering  //4096; // Buffer size 4096B
    localparam BUFFER_SIZE_WIDTH   = log2(BUFFER_SIZE/(C_M_AXIS_DATA_WIDTH/8));
-   localparam BUFFER_THRESHOLD = 96/(C_M_AXIS_DATA_WIDTH/8); // buffer almost full at 1500 depth.
+   localparam BUFFER_THRESHOLD = QUEUE_BUFFER_THRESHOLD/(C_M_AXIS_DATA_WIDTH/8); // buffer almost full at 1500 depth.
    localparam NUM_STATES = 1;
    localparam IDLE = 0;
    localparam WR_PKT = 1;
