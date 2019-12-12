@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Wed Dec 11 15:13:21 2019
-# Process ID: 19586
+# Start of session at: Fri Dec 13 00:52:55 2019
+# Process ID: 26636
 # Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/sss_output_queue_single
 # Command line: vivado -mode batch -source sss_output_queues.tcl
 # Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/sss_output_queue_single/vivado.log
@@ -28,8 +28,8 @@ Creating Output Queues Single IP
 # update_compile_order -fileset sim_1
 # ipx::package_project
 WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
-INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 3 for port or parameter 'state'
-INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 3 for port or parameter 'state_next'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 1 for port or parameter 'state'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 1 for port or parameter 'state_next'
 INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_METADATA_STATES' by 2 for port or parameter 'metadata_state'
 INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_METADATA_STATES' by 2 for port or parameter 'metadata_state_next'
 INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'DIGEST_WIDTH' by 80 for port or parameter 'digest_data'
@@ -92,6 +92,16 @@ WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use
 # set_property value {128} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
 WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
 # set_property value_format {long} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {QUEUE_BUFFER_THRESHOLD} [ipx::current_core]
+# set_property value_resolve_type {user} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+# set_property display_name {QUEUE_BUFFER_THRESHOLD} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+# set_property value {64} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+# set_property value_format {long} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+# ipx::add_user_parameter {QUEUE_BUFFER_SIZE} [ipx::current_core]
+# set_property value_resolve_type {user} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+# set_property display_name {QUEUE_BUFFER_SIZE} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+# set_property value {64} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+# set_property value_format {long} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
 # ipx::add_subcore NetFPGA:NetFPGA:sss_fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
 # ipx::add_subcore NetFPGA:NetFPGA:sss_fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
 # ipx::add_subcore NetFPGA:NetFPGA:fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
@@ -107,5 +117,4 @@ INFO: [Ipptcl 7-1486] check_integrity: Integrity check passed.
 # ipx::save_core [ipx::current_core]
 # update_ip_catalog
 # close_project
-# file delete -force ${proj_dir} 
-INFO: [Common 17-206] Exiting Vivado at Wed Dec 11 15:13:30 2019...
+INFO: [Common 17-206] Exiting Vivado at Fri Dec 13 00:53:05 2019...

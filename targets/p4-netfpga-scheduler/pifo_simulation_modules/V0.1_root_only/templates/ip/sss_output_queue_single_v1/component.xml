@@ -198,7 +198,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7c774b32</spirit:value>
+            <spirit:value>3f5b6210</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -220,7 +220,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7c774b32</spirit:value>
+            <spirit:value>3f5b6210</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -234,7 +234,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>d7304378</spirit:value>
+            <spirit:value>730378ae</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -483,6 +483,16 @@
         <spirit:displayName>C S Axis Tuser Width</spirit:displayName>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXIS_TUSER_WIDTH">128</spirit:value>
       </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>QUEUE_BUFFER_SIZE</spirit:name>
+        <spirit:displayName>Queue Buffer Size</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.QUEUE_BUFFER_SIZE">128</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>QUEUE_BUFFER_THRESHOLD</spirit:name>
+        <spirit:displayName>Queue Buffer Threshold</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.QUEUE_BUFFER_THRESHOLD">64</spirit:value>
+      </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
   <spirit:choices>
@@ -498,7 +508,7 @@
       <spirit:file>
         <spirit:name>hdl/sss_output_queue_single.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_7c774b32</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_3f5b6210</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -553,7 +563,7 @@
       <spirit:file>
         <spirit:name>xgui/sss_output_queue_single_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_d7304378</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_730378ae</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -581,6 +591,16 @@
       <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXIS_TUSER_WIDTH">128</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
+      <spirit:name>QUEUE_BUFFER_SIZE</spirit:name>
+      <spirit:displayName>QUEUE_BUFFER_SIZE</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.QUEUE_BUFFER_SIZE">64</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>QUEUE_BUFFER_THRESHOLD</spirit:name>
+      <spirit:displayName>QUEUE_BUFFER_THRESHOLD</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.QUEUE_BUFFER_THRESHOLD">64</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
       <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">sss_output_queue_single_v1_0</spirit:value>
     </spirit:parameter>
@@ -598,15 +618,15 @@
       <xilinx:vendorDisplayName>NetFPGA</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.netfpga.org</xilinx:vendorURL>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2019-12-11T06:13:30Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2019-12-12T15:53:05Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="6cfe16de"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="bbde9dfe"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6663f3e8"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="3a0bd175"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="85f4e41b"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="deed306a"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="cd3040a9"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="52985c26"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

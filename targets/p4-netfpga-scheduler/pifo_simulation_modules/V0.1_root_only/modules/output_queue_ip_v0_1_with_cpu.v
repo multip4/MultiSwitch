@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module output_queue_v0_1_with_cpu
+module output_queue_ip_v0_1_with_cpu
 #(
     // Master AXI Stream Data Width
     parameter DATA_WIDTH=256,
@@ -41,31 +41,31 @@ module output_queue_v0_1_with_cpu
 
 
     // Slave Stream Ports (interface to data path)
-     input [DATA_WIDTH - 1:0]                        s_axis_tdata,
-     input [((DATA_WIDTH / 8)) - 1:0]                s_axis_tkeep,
-     input [META_WIDTH-1:0]                          s_axis_tuser,
-     input [PIFO_WIDTH-1:0]                          s_axis_tpifo,
-     input                                           s_axis_tvalid,    
-     input                                           s_axis_tlast,
+    (* mark_debug = "true" *) input [DATA_WIDTH - 1:0]                        s_axis_tdata,
+    (* mark_debug = "true" *) input [((DATA_WIDTH / 8)) - 1:0]                s_axis_tkeep,
+    (* mark_debug = "true" *) input [META_WIDTH-1:0]                          s_axis_tuser,
+    (* mark_debug = "true" *) input [PIFO_WIDTH-1:0]                          s_axis_tpifo,
+    (* mark_debug = "true" *) input                                           s_axis_tvalid,    
+    (* mark_debug = "true" *) input                                           s_axis_tlast,
     
     
     // control signal from Enqueue Agent
-     input                                           s_axis_buffer_wr_en,
-     input                                           s_axis_pifo_insert_en,
+    (* mark_debug = "true" *) input                                           s_axis_buffer_wr_en,
+    (* mark_debug = "true" *) input                                           s_axis_pifo_insert_en,
     
     
     // output signal
-     input                                           m_axis_tready,  // input ready signal from interface
-     output                                          m_axis_tvalid, // output valid signal
-     output [DATA_WIDTH - 1:0]                       m_axis_tdata,  // outptu pkt data
-     output[((DATA_WIDTH / 8)) - 1:0]                m_axis_tkeep, // output keep data
-     output                                          m_axis_tlast, // output last signal
-     output [META_WIDTH-1:0]                         m_axis_tuser, // output metadata 
-     output [PIFO_WIDTH-1:0]                         m_axis_tpifo,  // output pifo infomation.
-     output                                          m_is_buffer_almost_full, // buffer almostfull signal
-     output                                          m_is_pifo_full,
-     output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_remain_size,
-     output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_counter,
+    (* mark_debug = "true" *) input                                           m_axis_tready,  // input ready signal from interface
+    (* mark_debug = "true" *) output                                          m_axis_tvalid, // output valid signal
+    (* mark_debug = "true" *) output [DATA_WIDTH - 1:0]                       m_axis_tdata,  // outptu pkt data
+    (* mark_debug = "true" *) output[((DATA_WIDTH / 8)) - 1:0]                m_axis_tkeep, // output keep data
+    (* mark_debug = "true" *) output                                          m_axis_tlast, // output last signal
+    (* mark_debug = "true" *) output [META_WIDTH-1:0]                         m_axis_tuser, // output metadata 
+    (* mark_debug = "true" *) output [PIFO_WIDTH-1:0]                         m_axis_tpifo,  // output pifo infomation.
+    (* mark_debug = "true" *) output                                          m_is_buffer_almost_full, // buffer almostfull signal
+    (* mark_debug = "true" *) output                                          m_is_pifo_full,
+    (* mark_debug = "true" *) output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_remain_size,
+    (* mark_debug = "true" *) output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_counter,
         
 
     //cpu signals
@@ -147,7 +147,7 @@ module output_queue_v0_1_with_cpu
     
 
     // register for FSM
-     reg [FSM_WIDTH-1:0] output_queue_fsm_state;
+    (* mark_debug = "true" *) reg [FSM_WIDTH-1:0] output_queue_fsm_state;
     reg [FSM_WIDTH-1:0] output_queue_fsm_state_next;
     
 //    wire w_buffer_wr_en;
@@ -155,24 +155,24 @@ module output_queue_v0_1_with_cpu
     
     // buffer module I/O
     reg                             r_buffer_rd_en;
-     reg   r_buffer_rd_en_next;
+    (* mark_debug = "true" *) reg   r_buffer_rd_en_next;
     reg                             r_buffer_first_word_en_next;
     
     reg [BUFFER_ADDR_WIDTH-1:0]     r_buffer_rd_addr;
-     reg [BUFFER_ADDR_WIDTH-1:0]     r_buffer_rd_addr_next;
+    (* mark_debug = "true" *) reg [BUFFER_ADDR_WIDTH-1:0]     r_buffer_rd_addr_next;
         
-     wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_tail;
-     wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_tail_next;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_tail;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_tail_next;
         
-     wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_head;
-     wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_head_next;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_head;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_buffer_fl_head_next;
         
-     wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_st_buffer_remain_space;
-     wire                            addr_manager_out_st_buffer_almost_full;
-     wire                            addr_manager_out_st_buffer_empty;
+    (* mark_debug = "true" *) wire [BUFFER_ADDR_WIDTH-1:0]    addr_manager_out_st_buffer_remain_space;
+    (* mark_debug = "true" *) wire                            addr_manager_out_st_buffer_almost_full;
+    (* mark_debug = "true" *) wire                            addr_manager_out_st_buffer_empty;
     
-     reg                            ctl_buffer_wr_en;
-     reg                            ctl_pifo_insert_en;
+    (* mark_debug = "true" *) reg                            ctl_buffer_wr_en;
+    (* mark_debug = "true" *) reg                            ctl_pifo_insert_en;
     
     
     // registers for output
@@ -203,7 +203,7 @@ module output_queue_v0_1_with_cpu
     // output result for sop pkt addr 
     reg [BUFFER_ADDR_WIDTH-1:0] pifo_calendar_top_addr;
     // buffer manager module inst
-    addr_manager_v0_2
+    addr_manager_ip
     #(
     .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
     .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
@@ -303,7 +303,7 @@ module output_queue_v0_1_with_cpu
     wire [PIFO_WIDTH-1:0]           w_pifo_calendar_out_pifo_calendar_top;
 
     
-    pifo_calendar_v0_1_with_cpu
+    pifo_calendar_ip
     #(
     .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH),
     .BUFFER_ADDR_WIDTH(BUFFER_ADDR_WIDTH),

@@ -94,6 +94,18 @@ set_property display_name {C_S_AXIS_TUSER_WIDTH} [ipx::get_user_parameter C_S_AX
 set_property value {128} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
 set_property value_format {long} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
 
+ipx::add_user_parameter {QUEUE_BUFFER_THRESHOLD} [ipx::current_core]
+set_property value_resolve_type {user} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+set_property display_name {QUEUE_BUFFER_THRESHOLD} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+set_property value {64} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+set_property value_format {long} [ipx::get_user_parameters QUEUE_BUFFER_THRESHOLD]
+
+ipx::add_user_parameter {QUEUE_BUFFER_SIZE} [ipx::current_core]
+set_property value_resolve_type {user} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+set_property display_name {QUEUE_BUFFER_SIZE} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+set_property value {64} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+set_property value_format {long} [ipx::get_user_parameters QUEUE_BUFFER_SIZE]
+
 ipx::add_subcore NetFPGA:NetFPGA:sss_fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
 ipx::add_subcore NetFPGA:NetFPGA:sss_fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
 

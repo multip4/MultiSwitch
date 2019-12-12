@@ -170,13 +170,13 @@ module sss_output_queue_single
    // ------------ SSS additions -------------
 
    localparam DIGEST_WIDTH = 80;
-   (* mark_debug = "true" *) wire send_dig_to_cpu;
-   (* mark_debug = "true" *) wire [DIGEST_WIDTH-1:0] digest_data;
+    wire send_dig_to_cpu;
+    wire [DIGEST_WIDTH-1:0] digest_data;
 
    wire [C_S_AXIS_DATA_WIDTH/8 + C_S_AXIS_DATA_WIDTH:0] data_queue_in;
-   (* mark_debug = "true" *) wire  data_queue_wr_en;
+    wire  data_queue_wr_en;
    wire [C_S_AXIS_TUSER_WIDTH-1:0] metadata_queue_in;
-   (* mark_debug = "true" *) wire  metadata_queue_wr_en;
+    wire  metadata_queue_wr_en;
    wire [BUFFER_SIZE_WIDTH:0] data_queue_depth;
 
    // ------------ Modules -------------

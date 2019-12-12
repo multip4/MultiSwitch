@@ -258,7 +258,7 @@ module scheduler_top_v0_1
 wire  [PIFO_INFO_LENGTH-1:0] w_pifo_info_d1 = s_axis_tuser_d1[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
 wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_d1[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
 
-    enqueue_agent_v0_1
+    enqueue_agent_ip
     enqueue_agent_inst(
             // from/to pipeline
         .s_axis_tvalid(s_axis_tvalid_d1), 
@@ -299,7 +299,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
     wire                                       w_axis_0_tlast_to_sss_output_queue_single;
     wire                                       w_axis_0_tready_from_sss_output_queue_single;
     wire [PIFO_INFO_LENGTH-1:0]                w_axis_0_tpifo_next;
-    output_queue_v0_1_with_cpu
+    pifo_output_queue_ip
     #(
     .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
     .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
@@ -370,7 +370,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
         .ip2cpu_write_pifo_calendar_resp_valid(w_ip2cpu_write_pifo_calendar_resp_valid[0])
     );
 
-    sss_output_queue_single
+    sss_output_queue_single_ip
     sss_output_queue_single_inst_0
     (
     .axis_aclk(axis_aclk),    
@@ -407,7 +407,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
     wire                                       w_axis_1_tready_from_sss_output_queue_single;
     wire [PIFO_INFO_LENGTH-1:0]                w_axis_1_tpifo_next;
 
-    output_queue_v0_1_with_cpu
+    pifo_output_queue_ip
     #(
     .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
     .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
@@ -480,7 +480,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
         
     );
 
-    sss_output_queue_single
+    sss_output_queue_single_ip
     sss_output_queue_single_inst_1
     (
     .axis_aclk(axis_aclk),    
@@ -517,7 +517,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
     wire [PIFO_INFO_LENGTH-1:0]                w_axis_2_tpifo_next;
     
     
-    output_queue_v0_1_with_cpu
+    pifo_output_queue_ip
     #(
     .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
     .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
@@ -590,7 +590,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
         
     );
 
-    sss_output_queue_single
+    sss_output_queue_single_ip
     sss_output_queue_single_inst_2
     (
     .axis_aclk(axis_aclk),    
@@ -624,7 +624,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
     wire                                       w_axis_3_tready_from_sss_output_queue_single;
     wire [PIFO_INFO_LENGTH-1:0]                w_axis_3_tpifo_next;
 
-    output_queue_v0_1_with_cpu
+    pifo_output_queue_ip
     #(
     .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
     .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
@@ -697,7 +697,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
         
     );
 
-    sss_output_queue_single
+    sss_output_queue_single_ip
     sss_output_queue_single_inst_3
     (
     .axis_aclk(axis_aclk),    
@@ -733,7 +733,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
     wire                                       w_axis_4_tready_from_sss_output_queue_single;
     wire [PIFO_INFO_LENGTH-1:0]                w_axis_4_tpifo_next;
 
-    output_queue_v0_1_with_cpu
+    pifo_output_queue_ip
     #(
     .BUFFER_ADDR_WIDTH(BUFFER_INDEX_WIDTH),  
     .BUFFER_WORD_DEPTH(BUFFER_WORD_DEPTH),
@@ -806,7 +806,7 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
            
     );    
 
-    sss_output_queue_single
+    sss_output_queue_single_ip
     sss_output_queue_single_inst_4
     (
     .axis_aclk(axis_aclk),    

@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module output_queue_v0_1_with_cpu
+module pifo_output_queue
 #(
     // Master AXI Stream Data Width
     parameter DATA_WIDTH=256,
@@ -203,7 +203,7 @@ module output_queue_v0_1_with_cpu
     // output result for sop pkt addr 
     reg [BUFFER_ADDR_WIDTH-1:0] pifo_calendar_top_addr;
     // buffer manager module inst
-    addr_manager_v0_2
+    addr_manager_ip
     #(
     .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
     .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
@@ -303,7 +303,7 @@ module output_queue_v0_1_with_cpu
     wire [PIFO_WIDTH-1:0]           w_pifo_calendar_out_pifo_calendar_top;
 
     
-    pifo_calendar_v0_1_with_cpu
+    pifo_calendar_ip
     #(
     .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH),
     .BUFFER_ADDR_WIDTH(BUFFER_ADDR_WIDTH),
