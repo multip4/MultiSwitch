@@ -46,13 +46,12 @@ module scheduler_top_v0_1
     
     // parameters for scheduler_top.
     parameter BUFFER_WORD_DEPTH = 512,
-    parameter PIFO_CALENDAR_DEPTH = 128,
+    parameter PIFO_CALENDAR_DEPTH = 32,  // scale down to test bit simulation.
     parameter PIFO_INFO_LENGTH = 32,
     parameter BUFFER_OUTPUT_SYNC=0,
     parameter CPU_EQ_AGENT_ADDR = 8
     )
     (
-     
     // Part 1: System side signals
     // Global Ports
     input axis_aclk,
