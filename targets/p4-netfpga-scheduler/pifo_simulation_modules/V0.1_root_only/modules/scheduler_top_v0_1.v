@@ -114,19 +114,19 @@ module scheduler_top_v0_1
     (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] nf3_q_size,
     (* mark_debug = "true" *) output [QUEUE_DEPTH_BITS-1:0] dma_q_size,
 
-    output reg  [C_S_AXI_DATA_WIDTH-1:0] bytes_stored,
-    output reg  [NUM_QUEUES-1:0]         pkt_stored,
+//    output reg  [C_S_AXI_DATA_WIDTH-1:0] bytes_stored,
+//    output reg  [NUM_QUEUES-1:0]         pkt_stored,
 
-    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_0,
-    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_1,
-    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_2,
-    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_3,
-    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_4,
-    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_0,
-    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_1,
-    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_2,
-    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_3,
-    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_4,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_0,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_1,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_2,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_3,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_4,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_0,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_1,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_2,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_3,
+//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_4,
 
 // Slave AXI Ports
     input                                     S_AXI_ACLK,
@@ -147,10 +147,10 @@ module scheduler_top_v0_1
     output                                    S_AXI_WREADY,
     output     [1 :0]                         S_AXI_BRESP,
     output                                    S_AXI_BVALID,
-    output                                    S_AXI_AWREADY,
+    output                                    S_AXI_AWREADY
 
-    output reg [C_S_AXI_DATA_WIDTH-1:0]  bytes_dropped,
-    output reg [NUM_QUEUES-1:0]          pkt_dropped
+//    output reg [C_S_AXI_DATA_WIDTH-1:0]  bytes_dropped,
+//    output reg [NUM_QUEUES-1:0]          pkt_dropped
     );
     
     

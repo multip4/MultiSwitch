@@ -153,7 +153,7 @@ module buffer_wrapper_v1_0_with_cpu
     wire                                m_axis_tlast_async;
     wire [C_M_AXIS_TUSER_WIDTH-1:0]     m_axis_tuser_async;
     wire [C_M_AXIS_PIFO_WIDTH-1:0 ]     m_axis_tpifo_async;
-    wire                                m_axis_tvalid_async;
+//    wire                                m_axis_tvalid_async;
     
     // regs
     reg [C_M_AXIS_DATA_WIDTH-1:0]       m_axis_tdata_reg;
@@ -161,7 +161,7 @@ module buffer_wrapper_v1_0_with_cpu
     reg                                 m_axis_tlast_reg;
     reg [C_M_AXIS_TUSER_WIDTH-1:0]      m_axis_tuser_reg;
     reg [C_M_AXIS_PIFO_WIDTH-1:0 ]      m_axis_tpifo_reg;
-    reg                                 m_axis_tvalid_reg;
+//    reg                                 m_axis_tvalid_reg;
   
 
     // combinational logic output for each blockram 
@@ -529,7 +529,7 @@ end
                 m_axis_tlast_reg <= 0;
                 m_axis_tuser_reg <= 0;
                 m_axis_tpifo_reg <= 0;
-                m_axis_tvalid_reg <= 0;
+//                m_axis_tvalid_reg <= 0;
                 
                 r_cpu_pkt_buffer_valid <= 0;
                 r_cpu_meta_buffer_valid <= 0;
@@ -584,7 +584,7 @@ end
                 m_axis_tlast_reg <= m_axis_tlast_async;
                 m_axis_tuser_reg <= m_axis_tuser_async;
                 m_axis_tpifo_reg <= m_axis_tpifo_async;
-                m_axis_tvalid_reg <= m_axis_tvalid_async;  
+//                m_axis_tvalid_reg <= m_axis_tvalid_async;  
                 
                 r_cpu_rd_pkt_result_valid_d1 <= r_cpu_rd_pkt_result_valid_d2;
                 r_cpu_rd_pkt_result_valid <= r_cpu_rd_pkt_result_valid_d1;

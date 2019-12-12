@@ -157,12 +157,12 @@ module sss_output_queue_single
    reg [NUM_METADATA_STATES-1:0]       metadata_state;
    reg [NUM_METADATA_STATES-1:0]       metadata_state_next;
 
-   reg                                                             first_word, first_word_next;
+//   reg                                                             first_word, first_word_next;
 
 
 
-   wire clear_counters;
-   wire reset_registers;
+//   wire clear_counters;
+//   wire reset_registers;
 
 
    // ------------ SSS additions -------------
@@ -303,12 +303,12 @@ end
    always @(posedge axis_aclk) begin
       if(~axis_resetn) begin
          state <= IDLE;
-         first_word <= 0;
+//         first_word <= 0;
 
       end
       else begin
          state <= state_next;
-         first_word <= first_word_next;
+//         first_word <= first_word_next;
 
       end
 

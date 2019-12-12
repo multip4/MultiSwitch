@@ -233,7 +233,7 @@ module output_queue_v0_1_with_cpu
     // buffer wrapper module inst
      
      
-    wire                                            w_buffer_wrapper_out_tvalid; // output valid signal
+    //wire                                            w_buffer_wrapper_out_tvalid; // output valid signal
     wire [DATA_WIDTH - 1:0]                         w_buffer_wrapper_out_tdata;  // outptu pkt data
     wire [(DATA_WIDTH / 8) - 1:0]                   w_buffer_wrapper_out_tkeep; // output keep data
     wire                                            w_buffer_wrapper_out_tlast; // output last signal

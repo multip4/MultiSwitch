@@ -329,8 +329,8 @@ module nf_datapath #(
 	  .last_pkt_info4(last_pkt_info4)
     );
 
-    (* mark_debug = "true" *) wire [C_S_AXI_DATA_WIDTH-1:0] bytes_dropped;
-    (* mark_debug = "true" *) wire [5-1:0] pkt_dropped; 
+//    (* mark_debug = "true" *) wire [C_S_AXI_DATA_WIDTH-1:0] bytes_dropped;
+//    (* mark_debug = "true" *) wire [5-1:0] pkt_dropped; 
 
    (* mark_debug = "true" *) wire [C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0] scheduler_tuser = m_axis_opl_tuser[C_M_AXIS_TUSER_WIDTH+PIFO_WIDTH-1:0];
 
@@ -383,20 +383,20 @@ module nf_datapath #(
       .nf3_q_size(nf3_q_size),
       .dma_q_size(dma_q_size),
 
-      .bytes_stored(), 
-      .pkt_stored(), 
-      .bytes_removed_0(), 
-      .bytes_removed_1(), 
-      .bytes_removed_2(), 
-      .bytes_removed_3(), 
-      .bytes_removed_4(), 
-      .pkt_removed_0(), 
-      .pkt_removed_1(), 
-      .pkt_removed_2(), 
-      .pkt_removed_3(), 
-      .pkt_removed_4(), 
-      .bytes_dropped(bytes_dropped), 
-      .pkt_dropped(pkt_dropped), 
+//      .bytes_stored(), 
+//      .pkt_stored(), 
+//      .bytes_removed_0(), 
+//      .bytes_removed_1(), 
+//      .bytes_removed_2(), 
+//      .bytes_removed_3(), 
+//      .bytes_removed_4(), 
+//      .pkt_removed_0(), 
+//      .pkt_removed_1(), 
+//      .pkt_removed_2(), 
+//      .pkt_removed_3(), 
+//      .pkt_removed_4(), 
+//      .bytes_dropped(bytes_dropped), 
+//      .pkt_dropped(pkt_dropped), 
 
       .S_AXI_AWADDR(S2_AXI_AWADDR), 
       .S_AXI_AWVALID(S2_AXI_AWVALID),

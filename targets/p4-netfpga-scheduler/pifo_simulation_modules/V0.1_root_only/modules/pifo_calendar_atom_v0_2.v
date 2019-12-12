@@ -85,9 +85,9 @@ module pifo_calendar_atom_v0_2
        wire                          in_pifo_valid;
 
        
-       wire                          is_shift_to_tail;
-       wire                          is_shift_to_head;
-       wire                          is_update_value;
+//       wire                          is_shift_to_tail;
+//       wire                          is_shift_to_head;
+//       wire                          is_update_value;
        
        always @(*)
            begin
