@@ -334,5 +334,5 @@ assign m_axis_pifo_calendar_top = w_pifo_atom_element[0];
 assign cpu_rd_result_valid = r_cpu_read_result_valid;
 assign cpu_rd_result = r_cpu_read_data;
 assign cpu_wr_result_valid = r_cpu_write_result_valid;
-assign m_axis_calendar_full = (r_pifo_element_count == PIFO_CALENDAR_SIZE) ? 1 : 0;
+assign m_axis_calendar_full = (r_pifo_element_count == PIFO_CALENDAR_SIZE - 2) ? 1 : 0;
 endmodule

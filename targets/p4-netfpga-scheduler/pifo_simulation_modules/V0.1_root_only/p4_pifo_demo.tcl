@@ -67,7 +67,7 @@ read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/output_queue_bypass_ch
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/eneueue_agent_v0_1.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/top_scheduler_cpu_defines.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/nf_datapath/nf_datapath.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/ip/sss_output_queue_single/hdl/sss_output_queue_single.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/ip/sss_output_queue_single_v1/hdl/sss_output_queue_single.v"
 
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/fallthrough_small_fifo_v1_0_0/hdl/fallthrough_small_fifo.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/fallthrough_small_fifo_v1_0_0/hdl/small_fifo.v"

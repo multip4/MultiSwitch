@@ -386,7 +386,10 @@ module output_queue_v0_1_with_cpu
                         begin
                             // if input is not valid and buffer is not empty
                             // go to UPDATE_FL_TAIL state
-                            if(~s_axis_tvalid & ~addr_manager_out_st_buffer_empty)
+                            
+                            //condition, 
+                            // if no write signal and buffer is not empty then go to dequeue.    
+                            if(~s_axis_buffer_wr_en & ~addr_manager_out_st_buffer_empty)
                                 begin
                                     output_queue_fsm_state_next = UPDATE_FL_TAIL;
                                     ctl_pifo_pop_en = 1;
