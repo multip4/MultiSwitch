@@ -115,7 +115,7 @@ module sss_output_queue_single
 
    // SI
    localparam MIN_PACKET_SIZE = 64;
-   localparam META_BUFFER_WIDTH = log2(BUFFER_SIZE/MIN_PACKET_SIZE);
+   localparam META_BUFFER_WIDTH = BUFFER_SIZE_WIDTH;
 
 
    // ------------- Regs/ wires -----------
@@ -231,7 +231,7 @@ module sss_output_queue_single
          .dout                           (fifo_out_tuser),
          .full                           (),
          .nearly_full                    (metadata_nearly_full_fifo),
-     .prog_full                      (),
+        .prog_full                      (),
          .empty                          (metadata_empty),
          // Inputs
          .din                            (metadata_queue_in),
@@ -325,5 +325,7 @@ end
    assign m_axis_tlast   = fifo_out_tlast;
    assign m_axis_tvalid  = ~empty;
    assign rd_en    = m_axis_tready & ~empty;
-   assign s_axis_tready = ~nearly_full_fifo & ~metadata_nearly_full_fifo;
+//   assign s_axis_tready = ~nearly_full_fifo & ~metadata_nearly_full_fifo;
+   assign s_axis_tready = ~nearly_full & ~metadata_nearly_full;
+
 endmodule

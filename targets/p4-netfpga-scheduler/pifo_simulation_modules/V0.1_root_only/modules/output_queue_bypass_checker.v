@@ -54,8 +54,9 @@ always @(*)
 begin
     r_bypass_en_next = 0;
     s_axis_pifo_rank = s_axis_pifo_info[ROOT_RANK_END_POS:ROOT_RANK_START_POS];
+    s_axis_pifo_valid = s_axis_pifo_info[ROOT_PIFO_INFO_VALID_POS];
     s_axis_pifo_calendar_top_rank = s_axis_pifo_calandar_top[ROOT_RANK_END_POS:ROOT_RANK_START_POS];
-    
+    s_axis_pifo_calendar_top_valid = s_axis_pifo_calandar_top[ROOT_PIFO_INFO_VALID_POS];
     case({s_axis_pifo_valid,s_axis_pifo_calendar_top_valid})
         
         2'b10: // the calendar top is not valid
