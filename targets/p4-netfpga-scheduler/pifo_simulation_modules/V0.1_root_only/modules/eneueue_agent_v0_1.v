@@ -62,7 +62,8 @@ module enqueue_agent_v0_1
         // from each port queue status 
         s_axis_buffer_almost_full,
         s_axis_pifo_full,
-            
+        
+        m_axis_valid,    
         m_axis_ctl_pifo_in_en,
         m_axis_ctl_buffer_wr_en,
         
@@ -90,7 +91,7 @@ module enqueue_agent_v0_1
     input [QUEUE_NUM-1:0]               s_axis_buffer_almost_full;
     input [QUEUE_NUM-1:0]               s_axis_pifo_full;
         
-    
+    output reg                          m_axis_valid;
     // combinational logic output
     output [QUEUE_NUM-1:0]              m_axis_ctl_pifo_in_en; 
     // combinational logic output
@@ -314,7 +315,7 @@ module enqueue_agent_v0_1
                             if(s_axis_tlast)
                                 begin
                                     eq_agent_fsm_state_next = IDLE;
-                                    m_axis_ctl_buffer_wr_en_reg_next = 0;
+//                                    m_axis_ctl_buffer_wr_en_reg_next = 0;
                                     //r_axis_tready_next = 0;
                                 end
                         end
@@ -383,11 +384,13 @@ module enqueue_agent_v0_1
                     r_nf4_pkt_drop[i] <= 0;
 
                 end
-                r_axis_tready <= 0 ;
+                m_axis_valid <= 0;
+                r_axis_tready <= 0;
                 
             end
         else 
             begin
+                m_axis_valid <= s_axis_tvalid; // m_axis_valid is 1 delay of s_axis_tvalid signal.
                 eq_agent_fsm_state <= eq_agent_fsm_state_next;
                 m_axis_ctl_pifo_in_en_reg <=  m_axis_ctl_pifo_in_en_reg_next;
                 m_axis_ctl_buffer_wr_en_reg <=  m_axis_ctl_buffer_wr_en_reg_next;

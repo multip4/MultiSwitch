@@ -31,9 +31,12 @@ parameter ROOT_PIFO_INFO_VALID_POS = 31,
 parameter OUTPUT_SYNC=1
 )
 (
+
+    input                           s_axis_valid,
     input [PIFO_ROOT_WIDTH-1:0]     s_axis_pifo_info,    
     input [PIFO_ROOT_WIDTH-1:0]     s_axis_pifo_calandar_top,
-        
+    
+    output reg                      m_axis_valid,    
     output                          m_axis_bypass_en,
     
     input                           clk,
@@ -77,10 +80,12 @@ begin
     if(~rstn) // reset
         begin
             r_bypass_en <= 0;
+            m_axis_valid <= 0;
         end
     else
         begin
             r_bypass_en <= r_bypass_en_next;
+            m_axis_valid <= s_axis_valid;
         end
 end
 

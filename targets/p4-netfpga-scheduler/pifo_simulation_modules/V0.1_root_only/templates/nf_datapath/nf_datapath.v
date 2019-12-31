@@ -220,6 +220,13 @@ module nf_datapath #(
     wire   [31:0]              last_pkt_info3;
     wire   [31:0]              last_pkt_info4;
  
+    wire                       w_output_0_valid = m_axis_0_tvalid & m_axis_0_tready;
+    wire                       w_output_1_valid = m_axis_1_tvalid & m_axis_1_tready;
+    wire                       w_output_2_valid = m_axis_2_tvalid & m_axis_2_tready;
+    wire                       w_output_3_valid = m_axis_3_tvalid & m_axis_3_tready;
+
+        
+ 
   //Input Arbiter
   input_arbiter_ip 
  input_arbiter_v1_0 (

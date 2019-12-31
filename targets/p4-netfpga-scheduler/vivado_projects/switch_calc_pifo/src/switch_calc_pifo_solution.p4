@@ -124,7 +124,7 @@ parser TopParser(packet_in b,
         digest_data.unused = 0;
         transition select(p.ethernet.etherType) {
             CALC_TYPE: parse_calc;
-            IPV4_TYPE: parse_ipv4;
+//            IPV4_TYPE: parse_ipv4;
             default: reject;
         } 
     }
@@ -133,12 +133,12 @@ parser TopParser(packet_in b,
         b.extract(p.calc);
         transition accept; 
     }
-
+/*
     state parse_ipv4 {
         b.extract(p.ipv4);
         transition accept;
     }
-
+*/
 }
 
 // match-action pipeline
@@ -157,28 +157,23 @@ control TopPipe(inout Parsed_packet p,
         sume_metadata.dst_port = port_num;
     }
 
+/*
     action l3_set_output_port(bit<8> port_num) {
         sume_metadata.dst_port = port_num;
     }
 
-    action set_result(calcField_t data) {
-        p.calc.result = data;
-    }
-
-    action set_result_default() {
-        p.calc.result = 32w0;
-    }
-
-    table lookup_table {
-        key = { p.calc.op1: exact; }
-
+    table table_l3 {
+        key = {p.ipv4.dstAddr : exact;}
         actions = {
-            set_result;
-            set_result_default;
+            l3_set_output_port;
+            NoAction;
         }
         size = 64;
-        default_action = set_result_default;
+        default_action = NoAction;
     }
+*/
+
+
 
     table table_l2 {
         key = { p.ethernet.dstAddr: exact; }
@@ -194,16 +189,6 @@ control TopPipe(inout Parsed_packet p,
     action set_pifo_rank (bit<19> pifo_rank){
 
         sume_metadata.pifo_rank = pifo_rank;
-    }
-
-    table table_l3 {
-        key = {p.ipv4.dstAddr : exact;}
-        actions = {
-            l3_set_output_port;
-            NoAction;
-        }
-        size = 64;
-        default_action = NoAction;
     }
 
     table table_pifo{
@@ -223,16 +208,17 @@ control TopPipe(inout Parsed_packet p,
 
         table_l2.apply();
 
+        //set pifo rank
+        sume_metadata.pifo_valid = 1;
+        table_pifo.apply();
+
+        /*
         if(p.ipv4.isValid()){
             table_l3.apply();}
-
+        */
         // bounce packet back to sender
         swap_eth_addresses();
 
-        //set pifo rank
-        sume_metadata.pifo_valid = 1;
-
-        table_pifo.apply();
 
         if(p.calc.isValid()){
 
@@ -245,7 +231,7 @@ control TopPipe(inout Parsed_packet p,
                 p.calc.result = p.calc.op1 - p.calc.op2;
             } else if (p.calc.opCode == LOOKUP_OP) {
                 // TODO: Key-Value lookup
-                lookup_table.apply(); 
+                //lookup_table.apply(); 
             } else if (p.calc.opCode == ADD_REG_OP || p.calc.opCode == SET_REG_OP) {
                 // Read or write register
      
