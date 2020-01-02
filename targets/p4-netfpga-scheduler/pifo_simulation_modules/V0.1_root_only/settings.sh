@@ -1,12 +1,14 @@
 #the WORKSPACE parameter is default path from jenkins
 
-if [[ -v $WORKSPACE ]];
+echo "$1"
+
+if [[ -z $1 ]];
 then
-    echo "variable WORKSPACE is set. load jenkins path"
-    export PROJECT_ROOT = $WORKSPACE
-else
     echo "variable WORKSPACE not set. load local path"
     export PROJECT_ROOT=/home/jkchoi/Documents/git/MultiSwitch
+else
+    echo "variable WORKSPACE is set. load jenkins path"
+    export PROJECT_ROOT=$1
 fi
 
 echo "PROJECT_ROOT is $PROJECT_ROOT"
