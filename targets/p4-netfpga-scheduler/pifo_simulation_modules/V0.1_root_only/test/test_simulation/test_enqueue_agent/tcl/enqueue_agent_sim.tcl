@@ -6,7 +6,7 @@ set device  xc7vx690t-3-ffg1761
 set proj_dir ./project
 # set public_repo_dir $::env(SUME_FOLDER)/lib/hw/
 set xilinx_repo_dir $::env(XILINX_VIVADO)/data/ip/xilinx/
-set repo_dir $::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/ip/
+set repo_dir $::env(PROJECT_IP_PATH)
 puts "repo_dir ${repo_dir}"
 
 set bit_settings $::env(CONSTRAINTS)/generic_bit.xdc 
