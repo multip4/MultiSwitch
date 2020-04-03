@@ -26,7 +26,9 @@
 //
 // @NETFPGA_LICENSE_HEADER_END@
 //
-
+// for wave debugging,
+// parse 1 field of ehternet header,
+// and change at pipe line.
 
 #include <core.p4>
 #include <sume_switch.p4>
@@ -37,67 +39,27 @@
  */
 
 typedef bit<48> EthAddr_t; 
-typedef bit<32> calcField_t;
-typedef bit<32> IPv4Addr_t;
+typedef bit<32> ipv4_addr_t;
 
-#define CALC_TYPE   0x1212
-#define IPV4_TYPE   0x0800
 
-#define REG_READ 8w0
-#define REG_WRITE 8w1
-
-#define INDEX_WIDTH 4 // determines depth of const register
-
-// const register
-@Xilinx_MaxLatency(64)
-@Xilinx_ControlWidth(INDEX_WIDTH)
-extern void jk_reg_rw(in bit<INDEX_WIDTH> index, 
-                         in calcField_t newVal, 
-                         in bit<8> opCode, 
-                         out calcField_t result);
-
-// define opCode types
-#define ADD_OP       8w0
-#define SUB_OP       8w1
-#define LOOKUP_OP    8w2
-#define ADD_REG_OP   8w3
-#define SET_REG_OP   8w4
+#define CLASS_WIDTH 5 // 32 
+#define PORT_WIDTH 8 // port maximum support 8
 
 // standard Ethernet header
 header Ethernet_h { 
     EthAddr_t dstAddr; 
     EthAddr_t srcAddr; 
-    bit<16> etherType;
 }
 
 header Calc_h {
-    calcField_t op1;
-    bit<8> opCode;
-    calcField_t op2;
-    calcField_t result;
+    bit<CLASS_WIDTH> class_id; //flow_id
 }
 
-// IPv4 header without options
-header IPv4_h {
-    bit<4> version;
-    bit<4> ihl;
-    bit<8> tos; 
-    bit<16> totalLen; 
-    bit<16> identification; 
-    bit<3> flags;
-    bit<13> fragOffset; 
-    bit<8> ttl;
-    bit<8> protocol; 
-    bit<16> hdrChecksum; 
-    IPv4Addr_t srcAddr; 
-    IPv4Addr_t dstAddr;
-}
 
 // List of all recognized headers
 struct Parsed_packet { 
     Ethernet_h ethernet; 
     Calc_h calc;
-    IPv4_h ipv4;
 }
 
 // user defined metadata: can be used to share information between
@@ -111,6 +73,7 @@ struct digest_data_t {
     bit<256> unused;
 }
 
+
 // Parser Implementation
 @Xilinx_MaxPacketRegion(1024)
 parser TopParser(packet_in b, 
@@ -122,23 +85,9 @@ parser TopParser(packet_in b,
         b.extract(p.ethernet);
         user_metadata.unused = 0;
         digest_data.unused = 0;
-        transition select(p.ethernet.etherType) {
-            CALC_TYPE: parse_calc;
-//            IPV4_TYPE: parse_ipv4;
-            default: reject;
-        } 
-    }
-
-    state parse_calc { 
-        b.extract(p.calc);
         transition accept; 
     }
-/*
-    state parse_ipv4 {
-        b.extract(p.ipv4);
-        transition accept;
-    }
-*/
+
 }
 
 // match-action pipeline
@@ -147,117 +96,34 @@ control TopPipe(inout Parsed_packet p,
                 inout digest_data_t digest_data,
                 inout sume_metadata_t sume_metadata) {
 
-    action swap_eth_addresses() {
-        EthAddr_t temp = p.ethernet.dstAddr;
-        p.ethernet.dstAddr = p.ethernet.srcAddr;
-        p.ethernet.srcAddr = temp;
+
+    action set_calc(bit<CLASS_WIDTH> d1, port_t port){
+        p.calc.setValid();
+        p.calc.class_id = d1;
+        sume_metadata.dst_port = port;
     }
 
-    action l2_set_output_port(bit<8> port_num) {
-        sume_metadata.dst_port = port_num;
-    }
 
-/*
-    action l3_set_output_port(bit<8> port_num) {
-        sume_metadata.dst_port = port_num;
-    }
-
-    table table_l3 {
-        key = {p.ipv4.dstAddr : exact;}
-        actions = {
-            l3_set_output_port;
-            NoAction;
-        }
-        size = 64;
-        default_action = NoAction;
-    }
-*/
-
-
-
-    table table_l2 {
+    table table_calc {
         key = { p.ethernet.dstAddr: exact; }
         actions = {
-            l2_set_output_port;
-            NoAction;
+            set_calc;
         }
         size = 64;
-        default_action = NoAction;
-
     }
-
-    action set_pifo_rank (bit<19> pifo_rank){
-
-        sume_metadata.pifo_rank = pifo_rank;
-    }
-
-    table table_pifo{
-
-        key = {p.ethernet.dstAddr: exact ;}
-        actions = {
-            set_pifo_rank;
-            NoAction;
-
-        }
-        size = 64;
-        default_action = NoAction;
-    }
-
 
     apply {
+         table_calc.apply();
+         
+         sume_metadata.pifo_info.pifo_valid = 1;
+         sume_metadata.pifo_info.pifo_rank = 10;
+         sume_metadata.pifo_info.pifo_field = 0;
 
-        table_l2.apply();
-
-        //set pifo rank
-        sume_metadata.pifo_valid = 1;
-        table_pifo.apply();
-
-        /*
-        if(p.ipv4.isValid()){
-            table_l3.apply();}
-        */
-        // bounce packet back to sender
-        swap_eth_addresses();
+        //sume_metadata.pifo_info = 3222;
 
 
-        if(p.calc.isValid()){
-
-            // based on the opCode, set the result or state appropriately
-            if (p.calc.opCode == ADD_OP) {
-                // TODO: addition
-                p.calc.result = p.calc.op1 + p.calc.op2;
-            } else if (p.calc.opCode == SUB_OP) {
-                // TODO: subtraction
-                p.calc.result = p.calc.op1 - p.calc.op2;
-            } else if (p.calc.opCode == LOOKUP_OP) {
-                // TODO: Key-Value lookup
-                //lookup_table.apply(); 
-            } else if (p.calc.opCode == ADD_REG_OP || p.calc.opCode == SET_REG_OP) {
-                // Read or write register
-     
-                // Pre-register access: define metadata
-                bit<INDEX_WIDTH> index = p.calc.op1[INDEX_WIDTH-1:0];
-                calcField_t newVal;
-                bit<8> opCode;
-                calcField_t regVal;
-                
-                // Pre-register access: set metadata appropriately
-                if (p.calc.opCode == ADD_REG_OP) {
-                    newVal = 0;
-                    opCode = REG_READ;
-                } else {
-                    newVal = p.calc.op2;
-                    opCode = REG_WRITE;
-                }
-                // Register access!
-                jk_reg_rw(index, newVal, opCode, regVal);
-
-                // set result for ADD_REG operation
-                if (p.calc.opCode == ADD_REG_OP) {
-                    p.calc.result = p.calc.op2 + regVal;
-                }
-            } 
-        }
+         if (p.calc.class_id == 6 || p.calc.class_id == 7 || p.calc.class_id == 8 || p.calc.class_id == 9 || p.calc.class_id == 10)
+            sume_metadata.drop = 1;
     }
 }
 
@@ -270,12 +136,8 @@ control TopDeparser(packet_out b,
                     inout sume_metadata_t sume_metadata) { 
     apply {
         b.emit(p.ethernet); 
-        if(p.calc.isValid()) b.emit(p.calc);
-        if(p.ipv4.isValid()) b.emit(p.ipv4);
     }
 }
 
-
 // Instantiate the switch
 SimpleSumeSwitch(TopParser(), TopPipe(), TopDeparser()) main;
-

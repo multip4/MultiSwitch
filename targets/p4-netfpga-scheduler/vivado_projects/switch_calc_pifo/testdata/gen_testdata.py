@@ -29,7 +29,6 @@
 # @NETFPGA_LICENSE_HEADER_END@
 #
 
-
 from switch_calc_headers import * 
 from nf_sim_tools import *
 import random
@@ -56,9 +55,22 @@ nf_expected[1] = []
 nf_expected[2] = []
 nf_expected[3] = []
 
-
 nf_port_map = {"nf0":0b00000001, "nf1":0b00000100, "nf2":0b00010000, "nf3":0b01000000, "dma0":0b00000010}
 nf_id_map = {"nf0":0, "nf1":1, "nf2":2, "nf3":3}
+
+#####################
+# generate testdata #
+#####################
+
+MAC1 = "08:11:11:11:11:08"
+MAC2 = "08:22:22:22:22:08"
+pktCnt = 0
+
+INDEX_WIDTH = 4
+REG_DEPTH = 2**INDEX_WIDTH
+
+NUM_KEYS = 4
+lookup_table = {0: 0x00000001, 1: 0x00000010, 2: 0x00000100, 3: 0x00001000}
 
 sss_sdnet_tuples.clear_tuple_files()
 
@@ -71,7 +83,6 @@ def applyPkt(pkt, ingress, time):
 
 def expPkt(pkt, egress):
     pktsExpected.append(pkt)
-    sss_sdnet_tuples.sume_tuple_expect['pifo_info'] = 0x80000000
     sss_sdnet_tuples.sume_tuple_expect['dst_port'] = nf_port_map[egress]
     sss_sdnet_tuples.write_tuples()
     if egress in ["nf0","nf1","nf2","nf3"]:
@@ -101,117 +112,173 @@ def write_pcap_files():
     for i in nf_applied.keys():
         print "nf{0}_applied times: ".format(i), [p.time for p in nf_applied[i]]
 
-#####################
-# generate testdata #
-#####################
-
-MAC0 = "01:12:34:56:78:01"
-MAC1 = "01:11:22:33:44:01"
-MAC2 = "01:44:33:22:11:01"
 
 
-IP0 = "10.0.0.1"
-IP1 = "10.0.0.2"
-IP2 = "10.0.0.3"
-
-pktCnt = 0
-PKT_SIZE = 128
-
-INDEX_WIDTH = 4
-REG_DEPTH = 2**INDEX_WIDTH
-
-NUM_KEYS = 4
-lookup_table = {0: 0x00000001, 1: 0x00000010, 2: 0x00000100, 3: 0x00001000}
-
-def pad_pkt(pkt, size, str):
-    if len(pkt) >= size:
-        return pkt
-    else:
-        return pkt / (str*(size - len(pkt)))
-        
-
-# Test the addition functionality
-def test_add(OP1, OP2): 
-    # Create a packet to test the addition operation using OP1 and OP2
-    # and apply it to the switch. Also create the expected packet and
-    # indicate it should be expected on a particular interface.
+def test_calc_packet(SMAC, DMAC,port_name,length, pad_str='\x00'):
     global pktCnt
-    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=OP1, opCode=ADD_OP, op2=OP2, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
-    applyPkt(pkt, 'nf0', pktCnt)
     pktCnt += 1
-    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=OP1, opCode=ADD_OP, op2=OP2, result=OP1+OP2)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
-    expPkt(pkt, 'nf2')
-
-# Test the subtraction functionality
-def test_sub(OP1, OP2):
-    global pktCnt
-    pkt = Ether(dst=MAC0, src=MAC1) / Calc(op1=OP1, opCode=SUB_OP, op2=OP2, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x02')
-    applyPkt(pkt, 'nf2', pktCnt)
-    pktCnt += 1
-    pkt = Ether(dst=MAC1, src=MAC0) / Calc(op1=OP1, opCode=SUB_OP, op2=OP2, result=OP1-OP2)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x02')
+    pkt = Ether(dst=DMAC, src=SMAC) / IP(src='192.168.0.2', dst='10.10.10.1')
+    pkt = pad_pkt(pkt, length)
+    applyPkt(pkt, port_name, pktCnt)
     expPkt(pkt, 'nf0')
 
-# Test the key-vaule lookup functionality 
-def test_lookup(OP1):
+
+#####################
+# send a sample paket #
+#####################
+def send_normal_pkt(SMAC, DMAC,input_port,ouput_port):
     global pktCnt
-    key = (OP1 % NUM_KEYS)
-    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=key, opCode=LOOKUP_OP, op2=0, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
-    applyPkt(pkt, 'nf3', pktCnt)
     pktCnt += 1
-    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=key, opCode=LOOKUP_OP, op2=0, result=lookup_table[key])
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
-    expPkt(pkt, 'nf1')   
+    pkt = Ether(dst=DMAC, src=SMAC)
+    pkt = pad_pkt(pkt,64)
+    applyPkt(pkt, input_port, pktCnt)
+    expPkt(pkt, ouput_port)
 
-# Test the register functionality
-def test_reg(OP1, OP2): 
+#####################
+# send a drop paket #
+#####################
+def send_drop_pkt(SMAC, DMAC,input_port):
     global pktCnt
-    index = OP1 % REG_DEPTH
-    val = OP2
-    # test set reg
-    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=index, opCode=SET_REG_OP, op2=val, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
-    applyPkt(pkt, 'nf0', pktCnt)
     pktCnt += 1
-    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=index, opCode=SET_REG_OP, op2=val, result=0)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')
-    expPkt(pkt, 'nf2')
-    # test add reg
-    pkt = Ether(dst=MAC2, src=MAC1) / Calc(op1=index, opCode=ADD_REG_OP, op2=val, result=0) 
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
-    applyPkt(pkt, 'nf0', pktCnt)
-    pktCnt += 1
-    pkt = Ether(dst=MAC1, src=MAC2) / Calc(op1=index, opCode=ADD_REG_OP, op2=val, result=val+val) 
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x03')
-    expPkt(pkt, 'nf2')
+    pkt = Ether(dst=DMAC, src=SMAC)
+    pkt = pad_pkt(pkt, 64)
+    applyPkt(pkt, input_port, pktCnt)
 
 
-def test_ip(srcIP,dstIP, sport,dport):
+#####################
+# send a sample paket #
+#####################
+def send_pkt(SMAC, DMAC,input_port,ouput_port,pad_str,length):
     global pktCnt
-    pkt = Ether(dst=MAC1, src=MAC1)/IP(src=srcIP, dst=dstIP)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')       
-    applyPkt(pkt, sport, pktCnt)
-    pktCnt += 1    
-    pkt = Ether(dst=MAC1, src=MAC1)/IP(src=srcIP, dst=dstIP)
-    pkt = pad_pkt(pkt, PKT_SIZE,'\x01')       
-    expPkt(pkt, dport)
+    pktCnt += 1
+    pkt = Ether(dst=DMAC, src=SMAC)/Raw(load=pad_str)
+    pkt = pad_pkt(pkt, length)
+    applyPkt(pkt, input_port, pktCnt)
+    expPkt(pkt, ouput_port)
+
+#####################
+# send a 64 byte packet padd with 0x00 #
+#####################
+def send_64plus32payload_pkt(SMAC, DMAC,input_port,ouput_port,pad_str):
+    global pktCnt
+    pktCnt += 1
+    pkt = Ether(dst=DMAC, src=SMAC)/Raw(load='0x00')
+    pkt = pad_pkt(pkt, 64)
+
+    pkt = pkt/Raw(pad_str)
+    pkt = pad_pkt(pkt, 96) 
+
+    applyPkt(pkt, input_port, pktCnt)
+    expPkt(pkt, ouput_port)
 
 
-for i in range(5):
-    op1 = random.randint(0,2**31) 
-    op2 = random.randint(0,2**31) 
-    while op1 < op2:
-        op2 = random.randint(0,2**31) 
-    test_add(op1, op2)
-    test_sub(op1, op2)
-    test_lookup(op1)
-    test_reg(op1, op2)
-    test_ip(IP1,IP2,'nf1','nf2')
-    test_ip(IP0,IP1,'nf0','nf1')
 
+
+#####################
+# port not set scenario
+#####################
+def test_port_unset_senario():
+	send_normal_pkt("01:11:11:11:11:01", "01:11:11:11:11:01",'nf0','nf0')
+	send_normal_pkt("01:11:11:11:11:02", "01:11:11:11:11:02",'nf1','nf1')
+	send_normal_pkt("01:11:11:11:11:03", "01:11:11:11:11:03",'nf2','nf2')
+	send_normal_pkt("01:11:11:11:11:04", "01:11:11:11:11:04",'nf3','nf3')
+	send_drop_pkt("01:11:11:11:11:01", "01:11:11:11:11:05",'nf0') # port not set
+	send_drop_pkt("01:11:11:11:11:02", "01:11:11:11:11:05",'nf1') # port not set
+	send_drop_pkt("01:11:11:11:11:03", "01:11:11:11:11:05",'nf2') # port not set
+	send_drop_pkt("01:11:11:11:11:04", "01:11:11:11:11:05",'nf3') # port not set
+
+
+#####################
+# drop test#
+#####################
+def test_drop_senario():
+	send_normal_pkt("01:11:11:11:11:01", "01:11:11:11:11:01",'nf0','nf0')
+	send_normal_pkt("01:11:11:11:11:02", "01:11:11:11:11:02",'nf1','nf1')
+	send_normal_pkt("01:11:11:11:11:03", "01:11:11:11:11:03",'nf2','nf2')
+	send_normal_pkt("01:11:11:11:11:04", "01:11:11:11:11:04",'nf3','nf3')
+	send_drop_pkt("01:11:11:11:11:01", "01:11:11:11:11:11",'nf0') # drop sig 1
+	send_drop_pkt("01:11:11:11:11:02", "01:11:11:11:11:12",'nf1') # drop sig 1
+	send_drop_pkt("01:11:11:11:11:03", "01:11:11:11:11:13",'nf2') # drop sig 1
+	send_drop_pkt("01:11:11:11:11:04", "01:11:11:11:11:14",'nf3') # drop sig 1
+
+
+#####################
+# send size increasing packets #
+#####################
+def test_diff_size_senario():
+	startSize = 64
+	lastSize = 1500
+
+	for pktSize in range (startSize, lastSize):
+		send_pkt("01:11:11:11:11:01", "01:11:11:11:11:01",'nf0','nf0',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:01", "01:11:11:11:11:02",'nf0','nf1',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:01", "01:11:11:11:11:03",'nf0','nf2',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:01", "01:11:11:11:11:04",'nf0','nf3',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:02", "01:11:11:11:11:01",'nf1','nf0',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:02", "01:11:11:11:11:02",'nf1','nf1',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:02", "01:11:11:11:11:03",'nf1','nf2',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:02", "01:11:11:11:11:04",'nf1','nf3',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:03", "01:11:11:11:11:01",'nf2','nf0',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:03", "01:11:11:11:11:02",'nf2','nf1',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:03", "01:11:11:11:11:03",'nf2','nf2',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:03", "01:11:11:11:11:04",'nf2','nf3',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:04", "01:11:11:11:11:01",'nf3','nf0',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:04", "01:11:11:11:11:02",'nf3','nf1',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:04", "01:11:11:11:11:03",'nf3','nf2',str(pktSize),pktSize)
+		send_pkt("01:11:11:11:11:04", "01:11:11:11:11:04",'nf3','nf3',str(pktSize),pktSize)
+
+
+#################################
+# send size increasing packets #
+#################################
+def test_diff_payload():
+	payload_size = 32
+	payload_str = '0b'
+
+	full_fild_chunk = payload_str;
+
+	for bit_ddr in range (0, payload_size):
+		full_fild_chunk += '1'
+	print full_fild_chunk
+
+
+	unfild_chunk = payload_str;
+
+	for bit_ddr in range (1, payload_size):
+		unfild_chunk += '0'
+	print unfild_chunk
+
+	print "send full-fild and unfild packets"
+	for from_port in range (0, 4):
+		for to_port in range (0, 4):
+			send_64plus32payload_pkt("01:11:11:11:11:0"+str(from_port+1), "01:11:11:11:11:0"+str(to_port+1),'nf'+str(from_port),'nf'+str(to_port),full_fild_chunk)
+			send_64plus32payload_pkt("01:11:11:11:11:0"+str(from_port+1), "01:11:11:11:11:0"+str(to_port+1),'nf'+str(from_port),'nf'+str(to_port),unfild_chunk)
+
+
+	zero_fild_chunk = payload_str
+	one_fild_chunk = payload_str
+
+	for diffbit in range (0, payload_size):
+		for counter in range (0, payload_size):
+			if counter == diffbit :
+				zero_fild_chunk+= '1'
+				one_fild_chunk += '0'
+			else :
+				zero_fild_chunk+= '0'
+				one_fild_chunk += '1'
+
+		print "send "+str(diffbit)+" th bit diff packets:"
+		print zero_fild_chunk
+		print one_fild_chunk
+
+		for from_port in range (0, 4):
+			for to_port in range (0, 4):
+				send_64plus32payload_pkt("01:11:11:11:11:0"+str(from_port+1), "01:11:11:11:11:0"+str(to_port+1),'nf'+str(from_port),'nf'+str(to_port),one_fild_chunk)
+				send_64plus32payload_pkt("01:11:11:11:11:0"+str(from_port+1), "01:11:11:11:11:0"+str(to_port+1),'nf'+str(from_port),'nf'+str(to_port),zero_fild_chunk)
+
+		zero_fild_chunk = payload_str
+		one_fild_chunk = payload_str
+
+
+test_diff_payload()
 write_pcap_files()
-
