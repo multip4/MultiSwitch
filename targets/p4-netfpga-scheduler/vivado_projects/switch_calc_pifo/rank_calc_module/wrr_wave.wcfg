@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="test_trigger_jk_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="test_trigger_jk" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="45935100000fs"></ZoomStartTime>
+      <ZoomEndTime time="46145300001fs"></ZoomEndTime>
+      <Cursor1Time time="45980000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="265"></NameColumnWidth>
+      <ValueColumnWidth column_width="185"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="33" />
+   <wvobject type="logic" fp_name="/test_trigger_jk/wrr/clk_dp">
+      <obj_property name="ElementShortName">clk_dp</obj_property>
+      <obj_property name="ObjectShortName">clk_dp</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/wrr/tuple_in_my_pifo_rank_calc_input_VALID">
+      <obj_property name="ElementShortName">tuple_in_my_pifo_rank_calc_input_VALID</obj_property>
+      <obj_property name="ObjectShortName">tuple_in_my_pifo_rank_calc_input_VALID</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/tuple_in_my_pifo_rank_calc_input_DATA">
+      <obj_property name="ElementShortName">tuple_in_my_pifo_rank_calc_input_DATA[12:0]</obj_property>
+      <obj_property name="ObjectShortName">tuple_in_my_pifo_rank_calc_input_DATA[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/wrr/tuple_out_my_pifo_rank_calc_output_VALID">
+      <obj_property name="ElementShortName">tuple_out_my_pifo_rank_calc_output_VALID</obj_property>
+      <obj_property name="ObjectShortName">tuple_out_my_pifo_rank_calc_output_VALID</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/tuple_out_my_pifo_rank_calc_output_DATA">
+      <obj_property name="ElementShortName">tuple_out_my_pifo_rank_calc_output_DATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tuple_out_my_pifo_rank_calc_output_DATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/wire_in_last_pkt_info0">
+      <obj_property name="ElementShortName">wire_in_last_pkt_info0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wire_in_last_pkt_info0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider299" type="divider">
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/d_out_valid">
+      <obj_property name="ElementShortName">d_out_valid</obj_property>
+      <obj_property name="ObjectShortName">d_out_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/d_out_data">
+      <obj_property name="ElementShortName">d_out_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/d_out_pifo_valid">
+      <obj_property name="ElementShortName">d_out_pifo_valid</obj_property>
+      <obj_property name="ObjectShortName">d_out_pifo_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/d_out_pifo_rank">
+      <obj_property name="ElementShortName">d_out_pifo_rank[18:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out_pifo_rank[18:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/d_out_pifo_reserved">
+      <obj_property name="ElementShortName">d_out_pifo_reserved[11:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out_pifo_reserved[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/d_out_unused">
+      <obj_property name="ElementShortName">d_out_unused</obj_property>
+      <obj_property name="ObjectShortName">d_out_unused</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/d_out_wrr_class">
+      <obj_property name="ElementShortName">d_out_wrr_class[4:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out_wrr_class[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/d_out_wrr_overflow">
+      <obj_property name="ElementShortName">d_out_wrr_overflow[1:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out_wrr_overflow[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/d_out_wrr_round">
+      <obj_property name="ElementShortName">d_out_wrr_round[10:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out_wrr_round[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1069" type="divider">
+      <obj_property name="label">Overflow Info</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/check_overflow">
+      <obj_property name="ElementShortName">check_overflow</obj_property>
+      <obj_property name="ObjectShortName">check_overflow</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/w_reg_round_0">
+      <obj_property name="ElementShortName">w_reg_round_0[10:0]</obj_property>
+      <obj_property name="ObjectShortName">w_reg_round_0[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/w_reg_overflow_0">
+      <obj_property name="ElementShortName">w_reg_overflow_0[1:0]</obj_property>
+      <obj_property name="ObjectShortName">w_reg_overflow_0[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider501" type="divider">
+      <obj_property name="label">WRR Module</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/input_class">
+      <obj_property name="ElementShortName">input_class[4:0]</obj_property>
+      <obj_property name="ObjectShortName">input_class[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_calced_rank_next">
+      <obj_property name="ElementShortName">reg_calced_rank_next[18:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_calced_rank_next[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider260" type="divider">
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_overflow">
+      <obj_property name="ElementShortName">reg_overflow[159:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_overflow[159:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_round">
+      <obj_property name="ElementShortName">reg_round[159:0][10:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_round[159:0][10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_weight">
+      <obj_property name="ElementShortName">reg_weight[159:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_weight[159:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_config_weight">
+      <obj_property name="ElementShortName">reg_config_weight[159:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_config_weight[159:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_overflow_next">
+      <obj_property name="ElementShortName">reg_overflow_next[159:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_overflow_next[159:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_round_next">
+      <obj_property name="ElementShortName">reg_round_next[159:0][10:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_round_next[159:0][10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_weight_next">
+      <obj_property name="ElementShortName">reg_weight_next[159:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_weight_next[159:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_trigger_jk/wrr/reg_config_weight_next">
+      <obj_property name="ElementShortName">reg_config_weight_next[159:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_config_weight_next[159:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_trigger_jk/clk_dp">
+      <obj_property name="ElementShortName">clk_dp</obj_property>
+      <obj_property name="ObjectShortName">clk_dp</obj_property>
+   </wvobject>
+</wave_config>
