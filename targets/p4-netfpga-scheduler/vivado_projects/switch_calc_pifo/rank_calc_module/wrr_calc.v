@@ -74,49 +74,56 @@ module wrr_without_blkmem#(
     output                                  wire_out_cpu_valid
 );
 
-reg [OVER_FLOW_WIDTH-1:0] reg_overflow [ID_COUNTER-1:0];
-reg [ROUND_WIDTH-1:0]     reg_round [ID_COUNTER-1:0];
-reg [COUNTER_WIDTH-1:0]   reg_weight [ID_COUNTER-1:0];
-reg [COUNTER_WIDTH-1:0]   reg_config_weight [ID_COUNTER-1:0];
+/*Data Plane Register*/
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_config_weight [ID_COUNTER-1:0];
+reg [PIFO_INFO_WIDTH-1:0]                   reg_pifo_info;
+reg                                         reg_out_valid_dp;
+reg [RANK_WIDTH-1:0]                        reg_calced_rank;
+/*Data Plane Combinational Output*/
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_next [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round_next [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight_next [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_config_weight_next [ID_COUNTER-1:0];
+reg [RANK_WIDTH-1:0]                        reg_calced_rank_next;
+reg [PIFO_INFO_WIDTH-1:0]                   reg_pifo_info_next;
+reg [ID_WIDTH-1:0]                          input_id;
+reg [PORT_ID_WIDTH-1:0]                     input_port_id;
+
+/*Control Plane Register*/
+reg                                         reg_out_valid_cp;
+reg [CPU_OUT_WIDTH-1:0]                     reg_cp_out_val;
+reg [ID_WIDTH-1:0]                          reg_cp_out_index;
+/*Data Plane Combinational Output*/
+reg [CPU_OUT_WIDTH-1:0]                     reg_cp_out_val_next;
+reg [ID_WIDTH-1:0]                          reg_cp_out_index_next;
+reg                                         reg_out_valid_cp_next;      
+reg                                         reg_out_valid_dp_next;
+    
+
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_combi [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round_combi [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight_combi [ID_COUNTER-1:0];
 
 
-reg [OVER_FLOW_WIDTH-1:0] reg_overflow_next [ID_COUNTER-1:0];
-reg [ROUND_WIDTH-1:0]     reg_round_next [ID_COUNTER-1:0];
-reg [COUNTER_WIDTH-1:0]   reg_weight_next [ID_COUNTER-1:0];
-reg [COUNTER_WIDTH-1:0]   reg_config_weight_next [ID_COUNTER-1:0];
-
-reg [PIFO_INFO_WIDTH-1:0] reg_pifo_info;
-
-reg [RANK_WIDTH-1:0]     reg_calced_rank;
-reg                    reg_out_valid_dp,reg_out_valid_cp;
-
-reg [CPU_OUT_WIDTH-1:0] reg_cp_out_val;
-reg [ID_WIDTH-1:0] reg_cp_out_index;       
-
-reg [ID_WIDTH-1:0]        input_id;
-reg [PORT_ID_WIDTH-1:0]   input_port_id;
-
-reg                       reg_out_valid_dp_next;
-
-reg [RANK_WIDTH-1:0]                    reg_calced_rank_next;
-reg [CPU_OUT_WIDTH-1:0]                 reg_cp_out_val_next;
-reg [ID_WIDTH-1:0]                      reg_cp_out_index_next;
-reg                                     reg_out_valid_cp_next;          
-
-
-//Wire From 
-wire [ROUND_WIDTH-1:0]     wire_last_round [PORT_ID_COUNTER-1:0];
-wire [OVER_FLOW_WIDTH-1:0]     wire_last_overflow [PORT_ID_COUNTER-1:0];
 
 
 // Wire From DP Interface. 
-wire[INPUT_PORT_INFO_WIDTH-1:0]   input_port = tuple_in_my_pifo_rank_calc_input_DATA[INPUT_PORT_INFO_WIDTH+CLASS_WIDTH-1:CLASS_WIDTH];
-wire[CLASS_WIDTH-1:0]  input_class = tuple_in_my_pifo_rank_calc_input_DATA[CLASS_WIDTH-1:0];
-wire                   valid_in       = tuple_in_my_pifo_rank_calc_input_VALID;
+wire [ROUND_WIDTH-1:0]                       wire_last_round [PORT_ID_COUNTER-1:0];
+wire [OVER_FLOW_WIDTH-1:0]                   wire_last_overflow [PORT_ID_COUNTER-1:0];
 
-integer port_id_i, id_j;      
+wire[INPUT_PORT_INFO_WIDTH-1:0]             input_port = tuple_in_my_pifo_rank_calc_input_DATA[INPUT_PORT_INFO_WIDTH+CLASS_WIDTH-1:CLASS_WIDTH];
+wire[CLASS_WIDTH-1:0]                       input_class = tuple_in_my_pifo_rank_calc_input_DATA[CLASS_WIDTH-1:0];
+wire                                        valid_in       = tuple_in_my_pifo_rank_calc_input_VALID;
+wire                                        wire_last_dq_info_update; 
+integer id_i, id_j,counter;      
 
 //Get last Rond From Output Queue
+
+assign wire_last_dq_info_update = wire_in_last_pkt_info0[31] || wire_in_last_pkt_info1 [31] || wire_in_last_pkt_info2[31]|| wire_in_last_pkt_info3[31];
+
 assign wire_last_round[0]  = wire_in_last_pkt_info0 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
 assign wire_last_round[1] =  wire_in_last_pkt_info1 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
 assign wire_last_round[2] =  wire_in_last_pkt_info2 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
@@ -136,6 +143,47 @@ begin
 
 reg_out_valid_dp_next = valid_in;
 
+//Change Last Overlfow and round to dequeued packet information if smaller than dequeue information.
+if (wire_last_dq_info_update)
+    begin      
+        counter = 0;    
+        for (id_i=0; id_i<=PORT_ID_COUNTER-1; id_i= id_i+1)
+            begin
+                for (id_j=counter; id_j<=counter+CLASS_COUNTER-1; id_j= id_j+1)
+                    begin
+                         if ((wire_last_overflow[id_i]>reg_overflow[id_j])||(wire_last_overflow[id_i]==2'b00 && reg_overflow[id_j]==2'b11)) // When OverFlowBit is Big
+                            begin
+                                reg_overflow_combi[id_j] = wire_last_overflow[id_i];
+                                reg_round_combi[id_j] =  wire_last_round [id_i];
+                                reg_weight_combi[id_j] =   0;  
+                            end
+                         else
+                            begin
+                                reg_overflow_combi[id_j] =  reg_overflow[id_j]; //OverFlow No need to change.
+                                if ((wire_last_overflow[id_i]== reg_overflow[id_j])&&(wire_last_round[id_i]>reg_round[id_j]))
+                                    begin
+                                        reg_round_combi[id_j] = wire_last_round[id_i];
+                                        reg_weight_combi[id_j] =   0;
+                                    end
+                                else
+                                    begin
+                                        reg_round_combi[id_j] = reg_round[id_j];
+                                        reg_weight_combi[id_j] =  reg_weight[id_j];
+                                    end
+                            end    
+                    end
+                counter = counter + CLASS_COUNTER;
+            end     
+    end
+else //No need to change value when there is no signal from the wire.
+    begin
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+                reg_round_combi[id_j] =    reg_round[id_j];
+                reg_overflow_combi[id_j] = reg_overflow[id_j];
+                reg_weight_combi[id_j] =   reg_weight[id_j];
+            end
+    end
 
 /*
 8-bit port information transition to 3-bit 
@@ -161,77 +209,49 @@ if (valid_in)
     input_id = {input_port_id, input_class};
     
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
-            begin
+        begin
             /*
             * If the id is same with P4 input data id. Run WRR Logic
             * Else Keep original value.  
             */
             if (id_j == input_id) // Run WRR Logic is ID is same
                 begin
-                // To avoid out-aged situation,last round update to last deqequeued packet's round.           
-                // compare over-flow first, if over flow is same than compare round.
-                // if wire last round overflow is bigger than register, set overflow to outcome bit.
-                  if (reg_overflow[id_j] < wire_last_overflow[input_port_id])
-                      begin
-                          reg_round_next[id_j] = wire_last_round[input_port_id];
-                          reg_overflow_next[id_j] = wire_last_overflow[id_j];
-                          reg_weight_next[id_j] = 'd1;                    
-                      end
-                  else if (reg_overflow[id_j]== wire_last_overflow[input_port_id])
-                      begin
-                      //When reg Round is smaller than wire last round, set to last round 
-                        if (reg_round[id_j]<wire_last_round[id_j]) 
-                            begin
-                              reg_overflow_next[id_j] = wire_last_overflow[id_j];
-                              reg_round_next[id_j] = wire_last_round[input_port_id];
-                              reg_weight_next[id_j] = 'd1;
-                            end
-                        else // This mean's wire round is same with register round, run WRR Logic
-                          begin
-                          // WRR-Logic 1: If Current Weight is smaller than Config weight add Counter 1
-                              if (reg_weight[id_j] < reg_config_weight[id_j])
-                                  begin
-                                      reg_weight_next[id_j] = reg_weight[id_j] +1;
-                                      reg_round_next[id_j] = reg_round[id_j];
-                                      reg_overflow_next[id_j] = reg_overflow[id_j];                                               
-                                  end
-                              else
-                           // WRR-Logic 2: If Current Weight is bigger than Config weight Change Counter to 1, add 1 round
-                                  begin
-                                    if (reg_round[id_j]<MAX_ROUND_VALUE)
-                                        begin
-                                          reg_weight_next[id_j] = 'd1;
-                                          reg_round_next[id_j] = reg_round[id_j] + 1;
-                                          reg_overflow_next[id_j] = reg_overflow[id_j];
-                                        end
-                                    else
-                                    // Handling Overflow
-                                        begin
-                                          reg_weight_next[id_j] = 'd1;
-                                          reg_round_next[id_j] = 'd1;
-                                          reg_overflow_next[id_j] = reg_overflow[id_j]+1; 
-                                        end 
-                                  end
-                           end
+                // WRR-Logic 1: If Current Weight is smaller than Config weight add Counter 1
+                    if (reg_weight[id_j] < reg_config_weight[id_j])
+                        begin
+                            reg_weight_next[id_j] = reg_weight_combi[id_j] +1;
+                            reg_round_next[id_j] =  reg_round_combi[id_j];
+                            reg_overflow_next[id_j] = reg_overflow_combi[id_j];                                               
+                        end
+                    else
+                        // WRR-Logic 2: If Current Weight is bigger than Config weight Change Counter to 1, add 1 round
+                        begin
+                            if (reg_round[id_j]<MAX_ROUND_VALUE)
+                                begin
+                                  reg_weight_next[id_j] = 'd1;
+                                  reg_round_next[id_j] = reg_round_combi[id_j] + 1;
+                                  reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+                                end
+                            else
+                            // Handling Overflow
+                                begin
+                                  reg_weight_next[id_j] = 'd1;
+                                  reg_round_next[id_j] = 'd1;
+                                  reg_overflow_next[id_j] = reg_overflow_combi[id_j] +1; 
+                                end 
                        end
-                  else
-                    begin //When Overflow bit is overflowed, Overflow bit which come from wire is bigger than register overflow bit(Overflow bit from wire is 0, while reg overflow bit is 2)
-                        reg_round_next[id_j] = wire_last_round[input_port_id];
-                        reg_overflow_next[id_j] = wire_last_overflow[id_j];
-                        reg_weight_next[id_j] = 'd1;                    
-                    end                 
-                end                   
+                    end
+                                     
             else // If id is not same keep original value. 
                 begin           
-                reg_weight_next[id_j] = reg_weight[id_j];
-                reg_round_next[id_j] = reg_round[id_j];
-                reg_overflow_next[id_j] = reg_overflow[id_j];
+                    reg_weight_next[id_j] = reg_weight[id_j];
+                    reg_round_next[id_j] = reg_round[id_j];
+                    reg_overflow_next[id_j] = reg_overflow[id_j];
                 end 
             end
           //final output.      
-          reg_calced_rank_next = {input_class,reg_overflow_next[input_id],reg_round_next[input_id]};
-                   
-    end
+          reg_calced_rank_next = {reg_overflow_next[input_id],reg_round_next[input_id],input_class};          
+      end
 else
     begin
     reg_calced_rank_next = 0;
@@ -240,9 +260,9 @@ else
     
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
         begin
-        reg_weight_next[id_j] = reg_weight[id_j];
-        reg_round_next[id_j] = reg_round[id_j];
-        reg_overflow_next[id_j] = reg_overflow[id_j];
+            reg_weight_next[id_j] = reg_weight[id_j];
+            reg_round_next[id_j] = reg_round[id_j];
+            reg_overflow_next[id_j] = reg_overflow[id_j];
         end
     end 
 end
@@ -327,7 +347,7 @@ begin
 if (~rst)
     begin
     reg_calced_rank <= reg_calced_rank_next;
-    reg_out_valid_dp = reg_out_valid_dp_next;
+    reg_out_valid_dp <= reg_out_valid_dp_next;
     reg_pifo_info <= 0;   
    
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
@@ -342,6 +362,7 @@ else
     begin
     reg_calced_rank <= 0;
     reg_pifo_info <= 0;
+    reg_out_valid_dp <=0;
            
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
         begin
@@ -352,7 +373,7 @@ else
     end       
 end
 
-assign tuple_out_my_pifo_rank_calc_output_VALID = reg_out_valid_dp_next;
+assign tuple_out_my_pifo_rank_calc_output_VALID = reg_out_valid_dp;
 assign tuple_out_my_pifo_rank_calc_output_DATA  = {reg_out_valid_dp,reg_calced_rank,reg_pifo_info};
 
 assign wire_out_cpu_index = reg_cp_out_index;
