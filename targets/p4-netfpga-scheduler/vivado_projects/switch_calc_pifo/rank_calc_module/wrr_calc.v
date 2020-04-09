@@ -64,11 +64,11 @@ module wrr_without_blkmem#(
     I/O From CPU Channel.  
     */
     input                                   clk_cp,
-    input                                   wire_in_cpu_valid,
-    input   [CPU_INDEX_WIDTH -1:0]          wire_in_cpu_index,
+    input   [CPU_INDEX_WIDTH -1:0]          wire_in_cpu_write_index,
     input                                   wire_in_cpu_write_sig,
     input   [CPU_WRITE_WIDTH -1 :0]         wire_in_cpu_config_write,
     input                                   wire_in_cpu_read_sig,
+    input   [CPU_INDEX_WIDTH -1:0]          wire_in_cpu_read_index,
     output   [CPU_INDEX_WIDTH -1:0]         wire_out_cpu_index,
     output   [CPU_OUT_WIDTH -1:0]           wire_out_cpu_val,
     output                                  wire_out_cpu_valid
@@ -270,17 +270,17 @@ end
 //Control plane signal handling
 always @(*)
 begin
-    reg_out_valid_cp_next = wire_in_cpu_valid;   
+    reg_out_valid_cp_next = wire_in_cpu_write_sig || wire_in_cpu_read_sig;   
     if (wire_in_cpu_write_sig)
         begin
-        reg_cp_out_index_next =  wire_in_cpu_index;
-        reg_cp_out_val_next = {reg_round[wire_in_cpu_index], wire_in_cpu_config_write, reg_weight[wire_in_cpu_index]};
+        reg_cp_out_index_next =  wire_in_cpu_write_index;
+        reg_cp_out_val_next = 0;
         
         for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
             begin
-            if (id_j == wire_in_cpu_index)
+            if (id_j == wire_in_cpu_write_index)
                 begin
-                reg_config_weight_next [wire_in_cpu_index] = wire_in_cpu_config_write;
+                reg_config_weight_next [wire_in_cpu_write_index] = wire_in_cpu_config_write;
                 end
             else
                 begin
@@ -291,8 +291,8 @@ begin
         end
     else if (wire_in_cpu_read_sig)
         begin
-        reg_cp_out_index_next =  wire_in_cpu_index;
-        reg_cp_out_val_next = {reg_overflow[wire_in_cpu_index],reg_round[wire_in_cpu_index], reg_config_weight[wire_in_cpu_index], reg_weight[wire_in_cpu_index]};
+        reg_cp_out_index_next =  wire_in_cpu_read_index;
+        reg_cp_out_val_next = {reg_overflow[wire_in_cpu_read_index],reg_round[wire_in_cpu_read_index], reg_config_weight[wire_in_cpu_read_index], reg_weight[wire_in_cpu_read_index]};
         
         for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
             begin
