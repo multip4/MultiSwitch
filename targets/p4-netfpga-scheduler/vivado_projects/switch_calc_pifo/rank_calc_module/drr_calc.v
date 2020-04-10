@@ -459,7 +459,7 @@ begin
             
             for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
                 begin
-                reg_config_quantum[id_j] <= 0;
+                    reg_config_quantum[id_j] <= 1;
                 end
         end    
 end
