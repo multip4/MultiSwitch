@@ -42,18 +42,8 @@ typedef bit<48> EthAddr_t;
 typedef bit<32> ipv4_addr_t;
 
 
-#define CLASS_WIDTH 5 // each port maximum support 32 classes. 
-#define PORT_WIDTH 8 // [DMA4,nf4, DMA3, nf3, DMA2, nf2, DMA1, nf1, DMA0, nf0]
-#define CONTROL_WIDTH 8 // determines depth of const register
-#define RESULT_WIDTH 32 // determines depth of const register
-
-
-// call extern function
-@Xilinx_MaxLatency(2)
-@Xilinx_ControlWidth(CONTROL_WIDTH)
-extern void extern_wrr_calc(in bit<PORT_WIDTH> field1,
-                            in bit<CLASS_WIDTH> field2,
-                            out bit<RESULT_WIDTH> result);
+#define CLASS_WIDTH 5 // 32 
+#define PORT_WIDTH 8 // port maximum support 8
 
 // standard Ethernet header
 header Ethernet_h { 
@@ -124,9 +114,16 @@ control TopPipe(inout Parsed_packet p,
 
     apply {
          table_calc.apply();
-         bit<32> result = 0; //initial Result value. 
-         extern_wrr_calc(sume_metadata.dst_port, p.calc.class_id, result);
-         sume_metadata.pifo_info = result; //take result value.
+         
+         sume_metadata.pifo_info.pifo_valid = 1;
+         sume_metadata.pifo_info.pifo_rank = 10;
+         sume_metadata.pifo_info.pifo_field = 0;
+
+        //sume_metadata.pifo_info = 3222;
+
+
+         if (p.calc.class_id == 6 || p.calc.class_id == 7 || p.calc.class_id == 8 || p.calc.class_id == 9 || p.calc.class_id == 10)
+            sume_metadata.drop = 1;
     }
 }
 
