@@ -33,6 +33,7 @@
  *  
  * extern function test with dummy verilog module
  * Description: implements a dummy verilog module for extern function
+ * Version :0.9
  */
 
 
@@ -112,6 +113,11 @@ reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow [ID_COUNTER-1:0];
 reg [ROUND_WIDTH-1:0]                       reg_round [ID_COUNTER-1:0];
 reg [COUNTER_WIDTH-1:0]                     reg_weight [ID_COUNTER-1:0];
 reg [COUNTER_WIDTH-1:0]                     reg_config_weight [ID_COUNTER-1:0];
+
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_read [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round_read [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight_read [ID_COUNTER-1:0];
+
 reg [PIFO_INFO_WIDTH-1:0]                   reg_pifo_info;
 reg                                         reg_out_valid_dp;
 reg [RANK_WIDTH-1:0]                        reg_calced_rank;
@@ -119,6 +125,11 @@ reg [RANK_WIDTH-1:0]                        reg_calced_rank;
 reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_next [ID_COUNTER-1:0];
 reg [ROUND_WIDTH-1:0]                       reg_round_next [ID_COUNTER-1:0];
 reg [COUNTER_WIDTH-1:0]                     reg_weight_next [ID_COUNTER-1:0];
+
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_read_next [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round_read_next [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight_read_next [ID_COUNTER-1:0];
+
 reg [COUNTER_WIDTH-1:0]                     reg_config_weight_next [ID_COUNTER-1:0];
 reg [RANK_WIDTH-1:0]                        reg_calced_rank_next;
 reg [PIFO_INFO_WIDTH-1:0]                   reg_pifo_info_next;
@@ -135,11 +146,6 @@ reg [ID_WIDTH-1:0]                          reg_cp_out_index_next;
 reg                                         reg_out_valid_cp_next;      
 reg                                         reg_out_valid_dp_next;
     
-
-reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_combi [ID_COUNTER-1:0];
-reg [ROUND_WIDTH-1:0]                       reg_round_combi [ID_COUNTER-1:0];
-reg [COUNTER_WIDTH-1:0]                     reg_weight_combi [ID_COUNTER-1:0];
-
 
 // CPU reads IP interface
 wire     [C_S_AXI_DATA_WIDTH-1:0]          ip2cpu_@PREFIX_NAME@_reg_data;
@@ -168,8 +174,6 @@ wire                                        wire_last_dq_info_update;
 integer id_i, id_j,counter;      
 
 //Get last Rond From Output Queue
-
-assign wire_last_dq_info_update = wire_in_last_pkt_info0[31] || wire_in_last_pkt_info1 [31] || wire_in_last_pkt_info2[31]|| wire_in_last_pkt_info3[31];
 
 assign wire_last_round[0]  = wire_in_last_pkt_info0 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
 assign wire_last_round[1] =  wire_in_last_pkt_info1 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
@@ -235,54 +239,44 @@ assign wire_last_overflow[4] =  wire_in_last_pkt_info4 [OVER_FLOW_WIDTH + ROUND_
 //// CPU REGS END ////
 
 
+//WRR Combinational Logic - Copy Last Round From Last Calced Value
+always @(*)
+begin
+//Change Last Overlfow and round to dequeued packet information if smaller than dequeue information.
+counter = 0;    
+for (id_i=0; id_i<=PORT_ID_COUNTER-1; id_i= id_i+1)
+    begin
+        for (id_j=counter; id_j<=counter+CLASS_COUNTER-1; id_j= id_j+1)
+            begin               
+                 if ((wire_last_overflow[id_i]>reg_overflow[id_j])||(wire_last_overflow[id_i]==2'b00 && reg_overflow[id_j]==2'b11)) // When OverFlowBit is Big
+                    begin
+                        reg_overflow_read_next[id_j] = wire_last_overflow[id_i];
+                        reg_round_read_next[id_j] =  wire_last_round [id_i];
+                        reg_weight_read_next[id_j] =   0;  
+                    end
+                 else
+                    begin
+                        reg_overflow_read_next[id_j] =  reg_overflow[id_j]; //OverFlow No need to change.
+                        if ((wire_last_overflow[id_i]== reg_overflow[id_j])&&(wire_last_round[id_i]>reg_round[id_j]))
+                            begin
+                                reg_round_read_next[id_j] = wire_last_round[id_i];
+                                reg_weight_read_next[id_j] =   0;
+                            end
+                        else
+                            begin
+                                reg_round_read_next[id_j] = reg_round[id_j];
+                                reg_weight_read_next[id_j] =  reg_weight[id_j];
+                            end
+                    end    
+            end
+        counter = counter + CLASS_COUNTER;
+    end
+ end
+    
+ 
 //WRR Combinational Logic
 always @(*)
 begin
-
-reg_out_valid_dp_next = valid_in;
-
-//Change Last Overlfow and round to dequeued packet information if smaller than dequeue information.
-if (wire_last_dq_info_update)
-    begin      
-        counter = 0;    
-        for (id_i=0; id_i<=PORT_ID_COUNTER-1; id_i= id_i+1)
-            begin
-                for (id_j=counter; id_j<=counter+CLASS_COUNTER-1; id_j= id_j+1)
-                    begin
-                         if ((wire_last_overflow[id_i]>reg_overflow[id_j])||(wire_last_overflow[id_i]==2'b00 && reg_overflow[id_j]==2'b11)) // When OverFlowBit is Big
-                            begin
-                                reg_overflow_combi[id_j] = wire_last_overflow[id_i];
-                                reg_round_combi[id_j] =  wire_last_round [id_i];
-                                reg_weight_combi[id_j] =   0;  
-                            end
-                         else
-                            begin
-                                reg_overflow_combi[id_j] =  reg_overflow[id_j]; //OverFlow No need to change.
-                                if ((wire_last_overflow[id_i]== reg_overflow[id_j])&&(wire_last_round[id_i]>reg_round[id_j]))
-                                    begin
-                                        reg_round_combi[id_j] = wire_last_round[id_i];
-                                        reg_weight_combi[id_j] =   0;
-                                    end
-                                else
-                                    begin
-                                        reg_round_combi[id_j] = reg_round[id_j];
-                                        reg_weight_combi[id_j] =  reg_weight[id_j];
-                                    end
-                            end    
-                    end
-                counter = counter + CLASS_COUNTER;
-            end     
-    end
-else //No need to change value when there is no signal from the wire.
-    begin
-        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
-            begin
-                reg_round_combi[id_j] =    reg_round[id_j];
-                reg_overflow_combi[id_j] = reg_overflow[id_j];
-                reg_weight_combi[id_j] =   reg_weight[id_j];
-            end
-    end
-
 /*
 8-bit port information transition to 3-bit 
 */
@@ -317,9 +311,9 @@ if (valid_in)
                 // WRR-Logic 1: If Current Weight is smaller than Config weight add Counter 1
                     if (reg_weight[id_j] < reg_config_weight[id_j])
                         begin
-                            reg_weight_next[id_j] = reg_weight_combi[id_j] +1;
-                            reg_round_next[id_j] =  reg_round_combi[id_j];
-                            reg_overflow_next[id_j] = reg_overflow_combi[id_j];                                               
+                            reg_weight_next[id_j] = reg_weight_read[id_j] +1;
+                            reg_round_next[id_j] =  reg_round_read[id_j];
+                            reg_overflow_next[id_j] = reg_overflow_read[id_j];                                               
                         end
                     else
                         // WRR-Logic 2: If Current Weight is bigger than Config weight Change Counter to 1, add 1 round
@@ -327,24 +321,24 @@ if (valid_in)
                             if (reg_round[id_j]<MAX_ROUND_VALUE)
                                 begin
                                   reg_weight_next[id_j] = 'd1;
-                                  reg_round_next[id_j] = reg_round_combi[id_j] + 1;
-                                  reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+                                  reg_round_next[id_j] = reg_round_read[id_j] + 1;
+                                  reg_overflow_next[id_j] = reg_overflow_read[id_j];
                                 end
                             else
                             // Handling Overflow
                                 begin
                                   reg_weight_next[id_j] = 'd1;
                                   reg_round_next[id_j] = 'd1;
-                                  reg_overflow_next[id_j] = reg_overflow_combi[id_j] +1; 
+                                  reg_overflow_next[id_j] = reg_overflow_read[id_j] +1; 
                                 end 
                        end
                     end
                                      
             else // If id is not same keep original value. 
                 begin           
-                    reg_weight_next[id_j] = reg_weight_combi[id_j];
-                    reg_round_next[id_j] = reg_round_combi[id_j];
-                    reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+                    reg_weight_next[id_j] = reg_weight_read[id_j];
+                    reg_round_next[id_j] = reg_round_read[id_j];
+                    reg_overflow_next[id_j] = reg_overflow_read[id_j];
                 end 
             end
           //final output.      
@@ -358,9 +352,9 @@ else
     
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
         begin
-            reg_weight_next[id_j] = reg_weight_combi[id_j];
-            reg_round_next[id_j] = reg_round_combi[id_j];
-            reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+            reg_weight_next[id_j] = reg_weight_read[id_j];
+            reg_round_next[id_j] = reg_round_read[id_j];
+            reg_overflow_next[id_j] = reg_overflow_read[id_j];
         end
     end 
 end
@@ -450,9 +444,12 @@ if (~clk_lookup_rst_high)
    
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
         begin
+        reg_overflow_read[id_j] <= reg_overflow_read_next[id_j];
+        reg_round_read[id_j] <= reg_round_read_next[id_j];
+        reg_weight_read[id_j] <= reg_weight_read_next[id_j];
         reg_overflow[id_j] <= reg_overflow_next[id_j];
         reg_round[id_j] <= reg_round_next[id_j];
-        reg_weight[id_j] <= reg_weight_next[id_j];
+        reg_weight[id_j] <= reg_weight_next[id_j];   
         end
     end
     
@@ -464,6 +461,9 @@ else
            
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
         begin
+        reg_overflow_read[id_j] <= 0;
+        reg_round_read[id_j] <= 0;
+        reg_weight_read[id_j] <= 0;
         reg_round[id_j] <= 0;
         reg_weight[id_j] <= 0;
         reg_overflow[id_j] <= 0;
