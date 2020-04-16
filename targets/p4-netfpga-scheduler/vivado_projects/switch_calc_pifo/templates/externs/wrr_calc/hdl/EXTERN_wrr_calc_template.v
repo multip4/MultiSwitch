@@ -37,37 +37,54 @@
 
 
 `timescale 1 ps / 1 ps
-`include "@PREFIX_NAME@_cpu_regs_defines.v"
 module @MODULE_NAME@ #(
-    parameter PORT_WIDTH = 8,
-    parameter PORT_LENGHT = 3,
-    parameter CLASS_WIDTH = 5,
-    parameter RESULT_WIDTH = 32,
-    parameter MEM_WIDTH = 32,
-    parameter ROUND_WIDTH = 11,
-    parameter COUNTER_WIDTH = 8, //read and write data length(number 0 to 256).
-    parameter PIFO_INFO_WIDTH = 12,
-    parameter PIFO_RANK_WIDTH = 19,
-    parameter C_S_AXI_ADDR_WIDTH = @ADDR_WIDTH@,
-    parameter C_S_AXI_DATA_WIDTH = 32,
-    parameter INDEX_WIDTH = @INDEX_WIDTH@
+   parameter INPUT_PORT_INFO_WIDTH = 8,   //Input port data which is defined in 8-bit array(sume.p4) .
+   parameter PORT_ID_WIDTH = 3, // Port ID
+   parameter PORT_ID_COUNTER = 5,  // nf0, nf1, nf2, nf3, DMA 
+   parameter CLASS_WIDTH = 5, // Each Port support 32 classes which is obvoisly defined as 5 bit.
+   parameter CLASS_COUNTER = 32, // Each port support maxmum 32 classes. 
+   parameter RESULT_WIDTH = 32, // Result conduct with 32 bit array (VALID_bit 1bit RANK_INFO 19-bit Other INFO 12-bit)
+   parameter RANK_WIDTH = 19, // Rank Width is 19 bit
+   parameter ROUND_WIDTH = 11, // Round Maximum width is defined in 11 bit.
+   parameter OVER_FLOW_WIDTH = 2, // We support 2 extra over flow bit to allow not  
+   parameter COUNTER_WIDTH = 8, //read and write data length(number 0 to 256).
+   parameter CPU_INDEX_WIDTH = 8, // CPU Index is conduct with 3-bit address and 5-bit classes. 
+   parameter CPU_WRITE_WIDTH = 8, // WRR Config Write WIDTH
+   parameter CPU_OUT_WIDTH = OVER_FLOW_WIDTH +COUNTER_WIDTH + COUNTER_WIDTH + ROUND_WIDTH, //OverFlow(2)+Round(11) + Config Weight(8) + Weight(8) 
+   parameter ID_WIDTH = PORT_ID_WIDTH + CLASS_WIDTH,
+   parameter ID_COUNTER = PORT_ID_COUNTER * CLASS_COUNTER,
+   parameter PIFO_INFO_WIDTH = 12,
+   parameter MAX_ROUND_VALUE = 11'b11111111111,
+   parameter C_S_AXI_ADDR_WIDTH = @ADDR_WIDTH@,
+   parameter C_S_AXI_DATA_WIDTH = RESULT_WIDTH,
+   parameter INDEX_WIDTH = @INDEX_WIDTH@   
 )
 (
-    // Data Path I/O
+
+    /*
+    I/O Shares in both dp and cp.
+    */
+    //Define Input value.
+    /*
+    I/O From P4 Pipe line
+    */
     input                                   clk_lookup,
     input                                   clk_lookup_rst_high, 
-    //input                                   rst, 
-    input                                   tuple_in_my_pifo_rank_calc_input_VALID,
-    input   [PORT_WIDTH+CLASS_WIDTH-1:0]    tuple_in_my_pifo_rank_calc_input_DATA,
-    //input   [ROUND_WIDTH-1:0]               input_round,
-    input   [31:0]                          last_pkt_info0,
-    input   [31:0]                          last_pkt_info1,
-    input   [31:0]                          last_pkt_info2,
-    input   [31:0]                          last_pkt_info3,
-    input   [31:0]                          last_pkt_info4,
-    output                                  tuple_out_my_pifo_rank_calc_output_VALID,
-    output  [RESULT_WIDTH-1:0]              tuple_out_my_pifo_rank_calc_output_DATA,
+    input                                              tuple_in_@EXTERN_NAME@_input_VALID,
+    input   [INPUT_PORT_INFO_WIDTH+CLASS_WIDTH-1:0]    tuple_in_@EXTERN_NAME@_input_DATA,
+    output                                             tuple_out_@EXTERN_NAME@_output_VALID,
+    output  [RESULT_WIDTH-1:0]                         tuple_out_@EXTERN_NAME@_output_DATA,
+        
+    /*
+    Input Wire From PIFO Scheduler 
+    */    
+    input   [RESULT_WIDTH-1:0]              wire_in_last_pkt_info0,
+    input   [RESULT_WIDTH-1:0]              wire_in_last_pkt_info1,
+    input   [RESULT_WIDTH-1:0]              wire_in_last_pkt_info2,
+    input   [RESULT_WIDTH-1:0]              wire_in_last_pkt_info3,
+    input   [RESULT_WIDTH-1:0]              wire_in_last_pkt_info4,
 
+    
     // Control Path I/O
     input                                     clk_control,
     input                                     clk_control_rst_low,
@@ -90,61 +107,82 @@ module @MODULE_NAME@ #(
     output                                    control_S_AXI_AWREADY
 );
 
+/*Data Plane Register*/
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_config_weight [ID_COUNTER-1:0];
+reg [PIFO_INFO_WIDTH-1:0]                   reg_pifo_info;
+reg                                         reg_out_valid_dp;
+reg [RANK_WIDTH-1:0]                        reg_calced_rank;
+/*Data Plane Combinational Output*/
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_next [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round_next [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight_next [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_config_weight_next [ID_COUNTER-1:0];
+reg [RANK_WIDTH-1:0]                        reg_calced_rank_next;
+reg [PIFO_INFO_WIDTH-1:0]                   reg_pifo_info_next;
+reg [ID_WIDTH-1:0]                          input_id;
+reg [PORT_ID_WIDTH-1:0]                     input_port_id;
 
-// p4 interface wire
-wire[PORT_WIDTH-1:0]   input_port = tuple_in_my_pifo_rank_calc_input_DATA[PORT_WIDTH+CLASS_WIDTH-1:CLASS_WIDTH];
-wire[CLASS_WIDTH-1:0]  input_class = tuple_in_my_pifo_rank_calc_input_DATA[CLASS_WIDTH-1:0];
-wire    valid_in         = tuple_in_my_pifo_rank_calc_input_VALID;
+/*Control Plane Register*/
+reg                                         reg_out_valid_cp;
+reg [CPU_OUT_WIDTH-1:0]                     reg_cp_out_val;
+reg [ID_WIDTH-1:0]                          reg_cp_out_index;
+/*Data Plane Combinational Output*/
+reg [CPU_OUT_WIDTH-1:0]                     reg_cp_out_val_next;
+reg [ID_WIDTH-1:0]                          reg_cp_out_index_next;
+reg                                         reg_out_valid_cp_next;      
+reg                                         reg_out_valid_dp_next;
+    
 
-// flipflop register.
-reg[PORT_LENGHT+CLASS_WIDTH-1:0]   reg_write_address; //port,class
-reg                   reg_write_sig;
-reg                   reg_read_sig;
-reg[COUNTER_WIDTH-1:0]        reg_config_weight;
-reg[ROUND_WIDTH-1:0]          reg_round;
-reg[COUNTER_WIDTH-1:0]        reg_counter;
-reg[RESULT_WIDTH-1:0]         reg_calced_rank;
-reg [ROUND_WIDTH-1:0]         input_round;
-reg                           reg_calc_valid;
-
-
-reg [PIFO_INFO_WIDTH-1:0] reg_pifo_info;
-reg                       reg_valid_sig;
+reg [OVER_FLOW_WIDTH-1:0]                   reg_overflow_combi [ID_COUNTER-1:0];
+reg [ROUND_WIDTH-1:0]                       reg_round_combi [ID_COUNTER-1:0];
+reg [COUNTER_WIDTH-1:0]                     reg_weight_combi [ID_COUNTER-1:0];
 
 
-// combinational output.
-reg[COUNTER_WIDTH-1:0]  reg_config_weight_next; //only use for setting config value.
-reg[ROUND_WIDTH-1:0]    reg_round_next;
-reg[COUNTER_WIDTH-1:0]  reg_counter_next;
-reg[PORT_LENGHT+CLASS_WIDTH-1:0]   reg_write_address_next; //port,class
-reg                   reg_write_sig_next;
-reg                   reg_read_sig_next;
-reg [PORT_LENGHT-1:0] reg_port_info;
-reg                   reg_calc_valid_next;
-
-// wire
-wire  [PORT_LENGHT+CLASS_WIDTH-1:0] wire_read_address;
-wire  [MEM_WIDTH-1:0] wire_read_value;
-wire  [ROUND_WIDTH-1:0] wire_round;
-wire  [COUNTER_WIDTH-1:0] wire_counter;
-wire  [COUNTER_WIDTH-1:0] wire_config_weight;
-wire  [MEM_WIDTH-1:0] wire_write_value; 
-wire [PIFO_RANK_WIDTH-1:0] wire_pifo_rank;
+// CPU reads IP interface
+wire     [C_S_AXI_DATA_WIDTH-1:0]          ip2cpu_@PREFIX_NAME@_reg_data;
+wire     [CPU_INDEX_WIDTH-1:0]             ip2cpu_@PREFIX_NAME@_reg_index;
+wire                                       ip2cpu_@PREFIX_NAME@_reg_valid;
 
 // CPU writes IP interface
 wire     [C_S_AXI_DATA_WIDTH-1:0]          cpu2ip_@PREFIX_NAME@_reg_data;
-wire     [INDEX_WIDTH-1:0]                 cpu2ip_@PREFIX_NAME@_reg_index;
+wire     [CPU_INDEX_WIDTH-1:0]             cpu2ip_@PREFIX_NAME@_reg_index;
 wire                                       cpu2ip_@PREFIX_NAME@_reg_valid;
 
-assign wire_read_address = {reg_port_info, input_class};
-assign wire_counter = wire_read_value[COUNTER_WIDTH-1:0];
-assign wire_round = wire_read_value[ROUND_WIDTH+COUNTER_WIDTH-1:COUNTER_WIDTH];
-assign wire_config_weight = wire_read_value[COUNTER_WIDTH+ROUND_WIDTH+COUNTER_WIDTH-1:ROUND_WIDTH+COUNTER_WIDTH];
+// CPU Output IP interface
+wire     [CPU_INDEX_WIDTH-1:0]             ipReadReq_@PREFIX_NAME@_reg_index;
+wire                                       ipReadReq_@PREFIX_NAME@_reg_valid;
 
-assign wire_write_value = {reg_config_weight, reg_round, reg_counter};
-assign wire_pifo_rank = {reg_round,input_class};
 
-wire resetn_sync;
+
+// Wire From DP Interface. 
+wire [ROUND_WIDTH-1:0]                       wire_last_round [PORT_ID_COUNTER-1:0];
+wire [OVER_FLOW_WIDTH-1:0]                   wire_last_overflow [PORT_ID_COUNTER-1:0];
+
+wire[INPUT_PORT_INFO_WIDTH-1:0]             input_port = tuple_in_@EXTERN_NAME@_input_DATA[INPUT_PORT_INFO_WIDTH+CLASS_WIDTH-1:CLASS_WIDTH];
+wire[CLASS_WIDTH-1:0]                       input_class = tuple_in_@EXTERN_NAME@_input_DATA[CLASS_WIDTH-1:0];
+wire                                        valid_in       = tuple_in_@EXTERN_NAME@_input_VALID;
+wire                                        wire_last_dq_info_update; 
+integer id_i, id_j,counter;      
+
+//Get last Rond From Output Queue
+
+assign wire_last_dq_info_update = wire_in_last_pkt_info0[31] || wire_in_last_pkt_info1 [31] || wire_in_last_pkt_info2[31]|| wire_in_last_pkt_info3[31];
+
+assign wire_last_round[0]  = wire_in_last_pkt_info0 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_round[1] =  wire_in_last_pkt_info1 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_round[2] =  wire_in_last_pkt_info2 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_round[3] =  wire_in_last_pkt_info3 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_round[4] =  wire_in_last_pkt_info4 [ROUND_WIDTH + CLASS_WIDTH +PIFO_INFO_WIDTH-1:CLASS_WIDTH +PIFO_INFO_WIDTH];
+
+assign wire_last_overflow[0]  = wire_in_last_pkt_info0 [OVER_FLOW_WIDTH + ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH-1:ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_overflow[1] =  wire_in_last_pkt_info1 [OVER_FLOW_WIDTH + ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH-1:ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_overflow[2] =  wire_in_last_pkt_info2 [OVER_FLOW_WIDTH + ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH-1:ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_overflow[3] =  wire_in_last_pkt_info3 [OVER_FLOW_WIDTH + ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH-1:ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH];
+assign wire_last_overflow[4] =  wire_in_last_pkt_info4 [OVER_FLOW_WIDTH + ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH-1:ROUND_WIDTH+CLASS_WIDTH +PIFO_INFO_WIDTH];
+
 
 //// CPU REGS START ////
 @PREFIX_NAME@_cpu_regs
@@ -180,11 +218,11 @@ wire resetn_sync;
 
   // Register ports
   // CPU reads IP interface
-  .ip2cpu_@PREFIX_NAME@_reg_data          (), //wire
-  .ip2cpu_@PREFIX_NAME@_reg_index         (), //reg
-  .ip2cpu_@PREFIX_NAME@_reg_valid         (), //reg
-  .ipReadReq_@PREFIX_NAME@_reg_index      (),  //wire
-  .ipReadReq_@PREFIX_NAME@_reg_valid      (), //wire
+  .ip2cpu_@PREFIX_NAME@_reg_data          (ip2cpu_@PREFIX_NAME@_reg_data), //wire
+  .ip2cpu_@PREFIX_NAME@_reg_index         (ip2cpu_@PREFIX_NAME@_reg_index), //wire
+  .ip2cpu_@PREFIX_NAME@_reg_valid         (ip2cpu_@PREFIX_NAME@_reg_valid), //wire
+  .ipReadReq_@PREFIX_NAME@_reg_index      (ipReadReq_@PREFIX_NAME@_reg_index), //wire
+  .ipReadReq_@PREFIX_NAME@_reg_valid      (ipReadReq_@PREFIX_NAME@_reg_valid), //wire
   // CPU writes IP interface
   .cpu2ip_@PREFIX_NAME@_reg_data          (cpu2ip_@PREFIX_NAME@_reg_data),
   .cpu2ip_@PREFIX_NAME@_reg_index         (cpu2ip_@PREFIX_NAME@_reg_index),
@@ -197,148 +235,247 @@ wire resetn_sync;
 //// CPU REGS END ////
 
 
-// Block Ram memory.
-blk_mem_gen_0 weight_counter(
-.clka(clk_lookup),    // input wire clka
-.wea(reg_write_sig),      // input wire [0 : 0] wea
-.addra(reg_write_address),  // input wire [7 : 0] addra
-.dina(wire_write_value),    // input wire [31 : 0] dina
-.clkb(clk_lookup),    // input wire clkb
-.addrb(wire_read_address),  // input wire [7 : 0] addrb
-.doutb(wire_read_value) // output wire [31 : 0] doutb
-);
-
-
+//WRR Combinational Logic
 always @(*)
 begin
-input_round  = 0;
-case (input_port)
-    'b00000001:
-        begin
-        input_round  = 0;
-        reg_port_info = 0;
-        end
-    'b00000100:
-        begin
-        input_round  = 0;
-        reg_port_info = 1;
-        end
-    'b00010000:
-        begin
-        input_round  = 0;
-        reg_port_info = 2;
-        end
-    'b01000000:
-        begin
-        input_round  = 0;
-        reg_port_info = 3;
-        end
-    default : 
-        begin
-        //CPU Channel Read
-        reg_port_info = 0;
-        input_round  = 0;
-        end
-endcase
-end
 
-always @(*)
-begin
-if(valid_in)
-    begin
-    reg_read_sig_next = 'd1;
+reg_out_valid_dp_next = valid_in;
+
+//Change Last Overlfow and round to dequeued packet information if smaller than dequeue information.
+if (wire_last_dq_info_update)
+    begin      
+        counter = 0;    
+        for (id_i=0; id_i<=PORT_ID_COUNTER-1; id_i= id_i+1)
+            begin
+                for (id_j=counter; id_j<=counter+CLASS_COUNTER-1; id_j= id_j+1)
+                    begin
+                         if ((wire_last_overflow[id_i]>reg_overflow[id_j])||(wire_last_overflow[id_i]==2'b00 && reg_overflow[id_j]==2'b11)) // When OverFlowBit is Big
+                            begin
+                                reg_overflow_combi[id_j] = wire_last_overflow[id_i];
+                                reg_round_combi[id_j] =  wire_last_round [id_i];
+                                reg_weight_combi[id_j] =   0;  
+                            end
+                         else
+                            begin
+                                reg_overflow_combi[id_j] =  reg_overflow[id_j]; //OverFlow No need to change.
+                                if ((wire_last_overflow[id_i]== reg_overflow[id_j])&&(wire_last_round[id_i]>reg_round[id_j]))
+                                    begin
+                                        reg_round_combi[id_j] = wire_last_round[id_i];
+                                        reg_weight_combi[id_j] =   0;
+                                    end
+                                else
+                                    begin
+                                        reg_round_combi[id_j] = reg_round[id_j];
+                                        reg_weight_combi[id_j] =  reg_weight[id_j];
+                                    end
+                            end    
+                    end
+                counter = counter + CLASS_COUNTER;
+            end     
     end
+else //No need to change value when there is no signal from the wire.
+    begin
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+                reg_round_combi[id_j] =    reg_round[id_j];
+                reg_overflow_combi[id_j] = reg_overflow[id_j];
+                reg_weight_combi[id_j] =   reg_weight[id_j];
+            end
+    end
+
+/*
+8-bit port information transition to 3-bit 
+*/
+if (valid_in)
+    begin
+    // DP Channel Signal Handling 
+    case (input_port)
+        'b00000001:
+            input_port_id  = 0;
+        'b00000100:
+            input_port_id  = 1;
+        'b00010000:
+           input_port_id  =  2;
+        'b01000000:
+           input_port_id  =  3;
+        default : 
+            // CPU Port
+           input_port_id  =  4;
+    endcase
+    
+    // Conduct Address by add 3-bit port and 5-bit class id
+    input_id = {input_port_id, input_class};
+    
+    for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+        begin
+            /*
+            * If the id is same with P4 input data id. Run WRR Logic
+            * Else Keep original value.  
+            */
+            if (id_j == input_id) // Run WRR Logic is ID is same
+                begin
+                // WRR-Logic 1: If Current Weight is smaller than Config weight add Counter 1
+                    if (reg_weight[id_j] < reg_config_weight[id_j])
+                        begin
+                            reg_weight_next[id_j] = reg_weight_combi[id_j] +1;
+                            reg_round_next[id_j] =  reg_round_combi[id_j];
+                            reg_overflow_next[id_j] = reg_overflow_combi[id_j];                                               
+                        end
+                    else
+                        // WRR-Logic 2: If Current Weight is bigger than Config weight Change Counter to 1, add 1 round
+                        begin
+                            if (reg_round[id_j]<MAX_ROUND_VALUE)
+                                begin
+                                  reg_weight_next[id_j] = 'd1;
+                                  reg_round_next[id_j] = reg_round_combi[id_j] + 1;
+                                  reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+                                end
+                            else
+                            // Handling Overflow
+                                begin
+                                  reg_weight_next[id_j] = 'd1;
+                                  reg_round_next[id_j] = 'd1;
+                                  reg_overflow_next[id_j] = reg_overflow_combi[id_j] +1; 
+                                end 
+                       end
+                    end
+                                     
+            else // If id is not same keep original value. 
+                begin           
+                    reg_weight_next[id_j] = reg_weight_combi[id_j];
+                    reg_round_next[id_j] = reg_round_combi[id_j];
+                    reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+                end 
+            end
+          //final output.      
+          reg_calced_rank_next = {reg_overflow_next[input_id],reg_round_next[input_id],input_class};          
+      end
 else
     begin
-    reg_read_sig_next = 'd0;
-    end
+    reg_calced_rank_next = 0;
+    input_id = 0;
+    input_port_id = 0;
+    
+    for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+        begin
+            reg_weight_next[id_j] = reg_weight_combi[id_j];
+            reg_round_next[id_j] = reg_round_combi[id_j];
+            reg_overflow_next[id_j] = reg_overflow_combi[id_j];
+        end
+    end 
+end
+
+//Control plane signal handling
+always @(*)
+begin
+    reg_out_valid_cp_next = cpu2ip_@PREFIX_NAME@_reg_valid || ip2cpu_@PREFIX_NAME@_reg_valid;   
+    if (cpu2ip_@PREFIX_NAME@_reg_valid) //write Signal
+        begin
+        reg_cp_out_index_next =  cpu2ip_@PREFIX_NAME@_reg_index;
+        reg_cp_out_val_next = 0;
+        
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+            if (id_j == cpu2ip_@PREFIX_NAME@_reg_index)
+                begin
+                reg_config_weight_next [cpu2ip_@PREFIX_NAME@_reg_index] = cpu2ip_@PREFIX_NAME@_reg_data;
+                end
+            else
+                begin
+                reg_config_weight_next[id_j] = reg_config_weight[id_j];
+                end
+            end
+        
+        end
+    else if (ip2cpu_@PREFIX_NAME@_reg_valid) //read signal
+        begin
+        reg_cp_out_index_next =   ip2cpu_@PREFIX_NAME@_reg_index;
+        reg_cp_out_val_next = {reg_overflow[ip2cpu_@PREFIX_NAME@_reg_index],reg_round[ip2cpu_@PREFIX_NAME@_reg_index], reg_config_weight[ip2cpu_@PREFIX_NAME@_reg_index], reg_weight[ip2cpu_@PREFIX_NAME@_reg_index]};
+        
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+            reg_config_weight_next[id_j] = reg_config_weight[id_j];
+            end
+        end
+    
+    else
+        begin
+        reg_cp_out_index_next =  0;
+        reg_cp_out_val_next = 0;
+        
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+            reg_config_weight_next[id_j] = reg_config_weight[id_j];
+            end
+        end      
 end
 
 
-always @(*)
+//Control-Plane Posedge Signal Handling
+always @(posedge clk_control)
 begin
-
-if(cpu2ip_@PREFIX_NAME@_reg_valid) //config sig come
-    begin
-    reg_config_weight_next = cpu2ip_@PREFIX_NAME@_reg_data;
-    reg_write_address_next = cpu2ip_@PREFIX_NAME@_reg_index;  
-    reg_round_next = 'd0;
-    reg_counter_next = 'd0;
-    reg_write_sig_next = 'd1;
-    reg_calc_valid_next = 'd0;
-    end
-
-
-else if(reg_read_sig) //read done sig from blk memory.
-    begin 
-    reg_config_weight_next = wire_config_weight;
-    
-      
-    if(wire_round < input_round)
+    if (clk_control_rst_low)
         begin
-        reg_round_next = input_round;
-        reg_counter_next = 1;
+        reg_cp_out_index <= reg_cp_out_index_next;
+        reg_cp_out_val <= reg_cp_out_val_next;
+        reg_out_valid_cp <= reg_out_valid_cp_next;
+        
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+            reg_config_weight[id_j] <= reg_config_weight_next[id_j];
+            end
         end
     else
         begin
-        if(wire_counter < wire_config_weight)
-            begin
-            reg_counter_next = wire_counter +1;
-            reg_round_next = wire_round;
-            end
-        else
-            begin
-            reg_counter_next = 'd1;
-            reg_round_next = wire_round + 1;
-            end            
-        end
+        reg_cp_out_index <= 0;
+        reg_cp_out_val <= 0;
+        reg_out_valid_cp <= 0; 
         
-    reg_write_address_next = wire_read_address;   
-    reg_write_sig_next = 'd1;
-    reg_calc_valid_next = 'd1;
+        for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+            begin
+            reg_config_weight[id_j] <= 1;
+            end
+    end    
+end
+
+//Data-Plane Posedge Signal Handling
+always @(posedge clk_lookup)
+begin
+
+if (~clk_lookup_rst_high)
+    begin
+    reg_calced_rank <= reg_calced_rank_next;
+    reg_out_valid_dp <= reg_out_valid_dp_next;
+    reg_pifo_info <= 0;   
+   
+    for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+        begin
+        reg_overflow[id_j] <= reg_overflow_next[id_j];
+        reg_round[id_j] <= reg_round_next[id_j];
+        reg_weight[id_j] <= reg_weight_next[id_j];
+        end
     end
     
 else
     begin
-    reg_write_sig_next = 'd0;
-    reg_write_address_next = reg_write_address;
-    reg_config_weight_next =reg_config_weight;
-    reg_round_next = reg_round;
-    reg_counter_next = reg_counter;
-    reg_calc_valid_next = 'd0;
-    end
-end
-
-
-always@(posedge clk_lookup)
-begin
-if(resetn_sync)
-    begin
-    reg_config_weight <= reg_config_weight_next;
-    reg_round <= reg_round_next;
-    reg_counter <= reg_counter_next;
-    reg_write_address <= reg_write_address_next;
-    reg_write_sig <= reg_write_sig_next;
-    reg_read_sig <= reg_read_sig_next;
-    reg_calc_valid = reg_calc_valid_next;
+    reg_calced_rank <= 0;
     reg_pifo_info <= 0;
-    reg_valid_sig <= 1;
-    end
-else
-    begin
-    reg_config_weight <= 0;
-    reg_round <=0;
-    reg_counter <= 0;
-    reg_write_address <= 0;
-    reg_write_sig <=0;
-    reg_read_sig <= 0;
-    reg_pifo_info <=0;
-    reg_valid_sig <=0;
-    reg_calc_valid <=0;
-    end
+    reg_out_valid_dp <=0;
+           
+    for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
+        begin
+        reg_round[id_j] <= 0;
+        reg_weight[id_j] <= 0;
+        reg_overflow[id_j] <= 0;
+        end
+    end       
 end
 
-assign tuple_out_my_pifo_rank_calc_output_VALID = reg_calc_valid;
-assign tuple_out_my_pifo_rank_calc_output_DATA  = {reg_valid_sig,wire_pifo_rank,reg_pifo_info};
-  
+assign tuple_out_@EXTERN_NAME@_output_VALID = reg_out_valid_dp;
+assign tuple_out_@EXTERN_NAME@_output_DATA  = {reg_out_valid_dp,reg_calced_rank,reg_pifo_info};
+
+assign ip2cpu_@PREFIX_NAME@_reg_data = reg_cp_out_val;
+assign ipReadReq_@PREFIX_NAME@_reg_index = reg_cp_out_index;
+assign ipReadReq_@PREFIX_NAME@_reg_valid = reg_out_valid_cp;
+
 endmodule
