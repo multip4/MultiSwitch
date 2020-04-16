@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Fri Mar 20 04:51:54 2020
+# Process ID: 10810
+# Current directory: /home/rym/Documents/P4-NetFPGA-live/lib/hw/std/cores/fallthrough_small_fifo_v1_0_0
+# Command line: vivado -mode batch -source fallthrough_small_fifo.tcl
+# Log file: /home/rym/Documents/P4-NetFPGA-live/lib/hw/std/cores/fallthrough_small_fifo_v1_0_0/vivado.log
+# Journal file: /home/rym/Documents/P4-NetFPGA-live/lib/hw/std/cores/fallthrough_small_fifo_v1_0_0/vivado.jou
+#-----------------------------------------------------------
+source fallthrough_small_fifo.tcl

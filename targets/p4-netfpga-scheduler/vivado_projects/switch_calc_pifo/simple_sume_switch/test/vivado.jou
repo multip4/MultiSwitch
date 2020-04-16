@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 16 20:38:40 2020
+# Process ID: 49157
+# Current directory: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test
+# Command line: vivado -mode gui -source /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/tcl/simple_sume_switch_sim.tcl -tclargs sim_switch_default
+# Log file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/vivado.log
+# Journal file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/tcl/simple_sume_switch_sim.tcl
+source top_tb.tcl
+restart
+run all
+close_sim

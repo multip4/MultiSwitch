@@ -189,69 +189,68 @@ launch_simulation -simset sim_1 -mode behavioral
 
 # Add top level datapath IO
 set nf_datapath top_tb/top_sim/nf_datapath_0/
-add_wave_divider {input arbiter input signals}
-add_wave $nf_datapath/s_axis_0_tdata -color blue
-add_wave $nf_datapath/s_axis_0_tkeep -color blue
-add_wave $nf_datapath/s_axis_0_tuser -color blue
-add_wave $nf_datapath/s_axis_0_tvalid -color blue
-add_wave $nf_datapath/s_axis_0_tready -color blue
-add_wave $nf_datapath/s_axis_0_tlast -color blue
+add_wave_divider {input signals port 0}
+add_wave $nf_datapath/s_axis_0_tdata -color orange
+#add_wave $nf_datapath/s_axis_0_tkeep -color blue
+#add_wave $nf_datapath/s_axis_0_tuser -color blue
+add_wave $nf_datapath/s_axis_0_tvalid -color orange
+#add_wave $nf_datapath/s_axis_0_tready -color blue
+add_wave $nf_datapath/s_axis_0_tlast -color orange
+add_wave_divider {input signals port 1}
 add_wave $nf_datapath/s_axis_1_tdata -color gold
-add_wave $nf_datapath/s_axis_1_tkeep -color gold
-add_wave $nf_datapath/s_axis_1_tuser -color gold
+# add_wave $nf_datapath/s_axis_1_tkeep -color gold
+# add_wave $nf_datapath/s_axis_1_tuser -color gold
 add_wave $nf_datapath/s_axis_1_tvalid -color gold
-add_wave $nf_datapath/s_axis_1_tready -color gold
+# add_wave $nf_datapath/s_axis_1_tready -color gold
 add_wave $nf_datapath/s_axis_1_tlast -color gold
-add_wave $nf_datapath/s_axis_2_tdata -color orange
-add_wave $nf_datapath/s_axis_2_tkeep -color orange
-add_wave $nf_datapath/s_axis_2_tuser -color orange
-add_wave $nf_datapath/s_axis_2_tvalid -color orange
-add_wave $nf_datapath/s_axis_2_tready -color orange
-add_wave $nf_datapath/s_axis_2_tlast -color orange
-add_wave $nf_datapath/s_axis_3_tdata -color purple
-add_wave $nf_datapath/s_axis_3_tkeep -color purple
-add_wave $nf_datapath/s_axis_3_tuser -color purple
-add_wave $nf_datapath/s_axis_3_tvalid -color purple
-add_wave $nf_datapath/s_axis_3_tready -color purple
-add_wave $nf_datapath/s_axis_3_tlast -color purple
-add_wave $nf_datapath/s_axis_4_tdata -color cyan
-add_wave $nf_datapath/s_axis_4_tkeep -color cyan
-add_wave $nf_datapath/s_axis_4_tuser -color cyan
-add_wave $nf_datapath/s_axis_4_tvalid -color cyan
-add_wave $nf_datapath/s_axis_4_tready -color cyan
-add_wave $nf_datapath/s_axis_4_tlast -color cyan
+# add_wave $nf_datapath/s_axis_2_tdata -color orange
+# add_wave $nf_datapath/s_axis_2_tkeep -color orange
+# add_wave $nf_datapath/s_axis_2_tuser -color orange
+# add_wave $nf_datapath/s_axis_2_tvalid -color orange
+# add_wave $nf_datapath/s_axis_2_tready -color orange
+# add_wave $nf_datapath/s_axis_2_tlast -color orange
+# add_wave $nf_datapath/s_axis_3_tdata -color purple
+# add_wave $nf_datapath/s_axis_3_tkeep -color purple
+# add_wave $nf_datapath/s_axis_3_tuser -color purple
+# add_wave $nf_datapath/s_axis_3_tvalid -color purple
+# add_wave $nf_datapath/s_axis_3_tready -color purple
+# add_wave $nf_datapath/s_axis_3_tlast -color purple
+# add_wave $nf_datapath/s_axis_4_tdata -color cyan
+# add_wave $nf_datapath/s_axis_4_tkeep -color cyan
+# add_wave $nf_datapath/s_axis_4_tuser -color cyan
+# add_wave $nf_datapath/s_axis_4_tvalid -color cyan
+# add_wave $nf_datapath/s_axis_4_tready -color cyan
+# add_wave $nf_datapath/s_axis_4_tlast -color cyan
 
 add_wave_divider {output queues output signals}
-add_wave $nf_datapath/m_axis_0_tdata -color blue
-add_wave $nf_datapath/m_axis_0_tkeep -color blue
-add_wave $nf_datapath/m_axis_0_tuser -color blue
+add_wave $nf_datapath/m_axis_0_tdata -color orange
+#add_wave $nf_datapath/m_axis_0_tuser -color blue
 add_wave $nf_datapath/m_axis_0_tvalid -color blue
-add_wave $nf_datapath/m_axis_0_tready -color blue
-add_wave $nf_datapath/m_axis_0_tlast -color blue
-add_wave $nf_datapath/m_axis_1_tdata -color gold
-add_wave $nf_datapath/m_axis_1_tkeep -color gold
-add_wave $nf_datapath/m_axis_1_tuser -color gold
-add_wave $nf_datapath/m_axis_1_tvalid -color gold
-add_wave $nf_datapath/m_axis_1_tready -color gold
-add_wave $nf_datapath/m_axis_1_tlast -color gold
-add_wave $nf_datapath/m_axis_2_tdata -color orange
-add_wave $nf_datapath/m_axis_2_tkeep -color orange
-add_wave $nf_datapath/m_axis_2_tuser -color orange
-add_wave $nf_datapath/m_axis_2_tvalid -color orange
-add_wave $nf_datapath/m_axis_2_tready -color orange
-add_wave $nf_datapath/m_axis_2_tlast -color orange
-add_wave $nf_datapath/m_axis_3_tdata -color purple
-add_wave $nf_datapath/m_axis_3_tkeep -color purple
-add_wave $nf_datapath/m_axis_3_tuser -color purple
-add_wave $nf_datapath/m_axis_3_tvalid -color purple
-add_wave $nf_datapath/m_axis_3_tready -color purple
-add_wave $nf_datapath/m_axis_3_tlast -color purple
-add_wave $nf_datapath/m_axis_4_tdata -color cyan
-add_wave $nf_datapath/m_axis_4_tkeep -color cyan
-add_wave $nf_datapath/m_axis_4_tuser -color cyan
-add_wave $nf_datapath/m_axis_4_tvalid -color cyan
-add_wave $nf_datapath/m_axis_4_tready -color cyan
-add_wave $nf_datapath/m_axis_4_tlast -color cyan
+add_wave $nf_datapath/m_axis_0_tlast -color orange
+# add_wave $nf_datapath/m_axis_1_tdata -color gold
+# add_wave $nf_datapath/m_axis_1_tkeep -color gold
+# add_wave $nf_datapath/m_axis_1_tuser -color gold
+# add_wave $nf_datapath/m_axis_1_tvalid -color gold
+# add_wave $nf_datapath/m_axis_1_tready -color gold
+# add_wave $nf_datapath/m_axis_1_tlast -color gold
+# add_wave $nf_datapath/m_axis_2_tdata -color orange
+# add_wave $nf_datapath/m_axis_2_tkeep -color orange
+# add_wave $nf_datapath/m_axis_2_tuser -color orange
+# add_wave $nf_datapath/m_axis_2_tvalid -color orange
+# add_wave $nf_datapath/m_axis_2_tready -color orange
+# add_wave $nf_datapath/m_axis_2_tlast -color orange
+# add_wave $nf_datapath/m_axis_3_tdata -color purple
+# add_wave $nf_datapath/m_axis_3_tkeep -color purple
+# add_wave $nf_datapath/m_axis_3_tuser -color purple
+# add_wave $nf_datapath/m_axis_3_tvalid -color purple
+# add_wave $nf_datapath/m_axis_3_tready -color purple
+# add_wave $nf_datapath/m_axis_3_tlast -color purple
+# add_wave $nf_datapath/m_axis_4_tdata -color cyan
+# add_wave $nf_datapath/m_axis_4_tkeep -color cyan
+# add_wave $nf_datapath/m_axis_4_tuser -color cyan
+# add_wave $nf_datapath/m_axis_4_tvalid -color cyan
+# add_wave $nf_datapath/m_axis_4_tready -color cyan
+# add_wave $nf_datapath/m_axis_4_tlast -color cyan
 
 ## Add top level AXI Lite control signals to P4_SWITCH
 #add_wave_divider {Top-Level SDNet Control Signals}
@@ -276,59 +275,59 @@ add_wave $nf_datapath/m_axis_4_tlast -color cyan
 #add_wave top_tb/top_sim/M02_AXI_wvalid
 
 # Add SDNet Interface Signals
-set sdnet_ip top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/
-add_wave_divider {SDNet Control Interface}
-add_wave top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/internal_rst_done -color yellow
-add_wave $sdnet_ip/control_S_AXI_AWADDR
-add_wave $sdnet_ip/control_S_AXI_AWVALID 
-add_wave $sdnet_ip/control_S_AXI_AWREADY 
-add_wave $sdnet_ip/control_S_AXI_WDATA   
-add_wave $sdnet_ip/control_S_AXI_WSTRB   
-add_wave $sdnet_ip/control_S_AXI_WVALID  
-add_wave $sdnet_ip/control_S_AXI_WREADY  
-add_wave $sdnet_ip/control_S_AXI_BRESP   
-add_wave $sdnet_ip/control_S_AXI_BVALID  
-add_wave $sdnet_ip/control_S_AXI_BREADY  
-add_wave $sdnet_ip/control_S_AXI_ARADDR  
-add_wave $sdnet_ip/control_S_AXI_ARVALID 
-add_wave $sdnet_ip/control_S_AXI_ARREADY 
-add_wave $sdnet_ip/control_S_AXI_RDATA   
-add_wave $sdnet_ip/control_S_AXI_RRESP   
-add_wave $sdnet_ip/control_S_AXI_RVALID  
-add_wave $sdnet_ip/control_S_AXI_RREADY  
+# set sdnet_ip top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/
+# add_wave_divider {SDNet Control Interface}
+# add_wave top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/internal_rst_done -color yellow
+# add_wave $sdnet_ip/control_S_AXI_AWADDR
+# add_wave $sdnet_ip/control_S_AXI_AWVALID 
+# add_wave $sdnet_ip/control_S_AXI_AWREADY 
+# add_wave $sdnet_ip/control_S_AXI_WDATA   
+# add_wave $sdnet_ip/control_S_AXI_WSTRB   
+# add_wave $sdnet_ip/control_S_AXI_WVALID  
+# add_wave $sdnet_ip/control_S_AXI_WREADY  
+# add_wave $sdnet_ip/control_S_AXI_BRESP   
+# add_wave $sdnet_ip/control_S_AXI_BVALID  
+# add_wave $sdnet_ip/control_S_AXI_BREADY  
+# add_wave $sdnet_ip/control_S_AXI_ARADDR  
+# add_wave $sdnet_ip/control_S_AXI_ARVALID 
+# add_wave $sdnet_ip/control_S_AXI_ARREADY 
+# add_wave $sdnet_ip/control_S_AXI_RDATA   
+# add_wave $sdnet_ip/control_S_AXI_RRESP   
+# add_wave $sdnet_ip/control_S_AXI_RVALID  
+# add_wave $sdnet_ip/control_S_AXI_RREADY  
 
-set nf_sume_sdnet_ip top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/
-add_wave_divider {nf_sume_sdnet input interface}
-add_wave $sdnet_ip/clk_lookup_rst
-add_wave $sdnet_ip/clk_lookup
-add_wave $nf_sume_sdnet_ip/s_axis_tdata -radix hex
-add_wave $nf_sume_sdnet_ip/s_axis_tkeep -radix hex
-add_wave $nf_sume_sdnet_ip/s_axis_tvalid
-add_wave $nf_sume_sdnet_ip/s_axis_tready
-add_wave $nf_sume_sdnet_ip/s_axis_tlast
+# set nf_sume_sdnet_ip top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/
+# add_wave_divider {nf_sume_sdnet input interface}
+# add_wave $sdnet_ip/clk_lookup_rst
+# add_wave $sdnet_ip/clk_lookup
+# add_wave $nf_sume_sdnet_ip/s_axis_tdata -radix hex
+# add_wave $nf_sume_sdnet_ip/s_axis_tkeep -radix hex
+# add_wave $nf_sume_sdnet_ip/s_axis_tvalid
+# add_wave $nf_sume_sdnet_ip/s_axis_tready
+# add_wave $nf_sume_sdnet_ip/s_axis_tlast
 
-add_wave_divider {SDNet Tuple-In}
-add_wave $nf_sume_sdnet_ip/sume_tuple_in_VALID
-add_wave $nf_sume_sdnet_ip/s_axis_tuser -radix hex
-add_wave $nf_sume_sdnet_ip/in_pkt_len
-add_wave $nf_sume_sdnet_ip/in_src_port
-add_wave $nf_sume_sdnet_ip/in_dst_port
+# add_wave_divider {SDNet Tuple-In}
+# add_wave $nf_sume_sdnet_ip/sume_tuple_in_VALID
+# add_wave $nf_sume_sdnet_ip/s_axis_tuser -radix hex
+# add_wave $nf_sume_sdnet_ip/in_pkt_len
+# add_wave $nf_sume_sdnet_ip/in_src_port
+# add_wave $nf_sume_sdnet_ip/in_dst_port
 
-add_wave_divider {nf_sume_sdnet output interface}
-add_wave $sdnet_ip/clk_lookup_rst
-add_wave $sdnet_ip/clk_lookup
-add_wave $nf_sume_sdnet_ip/m_axis_tdata -radix hex
-add_wave $nf_sume_sdnet_ip/m_axis_tkeep -radix hex
-add_wave $nf_sume_sdnet_ip/m_axis_tvalid
-add_wave $nf_sume_sdnet_ip/m_axis_tready
-add_wave $nf_sume_sdnet_ip/m_axis_tlast
+# add_wave_divider {nf_sume_sdnet output interface}
+# add_wave $sdnet_ip/clk_lookup_rst
+# add_wave $sdnet_ip/clk_lookup
+# add_wave $nf_sume_sdnet_ip/m_axis_tdata -radix hex
+# add_wave $nf_sume_sdnet_ip/m_axis_tkeep -radix hex
+# add_wave $nf_sume_sdnet_ip/m_axis_tvalid
+# add_wave $nf_sume_sdnet_ip/m_axis_tready
+# add_wave $nf_sume_sdnet_ip/m_axis_tlast
 
-add_wave_divider {SDNet Tuple-Out}
-add_wave $nf_sume_sdnet_ip/sume_tuple_out_VALID
-add_wave $nf_sume_sdnet_ip/m_axis_tuser -radix hex
-add_wave $nf_sume_sdnet_ip/out_pkt_len
-add_wave $nf_sume_sdnet_ip/out_src_port
-add_wave $nf_sume_sdnet_ip/out_dst_port
+# add_wave_divider {SDNet Tuple-Out}
+# add_wave $nf_sume_sdnet_ip/sume_tuple_out_VALID
+# add_wave $nf_sume_sdnet_ip/m_axis_tuser -radix hex
+# add_wave $nf_sume_sdnet_ip/out_pkt_len
+# add_wave $nf_sume_sdnet_ip/out_src_port
+# add_wave $nf_sume_sdnet_ip/out_dst_port
 
 #set const_reg_ip /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/const_reg_rw_0/
 #add_wave_divider {const reg extern signals}
@@ -338,4 +337,4 @@ add_wave $nf_sume_sdnet_ip/out_dst_port
 #add_wave $const_reg_ip/const_cpu_regs_inst
 
 
-run 60us
+run 1200us

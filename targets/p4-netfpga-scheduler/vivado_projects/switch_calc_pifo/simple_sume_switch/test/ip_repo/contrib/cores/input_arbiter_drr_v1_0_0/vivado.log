@@ -1,0 +1,173 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Fri Mar 20 04:54:18 2020
+# Process ID: 11687
+# Current directory: /home/rym/Documents/P4-NetFPGA-live/lib/hw/contrib/cores/input_arbiter_drr_v1_0_0
+# Command line: vivado -mode batch -source input_arbiter_drr.tcl
+# Log file: /home/rym/Documents/P4-NetFPGA-live/lib/hw/contrib/cores/input_arbiter_drr_v1_0_0/vivado.log
+# Journal file: /home/rym/Documents/P4-NetFPGA-live/lib/hw/contrib/cores/input_arbiter_drr_v1_0_0/vivado.jou
+#-----------------------------------------------------------
+source input_arbiter_drr.tcl
+# set design input_arbiter_drr 
+# set top input_arbiter_drr
+# set device xc7vx690t-3-ffg1761
+# set proj_dir ./ip_proj
+# set ip_version 1.00
+# set lib_name NetFPGA
+# set axi_lite_ipif_ip_path ../../../xilinx/cores/axi_lite_ipif/source/
+# create_project -name ${design} -force -dir "./${proj_dir}" -part ${device} -ip
+# set_property source_mgmt_mode All [current_project]  
+# set_property top ${top} [current_fileset]
+# set_property ip_repo_paths $::env(SUME_FOLDER)/lib/hw/  [current_fileset]
+# puts "Creating Input Arbiter DRR IP"
+Creating Input Arbiter DRR IP
+# read_verilog "./hdl/input_arbiter_drr_cpu_regs_defines.v"
+# read_verilog "./hdl/input_arbiter_drr_cpu_regs.v"
+# read_verilog "./hdl/input_arbiter_drr.v"
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+# ipx::package_project
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'cur_queue_plus1' has a dependency on the module local parameter or undefined parameter 'NUM_QUEUES_WIDTH'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'cur_queue' has a dependency on the module local parameter or undefined parameter 'NUM_QUEUES_WIDTH'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'cur_queue_next' has a dependency on the module local parameter or undefined parameter 'NUM_QUEUES_WIDTH'.
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 1 for port or parameter 'state'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 1 for port or parameter 'state_next'
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'in_arb_cur_queue' has a dependency on the module local parameter or undefined parameter 'NUM_QUEUES_WIDTH'.
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'NUM_STATES' by 1 for port or parameter 'in_arb_state'
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "hdl/input_arbiter_drr_cpu_regs_defines.v" from the top-level HDL file.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/rym/Documents/P4-NetFPGA-live/lib/hw'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository '/home/rym/Documents/P4-NetFPGA-live/lib/hw' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is '/home/rym/Documents/P4-NetFPGA-live/lib/hw/contrib/cores/input_arbiter_drr_v1_0_0/ip_proj'.)
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axis' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_0' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_1' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_2' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_3' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axis_4' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI_ARESETN' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'axis_resetn' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI_ACLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'axis_aclk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ARESETN': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'axis_resetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_BUSIF' with value 'S_AXI'.
+INFO: [IP_Flow 19-4728] Bus Interface 'axis_aclk': Added interface parameter 'ASSOCIATED_BUSIF' with value 'm_axis'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_RESET' with value 'S_AXI_ARESETN'.
+INFO: [IP_Flow 19-4728] Bus Interface 'axis_aclk': Added interface parameter 'ASSOCIATED_RESET' with value 'axis_resetn'.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_0': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_1': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_2': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_3': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axis_4': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
+INFO: [IP_Flow 19-2187] The Product Guide file is missing.
+# set_property name ${design} [ipx::current_core]
+# set_property library ${lib_name} [ipx::current_core]
+# set_property vendor_display_name {NetFPGA} [ipx::current_core]
+# set_property company_url {http://www.netfpga.org} [ipx::current_core]
+# set_property vendor {NetFPGA} [ipx::current_core]
+# set_property supported_families {{virtex7} {Production}} [ipx::current_core]
+# set_property taxonomy {{/NetFPGA/Generic}} [ipx::current_core]
+# set_property version ${ip_version} [ipx::current_core]
+# set_property display_name ${design} [ipx::current_core]
+# set_property description ${design} [ipx::current_core]
+# update_ip_catalog -rebuild 
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/rym/Documents/P4-NetFPGA-live/lib/hw'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository '/home/rym/Documents/P4-NetFPGA-live/lib/hw' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is '/home/rym/Documents/P4-NetFPGA-live/lib/hw/contrib/cores/input_arbiter_drr_v1_0_0/ip_proj'.)
+# ipx::add_subcore NetFPGA:NetFPGA:fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
+# ipx::add_subcore NetFPGA:NetFPGA:fallthrough_small_fifo:1.00 [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
+# ipx::infer_user_parameters [ipx::current_core]
+# ipx::add_user_parameter {C_M_AXIS_DATA_WIDTH} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_M_AXIS_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_M_AXIS_DATA_WIDTH} [ipx::get_user_parameter C_M_AXIS_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {256} [ipx::get_user_parameter C_M_AXIS_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter C_M_AXIS_DATA_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {C_S_AXIS_DATA_WIDTH} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_S_AXIS_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_S_AXIS_DATA_WIDTH} [ipx::get_user_parameter C_S_AXIS_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {256} [ipx::get_user_parameter C_S_AXIS_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter C_S_AXIS_DATA_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {C_M_AXIS_TUSER_WIDTH} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_M_AXIS_TUSER_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_M_AXIS_TUSER_WIDTH} [ipx::get_user_parameter C_M_AXIS_TUSER_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {128} [ipx::get_user_parameter C_M_AXIS_TUSER_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter C_M_AXIS_TUSER_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {C_S_AXIS_TUSER_WIDTH} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_S_AXIS_TUSER_WIDTH} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {128} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter C_S_AXIS_TUSER_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {NUM_QUEUES} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {NUM_QUEUES} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {5} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter NUM_QUEUES [ipx::current_core]]
+# ipx::add_user_parameter {C_S_AXI_DATA_WIDTH} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_S_AXI_DATA_WIDTH} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {32} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter C_S_AXI_DATA_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {C_S_AXI_ADDR_WIDTH} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_S_AXI_ADDR_WIDTH} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {32} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {long} [ipx::get_user_parameter C_S_AXI_ADDR_WIDTH [ipx::current_core]]
+# ipx::add_user_parameter {C_BASEADDR} [ipx::current_core]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_resolve_type {user} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property display_name {C_BASEADDR} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value {0x00000000} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
+WARNING: command 'get_user_parameter' will be removed in the 2015.3 release, use 'get_user_parameters' instead
+# set_property value_format {bitstring} [ipx::get_user_parameter C_BASEADDR [ipx::current_core]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces m_axis -of_objects [ipx::current_core]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_0 -of_objects [ipx::current_core]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_1 -of_objects [ipx::current_core]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_2 -of_objects [ipx::current_core]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_3 -of_objects [ipx::current_core]]
+# ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces s_axis_4 -of_objects [ipx::current_core]]
+# ipx::infer_user_parameters [ipx::current_core]
+# ipx::check_integrity [ipx::current_core]
+INFO: [IP_Flow 19-861] XGUI layout file basename "xgui/input_arbiter_drr_v1_0.tcl" does not have the current IP <name>_v<version> format. If the IP name or version was changed recently, recreate this file to update the file format.
+INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
+INFO: [IP_Flow 19-2187] The Product Guide file is missing.
+INFO: [Ipptcl 7-1486] check_integrity: Integrity check passed.
+# ipx::save_core [ipx::current_core]
+# update_ip_catalog
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 20 04:54:25 2020...

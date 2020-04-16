@@ -66,8 +66,6 @@ MAC1 = "08:11:11:11:11:08"
 MAC2 = "08:22:22:22:22:08"
 pktCnt = 0
 
-INDEX_WIDTH = 4
-REG_DEPTH = 2**INDEX_WIDTH
 
 NUM_KEYS = 4
 lookup_table = {0: 0x00000001, 1: 0x00000010, 2: 0x00000100, 3: 0x00001000}
@@ -162,7 +160,8 @@ def send_pkt(SMAC, DMAC,input_port,ouput_port,pad_str,length):
 def send_64plus32payload_pkt(SMAC, DMAC,input_port,ouput_port,pad_str):
     global pktCnt
     pktCnt += 1
-    pkt = Ether(dst=DMAC, src=SMAC)/Raw(load='0x00')
+    pkt_str = '0x'+str(pktCnt)
+    pkt = Ether(dst=DMAC, src=SMAC)/Raw(load=pkt_str)
     pkt = pad_pkt(pkt, 64)
 
     pkt = pkt/Raw(pad_str)
@@ -280,5 +279,7 @@ def test_diff_payload():
 		one_fild_chunk = payload_str
 
 
-test_diff_payload()
+#test_diff_payload()
+
+test_drop_senario()
 write_pcap_files()

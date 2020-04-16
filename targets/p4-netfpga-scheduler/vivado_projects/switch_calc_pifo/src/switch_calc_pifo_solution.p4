@@ -51,9 +51,7 @@ typedef bit<32> ipv4_addr_t;
 // call extern function
 @Xilinx_MaxLatency(2)
 @Xilinx_ControlWidth(CONTROL_WIDTH)
-extern void extern_wrr_calc(in bit<PORT_WIDTH> field1,
-                            in bit<CLASS_WIDTH> field2,
-                            out bit<RESULT_WIDTH> result);
+extern void rankcalc_wrr_calc(in bit<PORT_WIDTH> field1, in bit<CLASS_WIDTH> field2,out bit<RESULT_WIDTH> result);
 
 // standard Ethernet header
 header Ethernet_h { 
@@ -125,7 +123,7 @@ control TopPipe(inout Parsed_packet p,
     apply {
          table_calc.apply();
          bit<32> result = 0; //initial Result value. 
-         extern_wrr_calc(sume_metadata.dst_port, p.calc.class_id, result);
+         rankcalc_wrr_calc(sume_metadata.dst_port, p.calc.class_id, result);
          sume_metadata.pifo_info = result; //take result value.
     }
 }

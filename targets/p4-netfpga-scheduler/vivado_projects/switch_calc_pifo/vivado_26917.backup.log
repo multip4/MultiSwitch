@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Fri Mar 27 05:38:55 2020
+# Process ID: 26917
+# Current directory: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo
+# Command line: vivado
+# Log file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.log
+# Journal file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /root/project_extern_modules/project_extern_modules.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found '/root/project_extern_modules/project_extern_modules.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found '/root/project_extern_modules/project_extern_modules.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found '/root/project_extern_modules/project_extern_modules.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found '/root/project_extern_modules/project_extern_modules.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found '/root/project_extern_modules/project_extern_modules.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.vhdl'. Please regenerate to continue.
+update_compile_order -fileset sources_1
+INFO: [Device 21-403] Loading part xc7vx690tffg1761-3

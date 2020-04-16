@@ -1,0 +1,116 @@
+/*
+
+Xilinx Vivado v2018.2 (64-bit) [Major: 2018, Minor: 2]
+SW Build: 2258646 on Thu Jun 14 20:02:38 MDT 2018
+IP Build: 2256618 on Thu Jun 14 22:10:49 MDT 2018
+
+Process ID: 26917
+License: Customer
+
+Current time: 	Fri Mar 27 05:39:12 KST 2020
+Time zone: 	Korea Standard Time (Asia/Seoul)
+
+OS: Ubuntu
+OS Version: 4.15.0-91-generic
+OS Architecture: amd64
+Available processors (cores): 4
+
+Display: :0
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 122 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	/opt/Xilinx/Vivado/2018.2/tps/lnx64/jre
+Java executable location: 	/opt/Xilinx/Vivado/2018.2/tps/lnx64/jre/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 2 GB
+
+
+User name: 	root
+User home directory: /root
+User working directory: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/Xilinx/Vivado
+HDI_APPROOT: /opt/Xilinx/Vivado/2018.2
+RDI_DATADIR: /opt/Xilinx/Vivado/2018.2/data
+RDI_BINDIR: /opt/Xilinx/Vivado/2018.2/bin
+
+Vivado preferences file location: /root/.Xilinx/Vivado/2018.2/vivado.xml
+Vivado preferences directory: /root/.Xilinx/Vivado/2018.2/
+Vivado layouts directory: /root/.Xilinx/Vivado/2018.2/layouts
+PlanAhead jar file location: 	/opt/Xilinx/Vivado/2018.2/lib/classes/planAhead.jar
+Vivado log file location: 	/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.log
+Vivado journal file location: 	/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-26917-ubuntu
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /opt/Xilinx/Vivado/2018.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@203.251.137.19
+XILINX_DSP: /opt/Xilinx/Vivado/2018.2/ids_lite/ISE
+XILINX_IP_FOLDER: /home/rym/Documents/P4-NetFPGA-live/lib/hw/xilinx/cores
+XILINX_PLANAHEAD: /opt/Xilinx/Vivado/2018.2
+XILINX_SDK: /opt/Xilinx/SDK/2018.2
+XILINX_VIVADO: /opt/Xilinx/Vivado/2018.2
+XILINX_VIVADO_HLS: /opt/Xilinx/Vivado/2018.2
+
+
+GUI allocated memory:	194 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 886 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// [GUI Memory]: 76 MB (+77616kb) [00:00:06]
+// [Engine Memory]: 880 MB (+771271kb) [00:00:06]
+// HMemoryUtils.trashcanNow. Engine heap size: 886 MB. GUI used memory: 38 MB. Current time: 3/27/20 5:39:14 AM KST
+selectList(PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS, "/root/project_extern_modules/project_extern_modules.xpr", 3); // q (O, ck)
+// bx (ck):  Open Project : addNotify
+// Opening Vivado Project: /root/project_extern_modules/project_extern_modules.xpr. Version: Vivado v2018.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// Tcl Message: open_project /root/project_extern_modules/project_extern_modules.xpr 
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_CURRENT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 986 MB (+64952kb) [00:00:40]
+// Tcl Message: open_project /root/project_extern_modules/project_extern_modules.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,006 MB. GUI used memory: 40 MB. Current time: 3/27/20 5:39:45 AM KST
+// Project name: project_extern_modules; location: /root/project_extern_modules; part: xc7vx690tffg1761-3
+dismissDialog("Open Project"); // bx (ck)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectButton(PAResourceQtoS.RunGadget_SHOW_ERROR, "1 error"); // h (Q, ck)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+// [Engine Memory]: 1,041 MB (+6198kb) [00:00:44]
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, Out-of-Context Module Runs, blk_mem_gen_0_synth_1, [Common 17-345] A valid license was not found for feature 'Synthesis' and/or device 'xc7vx690t'. Please run the Vivado License Manager for assistance in determining. which features and devices are licensed for your system.. Resolution: Check the status of your licenses in the Vivado License Manager. For debug help search Xilinx Support for Licensing FAQ. If you are using a license server, verify that the license server is up and running a version of the xilinx daemon that is compatible with the version of Xilinx software that you are using. Please note that Vivado 2017.3 and later requires upgrading your license server tools to the Flex 11.14.1 tools. Please confirm with your license admin that the correct version of the license server tools are installed.. ]", 3, false); // ah (O, ck)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, Out-of-Context Module Runs, blk_mem_gen_0_synth_1, [Common 17-345] A valid license was not found for feature 'Synthesis' and/or device 'xc7vx690t'. Please run the Vivado License Manager for assistance in determining. which features and devices are licensed for your system.. Resolution: Check the status of your licenses in the Vivado License Manager. For debug help search Xilinx Support for Licensing FAQ. If you are using a license server, verify that the license server is up and running a version of the xilinx daemon that is compatible with the version of Xilinx software that you are using. Please note that Vivado 2017.3 and later requires upgrading your license server tools to the Flex 11.14.1 tools. Please confirm with your license admin that the correct version of the license server tools are installed.. ]", 3, false, false, false, false, false, true); // ah (O, ck) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, blk_mem_gen_0 (blk_mem_gen_0.xci)]", 1, false); // B (D, ck)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, blk_mem_gen_0 (blk_mem_gen_0.xci)]", 1, false, false, false, false, false, true); // B (D, ck) - Double Click
+// Run Command: PAResourceCommand.PACommandNames_RECUSTOMIZE_CORE
+// TclEventType: LOAD_FEATURE
+// O (ck):  Re-customize IP : addNotify
+// Tcl Message: INFO: [Device 21-403] Loading part xc7vx690tffg1761-3 
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (O)
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (O)
+// [Engine Memory]: 1,148 MB (+57803kb) [00:00:58]
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (O)
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (O)
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a (O)

@@ -1,0 +1,122 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/barrier_ip/hdl/barrier.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/barrier_ip/sim/barrier_ip.v" \
+
+verilog fifo_generator_v13_2_2  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v" \
+"../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/hdl/fifo_generator_v13_2_rfs.v" \
+
+verilog xil_defaultlib  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_axi_clock_converter_0_0/sim/control_sub_axi_clock_converter_0_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_xbar_0/sim/control_sub_xbar_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_s00_mmu_0/sim/control_sub_s00_mmu_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m07_data_fifo_0/sim/control_sub_m07_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m06_data_fifo_0/sim/control_sub_m06_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m05_data_fifo_0/sim/control_sub_m05_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m04_data_fifo_0/sim/control_sub_m04_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m03_data_fifo_0/sim/control_sub_m03_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m02_data_fifo_0/sim/control_sub_m02_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m01_data_fifo_0/sim/control_sub_m01_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m00_data_fifo_0/sim/control_sub_m00_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_s00_data_fifo_0/sim/control_sub_s00_data_fifo_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_auto_pc_0/sim/control_sub_auto_pc_0.v" \
+"../../../../simple_sume_switch.ip_user_files/bd/control_sub/sim/control_sub.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/sim/axis_sim_record_ip4.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/sim/axis_sim_record_ip3.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/sim/axis_sim_record_ip2.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/sim/axis_sim_record_ip1.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/sim/axis_sim_record_ip0.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/identifier_ip/sim/identifier_ip.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/buffer_pifo_32_4096/sim/buffer_pifo_32_4096.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/buffer_meta_128_4096/sim/buffer_meta_128_4096.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/buffer_pkt_289_4096/sim/buffer_pkt_289_4096.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/addr_table_12_4096_with_coe/sim/addr_table_12_4096_with_coe.v" \
+
+verilog axis_infrastructure_v1_1_0  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl/axis_infrastructure_v1_1_vl_rfs.v" \
+
+verilog fifo_generator_v13_2_2  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v" \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v" \
+
+verilog axis_data_fifo_v1_1_18  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.ip_user_files/ipstatic/axis_data_fifo_v1_1_18/hdl/axis_data_fifo_v1_1_vl_rfs.v" \
+
+verilog xil_defaultlib  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_calc_tuple_in_request.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_CONTROLLERs.HDL/S_CONTROLLER_SimpleSumeSwitch.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_control.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_line.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_lookup.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_TopDeparser.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopDeparser.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopParser.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for__OUT_.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.vp" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.vp" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.vp" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.vp" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.vp" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_cpu_regs.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_wrr_calc_0_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/wrapper/sume_to_sdnet.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/table_calc_t.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/table_calc_t.vp" \
+
+sv xil_defaultlib  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_cdc.sv" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_fifo.sv" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv" \
+
+verilog xil_defaultlib  -i "../../../../../../test/project" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_srl_fifo_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/lib_pkg_v1_0" --include "../../../../simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/ec67/hdl" --include "../../../../simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL" --include "../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl" --include "../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip" -d "SIMULATION=1" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/wrapper/nf_sume_sdnet.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/sim/nf_sume_sdnet_ip.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/small_fifo.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/fallthrough_small_fifo.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter_cpu_regs.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/sim/input_arbiter_ip.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip_clk_wiz.v" \
+"../../../../simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/addr_manager_v0_2.v" \
+"../../../../../hdl/axi_clocking.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/buffer_wrapper_v1_0_with_cpu.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/top_scheduler_cpu_defines.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/cpu_sub.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/eneueue_agent_v0_1.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/fallthrough_small_fifo_v1_0_0/hdl/fallthrough_small_fifo.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/nf_datapath/nf_datapath.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/output_queue_bypass_checker.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/output_queue_v0_1_with_cpu.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_atom_v0_2.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_v0_1_with_cpu.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/scheduler_top_v0_1.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/fallthrough_small_fifo_v1_0_0/hdl/small_fifo.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/sss_fallthrough_small_fifo_v1_0_0/hdl/sss_fallthrough_small_fifo.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/ip/sss_output_queue_single_v1/hdl/sss_output_queue_single.v" \
+"../../../../../../../../../../../../MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/sss_fallthrough_small_fifo_v1_0_0/hdl/sss_small_fifo.v" \
+"../../../../../hdl/top_sim.v" \
+"../../../../../hdl/top_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

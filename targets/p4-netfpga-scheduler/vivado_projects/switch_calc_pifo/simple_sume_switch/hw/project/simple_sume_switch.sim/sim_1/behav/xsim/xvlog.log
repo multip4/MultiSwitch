@@ -1,0 +1,477 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/barrier_ip/hdl/barrier.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module barrier
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/barrier_ip/sim/barrier_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module barrier_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_vlog_beh
+INFO: [VRFC 10-2458] undeclared symbol wr_rst_busy_i, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1249]
+INFO: [VRFC 10-2458] undeclared symbol wr_eop_ad, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1331]
+INFO: [VRFC 10-2458] undeclared symbol rd_eop_ad, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1332]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_axis, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1574]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wach, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2099]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wdch, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2319]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wrch, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2486]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rach, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2866]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rdch, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:3099]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_CONV_VER
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:4153]
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:4361]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_sync_stage
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_as
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_beh_ver_ll_afifo
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_ss
+INFO: [VRFC 10-2458] undeclared symbol srst_wrst_busy, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:7793]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_preload0
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_axic_reg_slice
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/hdl/fifo_generator_v13_2_rfs.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2
+INFO: [VRFC 10-2458] undeclared symbol sleep_i, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/hdl/fifo_generator_v13_2_rfs.v:519]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_axi_clock_converter_0_0/sim/control_sub_axi_clock_converter_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_axi_clock_converter_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_xbar_0/sim/control_sub_xbar_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_xbar_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_s00_mmu_0/sim/control_sub_s00_mmu_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_s00_mmu_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m07_data_fifo_0/sim/control_sub_m07_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m07_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m06_data_fifo_0/sim/control_sub_m06_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m06_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m05_data_fifo_0/sim/control_sub_m05_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m05_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m04_data_fifo_0/sim/control_sub_m04_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m04_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m03_data_fifo_0/sim/control_sub_m03_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m03_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m02_data_fifo_0/sim/control_sub_m02_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m02_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m01_data_fifo_0/sim/control_sub_m01_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m01_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m00_data_fifo_0/sim/control_sub_m00_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m00_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_s00_data_fifo_0/sim/control_sub_s00_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_s00_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_auto_pc_0/sim/control_sub_auto_pc_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_auto_pc_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/sim/control_sub.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub
+INFO: [VRFC 10-311] analyzing module control_sub_axi_interconnect_0_0
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_35MSE9
+INFO: [VRFC 10-311] analyzing module m01_couplers_imp_159MA5B
+INFO: [VRFC 10-311] analyzing module m02_couplers_imp_1UHPQGS
+INFO: [VRFC 10-311] analyzing module m03_couplers_imp_V7OM1U
+INFO: [VRFC 10-311] analyzing module m04_couplers_imp_73P722
+INFO: [VRFC 10-311] analyzing module m05_couplers_imp_1194TWK
+INFO: [VRFC 10-311] analyzing module m06_couplers_imp_1YASCCN
+INFO: [VRFC 10-311] analyzing module m07_couplers_imp_RC6YHL
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_1S77UJ5
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v:95]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/sim/axis_sim_record_ip4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip4
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/sim/axis_sim_record_ip3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip3
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/sim/axis_sim_record_ip2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/sim/axis_sim_record_ip1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/sim/axis_sim_record_ip0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/identifier_ip/sim/identifier_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module identifier_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/buffer_pifo_32_4096/sim/buffer_pifo_32_4096.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_pifo_32_4096
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/buffer_meta_128_4096/sim/buffer_meta_128_4096.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_meta_128_4096
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/buffer_pkt_289_4096/sim/buffer_pkt_289_4096.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_pkt_289_4096
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/addr_table_12_4096_with_coe/sim/addr_table_12_4096_with_coe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module addr_table_12_4096_with_coe
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl/axis_infrastructure_v1_1_vl_rfs.v" into library axis_infrastructure_v1_1_0
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_mux_enc
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_aclken_converter
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_aclken_converter_wrapper
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_axis2vector
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_vector2axis
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_clock_synchronizer
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_cdc_handshake
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_vlog_beh
+INFO: [VRFC 10-2458] undeclared symbol wr_rst_busy_i, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1249]
+INFO: [VRFC 10-2458] undeclared symbol wr_eop_ad, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1331]
+INFO: [VRFC 10-2458] undeclared symbol rd_eop_ad, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1332]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_axis, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1574]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wach, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2099]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wdch, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2319]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wrch, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2486]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rach, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2866]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rdch, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:3099]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_vlog_beh [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:98]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_CONV_VER
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4153]
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4361]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_CONV_VER [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:3366]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_sync_stage
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_sync_stage [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4938]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_as
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_bhv_ver_as [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4959]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_beh_ver_ll_afifo
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_beh_ver_ll_afifo [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:6937]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_ss
+INFO: [VRFC 10-2458] undeclared symbol srst_wrst_busy, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:7793]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_bhv_ver_ss [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:7065]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_preload0
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_bhv_ver_preload0 [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:9206]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_axic_reg_slice
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_axic_reg_slice [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:10324]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2
+INFO: [VRFC 10-2458] undeclared symbol sleep_i, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v:519]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2 [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/axis_data_fifo_v1_1_18/hdl/axis_data_fifo_v1_1_vl_rfs.v" into library axis_data_fifo_v1_1_18
+INFO: [VRFC 10-311] analyzing module axis_data_fifo_v1_1_18_axis_data_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_calc_tuple_in_request.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_table_calc_tuple_in_request
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_CONTROLLERs.HDL/S_CONTROLLER_SimpleSumeSwitch.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_CONTROLLER_SimpleSumeSwitch
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_PROTOCOL_ADAPTER_EGRESS
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v:111]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v:110]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v:112]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_PROTOCOL_ADAPTER_INGRESS
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v:218]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v:217]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v:219]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_RESETTER_control
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_line.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_RESETTER_line
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_lookup.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_RESETTER_lookup
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopParser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_TopParser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for__OUT_.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for__OUT_
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleSumeSwitch
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopDeparser_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_Engine
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec_compute_control_remove
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_FifoWriter
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DscFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DscFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_LatencyBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_PktFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_PktFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_FifoReader
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift_UniShifterSelect
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataBuffer_BarrelShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataBuffer_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_BidirShifterUpdate
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_BidirShifterUpdate_UniShifter2X
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataMux
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_1_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_act_0_sec
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_act_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_act_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute_control_insert
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute__STRUCT_dstAddr
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute__STRUCT_srcAddr
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_FifoWriter
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DscFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DscFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_LatencyBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_PktFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_PktFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_FifoReader
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift_UniShifterSelect
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataBuffer_BarrelShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataBuffer_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleMerge
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleMerge_UniShifterDownMask
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleMerge_UniShifterDownTuple
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_BidirShifterUpdate
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_BidirShifterUpdate_UniShifter2X
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataMux
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopParser_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopParser_t_Engine
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0_ExtractShifter
+INFO: [VRFC 10-311] analyzing module TopParser_t_start
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_isValid
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_dstAddr
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_srcAddr
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_TopParser_extracts_size
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_user_metadata_unused
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_digest_data_unused
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopParser_t_reject
+INFO: [VRFC 10-311] analyzing module TopParser_t_reject_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopParser_t_reject_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0_TupleForward
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_1_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopParser_t_accept
+INFO: [VRFC 10-311] analyzing module TopParser_t_accept_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopParser_t_accept_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_table_calc_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_table_calc_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_table_calc_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_NoAction_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_NoAction_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_NoAction_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_set_calc_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_set_calc_0_sec_compute_p_calc_isValid
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_set_calc_0_sec_compute_p_calc_class_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_set_calc_0_sec_compute_sume_metadata_dst_port
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_set_calc_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_set_calc_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_rankcalc_wrr_calc_input_stateful_valid
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_rankcalc_wrr_calc_input_field1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_rankcalc_wrr_calc_input_field2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_local_state_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_local_end
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_local_end_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_local_end_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_start
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_start_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_start_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_rankcalc_wrr_calc_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_rankcalc_wrr_calc_sec_compute_TopPipe_fl_result_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_rankcalc_wrr_calc_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_rankcalc_wrr_calc_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_sume_metadata_pifo_info
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_sink
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_sink_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_sink_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup_compute_table_calc_req_lookup_request_key
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_cpu_regs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rankcalc_cpu_regs
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_wrr_calc_0_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rankcalc_wrr_calc_0_t
+INFO: [VRFC 10-2458] undeclared symbol resetn_sync, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_wrr_calc_0_t.v:233]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/wrapper/sume_to_sdnet.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sume_to_sdnet
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/table_calc_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module table_calc_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/table_calc_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module table_calc_t_Wrap
+INFO: [VRFC 10-311] analyzing module table_calc_t_IntTop
+INFO: [VRFC 10-311] analyzing module table_calc_t_Lookup
+INFO: [VRFC 10-311] analyzing module table_calc_t_Hash_Lookup
+INFO: [VRFC 10-311] analyzing module table_calc_t_RamR1RW1
+INFO: [VRFC 10-311] analyzing module table_calc_t_Cam
+INFO: [VRFC 10-311] analyzing module table_calc_t_Update
+INFO: [VRFC 10-311] analyzing module table_calc_t_Hash_Update
+INFO: [VRFC 10-311] analyzing module table_calc_t_Randmod4
+INFO: [VRFC 10-311] analyzing module table_calc_t_Randmod4_Rnd
+INFO: [VRFC 10-311] analyzing module table_calc_t_Randmod5
+INFO: [VRFC 10-311] analyzing module table_calc_t_Randmod5_Rnd
+INFO: [VRFC 10-311] analyzing module table_calc_t_csr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_cdc.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_cdc_single
+INFO: [VRFC 10-311] analyzing module xpm_cdc_gray
+INFO: [VRFC 10-311] analyzing module xpm_cdc_handshake
+INFO: [VRFC 10-311] analyzing module xpm_cdc_pulse
+INFO: [VRFC 10-311] analyzing module xpm_cdc_array_single
+INFO: [VRFC 10-311] analyzing module xpm_cdc_sync_rst
+INFO: [VRFC 10-311] analyzing module xpm_cdc_async_rst
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_fifo.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_fifo_base
+INFO: [VRFC 10-311] analyzing module xpm_fifo_rst
+INFO: [VRFC 10-311] analyzing module xpm_counter_updn
+INFO: [VRFC 10-311] analyzing module xpm_fifo_reg_vec
+INFO: [VRFC 10-311] analyzing module xpm_fifo_reg_bit
+INFO: [VRFC 10-311] analyzing module xpm_reg_pipe_bit
+INFO: [VRFC 10-311] analyzing module xpm_fifo_sync
+INFO: [VRFC 10-311] analyzing module xpm_fifo_async
+INFO: [VRFC 10-311] analyzing module xpm_fifo_axis
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_base
+INFO: [VRFC 10-311] analyzing module asym_bwe_bb
+INFO: [VRFC 10-311] analyzing module xpm_memory_dpdistram
+INFO: [VRFC 10-311] analyzing module xpm_memory_dprom
+INFO: [VRFC 10-311] analyzing module xpm_memory_sdpram
+INFO: [VRFC 10-311] analyzing module xpm_memory_spram
+INFO: [VRFC 10-311] analyzing module xpm_memory_sprom
+INFO: [VRFC 10-311] analyzing module xpm_memory_tdpram
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/wrapper/nf_sume_sdnet.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nf_sume_sdnet
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/sim/nf_sume_sdnet_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nf_sume_sdnet_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/fallthrough_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fallthrough_small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter_cpu_regs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module input_arbiter_cpu_regs
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module input_arbiter
+INFO: [VRFC 10-2458] undeclared symbol resetn_sync, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/hdl/input_arbiter.v:390]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/input_arbiter_ip/sim/input_arbiter_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module input_arbiter_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_ip_clk_wiz
+INFO: [VRFC 10-2458] undeclared symbol clk_out1_clk_wiz_ip_en_clk, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip_clk_wiz.v:207]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/clk_wiz_ip/clk_wiz_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/addr_manager_v0_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module addr_manager_v0_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/axi_clocking.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_clocking
+INFO: [VRFC 10-2458] undeclared symbol clkin1, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/axi_clocking.v:64]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/buffer_wrapper_v1_0_with_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_wrapper_v1_0_with_cpu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/top_scheduler_cpu_defines.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/cpu_sub.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cpu_sub
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/eneueue_agent_v0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module enqueue_agent_v0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/fallthrough_small_fifo_v1_0_0/hdl/fallthrough_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fallthrough_small_fifo
+WARNING: [VRFC 10-2845] overwriting previous definition of module fallthrough_small_fifo [/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/fallthrough_small_fifo_v1_0_0/hdl/fallthrough_small_fifo.v:46]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/nf_datapath/nf_datapath.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module nf_datapath
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/output_queue_bypass_checker.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module output_queue_bypass_checker
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/output_queue_v0_1_with_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module output_queue_v0_1_with_cpu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_atom_v0_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pifo_calendar_atom_v0_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_v0_1_with_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pifo_calendar_v0_1_with_cpu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/scheduler_top_v0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scheduler_top_v0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/fallthrough_small_fifo_v1_0_0/hdl/small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module small_fifo
+WARNING: [VRFC 10-2845] overwriting previous definition of module small_fifo [/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/fallthrough_small_fifo_v1_0_0/hdl/small_fifo.v:44]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/sss_fallthrough_small_fifo_v1_0_0/hdl/sss_fallthrough_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sss_fallthrough_small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/ip/sss_output_queue_single_v1/hdl/sss_output_queue_single.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sss_output_queue_single
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/sss_fallthrough_small_fifo_v1_0_0/hdl/sss_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sss_small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_rxn, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:115]
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_rxp, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:116]
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_txn, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:117]
+INFO: [VRFC 10-2458] undeclared symbol pcie_7x_mgt_txp, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:118]
+INFO: [VRFC 10-2458] undeclared symbol rxp, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:121]
+INFO: [VRFC 10-2458] undeclared symbol rxn, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:122]
+INFO: [VRFC 10-2458] undeclared symbol txp, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:123]
+INFO: [VRFC 10-2458] undeclared symbol txn, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:124]
+INFO: [VRFC 10-2458] undeclared symbol i2c_clk, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:137]
+INFO: [VRFC 10-2458] undeclared symbol i2c_data, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:138]
+INFO: [VRFC 10-2458] undeclared symbol si5324_rst_n, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:139]
+INFO: [VRFC 10-2458] undeclared symbol led_0, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:146]
+INFO: [VRFC 10-2458] undeclared symbol led_1, assumed default net type wire [/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/hdl/top_tb.v:147]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

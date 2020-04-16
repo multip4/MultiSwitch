@@ -1,0 +1,978 @@
+Vivado Simulator 2018.2
+Time resolution is 100 fs
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.identifier.inst.axi_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_BRIDGER_for_table_calc_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_BRIDGER_for_table_calc_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1180  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1270  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.nimesgvxydeaprrkaowb7y9aa46w_210.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/nimesgvxydeaprrkaowb7y9aa46w_210/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.oez4la1e7ud282lk0r070u_2156.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/oez4la1e7ud282lk0r070u_2156/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.hohieo1cunbycw3776_593.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/hohieo1cunbycw3776_593/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.hplcpn1ve6u1j46s8x0ow3cxgm1_1871.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/hplcpn1ve6u1j46s8x0ow3cxgm1_1871/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.xdrymvf2ocuo89megj153xjqz7v8s_1930.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/xdrymvf2ocuo89megj153xjqz7v8s_1930/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mhrg266vutnw9th0_1230.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mhrg266vutnw9th0_1230/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.u72r3r32f6rumlsvfwceg_1651.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/u72r3r32f6rumlsvfwceg_1651/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.i11p0ra9x5nfaz1yvx_109.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/i11p0ra9x5nfaz1yvx_109/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.oogkzyv0135rpc68h_90.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/oogkzyv0135rpc68h_90/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.fysfc2y6rdardnmaziw2_534.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/fysfc2y6rdardnmaziw2_534/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.uk80c6ntde5a7px3_2125.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/uk80c6ntde5a7px3_2125/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mloz80f76ouumy3hund_2402.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mloz80f76ouumy3hund_2402/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.wf6cfathxyfl23rnr293w_1198.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/wf6cfathxyfl23rnr293w_1198/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mxu9uwgwt92f3dvck_316.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mxu9uwgwt92f3dvck_316/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.n8xn7wlmp0apcmv1mvmn772q_348.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/n8xn7wlmp0apcmv1mvmn772q_348/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mk0oaji65p99f7ib_1317.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mk0oaji65p99f7ib_1317/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.nw8vbx9le08n24fgs_1650.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/nw8vbx9le08n24fgs_1650/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2493  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.x5mi5ahql321pycs7fjk_649.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/x5mi5ahql321pycs7fjk_649/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.jfmpactu29itenzfvozmu699i_1998.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/jfmpactu29itenzfvozmu699i_1998/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.xbybstwlmiy65btzm5i4z2mroth27s8_1231.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/xbybstwlmiy65btzm5i4z2mroth27s8_1231/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.n1stkfdhn2qp80u6p4wbocxk3g_145.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/n1stkfdhn2qp80u6p4wbocxk3g_145/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2829  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.l4f3dkpcpw20yd5cel7j64_802.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/l4f3dkpcpw20yd5cel7j64_802/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.qsyz5lnsexkpacaha2t7s6srj55dt72_1361.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/qsyz5lnsexkpacaha2t7s6srj55dt72_1361/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.epuf4yyouokr71c3f_2056.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/epuf4yyouokr71c3f_2056/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.nszb8xngc0tmkjc7zxlcvr_1952.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/nszb8xngc0tmkjc7zxlcvr_1952/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.sviaisdhdvfmu5qxibllkgh2_2680.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/sviaisdhdvfmu5qxibllkgh2_2680/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.t3uo1cgbtldpdek4_2355.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/t3uo1cgbtldpdek4_2355/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.atqe6y88wzzg2m2nrb9ecy7rkutc4i_397.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/atqe6y88wzzg2m2nrb9ecy7rkutc4i_397/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2493  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.ur7yt151dbzdjgx9fv_954.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/ur7yt151dbzdjgx9fv_954/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.exvgr03vc6vt8mbrevxxm9ryl_1048.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/exvgr03vc6vt8mbrevxxm9ryl_1048/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.pfhnk2ij5ke0nafzm54242nxpn_1288.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/pfhnk2ij5ke0nafzm54242nxpn_1288/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2493  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.zekgxkj7vtq62trxc6tsve2mkxq_914.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/zekgxkj7vtq62trxc6tsve2mkxq_914/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.mhy5sgz5znzx1fq3954zh_2334.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/mhy5sgz5znzx1fq3954zh_2334/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3776  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.l3kuknoad4nh5jhreaq_2431.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/l3kuknoad4nh5jhreaq_2431/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.j9rub5mgfloyi5lj56p_2248.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/j9rub5mgfloyi5lj56p_2248/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.okzvnke3m2l0gesjnwu8sqp13_2086.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/okzvnke3m2l0gesjnwu8sqp13_2086/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.ukczpwhik7rzw2spv_1883.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/ukczpwhik7rzw2spv_1883/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.sshoy98yaqdfsmwxq_2355.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/sshoy98yaqdfsmwxq_2355/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.w0mj4awhmscg32eih5f6bgmqfc3cje40_1592.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/w0mj4awhmscg32eih5f6bgmqfc3cje40_1592/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.fkk7z5rrqh8uhb2znh81zn6g2_1302.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/fkk7z5rrqh8uhb2znh81zn6g2_1302/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.jrybgvxpi7kdbj638cppak_2563.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/jrybgvxpi7kdbj638cppak_2563/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.jvqt0v9eyxqqyxentpqj6a7o1o7_338.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/jvqt0v9eyxqqyxentpqj6a7o1o7_338/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.fzsw35vem9cojfspy_546.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/fzsw35vem9cojfspy_546/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.alcy9p1tlhe36yhhrnrmh6_1450.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/alcy9p1tlhe36yhhrnrmh6_1450/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4628  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.yjj8b6a1js995h161f0aihrsbpf1j4e_7.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/yjj8b6a1js995h161f0aihrsbpf1j4e_7/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.jqkz1wdii608lowllgnxgg9hufbyyw_984.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/jqkz1wdii608lowllgnxgg9hufbyyw_984/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.j7gdiqsewo8fxj3oky04z_726.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/j7gdiqsewo8fxj3oky04z_726/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Warning: [Unisim MMCME2_ADV-20] Input CLKIN1 period and attribute CLKIN1_PERIOD are not same. Instance top_tb.top_sim.axi_clocking_i.clk_wiz_i.inst.mmcm_adv_inst 
+Reset Deasserted
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+810 ns. Info: barrier request transactor
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+814 ns.Info: barrier complete transactor
+Note: Time is 820 ns.
+Time: 820 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 824 ns.
+Time: 824 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 910 ns.
+Time: 910 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1130 ns.
+Time: 1130 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1340 ns.
+Time: 1340 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1550 ns.
+Time: 1550 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+
+/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/reg_expect.axi: end of stimuli @ 1660 ns.
+Note: Time is 1760 ns.
+Time: 1760 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1970 ns.
+Time: 1970 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2180 ns.
+Time: 2180 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2390 ns.
+Time: 2390 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2600 ns.
+Time: 2600 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2820 ns.
+Time: 2820 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3030 ns.
+Time: 3030 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3240 ns.
+Time: 3240 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3450 ns.
+Time: 3450 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3660 ns.
+Time: 3660 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3870 ns.
+Time: 3870 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4080 ns.
+Time: 4080 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4290 ns.
+Time: 4290 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4500 ns.
+Time: 4500 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4710 ns.
+Time: 4710 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4920 ns.
+Time: 4920 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5130 ns.
+Time: 5130 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5340 ns.
+Time: 5340 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5550 ns.
+Time: 5550 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5760 ns.
+Time: 5760 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5970 ns.
+Time: 5970 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6180 ns.
+Time: 6180 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6390 ns.
+Time: 6390 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6600 ns.
+Time: 6600 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6810 ns.
+Time: 6810 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7020 ns.
+Time: 7020 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7230 ns.
+Time: 7230 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7440 ns.
+Time: 7440 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7650 ns.
+Time: 7650 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7860 ns.
+Time: 7860 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8070 ns.
+Time: 8070 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8280 ns.
+Time: 8280 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8490 ns.
+Time: 8490 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8700 ns.
+Time: 8700 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8910 ns.
+Time: 8910 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9120 ns.
+Time: 9120 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9330 ns.
+Time: 9330 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9540 ns.
+Time: 9540 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9740 ns.
+Time: 9740 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+9950 ns. Info: barrier request transactor
+Note: Time is 11820 ns.
+Time: 11820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 12820 ns.
+Time: 12820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 13820 ns.
+Time: 13820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 14820 ns.
+Time: 14820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 15828 ns.
+Time: 15828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 15832 ns.
+Time: 15832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 15840 ns.
+Time: 15840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 15844 ns.
+Time: 15844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 16828 ns.
+Time: 16828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 16832 ns.
+Time: 16832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 16840 ns.
+Time: 16840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 16844 ns.
+Time: 16844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 17828 ns.
+Time: 17828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 17832 ns.
+Time: 17832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 17840 ns.
+Time: 17840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 17844 ns.
+Time: 17844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18828 ns.
+Time: 18828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 18832 ns.
+Time: 18832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 18840 ns.
+Time: 18840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 18844 ns.
+Time: 18844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+18846 ns.Info: barrier complete transactor
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+18950 ns. Info: barrier request transactor
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port0.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port1.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port2.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port3.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.addr_manager_inst.addr_table.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.buffer_wrapper_inst.buffer_pkt_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.buffer_wrapper_inst.buffer_meta_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module top_tb.top_sim.nf_datapath_0.scheduler_top_1.output_queue_inst_port4.buffer_wrapper_inst.buffer_pifo_inst.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_tb.top_sim.identifier.inst.axi_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.table_calc.table_calc_t_Wrap_inst.table_calc_t_IntTop_inst.table_calc_t_Lookup_inst.table_calc_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/table_calc/table_calc_t_Wrap_inst/table_calc_t_IntTop_inst/table_calc_t_Lookup_inst/table_calc_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_402  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_BRIDGER_for_table_calc_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_BRIDGER_for_table_calc_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1180  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_BRIDGER_for_rankcalc_wrr_calc_0_tuple_in_rankcalc_wrr_calc_input/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1270  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.nimesgvxydeaprrkaowb7y9aa46w_210.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/nimesgvxydeaprrkaowb7y9aa46w_210/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.oez4la1e7ud282lk0r070u_2156.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/oez4la1e7ud282lk0r070u_2156/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.hohieo1cunbycw3776_593.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/hohieo1cunbycw3776_593/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopParser.hplcpn1ve6u1j46s8x0ow3cxgm1_1871.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopParser/hplcpn1ve6u1j46s8x0ow3cxgm1_1871/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.xdrymvf2ocuo89megj153xjqz7v8s_1930.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/xdrymvf2ocuo89megj153xjqz7v8s_1930/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mhrg266vutnw9th0_1230.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mhrg266vutnw9th0_1230/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.u72r3r32f6rumlsvfwceg_1651.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/u72r3r32f6rumlsvfwceg_1651/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.i11p0ra9x5nfaz1yvx_109.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/i11p0ra9x5nfaz1yvx_109/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.oogkzyv0135rpc68h_90.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/oogkzyv0135rpc68h_90/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.fysfc2y6rdardnmaziw2_534.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/fysfc2y6rdardnmaziw2_534/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.uk80c6ntde5a7px3_2125.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/uk80c6ntde5a7px3_2125/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mloz80f76ouumy3hund_2402.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mloz80f76ouumy3hund_2402/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.wf6cfathxyfl23rnr293w_1198.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/wf6cfathxyfl23rnr293w_1198/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mxu9uwgwt92f3dvck_316.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mxu9uwgwt92f3dvck_316/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.n8xn7wlmp0apcmv1mvmn772q_348.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/n8xn7wlmp0apcmv1mvmn772q_348/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.mk0oaji65p99f7ib_1317.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/mk0oaji65p99f7ib_1317/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.nw8vbx9le08n24fgs_1650.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/nw8vbx9le08n24fgs_1650/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2493  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.x5mi5ahql321pycs7fjk_649.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/x5mi5ahql321pycs7fjk_649/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.jfmpactu29itenzfvozmu699i_1998.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/jfmpactu29itenzfvozmu699i_1998/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.xbybstwlmiy65btzm5i4z2mroth27s8_1231.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/xbybstwlmiy65btzm5i4z2mroth27s8_1231/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.n1stkfdhn2qp80u6p4wbocxk3g_145.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/n1stkfdhn2qp80u6p4wbocxk3g_145/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2829  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.l4f3dkpcpw20yd5cel7j64_802.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/l4f3dkpcpw20yd5cel7j64_802/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.qsyz5lnsexkpacaha2t7s6srj55dt72_1361.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/qsyz5lnsexkpacaha2t7s6srj55dt72_1361/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.epuf4yyouokr71c3f_2056.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/epuf4yyouokr71c3f_2056/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.nszb8xngc0tmkjc7zxlcvr_1952.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/nszb8xngc0tmkjc7zxlcvr_1952/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.sviaisdhdvfmu5qxibllkgh2_2680.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/sviaisdhdvfmu5qxibllkgh2_2680/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.t3uo1cgbtldpdek4_2355.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/t3uo1cgbtldpdek4_2355/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.atqe6y88wzzg2m2nrb9ecy7rkutc4i_397.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/atqe6y88wzzg2m2nrb9ecy7rkutc4i_397/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2493  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.ur7yt151dbzdjgx9fv_954.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/ur7yt151dbzdjgx9fv_954/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.exvgr03vc6vt8mbrevxxm9ryl_1048.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/exvgr03vc6vt8mbrevxxm9ryl_1048/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.pfhnk2ij5ke0nafzm54242nxpn_1288.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/pfhnk2ij5ke0nafzm54242nxpn_1288/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2493  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.zekgxkj7vtq62trxc6tsve2mkxq_914.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/zekgxkj7vtq62trxc6tsve2mkxq_914/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.mhy5sgz5znzx1fq3954zh_2334.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/mhy5sgz5znzx1fq3954zh_2334/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3776  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.l3kuknoad4nh5jhreaq_2431.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/l3kuknoad4nh5jhreaq_2431/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_S_SYNCER_for_TopDeparser.j9rub5mgfloyi5lj56p_2248.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_S_SYNCER_for_TopDeparser/j9rub5mgfloyi5lj56p_2248/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.okzvnke3m2l0gesjnwu8sqp13_2086.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/okzvnke3m2l0gesjnwu8sqp13_2086/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1359  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.ukczpwhik7rzw2spv_1883.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/ukczpwhik7rzw2spv_1883/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.sshoy98yaqdfsmwxq_2355.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/sshoy98yaqdfsmwxq_2355/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1718  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.w0mj4awhmscg32eih5f6bgmqfc3cje40_1592.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/w0mj4awhmscg32eih5f6bgmqfc3cje40_1592/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1802  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.fkk7z5rrqh8uhb2znh81zn6g2_1302.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/fkk7z5rrqh8uhb2znh81zn6g2_1302/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.jrybgvxpi7kdbj638cppak_2563.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/jrybgvxpi7kdbj638cppak_2563/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.jvqt0v9eyxqqyxentpqj6a7o1o7_338.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/jvqt0v9eyxqqyxentpqj6a7o1o7_338/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1537  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for_TopDeparser.fzsw35vem9cojfspy_546.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for_TopDeparser/fzsw35vem9cojfspy_546/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2138  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.alcy9p1tlhe36yhhrnrmh6_1450.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/alcy9p1tlhe36yhhrnrmh6_1450/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4628  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.yjj8b6a1js995h161f0aihrsbpf1j4e_7.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/yjj8b6a1js995h161f0aihrsbpf1j4e_7/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1389  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.jqkz1wdii608lowllgnxgg9hufbyyw_984.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/jqkz1wdii608lowllgnxgg9hufbyyw_984/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1886  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. top_tb.top_sim.nf_datapath_0.nf_sume_sdnet_wrapper_1.inst.SimpleSumeSwitch_inst.S_SYNCER_for__OUT_.j7gdiqsewo8fxj3oky04z_726.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /top_tb/top_sim/nf_datapath_0/nf_sume_sdnet_wrapper_1/inst/SimpleSumeSwitch_inst/S_SYNCER_for__OUT_/j7gdiqsewo8fxj3oky04z_726/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_1453  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/table_calc_t.HDL/xpm_memory.sv
+Warning: [Unisim MMCME2_ADV-20] Input CLKIN1 period and attribute CLKIN1_PERIOD are not same. Instance top_tb.top_sim.axi_clocking_i.clk_wiz_i.inst.mmcm_adv_inst 
+Reset Deasserted
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 800 ns.
+Time: 800 ns  Iteration: 5  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 1 barriers
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 808 ns.
+Time: 808 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+810 ns. Info: barrier request transactor
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 812 ns.
+Time: 812 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 814 ns.
+Time: 814 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+814 ns.Info: barrier complete transactor
+Note: Time is 820 ns.
+Time: 820 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 824 ns.
+Time: 824 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+Note: Time is 910 ns.
+Time: 910 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1130 ns.
+Time: 1130 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1340 ns.
+Time: 1340 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1550 ns.
+Time: 1550 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+
+/home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/test/reg_expect.axi: end of stimuli @ 1660 ns.
+Note: Time is 1760 ns.
+Time: 1760 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 1970 ns.
+Time: 1970 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2180 ns.
+Time: 2180 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2390 ns.
+Time: 2390 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2600 ns.
+Time: 2600 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 2820 ns.
+Time: 2820 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3030 ns.
+Time: 3030 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3240 ns.
+Time: 3240 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3450 ns.
+Time: 3450 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3660 ns.
+Time: 3660 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 3870 ns.
+Time: 3870 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4080 ns.
+Time: 4080 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4290 ns.
+Time: 4290 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4500 ns.
+Time: 4500 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4710 ns.
+Time: 4710 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 4920 ns.
+Time: 4920 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5130 ns.
+Time: 5130 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5340 ns.
+Time: 5340 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5550 ns.
+Time: 5550 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5760 ns.
+Time: 5760 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 5970 ns.
+Time: 5970 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6180 ns.
+Time: 6180 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6390 ns.
+Time: 6390 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6600 ns.
+Time: 6600 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 6810 ns.
+Time: 6810 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7020 ns.
+Time: 7020 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7230 ns.
+Time: 7230 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7440 ns.
+Time: 7440 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7650 ns.
+Time: 7650 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 7860 ns.
+Time: 7860 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8070 ns.
+Time: 8070 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8280 ns.
+Time: 8280 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8490 ns.
+Time: 8490 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8700 ns.
+Time: 8700 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 8910 ns.
+Time: 8910 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9120 ns.
+Time: 9120 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9330 ns.
+Time: 9330 ns  Iteration: 3  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9540 ns.
+Time: 9540 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+Note: Time is 9740 ns.
+Time: 9740 ns  Iteration: 2  Process: /top_tb/top_sim/axi_sim_transactor_i/U0/stimulation  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axi_sim_transactor_ip/hdl/axi_sim_transactor.vhd
+Write Register!
+9950 ns. Info: barrier request transactor
+Note: Time is 11820 ns.
+Time: 11820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 12820 ns.
+Time: 12820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 13820 ns.
+Time: 13820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 14820 ns.
+Time: 14820500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 15828 ns.
+Time: 15828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 15832 ns.
+Time: 15832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 15840 ns.
+Time: 15840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 15844 ns.
+Time: 15844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 16828 ns.
+Time: 16828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 16832 ns.
+Time: 16832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 16840 ns.
+Time: 16840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 16844 ns.
+Time: 16844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 17828 ns.
+Time: 17828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 17832 ns.
+Time: 17832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 17840 ns.
+Time: 17840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 17844 ns.
+Time: 17844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18828 ns.
+Time: 18828500 ps  Iteration: 0  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Sending next ingress packet
+Note: Time is 18832 ns.
+Time: 18832 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 2 barriers
+Note: Time is 18840 ns.
+Time: 18840 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 2 ingress packets
+Note: Time is 18844 ns.
+Time: 18844 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier complete
+Note: Time is 18846 ns.
+Time: 18846 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: Input file contains:
+Info: 3 barriers
+18846 ns.Info: barrier complete transactor
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18852 ns.
+Time: 18852 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: 0 ingress packets
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_0/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_1/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_2/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_3/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 1 pkts
+Note: Time is 18856 ns.
+Time: 18856 ns  Iteration: 2  Process: /top_tb/top_sim/axis_sim_stim_4/U0/line__90  File: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_stim_ip4/hdl/axis_sim_stim.vhd
+Info: barrier request: expecting 0 pkts
+18950 ns. Info: barrier request transactor

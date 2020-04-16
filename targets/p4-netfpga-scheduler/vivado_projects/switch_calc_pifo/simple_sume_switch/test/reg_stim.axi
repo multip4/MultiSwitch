@@ -138,20 +138,26 @@ W 00000002
 # WRITE
 W 00000002
 44020040, 00000001, f, -.
+# WRITE
+W 00000002
+44020100, 00000001, f, -.
+# WRITE
+W 00000002
+44020101, 00000005, f, -.
 # BARRIER
 B 4
 # Interface 0
-N 264
-S 264
+N 1
+S 2
 # Interface 1
-N 264
-S 264
+N 1
+S 2
 # Interface 2
-N 264
-S 264
+N 1
+S 2
 # Interface 3
-N 264
-S 264
+N 1
+S 2
 # DMA
 N 0
 S 0
