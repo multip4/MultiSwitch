@@ -244,9 +244,9 @@ if (valid_in)
                                      
             else // If id is not same keep original value. 
                 begin           
-                    reg_weight_next[id_j] = reg_weight[id_j];
-                    reg_round_next[id_j] = reg_round[id_j];
-                    reg_overflow_next[id_j] = reg_overflow[id_j];
+                    reg_weight_next[id_j] = reg_weight_combi[id_j];
+                    reg_round_next[id_j] = reg_round_combi[id_j];
+                    reg_overflow_next[id_j] = reg_overflow_combi[id_j];
                 end 
             end
           //final output.      
@@ -260,9 +260,9 @@ else
     
     for (id_j=0; id_j<=ID_COUNTER-1; id_j= id_j+1)
         begin
-            reg_weight_next[id_j] = reg_weight[id_j];
-            reg_round_next[id_j] = reg_round[id_j];
-            reg_overflow_next[id_j] = reg_overflow[id_j];
+            reg_weight_next[id_j] = reg_weight_combi[id_j];
+            reg_round_next[id_j] = reg_round_combi[id_j];
+            reg_overflow_next[id_j] = reg_overflow_combi[id_j];
         end
     end 
 end
