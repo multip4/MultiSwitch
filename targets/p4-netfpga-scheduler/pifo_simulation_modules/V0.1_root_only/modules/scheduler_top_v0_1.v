@@ -228,8 +228,8 @@ module scheduler_top_v0_1
     reg [NUM_QUEUES-1:0]               r_buffer_write_en_bit_array; 
     reg [NUM_QUEUES-1:0]               r_pifo_insert_en_bit_array;  
 
-     wire [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d2;
-     wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info_d2;    
+//     wire [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d2;
+//     wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info_d2;    
 
     wire [CPU_EQ_AGENT_ADDR-1:0] w_cpu2ip_read_stat_enqueue_agent_req_addr; 
     wire                          w_cpu2ip_read_stat_enqueue_agent_req_valid;
@@ -299,23 +299,15 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port0(
-//        .s_axis_tdata(s_axis_tdata_d2),
-//        .s_axis_tkeep(s_axis_tkeep_d2),
-//        .s_axis_tuser(w_sume_meta_d2),
-//        .s_axis_tpifo(w_pifo_info_d2),
-//        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[0]),
-//        .s_axis_tlast(s_axis_tlast_d2),
-//        .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[0]),
-//        .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[0]),
 
         .s_axis_tdata(s_axis_tdata_d1),
         .s_axis_tkeep(s_axis_tkeep_d1),
         .s_axis_tuser(w_sume_meta_d1),
         .s_axis_tpifo(w_pifo_info_d1),
-        .s_axis_tvalid(s_axis_tvalid_d1 & w_buffer_write_en_bit_array[0]),
+        .s_axis_tvalid(s_axis_tvalid_d1 & r_buffer_write_en_bit_array[0]),
         .s_axis_tlast(s_axis_tlast_d1),
-        .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[0]),
-        .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[0]),
+        .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[0]),
+        .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[0]),
 
         .m_axis_tready(w_axis_0_tready_from_sss_output_queue_single),
         .m_axis_tvalid(w_axis_0_tvalid_to_sss_output_queue_single),
@@ -417,12 +409,12 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port1(
-        .s_axis_tdata(s_axis_tdata_d2),
-        .s_axis_tkeep(s_axis_tkeep_d2),
-        .s_axis_tuser(w_sume_meta_d2),
-        .s_axis_tpifo(w_pifo_info_d2),
-        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[1]),
-        .s_axis_tlast(s_axis_tlast_d2),
+        .s_axis_tdata(s_axis_tdata_d1),
+        .s_axis_tkeep(s_axis_tkeep_d1),
+        .s_axis_tuser(w_sume_meta_d1),
+        .s_axis_tpifo(w_pifo_info_d1),
+        .s_axis_tvalid(s_axis_tvalid_d1 & r_buffer_write_en_bit_array[1]),
+        .s_axis_tlast(s_axis_tlast_d1),
         .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[1]),
         .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[1]),
         .m_axis_tready(w_axis_1_tready_from_sss_output_queue_single),
@@ -527,12 +519,12 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port2(
-        .s_axis_tdata(s_axis_tdata_d2),
-        .s_axis_tkeep(s_axis_tkeep_d2),
-        .s_axis_tuser(w_sume_meta_d2),
-        .s_axis_tpifo(w_pifo_info_d2),
-        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[2]),
-        .s_axis_tlast(s_axis_tlast_d2),
+        .s_axis_tdata(s_axis_tdata_d1),
+        .s_axis_tkeep(s_axis_tkeep_d1),
+        .s_axis_tuser(w_sume_meta_d1),
+        .s_axis_tpifo(w_pifo_info_d1),
+        .s_axis_tvalid(s_axis_tvalid_d1 & r_buffer_write_en_bit_array[2]),
+        .s_axis_tlast(s_axis_tlast_d1),
         .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[2]),
         .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[2]),
         .m_axis_tready(w_axis_2_tready_from_sss_output_queue_single),
@@ -634,12 +626,12 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port3(
-        .s_axis_tdata(s_axis_tdata_d2),
-        .s_axis_tkeep(s_axis_tkeep_d2),
-        .s_axis_tuser(w_sume_meta_d2),
-        .s_axis_tpifo(w_pifo_info_d2),
-        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[3]),
-        .s_axis_tlast(s_axis_tlast_d2),
+        .s_axis_tdata(s_axis_tdata_d1),
+        .s_axis_tkeep(s_axis_tkeep_d1),
+        .s_axis_tuser(w_sume_meta_d1),
+        .s_axis_tpifo(w_pifo_info_d1),
+        .s_axis_tvalid(s_axis_tvalid_d1 & r_buffer_write_en_bit_array[3]),
+        .s_axis_tlast(s_axis_tlast_d1),
         .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[3]),
         .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[3]),
         .m_axis_tready(w_axis_3_tready_from_sss_output_queue_single),
@@ -743,12 +735,12 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port4(
-        .s_axis_tdata(s_axis_tdata_d2),
-        .s_axis_tkeep(s_axis_tkeep_d2),
-        .s_axis_tuser(w_sume_meta_d2),
-        .s_axis_tpifo(w_pifo_info_d2),
-        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[4]),
-        .s_axis_tlast(s_axis_tlast_d2),
+        .s_axis_tdata(s_axis_tdata_d1),
+        .s_axis_tkeep(s_axis_tkeep_d1),
+        .s_axis_tuser(w_sume_meta_d1),
+        .s_axis_tpifo(w_pifo_info_d1),
+        .s_axis_tvalid(s_axis_tvalid_d1 & r_buffer_write_en_bit_array[4]),
+        .s_axis_tlast(s_axis_tlast_d1),
         .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[4]),
         .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[4]),
         .m_axis_tready(w_axis_4_tready_from_sss_output_queue_single),
@@ -960,8 +952,8 @@ begin
         end
 end
 
-assign  w_pifo_info_d2 = s_axis_tuser_d2[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
-assign  w_sume_meta_d2 = s_axis_tuser_d2[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
+//assign  w_pifo_info_d2 = s_axis_tuser_d2[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
+//assign  w_sume_meta_d2 = s_axis_tuser_d2[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
 assign w_buffer_almost_full_bit_array = {buffer_4_almost_full,buffer_3_almost_full,buffer_2_almost_full,buffer_1_almost_full,buffer_0_almost_full};
 assign w_pifo_full_bit_array = {pifo_4_full,pifo_3_full,pifo_2_full,pifo_1_full,pifo_0_full};
 assign nf0_q_size = {4'b0, buffer_0_queue_depth};
