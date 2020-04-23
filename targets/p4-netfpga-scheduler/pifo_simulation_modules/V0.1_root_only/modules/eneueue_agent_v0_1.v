@@ -17,6 +17,9 @@
 // 
 // Revision: 
 // Revision 0.01 - File Created
+// Revision 0.2 - the input signal is not delayed
+
+
 // Additional Comments:
 // 
 // pifo info root bit <32>: {
@@ -48,7 +51,8 @@ module enqueue_agent_v0_1
         parameter C_S_AXIS_TUSER_WIDTH = 128,
         parameter C_S_AXI_DATA_WIDTH = 32,
         parameter C_S_AXI_ADDR_WIDTH = 8, // AXI addr for read drop count , src = [7:4], dst = [3:0]
-        parameter QUEUE_NUM = 5          
+        parameter QUEUE_NUM = 5,
+        parameter SYNC_MODE = 1 // 1 for SYNC, 0 for ASYNC          
     )
     (
         // from/to pipeline
@@ -56,17 +60,15 @@ module enqueue_agent_v0_1
         s_axis_tready,
         s_axis_tuser, // sume_meta.
         s_axis_tlast,
-        s_axis_tlast_f1,
         s_axis_tpifo_valid,
         
         // from each port queue status 
         s_axis_buffer_almost_full,
         s_axis_pifo_full,
-        
-        m_axis_valid,    
-        m_axis_ctl_pifo_in_en,
-        m_axis_ctl_buffer_wr_en,
-        
+         
+        m_axis_ctl_pifo_in_en,   // output bit vector for pifo insert
+        m_axis_ctl_buffer_wr_en, // output bit vector for buffer write
+         
         // cpu req/resp
         s_axi_addr,      
         s_axi_req_valid, 
@@ -80,10 +82,9 @@ module enqueue_agent_v0_1
     
     // input/output signal from/to pipeline. 
     input                               s_axis_tvalid; // valid bit.
-    output                              s_axis_tready; // ready signal to pipeline, combinational logic output.
+    output reg                          s_axis_tready; // ready signal to pipeline, combinational logic output.
     input [C_S_AXIS_TUSER_WIDTH-1:0]    s_axis_tuser; // user metadata, derive output port.
     input                               s_axis_tlast;
-    input                               s_axis_tlast_f1; // front 1 delay than s_axis_tlast;
          
     input                               s_axis_tpifo_valid;
     
@@ -91,10 +92,11 @@ module enqueue_agent_v0_1
     input [QUEUE_NUM-1:0]               s_axis_buffer_almost_full;
     input [QUEUE_NUM-1:0]               s_axis_pifo_full;
         
-    output reg                          m_axis_valid;
-    // combinational logic output
+    // return Register value in SYNC_MODE
+    // return combinational logic output in ASYNC_MODE
     output [QUEUE_NUM-1:0]              m_axis_ctl_pifo_in_en; 
-    // combinational logic output
+    // return Register value in SYNC_MODE
+    // return combinational logic output in ASYNC_MODE
     output [QUEUE_NUM-1:0]              m_axis_ctl_buffer_wr_en;
     
     input [C_S_AXI_ADDR_WIDTH-1:0]      s_axi_addr;    
@@ -141,24 +143,19 @@ module enqueue_agent_v0_1
         
     
     // wire 
-    wire [QUEUE_NUM-1:0]                output_port_bit_array_wire;
-    wire [QUEUE_NUM-1:0]                output_port_not_full_bit_array_wire;
-    wire                                is_drop_wire;
-    wire                                output_port_ready_wire;
-    
-    // registers
-    reg [STATES_WIDTH-1:0]              eq_agent_fsm_state;
-    reg [STATES_WIDTH-1:0]              eq_agent_fsm_state_next;
-    
+    wire [QUEUE_NUM-1:0]                w_output_port_bit_array;
+    wire [QUEUE_NUM-1:0]                w_output_port_not_full_bit_array;
+    wire                                w_is_drop;
+    wire                                w_output_port_ready;
+        
     // FSM State
-    reg [QUEUE_NUM-1:0]                 m_axis_ctl_pifo_in_en_reg;
-    reg [QUEUE_NUM-1:0]                 m_axis_ctl_buffer_wr_en_reg;
+    reg [STATES_WIDTH-1:0]              fsm_enqueue_agent_state, fsm_enqueue_agent_state_next;
 
-    // combinational logic output for control signals
-    reg [QUEUE_NUM-1:0]                 m_axis_ctl_pifo_in_en_reg_next;
-    reg [QUEUE_NUM-1:0]                 m_axis_ctl_buffer_wr_en_reg_next;
     
-    
+    // registers & combinational output
+    reg [QUEUE_NUM-1:0]                 r_m_axis_ctl_pifo_in_en, r_m_axis_ctl_pifo_in_en_next;
+    reg [QUEUE_NUM-1:0]                 r_m_axis_ctl_buffer_wr_en, r_m_axis_ctl_buffer_wr_en_next;
+
     reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data;
     reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data_next;
     reg                          r_cpu_read_resp_valid;    
@@ -168,13 +165,13 @@ module enqueue_agent_v0_1
     // FSM 
     always @(*) 
     begin
-    
-        r_axis_tready_next = 0;
-        eq_agent_fsm_state_next = eq_agent_fsm_state;
-        m_axis_ctl_pifo_in_en_reg_next = m_axis_ctl_pifo_in_en_reg;
-        m_axis_ctl_buffer_wr_en_reg_next = m_axis_ctl_buffer_wr_en_reg;
- 
         
+        // set default value for all combinational output 
+        s_axis_tready = 0;
+        fsm_enqueue_agent_state_next = fsm_enqueue_agent_state;
+        r_m_axis_ctl_pifo_in_en_next = r_m_axis_ctl_pifo_in_en;
+        r_m_axis_ctl_buffer_wr_en_next = r_m_axis_ctl_buffer_wr_en;
+ 
         for(i=0;i<QUEUE_NUM;i=i+1) begin
             r_nf0_pkt_drop_next[i] = r_nf0_pkt_drop[i];
             r_nf1_pkt_drop_next[i] = r_nf1_pkt_drop[i];
@@ -184,19 +181,20 @@ module enqueue_agent_v0_1
         end
         
         
- 
-                case(eq_agent_fsm_state)
+                case(fsm_enqueue_agent_state)
                     // initial state;
                     // move to enqueue state if input data valid and at least one txport is available.
                     // move to drop state if input data valid and (drop signal is 1 or all port is not available). 
                     IDLE:
                         begin
-                            m_axis_ctl_pifo_in_en_reg_next = 0;
-                            m_axis_ctl_buffer_wr_en_reg_next = 0;
-
-                            if(s_axis_tvalid & (is_drop_wire | ~output_port_ready_wire | ~s_axis_tpifo_valid)) 
+                            r_m_axis_ctl_pifo_in_en_next = 0;
+                            r_m_axis_ctl_buffer_wr_en_next = 0;
+                            
+                            // if input is value, but the drop field is marked, or output port is not ready(almost full), 
+                            // or pifo info is not valid, then go to drop state
+                            if(s_axis_tvalid & (w_is_drop | ~w_output_port_ready | ~s_axis_tpifo_valid)) 
                                 begin
-                                    eq_agent_fsm_state_next = DROP;
+                                    fsm_enqueue_agent_state_next = DROP;
                                     
                                     // count the pkt drop register;
                                     
@@ -205,68 +203,68 @@ module enqueue_agent_v0_1
                                         'b00000001:
                                             begin
                                                 
-                                                if(output_port_bit_array_wire[0])
+                                                if(w_output_port_bit_array[0])
                                                     r_nf0_pkt_drop_next[0] = r_nf0_pkt_drop[0] + 1;
-                                                if(output_port_bit_array_wire[1])
+                                                if(w_output_port_bit_array[1])
                                                     r_nf1_pkt_drop_next[0] = r_nf1_pkt_drop[0] + 1;
-                                                if(output_port_bit_array_wire[2])
+                                                if(w_output_port_bit_array[2])
                                                     r_nf2_pkt_drop_next[0] = r_nf2_pkt_drop[0] + 1;
-                                                if(output_port_bit_array_wire[3])
+                                                if(w_output_port_bit_array[3])
                                                     r_nf3_pkt_drop_next[0] = r_nf3_pkt_drop[0] + 1;
-                                                if(output_port_bit_array_wire[4])
+                                                if(w_output_port_bit_array[4])
                                                     r_nf4_pkt_drop_next[0] = r_nf4_pkt_drop[0] + 1;
                                                                                             
                                             end
                                         'b00000100:
                                             begin
-                                                if(output_port_bit_array_wire[0])
+                                                if(w_output_port_bit_array[0])
                                                     r_nf0_pkt_drop_next[1] = r_nf0_pkt_drop[1] + 1;
-                                                if(output_port_bit_array_wire[1])
+                                                if(w_output_port_bit_array[1])
                                                     r_nf1_pkt_drop_next[1] = r_nf1_pkt_drop[1] + 1;
-                                                if(output_port_bit_array_wire[2])
+                                                if(w_output_port_bit_array[2])
                                                     r_nf2_pkt_drop_next[1] = r_nf2_pkt_drop[1] + 1;
-                                                if(output_port_bit_array_wire[3])
+                                                if(w_output_port_bit_array[3])
                                                     r_nf3_pkt_drop_next[1] = r_nf3_pkt_drop[1] + 1;
-                                                if(output_port_bit_array_wire[4])
+                                                if(w_output_port_bit_array[4])
                                                     r_nf4_pkt_drop_next[1] = r_nf4_pkt_drop[1] + 1;                                            
                                             end
                                         'b00010000:
                                             begin
-                                                if(output_port_bit_array_wire[0])                  
+                                                if(w_output_port_bit_array[0])                  
                                                     r_nf0_pkt_drop_next[2] = r_nf0_pkt_drop[2] + 1;
-                                                if(output_port_bit_array_wire[1])                  
+                                                if(w_output_port_bit_array[1])                  
                                                     r_nf1_pkt_drop_next[2] = r_nf1_pkt_drop[2] + 1;
-                                                if(output_port_bit_array_wire[2])                  
+                                                if(w_output_port_bit_array[2])                  
                                                     r_nf2_pkt_drop_next[2] = r_nf2_pkt_drop[2] + 1;
-                                                if(output_port_bit_array_wire[3])                  
+                                                if(w_output_port_bit_array[3])                  
                                                     r_nf3_pkt_drop_next[2] = r_nf3_pkt_drop[2] + 1;
-                                                if(output_port_bit_array_wire[4])                  
+                                                if(w_output_port_bit_array[4])                  
                                                     r_nf4_pkt_drop_next[2] = r_nf4_pkt_drop[2] + 1;
                                             end
                                         'b01000000:
                                             begin
-                                                if(output_port_bit_array_wire[0])                  
+                                                if(w_output_port_bit_array[0])                  
                                                     r_nf0_pkt_drop_next[3] = r_nf0_pkt_drop[3] + 1;
-                                                if(output_port_bit_array_wire[1])                  
+                                                if(w_output_port_bit_array[1])                  
                                                     r_nf1_pkt_drop_next[3] = r_nf1_pkt_drop[3] + 1;
-                                                if(output_port_bit_array_wire[2])                  
+                                                if(w_output_port_bit_array[2])                  
                                                     r_nf2_pkt_drop_next[3] = r_nf2_pkt_drop[3] + 1;
-                                                if(output_port_bit_array_wire[3])                  
+                                                if(w_output_port_bit_array[3])                  
                                                     r_nf3_pkt_drop_next[3] = r_nf3_pkt_drop[3] + 1;
-                                                if(output_port_bit_array_wire[4])                  
+                                                if(w_output_port_bit_array[4])                  
                                                     r_nf4_pkt_drop_next[3] = r_nf4_pkt_drop[3] + 1;
                                             end
                                          default:
                                             begin
-                                                if(output_port_bit_array_wire[0])                  
+                                                if(w_output_port_bit_array[0])                  
                                                     r_nf0_pkt_drop_next[4] = r_nf0_pkt_drop[4] + 1;
-                                                if(output_port_bit_array_wire[1])                  
+                                                if(w_output_port_bit_array[1])                  
                                                     r_nf1_pkt_drop_next[4] = r_nf1_pkt_drop[4] + 1;
-                                                if(output_port_bit_array_wire[2])                  
+                                                if(w_output_port_bit_array[2])                  
                                                     r_nf2_pkt_drop_next[4] = r_nf2_pkt_drop[4] + 1;
-                                                if(output_port_bit_array_wire[3])                  
+                                                if(w_output_port_bit_array[3])                  
                                                     r_nf3_pkt_drop_next[4] = r_nf3_pkt_drop[4] + 1;
-                                                if(output_port_bit_array_wire[4])                  
+                                                if(w_output_port_bit_array[4])                  
                                                     r_nf4_pkt_drop_next[4] = r_nf4_pkt_drop[4] + 1;
                                             
                                             end                                           
@@ -274,21 +272,19 @@ module enqueue_agent_v0_1
                                            
                                                     
                                 end
-                            else if(s_axis_tvalid & ~r_axis_tready)
+                            // because the input signal operates in SYNC mode,
+                            // we set the ready signal to 1, and go to enqueue sop state.
+                            // and discard the current cycle data.
+                            // this state trasition is referenced by original sss_output_queue_v1_0_0
+                            // TODO: do we need this 1 clock delay?
+                            
+                            else if(s_axis_tvalid)
                                 begin
-                                    r_axis_tready_next = 1;
-                                    eq_agent_fsm_state_next = ENQUEUE_SOP;
-//                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
-//                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
+//                                    r_axis_tready_next = 0;
+                                    fsm_enqueue_agent_state_next = ENQUEUE_REMAIN;
+                                    r_m_axis_ctl_pifo_in_en_next = w_output_port_not_full_bit_array;
+                                    r_m_axis_ctl_buffer_wr_en_next = w_output_port_not_full_bit_array;
                                 end
-//                            else if(s_axis_tvalid & r_axis_tready)
-//                                begin
-//                                    r_axis_tready_next = 1;
-//                                    m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
-//                                    m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
-//                                    eq_agent_fsm_state_next = ENQUEUE_REMAIN;   
-                                
-//                                end
                         end
                     // Drop state;
                     // drop all chunck to the EOP,
@@ -296,10 +292,11 @@ module enqueue_agent_v0_1
                     DROP:
                         begin
                             //set ready signal to 1 only if the s_axis_tlast_f1 and s_axis_tlast value is not 0.
-                            if(~(s_axis_tlast_f1 | s_axis_tlast)) r_axis_tready_next = 1;
+//                            if(~s_axis_tlast) r_axis_tready_next = 1;
+                            s_axis_tready = 1;
                             if(s_axis_tlast)
                                 begin
-                                    eq_agent_fsm_state_next = IDLE;
+                                    fsm_enqueue_agent_state_next = IDLE;
                                     //r_axis_tready_next = 0;
                                 end
                         end
@@ -308,24 +305,24 @@ module enqueue_agent_v0_1
                     // move to IDLE state when find eop.
                     ENQUEUE_REMAIN:
                         begin
+                            s_axis_tready = 1;
+                            r_m_axis_ctl_pifo_in_en_next = 0;
                             //set ready signal to 1 only if the s_axis_tlast_f1 and s_axis_tlast value is not 0.
-                            if(~(s_axis_tlast_f1 | s_axis_tlast)) r_axis_tready_next = 1;
-                            
-                            m_axis_ctl_pifo_in_en_reg_next = 0;
+//                            if(~s_axis_tlast) r_axis_tready_next = 1;
                             if(s_axis_tlast)
                                 begin
-                                    eq_agent_fsm_state_next = IDLE;
-//                                    m_axis_ctl_buffer_wr_en_reg_next = 0;
+                                    fsm_enqueue_agent_state_next = IDLE;
+                                    r_m_axis_ctl_buffer_wr_en_next = 0;
                                     //r_axis_tready_next = 0;
                                 end
                         end
-                    ENQUEUE_SOP:
-                        begin
-                            r_axis_tready_next = 1;
-                            m_axis_ctl_pifo_in_en_reg_next = output_port_not_full_bit_array_wire;
-                            m_axis_ctl_buffer_wr_en_reg_next = output_port_not_full_bit_array_wire;
-                            eq_agent_fsm_state_next = ENQUEUE_REMAIN;      
-                        end
+//                    ENQUEUE_SOP:
+//                        begin
+//                            r_axis_tready_next = 1;
+//                            r_m_axis_ctl_pifo_in_en_next = w_output_port_not_full_bit_array;
+//                            r_m_axis_ctl_buffer_wr_en_next = w_output_port_not_full_bit_array;
+//                            fsm_enqueue_agent_state_next = ENQUEUE_REMAIN;      
+//                        end
                 endcase
     end
     
@@ -370,9 +367,9 @@ module enqueue_agent_v0_1
     begin
         if(~axis_resetn) 
             begin
-                eq_agent_fsm_state <= IDLE;
-                m_axis_ctl_pifo_in_en_reg <= 0;
-                m_axis_ctl_buffer_wr_en_reg <= 0;
+                fsm_enqueue_agent_state <= IDLE;
+                r_m_axis_ctl_pifo_in_en <= 0;
+                r_m_axis_ctl_buffer_wr_en <= 0;
                 
                 r_cpu_read_data <= 0;
                 r_cpu_read_resp_valid <= 0;
@@ -384,16 +381,14 @@ module enqueue_agent_v0_1
                     r_nf4_pkt_drop[i] <= 0;
 
                 end
-                m_axis_valid <= 0;
                 r_axis_tready <= 0;
                 
             end
         else 
             begin
-                m_axis_valid <= s_axis_tvalid; // m_axis_valid is 1 delay of s_axis_tvalid signal.
-                eq_agent_fsm_state <= eq_agent_fsm_state_next;
-                m_axis_ctl_pifo_in_en_reg <=  m_axis_ctl_pifo_in_en_reg_next;
-                m_axis_ctl_buffer_wr_en_reg <=  m_axis_ctl_buffer_wr_en_reg_next;
+                fsm_enqueue_agent_state <= fsm_enqueue_agent_state_next;
+                r_m_axis_ctl_pifo_in_en <=  r_m_axis_ctl_pifo_in_en_next;
+                r_m_axis_ctl_buffer_wr_en <=  r_m_axis_ctl_buffer_wr_en_next;
                 
                 r_cpu_read_data <= r_cpu_read_data_next;
                 r_cpu_read_resp_valid <= s_axi_req_valid; 
@@ -412,7 +407,7 @@ module enqueue_agent_v0_1
     
     
     // get output bit array.
-    assign output_port_bit_array_wire =  
+    assign w_output_port_bit_array =  
                     s_axis_tuser[DST_POS] |               // port 0
                    (s_axis_tuser[DST_POS + 2] << 1) |     // port 1
                    (s_axis_tuser[DST_POS + 4] << 2) |     // port 2
@@ -425,22 +420,21 @@ module enqueue_agent_v0_1
     
     
     // get drop signal from metadata  
-    assign is_drop_wire = s_axis_tuser[DROP_POS];
+    assign w_is_drop = s_axis_tuser[DROP_POS];
     
     // and opration between output port bit array and buffer almost full array.
-    assign output_port_not_full_bit_array_wire = 
-            output_port_bit_array_wire & ~s_axis_buffer_almost_full & ~s_axis_pifo_full;
+    assign w_output_port_not_full_bit_array = 
+            w_output_port_bit_array & ~s_axis_buffer_almost_full & ~s_axis_pifo_full;
     
     // reduction or operator to indicate at least 1 output port is not full. 
-    assign output_port_ready_wire = s_axis_tvalid & (| output_port_not_full_bit_array_wire);
+    assign w_output_port_ready = s_axis_tvalid & (| w_output_port_not_full_bit_array);
     
     
     // assign output control signal 
-    assign m_axis_ctl_pifo_in_en = m_axis_ctl_pifo_in_en_reg;
-    assign m_axis_ctl_buffer_wr_en = m_axis_ctl_buffer_wr_en_reg;
+    assign m_axis_ctl_pifo_in_en = (SYNC_MODE)? r_m_axis_ctl_pifo_in_en: r_m_axis_ctl_pifo_in_en_next;
+    assign m_axis_ctl_buffer_wr_en = (SYNC_MODE)? r_m_axis_ctl_buffer_wr_en: r_m_axis_ctl_buffer_wr_en_next;
     
     // assgin cpu result
     assign m_axi_data = r_cpu_read_data;      
     assign m_axi_resp_valid = r_cpu_read_resp_valid;
-    assign s_axis_tready = r_axis_tready;
 endmodule

@@ -16,6 +16,7 @@
 //  output signal to nf_10g_etherent... modules.
 // Revision:
 // Revision 0.01 - File Created
+// Revision 0.2  - Remove Input Flip-Flop for Synchonization with Pipeline Data
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +30,7 @@ module scheduler_top_v0_1
     parameter PKT_BUFFER_WIDTH = 289,
     parameter C_S_AXIS_TUSER_WIDTH=160, // 128 + pifo width(32)
     parameter C_M_AXIS_TUSER_WIDTH=128,
+    
     //parameter C_S_AXIS_TUSER_WIDTH=128,
     parameter NUM_QUEUES=5,
 //    parameter BUFFER_INDEX_WIDTH = 12,  // calculated by log2 function
@@ -45,8 +47,8 @@ module scheduler_top_v0_1
     // end for original parameter.
     
     // parameters for scheduler_top.
-    parameter BUFFER_WORD_DEPTH = 512,
-    parameter PIFO_CALENDAR_DEPTH = 32,  // scale down to test bit simulation.
+    parameter BUFFER_WORD_DEPTH = 4096,
+    parameter PIFO_CALENDAR_DEPTH = 512,  // scale down to test bit simulation.
     parameter PIFO_INFO_LENGTH = 32,
     parameter BUFFER_OUTPUT_SYNC=0,
     parameter CPU_EQ_AGENT_ADDR = 8
@@ -113,19 +115,6 @@ module scheduler_top_v0_1
      output [QUEUE_DEPTH_BITS-1:0] nf3_q_size,
      output [QUEUE_DEPTH_BITS-1:0] dma_q_size,
 
-//    output reg  [C_S_AXI_DATA_WIDTH-1:0] bytes_stored,
-//    output reg  [NUM_QUEUES-1:0]         pkt_stored,
-
-//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_0,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_1,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_2,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_3,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  bytes_removed_4,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_0,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_1,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_2,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_3,
-//    output [C_S_AXI_DATA_WIDTH-1:0]  pkt_removed_4,
 
 // Slave AXI Ports
     input                                     S_AXI_ACLK,
@@ -174,10 +163,6 @@ module scheduler_top_v0_1
      wire [NUM_QUEUES-1:0]               w_buffer_write_en_bit_array; 
      wire [NUM_QUEUES-1:0]               w_pifo_insert_en_bit_array; 
     
-  
-        
-
-
     // read wire between cpu_sub and output queue module
     wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pkt_buffer_req_addr;
     wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pkt_buffer_req_valid;
@@ -241,7 +226,7 @@ module scheduler_top_v0_1
 
 
     reg [NUM_QUEUES-1:0]               r_buffer_write_en_bit_array; 
-    reg [NUM_QUEUES-1:0]               r_pifo_insert_en_bit_array; 
+    reg [NUM_QUEUES-1:0]               r_pifo_insert_en_bit_array;  
 
      wire [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d2;
      wire    [PIFO_INFO_LENGTH-1:0] w_pifo_info_d2;    
@@ -255,18 +240,24 @@ module scheduler_top_v0_1
 // enqueue agent handles real data(not delayed input data),
 // to check whether drop or enqueue.
 
-wire  [PIFO_INFO_LENGTH-1:0] w_pifo_info_d1 = s_axis_tuser_d1[C_S_AXIS_TUSER_WIDTH-1:C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH];    
-wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_d1[C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0];
+wire  [PIFO_INFO_LENGTH-1:0] w_pifo_info, w_pifo_info_d1;
+wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta, w_sume_meta_d1;
+
+assign {w_pifo_info_d1, w_sume_meta_d1} = s_axis_tuser_d1; //wire split
+assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
 
     enqueue_agent_v0_1
+    #(
+    .SYNC_MODE(1)
+    )
     enqueue_agent_inst(
             // from/to pipeline
-        .s_axis_tvalid(s_axis_tvalid_d1), 
+        .s_axis_tvalid(s_axis_tvalid), 
+        
+        .s_axis_tuser(w_sume_meta), // sume_meta.
+        .s_axis_tpifo_valid(w_pifo_info[PIFO_INFO_LENGTH-1]),//w_pifo_info[PIFO_INFO_LENGTH-1]
+        .s_axis_tlast(s_axis_tlast),
         .s_axis_tready(s_axis_tready), //output signal.
-        .s_axis_tuser(w_sume_meta_d1), // sume_meta.
-        .s_axis_tpifo_valid(w_pifo_info_d1[PIFO_INFO_LENGTH-1]),//w_pifo_info[PIFO_INFO_LENGTH-1]
-        .s_axis_tlast(s_axis_tlast_d1),
-        .s_axis_tlast_f1(s_axis_tlast),
         
         // from each port queue status 
         .s_axis_buffer_almost_full(w_buffer_almost_full_bit_array),
@@ -308,14 +299,24 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta_d1 = s_axis_tuser_
     .OUTPUT_SYNC(BUFFER_OUTPUT_SYNC)          
     )
     output_queue_inst_port0(
-        .s_axis_tdata(s_axis_tdata_d2),
-        .s_axis_tkeep(s_axis_tkeep_d2),
-        .s_axis_tuser(w_sume_meta_d2),
-        .s_axis_tpifo(w_pifo_info_d2),
-        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[0]),
-        .s_axis_tlast(s_axis_tlast_d2),
-        .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[0]),
-        .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[0]),
+//        .s_axis_tdata(s_axis_tdata_d2),
+//        .s_axis_tkeep(s_axis_tkeep_d2),
+//        .s_axis_tuser(w_sume_meta_d2),
+//        .s_axis_tpifo(w_pifo_info_d2),
+//        .s_axis_tvalid(s_axis_tvalid_d2 & r_buffer_write_en_bit_array[0]),
+//        .s_axis_tlast(s_axis_tlast_d2),
+//        .s_axis_buffer_wr_en(r_buffer_write_en_bit_array[0]),
+//        .s_axis_pifo_insert_en(r_pifo_insert_en_bit_array[0]),
+
+        .s_axis_tdata(s_axis_tdata_d1),
+        .s_axis_tkeep(s_axis_tkeep_d1),
+        .s_axis_tuser(w_sume_meta_d1),
+        .s_axis_tpifo(w_pifo_info_d1),
+        .s_axis_tvalid(s_axis_tvalid_d1 & w_buffer_write_en_bit_array[0]),
+        .s_axis_tlast(s_axis_tlast_d1),
+        .s_axis_buffer_wr_en(w_buffer_write_en_bit_array[0]),
+        .s_axis_pifo_insert_en(w_pifo_insert_en_bit_array[0]),
+
         .m_axis_tready(w_axis_0_tready_from_sss_output_queue_single),
         .m_axis_tvalid(w_axis_0_tvalid_to_sss_output_queue_single),
         .m_axis_tdata(w_axis_0_tdata_to_sss_output_queue_single),
