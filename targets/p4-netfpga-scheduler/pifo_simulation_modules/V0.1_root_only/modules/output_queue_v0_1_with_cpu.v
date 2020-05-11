@@ -302,7 +302,7 @@ module output_queue_v0_1_with_cpu
     wire [PIFO_WIDTH-1:0]           w_pifo_calendar_out_pifo_calendar_top;
 
     
-    pifo_calendar_v0_1_with_cpu
+    pifo_calendar_v0_2_with_cpu
     #(
     .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH),
     .BUFFER_ADDR_WIDTH(BUFFER_ADDR_WIDTH),
