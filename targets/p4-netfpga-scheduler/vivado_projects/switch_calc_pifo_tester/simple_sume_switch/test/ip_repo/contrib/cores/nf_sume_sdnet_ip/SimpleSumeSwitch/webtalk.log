@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Dec  9 21:13:42 2019
+# Process ID: 31383
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch
+# Command line: wbtcv -mode batch -source /home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/webtalk.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/webtalk.jou
+#-----------------------------------------------------------
+source /home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] '/home/jkchoi/Documents/git/p4-netfpga/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Mon Dec  9 21:13:44 2019. For additional details about this file, please refer to the WebTalk help file at /tools/Xilinx/Vivado/2018.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Mon Dec  9 21:13:44 2019...
