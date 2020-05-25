@@ -10,5 +10,6 @@ MultiSwitch is a switch technology that supports multiple services simultaneousl
 - Sol Han (hs1087@korea.ac.kr)
 - Hongrok Choi (ghdfhrooo@korea.ac.kr)
 - Hochan Lee (ghcks1000@korea.ac.kr)
+- Hyeim Yang (hyeim@korea.ac.kr)
 - ZHENGUO CUI (quejinkook@korea.ac.kr)
 - LIN QIAN (qianlin@korea.ac.kr)
