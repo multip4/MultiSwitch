@@ -225,7 +225,7 @@ def test_wrr_senario():
 	write_pcap_files()
 
 def test_diff_payload():
-	payload_size = 32
+	payload_size = 256
 	payload_str = '0b'
 
 	full_fild_chunk = payload_str;
