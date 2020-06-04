@@ -1,0 +1,5 @@
+table_add MyIngress.ipv4_lpm MyIngress.ipv4_forward 192.168.0.0/24 => 2
+table_add MyIngress.flow_table MyIngress.set_flowid 192.168.0.2/32 => 2
+table_add MyIngress.flow_table MyIngress.set_flowid 192.168.0.3/32 => 3
+table_add MyIngress.flow_table MyIngress.set_flowid 192.168.0.4/32 => 4
+table_add MyIngress.flow_table MyIngress.set_flowid 192.168.0.5/32 => 5
