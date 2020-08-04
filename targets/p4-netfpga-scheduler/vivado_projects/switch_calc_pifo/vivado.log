@@ -2,13 +2,71 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Fri Mar 27 05:41:45 2020
-# Process ID: 27510
-# Current directory: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo
+# Start of session at: Thu Apr 16 21:59:13 2020
+# Process ID: 7858
+# Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo
 # Command line: vivado
-# Log file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.log
-# Journal file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.jou
+# Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/vivado.log
+# Journal file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/vivado.jou
 #-----------------------------------------------------------
 start_gui
+create_project project_1 /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/project_1 -part xc7vx690tffg1761-3
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.2/data/ip'.
+add_files -norecurse /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/rank_calc_module/wrr_calc.v
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+[Thu Apr 16 22:00:39 2020] Launched synth_1...
+Run output will be captured here: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/project_1/project_1.runs/synth_1/runme.log
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7vx690tffg1761-3
+INFO: [Netlist 29-17] Analyzing 1532 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'wrr_without_blkmem' is not ideal for floorplanning, since the cellview 'wrr_without_blkmem' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Device 21-403] Loading part xc7vx690tffg1761-3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:01:05 ; elapsed = 00:01:30 . Memory (MB): peak = 6929.523 ; gain = 622.227 ; free physical = 2602 ; free virtual = 11151
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -3, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+report_timing_summary: Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 7682.395 ; gain = 747.613 ; free physical = 1729 ; free virtual = 10465
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'clk_dp' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command.
+create_clock -period 5.000 -name clk_dp -waveform {0.000 2.500}
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'clk_dp' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command.
+add_files -norecurse {/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_cpu_regs_defines.v /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_cpu_regs.v /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_wrr_calc_0_t.v}
+close_design
+update_compile_order -fileset sources_1
+set_property top rankcalc_wrr_calc_0_t [current_fileset]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Apr 16 22:40:59 2020] Launched synth_1...
+Run output will be captured here: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/project_1/project_1.runs/synth_1/runme.log
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7vx690tffg1761-3
+INFO: [Netlist 29-17] Analyzing 877 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'rankcalc_wrr_calc_0_t' is not ideal for floorplanning, since the cellview 'rankcalc_wrr_calc_0_t' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 7784.414 ; gain = 27.000 ; free physical = 3116 ; free virtual = 10358
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -3, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+report_timing_summary: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 7812.113 ; gain = 27.699 ; free physical = 2859 ; free virtual = 10296
 exit
-INFO: [Common 17-206] Exiting Vivado at Fri Mar 27 05:42:29 2020...
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 16 23:16:41 2020...

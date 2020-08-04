@@ -2,11 +2,33 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Fri Mar 27 05:41:45 2020
-# Process ID: 27510
-# Current directory: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo
+# Start of session at: Thu Apr 16 21:59:13 2020
+# Process ID: 7858
+# Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo
 # Command line: vivado
-# Log file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.log
-# Journal file: /home/rym/Documents/P4-NetFPGA-live/contrib-projects/sume-sdnet-switch/projects/switch_calc_pifo/vivado.jou
+# Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/vivado.log
+# Journal file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/vivado.jou
 #-----------------------------------------------------------
 start_gui
+create_project project_1 /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/project_1 -part xc7vx690tffg1761-3
+add_files -norecurse /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/rank_calc_module/wrr_calc.v
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+create_clock -period 5.000 -name clk_dp -waveform {0.000 2.500}
+add_files -norecurse {/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_cpu_regs_defines.v /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_cpu_regs.v /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/vivado_projects/switch_calc_pifo/nf_sume_sdnet_ip/SimpleSumeSwitch/rankcalc_wrr_calc_0_t.HDL/rankcalc_wrr_calc_0_t.v}
+close_design
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top rankcalc_wrr_calc_0_t [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1

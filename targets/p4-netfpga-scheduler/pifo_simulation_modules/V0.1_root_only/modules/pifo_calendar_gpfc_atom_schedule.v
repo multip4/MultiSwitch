@@ -16,15 +16,14 @@
 // Revision:
 // Revision 0.01 - File Created from pifo_calendar_atom_v0_4.v
 // Revision 0.1 - add gpfc feature 
+// Revision 0.2 - split scheduling rank and gpfc rank,
 
-// pifo_info total 40 bit
 
-// -- valid 1bit      [39]
-// -- overflow 1bit   [38]
-// -- pifo_rank 17bit [37-21]
-// -- gpfc_cos  3bit  [20-18]
-// -- gpfc_rank 6bit  [17-12]
-// -- address - 12bit [11-0]
+// pifo_info total 19 bit
+
+// -- valid 1bit      [18]
+// -- overflow 1bit   [17]
+// -- pifo_rank 17bit [16:0]
 
 // Additional Comments:
 // 
@@ -32,17 +31,12 @@
 
 
 
-module pifo_calendar_gpfc_atom
+module pifo_calendar_gpfc_atom_schedule
      #(
-       parameter ELEMENT_WIDTH = 40,
+       parameter ELEMENT_WIDTH = 19, 
        parameter ELEMENT_VALID_WIDTH = 1,
        parameter ELEMENT_OVERFLOW_WIDTH = 1,
-       parameter ELEMENT_RANK_WIDTH = 17,
-       parameter GPFC_COS_WIDTH = 3,
-       parameter GPFC_RANK_WIDTH = 6,
-       parameter PKT_ADDRESS_WIDTH = 12,
-       parameter GPFC_PAUSE_TC_NUM = 8,
-       parameter GPFC_PAUSE_RANK_WIDTH = 16
+       parameter ELEMENT_RANK_WIDTH = 17
    )
    (
        
@@ -51,33 +45,33 @@ module pifo_calendar_gpfc_atom
        in_pifo_neighbour_element_from_head_direction,           // neighbour element data
        in_pifo_neighbour_element_from_tail_direction,          // element data
        
-       in_pifo_neighbour_compare_more_significant_from_head_direction,    // the input is more significant than target node.
-       in_pifo_neighbour_compare_more_significant_from_tail_direction,
+       in_pifo_neighbour_insert_ready_from_head_direction,    // the input can insert to the target node.
+       in_pifo_neighbour_insert_ready_from_tail_direction,
        
        in_global_overflow_bit, // recent dequeued packet's overflow bit.
-       
        
        in_ctl_insert,
        in_ctl_pop,
        
        // Output signal
        out_pifo_output,         // output self register value
-//        m_axis_pifo_compare_equal,  // output equal compare value. used for pop      1 for equal, 0 for not equal. not used in root atom
-       
 
+       
        // output large compare value, used for insert. 
-       // 1 for larger(input pifo is more significant), 0 for small or equal.
-       out_pifo_compare_more_significant,  
+       // 1 for insert ready, 0 for not.
+       out_pifo_insert_ready,  
 
        clk,
        rstn  
    );
    
+
+        
        input [ELEMENT_WIDTH-1:0]   in_pifo_input;
        input [ELEMENT_WIDTH-1:0]   in_pifo_neighbour_element_from_head_direction;
        input [ELEMENT_WIDTH-1:0]   in_pifo_neighbour_element_from_tail_direction;
-       input                       in_pifo_neighbour_compare_more_significant_from_head_direction;
-       input                       in_pifo_neighbour_compare_more_significant_from_tail_direction;
+       input                       in_pifo_neighbour_insert_ready_from_head_direction;
+       input                       in_pifo_neighbour_insert_ready_from_tail_direction;
        input                       in_global_overflow_bit;
        
        input                       in_ctl_insert;
@@ -85,7 +79,7 @@ module pifo_calendar_gpfc_atom
        
 
        output [ELEMENT_WIDTH-1:0]  out_pifo_output;
-       output                      out_pifo_compare_more_significant;
+       output                      out_pifo_insert_ready;
 
        input clk;
        input rstn;
@@ -100,34 +94,27 @@ module pifo_calendar_gpfc_atom
         //                       0 for input is not significant.
         // in simple word, 1 for can insert the input data in this atom, 0 for not.
         
-       reg                                      combi_rank_compare_more_significant; 
-       assign out_pifo_compare_more_significant = combi_rank_compare_more_significant;
+       reg                            combi_rank_compare_insert_ready; 
+       assign out_pifo_insert_ready = combi_rank_compare_insert_ready;
 
        // split input data into each wire
        
        wire [ELEMENT_VALID_WIDTH-1:0] w_in_valid;
        wire [ELEMENT_OVERFLOW_WIDTH-1:0] w_in_overflow;
        wire [ELEMENT_RANK_WIDTH-1:0] w_in_pifo_rank;
-       wire [GPFC_COS_WIDTH-1:0] w_in_gpfc_cos;
-       wire [GPFC_RANK_WIDTH-1:0] w_in_gpfc_rank;
-       wire [PKT_ADDRESS_WIDTH-1:0] w_in_pkt_address;
        
        // parsing(assign) input data
        
-       assign {w_in_valid,w_in_overflow,w_in_pifo_rank,w_in_gpfc_cos,w_in_gpfc_rank,w_in_pkt_address} = in_pifo_input;
+       assign {w_in_valid,w_in_overflow,w_in_pifo_rank} = in_pifo_input;
        
 
        wire [ELEMENT_VALID_WIDTH-1:0] w_r_this_valid;
        wire [ELEMENT_OVERFLOW_WIDTH-1:0] w_r_this_overflow;
        wire [ELEMENT_RANK_WIDTH-1:0] w_r_this_rank;
-       wire [GPFC_COS_WIDTH-1:0] w_r_this_gpfc_cos;
-       wire [GPFC_RANK_WIDTH-1:0] w_r_this_gpfc_rank;
-       wire [PKT_ADDRESS_WIDTH-1:0] w_r_this_pkt_address;
+
        
        
-       assign {w_r_this_valid,w_r_this_overflow,w_r_this_rank,w_r_this_gpfc_cos,w_r_this_gpfc_rank,w_r_this_pkt_address} = r_element;
-
-
+       assign {w_r_this_valid,w_r_this_overflow,w_r_this_rank} = r_element;
 
 
        //combinational block for comparison     
@@ -135,7 +122,7 @@ module pifo_calendar_gpfc_atom
            begin
                // set init value.
 
-               combi_rank_compare_more_significant = 0;
+               combi_rank_compare_insert_ready = 0;
                
                // compare the input and register value.
                
@@ -143,7 +130,7 @@ module pifo_calendar_gpfc_atom
                // the input pifo is not more significant than the register pifo
                if(~w_in_valid)
                     begin
-                        combi_rank_compare_more_significant = 0;
+                        combi_rank_compare_insert_ready = 0;
                     end
                else
                     begin
@@ -151,7 +138,7 @@ module pifo_calendar_gpfc_atom
                         // the input is more signifiant.
                         if(~w_r_this_valid)
                             begin
-                                combi_rank_compare_more_significant = 1;
+                                combi_rank_compare_insert_ready = 1;
                             end
                         
                         // in following condition means both input pifo and register pifo is valid.
@@ -168,7 +155,7 @@ module pifo_calendar_gpfc_atom
                                 if((w_in_overflow != in_global_overflow_bit) 
                                     & (w_r_this_overflow == in_global_overflow_bit))
                                     begin
-                                        combi_rank_compare_more_significant = 0;
+                                        combi_rank_compare_insert_ready = 0;
                                     end
                                 
                                 // if register pifo's overflow bit not equals to the global overflow bit,
@@ -178,7 +165,7 @@ module pifo_calendar_gpfc_atom
                                 else if((w_in_overflow == in_global_overflow_bit) 
                                         & (w_r_this_overflow != in_global_overflow_bit))
                                         begin
-                                            combi_rank_compare_more_significant = 1;
+                                            combi_rank_compare_insert_ready = 1;
                                         end
                                 
                                 // else, means input and register overflow bit is same,
@@ -189,7 +176,7 @@ module pifo_calendar_gpfc_atom
                                         // only if the input rank is smaller than register rank
                                         if(w_in_pifo_rank < w_r_this_rank)
                                             begin
-                                                combi_rank_compare_more_significant = 1;
+                                                combi_rank_compare_insert_ready = 1;
                                             end
                                     end
                             end
@@ -205,14 +192,16 @@ module pifo_calendar_gpfc_atom
                
                // three conditions for register update
                // if both insert and pop
-               // check self and tail side compare result,
-               // if self is 0, tail is 1, then update self register as input value,
-               // if self is 0, tail is 1, then shift the tail element value to self,
+               // check self and tail side if they are ready to insert the input value,
+               // if self is 0, tail is 1, 
+               // then insert is happend and tail element, while dequeue is triggered
+               // so update self register as input value,               
+               // if self is 0, tail is 0, then shift the tail element value to self,
                // if self is 1, tail is 1, then means shift and tail happend at head location,
                // then, not update.
                if(in_ctl_insert & in_ctl_pop)
                    begin
-                       case({combi_rank_compare_more_significant, in_pifo_neighbour_compare_more_significant_from_tail_direction})
+                       case({combi_rank_compare_insert_ready, in_pifo_neighbour_insert_ready_from_tail_direction})
                            'b01: // load new input item 
                                r_element_next = in_pifo_input;
                            'b00: // shift to head direction, update with tail element,
@@ -230,7 +219,7 @@ module pifo_calendar_gpfc_atom
                
                else if (in_ctl_insert & ~in_ctl_pop)
                    begin
-                       case({combi_rank_compare_more_significant,in_pifo_neighbour_compare_more_significant_from_head_direction})
+                       case({combi_rank_compare_insert_ready,in_pifo_neighbour_insert_ready_from_head_direction})
 
                            'b10: // load new input item 
                                r_element_next = in_pifo_input;

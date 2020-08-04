@@ -38,7 +38,7 @@ wire [4:0] d_out_wrr_class;
 wire [1:0] d_out_wrr_overflow;
 wire [10:0] d_out_wrr_round;
 
-assign {d_out_unused, d_out_wrr_class, d_out_wrr_overflow, d_out_wrr_round} = d_out_pifo_rank;
+assign {d_out_unused,d_out_wrr_overflow, d_out_wrr_round,d_out_wrr_class} = d_out_pifo_rank;
 
 
 //---------CP Input Data and Output Data Handling------------------
@@ -224,7 +224,6 @@ rst = 1;
 
 
 
-
 $display("===DP Scenario 2 (Outaged) ====> Step0. Write CP Weight. port0, class0 to 1");
 // Step 0. Set port0 class 0 weight as 1
 #5000  cp_valid_in = 1; cp_write_sig_in =1; cp_port_id =0; cp_class_id =0; cp_write_val = 1;
@@ -247,7 +246,7 @@ begin
 end
 
 $display("===DP Scenario 2 (Outaged) ====> Step5. SetLast Dequeue Rank as 0x80031000."); // round 49
-lastcalcedrank[0] = 'h80031000;
+lastcalcedrank[0] = 'h80620000;
 $display("===DP Scenario 2 (Outaged) ====> Step6. Send 50 pkts for P0C1.");
 for (id_j=0; id_j<50; id_j= id_j+1)
 begin
@@ -260,7 +259,6 @@ $display("Check P0C0, P0C1 reg_overflow (Actual  ): %d : %d ", wrr.reg_overflow[
 $display("Check P0C0, P0C1 reg_round (Actual  ): %d : %d ", wrr.reg_round[0], wrr.reg_round[1]);
 $display("Check P0C0, P0C1 reg_weight (Actual  ): %d : %d ", wrr.reg_weight[0], wrr.reg_weight[1]);
 $display("===DP Scenario 2 (Outaged) ====> End");
-
 
 
 $display("RESET Registers");
@@ -294,8 +292,8 @@ begin
 end
 
 $display("Check P0C0, reg_overflow (Expected): %d ; (Actual  ): %d ", 1, wrr.reg_overflow[0]);
-
-
+check_overflow = 1;
+#5000 check_overflow = 0;
 
 $display("===DP Scenario 2 (Outaged) ====> Step5. Send 2050 pkts for P0C0 to trigger second overflow.");
 for (id_j=0; id_j<2050; id_j= id_j+1)

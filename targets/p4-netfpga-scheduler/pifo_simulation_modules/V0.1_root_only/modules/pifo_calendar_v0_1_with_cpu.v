@@ -42,7 +42,7 @@ module pifo_calendar_v0_1_with_cpu
         m_axis_pifo_calendar_top,
         m_axis_buffer_addr, // pop result, buffer address    
         m_axis_calendar_full,
-        
+        m_axis_calendar_count,
         // add cpu i/o later.
         
         
@@ -69,6 +69,7 @@ module pifo_calendar_v0_1_with_cpu
     output [BUFFER_ADDR_WIDTH-1:0] m_axis_buffer_addr;
     output [PIFO_ROOT_WIDTH-1:0]   m_axis_pifo_calendar_top;
     output                         m_axis_calendar_full;
+    output                         m_axis_calendar_count;
 
     input                                   cpu_rd_valid;
     input [PIFO_CALENDAR_INDEX_WIDTH-1:0]   cpu_rd_addr;
@@ -335,4 +336,6 @@ assign cpu_rd_result_valid = r_cpu_read_result_valid;
 assign cpu_rd_result = r_cpu_read_data;
 assign cpu_wr_result_valid = r_cpu_write_result_valid;
 assign m_axis_calendar_full = (r_pifo_element_count == PIFO_CALENDAR_SIZE - 2) ? 1 : 0;
+assign m_axis_calendar_count = r_pifo_element_count;
+
 endmodule

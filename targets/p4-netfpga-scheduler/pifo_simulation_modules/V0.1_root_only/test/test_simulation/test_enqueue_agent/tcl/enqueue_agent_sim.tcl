@@ -49,7 +49,7 @@ create_ip -name sim_stim_general -vendor NetFPGA -library NetFPGA -version 1.00 
 # reset_target all [get_ips sim_stim_general_ip]
 # set_property -dict [list CONFIG.FILE_PATH "./dummy.txt"][get_ips sim_stim_general_ip]
 # set_property -dict [list CONFIG.DATA_0_WIDTH {10}}][get_ips sim_stim_general_ip]
-set_property -dict [list CONFIG.DATA_COUNT {7} CONFIG.DATA_4_WIDTH {128} CONFIG.DATA_5_WIDTH {5} CONFIG.DATA_6_WIDTH {5} CONFIG.FILE_PATH ${file_path_data_in}] [get_ips sim_stim_general_ip]
+set_property -dict [list CONFIG.DATA_COUNT {10} CONFIG.DATA_4_WIDTH {128} CONFIG.DATA_5_WIDTH {5} CONFIG.DATA_6_WIDTH {5} CONFIG.FILE_PATH ${file_path_data_in}] [get_ips sim_stim_general_ip]
 generate_target all [get_ips sim_stim_general_ip]
 
 create_ip -name sim_checker_general -vendor NetFPGA -library NetFPGA -version 1.00 -module_name sim_checker_general_ip

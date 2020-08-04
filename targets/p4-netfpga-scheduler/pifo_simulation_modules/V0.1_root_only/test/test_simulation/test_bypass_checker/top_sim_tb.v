@@ -2,7 +2,7 @@
 
 `timescale 1ps / 1ps
 
-module enqueue_agent_tb;
+module top_sim_tb;
 
 reg clk;
 reg rstn;

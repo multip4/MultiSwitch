@@ -8,7 +8,7 @@ import shutil
 import subprocess
 
 def show_test_option():
-	 print "==================RTL=================="
+	 print "==================RTL Test=================="
 	 print "1. Normal Test Port to Port"
 	 print "2. Port Unset Test"
 	 print "3. Drop Test (Need to compile Strict Rule => Change cp stric_rule.p4 to rank_pifo_solution.p4 )"
@@ -57,11 +57,13 @@ def delete_test_files():
 
 def move_pcapfiles():
 	print "move  pcap files"
+
 	current_path = os.path.dirname(os.path.abspath(__file__))
+	print "current_path is " + current_path
 	pcap_path = current_path + '/testdata'
 	for file in os.listdir(current_path):
 		if file.endswith('.pcap'):
-			print "move file to pcap file " + file + " to /test"
+			print "move file to pcap file " + file + " to pcap_path" + pcap_path
 			shutil.move(current_path+'/'+file,pcap_path+'/'+file)
 
 
