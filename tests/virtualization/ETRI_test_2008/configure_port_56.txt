@@ -1,0 +1,13 @@
+ucli
+pm
+port-add 5/- 10G NONE 
+an-set 5/- 2
+port-enb 5/-
+port-add 6/- 10G NONE 
+an-set 6/- 2
+port-enb 6/-
+..
+exit
+bfrt_python
+
+
