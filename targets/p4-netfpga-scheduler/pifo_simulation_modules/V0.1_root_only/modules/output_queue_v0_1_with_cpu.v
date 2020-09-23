@@ -289,6 +289,13 @@ module output_queue_v0_1_with_cpu
                                     r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
                                     ctl_buffer_wr_en = 0;
                                     ctl_pifo_insert_en = 0;                                     
+                                    
+//                                    output_queue_fsm_state_next = UPDATE_FL_TAIL;
+//                                    r_buffer_rd_addr_next = r_buffer_rd_addr;
+//                                    r_buffer_first_word_en_next = 1;
+//                                    r_buffer_rd_en_next = 0; 
+
+
                                 end
                             else if (~addr_manager_out_st_buffer_empty)
                                 begin
@@ -296,48 +303,35 @@ module output_queue_v0_1_with_cpu
                                     ctl_pifo_pop_en = 1;
                                     r_buffer_rd_addr_next = w_pifo_calendar_out_addr;
                                     r_buffer_first_word_en_next = 1; // first word control signal set to 1.
-                                    r_buffer_rd_en_next = 1;                                   
+                                    r_buffer_rd_en_next = 0;                                   
                                 end    
                         end
                                        
                 end
             
-            // bypass pkt until the port not ready.
-            // goto the IDLE state if get eop and port is ready.
-            // if port not ready,
-            // then go to UPDATE_FL_TAIL state
+//            // bypass pkt until the port not ready.
+//            // goto the IDLE state if get eop and port is ready.
+//            // if port not ready,
+//            // then go to UPDATE_FL_TAIL state
             BYPASS:
                 begin
                     // set output value.
-                    r_m_axis_tvalid_next = r_s_axis_tvalid_d1;
-                    r_m_axis_tdata_next = r_s_axis_tdata_d1;
-                    r_m_axis_tkeep_next = r_s_axis_tkeep_d1;
-                    r_m_axis_tlast_next = r_s_axis_tlast_d1;
-                    r_m_axis_tuser_next = r_s_axis_tuser_d1;
-                    r_m_axis_tpifo_next = r_s_axis_tpifo_d1;                            
+//                    r_m_axis_tvalid_next = 0;
+//                    r_m_axis_tdata_next = r_s_axis_tdata_d1;
+//                    r_m_axis_tkeep_next = r_s_axis_tkeep_d1;
+//                    r_m_axis_tlast_next = r_s_axis_tlast_d1;
+//                    r_m_axis_tuser_next = r_s_axis_tuser_d1;
+//                    r_m_axis_tpifo_next = r_s_axis_tpifo_d1;                            
 
-                    if(m_axis_tready) // port ready
-                        begin                            
-                            // set buffer write signal to 0.
-                            ctl_buffer_wr_en = 0;
-                            
-                            // go to IDLE state if get eop pkt chunk
-                            if(r_s_axis_tlast_d1)
-                                output_queue_fsm_state_next = IDLE;                            
 
-                        end
-                    // else, goto UPDATE_FL_TAIL state
-                    else
-                        begin
-                            // update sop address.
-                            output_queue_fsm_state_next = READ_PKT;
-                            pifo_calendar_top_addr = w_addr_manager_out_buffer_fl_head;
-                            r_buffer_rd_addr_next = w_addr_manager_out_buffer_fl_head;
-                            r_buffer_first_word_en_next = 1; // first word control signal set to 1.
-                            r_buffer_rd_en_next = 0;
-                            ctl_buffer_wr_en = 0;       // TODO: write buffer while update the FL tail?
+                    // update sop address.
+                    output_queue_fsm_state_next = UPDATE_FL_TAIL;
+                    pifo_calendar_top_addr = w_addr_manager_out_buffer_fl_head;
+                    r_buffer_rd_addr_next = w_addr_manager_out_buffer_fl_head;
+                    r_buffer_first_word_en_next = 1; // first word control signal set to 1.
+                    r_buffer_rd_en_next = 0;
+//                    ctl_buffer_wr_en = 1;       // TODO: write buffer while update the FL tail?
   
-                        end
                 end
                 
             //  in UPDATE_FL_TAIL state, update fl_tail link,
@@ -345,13 +339,14 @@ module output_queue_v0_1_with_cpu
             UPDATE_FL_TAIL:
                 begin
 //                    output_queue_fsm_state_next = READ_PKT;
-//                    r_buffer_rd_en_next = 1;
+                    r_buffer_rd_en_next = 1;
+                    r_m_axis_tvalid_next = 0;
                     r_buffer_rd_addr_next = w_addr_manager_out_buffer_fl_tail_next;
-                    if(m_axis_tready)
-                        begin
+//                    if(m_axis_tready)
+//                        begin
                             output_queue_fsm_state_next = READ_PKT;
 //                            r_buffer_rd_en_next = 1;
-                        end
+//                        end
                                                 
                 end
             // read pkt from buffer until get the eop chunk
@@ -391,7 +386,7 @@ module output_queue_v0_1_with_cpu
                             else
                                 begin
                                     r_buffer_rd_en_next = 1;
-                                    r_buffer_rd_addr_next = w_addr_manager_out_buffer_fl_tail; 
+                                    r_buffer_rd_addr_next = w_addr_manager_out_buffer_fl_tail_next; 
                                 end
                         end
                 end
