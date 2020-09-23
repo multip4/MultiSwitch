@@ -75,6 +75,7 @@ reg [ADDR_WIDTH-1:0] r_fl_head_next;
 reg [ADDR_WIDTH-1:0] r_fl_tail;
 reg [ADDR_WIDTH-1:0] r_fl_tail_next;
 
+reg [ADDR_WIDTH-1:0] r_last_rd_index, r_last_rd_index_next;
 
 //reg                  addr_manager_fsm_state;
 //reg                  addr_manager_fsm_state_next;
@@ -126,7 +127,7 @@ begin
 
     r_fl_head_next = r_fl_head;
     r_fl_tail_next = r_fl_tail;
-    
+    r_last_rd_index_next = r_last_rd_index;
     m_axis_space_counter_reg_next = m_axis_space_counter_reg;
     
 
@@ -136,7 +137,7 @@ begin
     if(s_axis_rd_first_word_en)
         begin
             // update current fl tail's next pointer(the sop address)
-            
+            port_a_addr = r_last_rd_index;
             port_a_data = s_axis_rd_pkt_sop_addr;
             port_a_wea = 'b1;
             
@@ -151,6 +152,7 @@ begin
         begin
             r_fl_tail_next = w_port_a_out;
             port_a_addr = w_port_a_out;
+            r_last_rd_index_next = r_fl_tail;
         end
     
     
@@ -183,12 +185,14 @@ begin
             r_fl_head <= 0;
             r_fl_tail <= ADDR_TABLE_DEPTH-1;
 //            addr_manager_fsm_state<=IDLE;
+            r_last_rd_index <= ADDR_TABLE_DEPTH-1;
             m_axis_space_counter_reg <= 0;
 
             
         end
     else
         begin
+            r_last_rd_index <= r_last_rd_index_next;
             r_fl_head <= r_fl_head_next;
             r_fl_tail <= r_fl_tail_next;
 //            addr_manager_fsm_state <= addr_manager_fsm_state_next;
