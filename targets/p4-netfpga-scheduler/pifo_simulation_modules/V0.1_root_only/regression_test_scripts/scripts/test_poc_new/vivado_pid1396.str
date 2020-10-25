@@ -1,0 +1,107 @@
+/*
+
+Xilinx Vivado v2018.2 (64-bit) [Major: 2018, Minor: 2]
+SW Build: 2258646 on Thu Jun 14 20:02:38 MDT 2018
+IP Build: 2256618 on Thu Jun 14 22:10:49 MDT 2018
+
+Process ID: 1396
+License: Customer
+
+Current time: 	Sun Oct 25 21:23:07 KST 2020
+Time zone: 	Korea Standard Time (Asia/Seoul)
+
+OS: Ubuntu
+OS Version: 4.15.0-122-generic
+OS Architecture: amd64
+Available processors (cores): 8
+
+Display: :0
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 63 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	/tools/Xilinx/Vivado/2018.2/tps/lnx64/jre
+Java executable location: 	/tools/Xilinx/Vivado/2018.2/tps/lnx64/jre/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 2 GB
+
+
+User name: 	root
+User home directory: /root
+User working directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /tools/Xilinx/Vivado
+HDI_APPROOT: /tools/Xilinx/Vivado/2018.2
+RDI_DATADIR: /tools/Xilinx/Vivado/2018.2/data
+RDI_BINDIR: /tools/Xilinx/Vivado/2018.2/bin
+
+Vivado preferences file location: /root/.Xilinx/Vivado/2018.2/vivado.xml
+Vivado preferences directory: /root/.Xilinx/Vivado/2018.2/
+Vivado layouts directory: /root/.Xilinx/Vivado/2018.2/layouts
+PlanAhead jar file location: 	/tools/Xilinx/Vivado/2018.2/lib/classes/planAhead.jar
+Vivado log file location: 	/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new/vivado.log
+Vivado journal file location: 	/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-1396-jkchoi-KU
+
+Xilinx Environment Variables
+----------------------------
+J2SDKDIR: /usr/lib/jvm/java-8-oracle
+XILINX: /tools/Xilinx/Vivado/2018.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@192.168.0.15
+XILINX_DSP: /tools/Xilinx/Vivado/2018.2/ids_lite/ISE
+XILINX_IP_FOLDER: /home/jkchoi/Documents/git/p4-netfpga-live/lib/hw/xilinx/cores
+XILINX_PLANAHEAD: /tools/Xilinx/Vivado/2018.2
+XILINX_SDK: /tools/Xilinx/SDK/2018.2
+XILINX_VIVADO: /tools/Xilinx/Vivado/2018.2
+XILINX_VIVADO_HLS: /tools/Xilinx/Vivado/2018.2
+
+
+GUI allocated memory:	127 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 838 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// [GUI Memory]: 55 MB (+55146kb) [00:00:22]
+// [Engine Memory]: 749 MB (+633801kb) [00:00:22]
+// Tcl Message: start_gui 
+// [GUI Memory]: 65 MB (+7513kb) [00:00:30]
+// [Engine Memory]: 838 MB (+54336kb) [00:00:30]
+// HMemoryUtils.trashcanNow. Engine heap size: 843 MB. GUI used memory: 37 MB. Current time: 10/25/20 9:23:09 PM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 844 MB. GUI used memory: 35 MB. Current time: 10/25/20 9:53:09 PM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 844 MB. GUI used memory: 33 MB. Current time: 10/25/20 10:23:09 PM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 844 MB. GUI used memory: 33 MB. Current time: 10/25/20 10:53:09 PM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 844 MB. GUI used memory: 33 MB. Current time: 10/25/20 11:23:09 PM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 844 MB. GUI used memory: 33 MB. Current time: 10/25/20 11:53:09 PM KST
+// [GUI Memory]: 69 MB (+967kb) [02:30:44]
+// HMemoryUtils.trashcanNow. Engine heap size: 859 MB. GUI used memory: 30 MB. Current time: 10/25/20 11:53:24 PM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 12:23:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 12:53:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 1:23:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 1:53:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 2:23:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 2:53:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 3:23:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 3:53:25 AM KST
+// [GUI Memory]: 73 MB (+74kb) [06:53:59]
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 4:23:25 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 4:53:26 AM KST
+// [GUI Memory]: 76 MB (+16kb) [07:56:00]
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 30 MB. Current time: 10/26/20 5:23:26 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 31 MB. Current time: 10/26/20 5:53:26 AM KST
+// [GUI Memory]: 80 MB (+253kb) [08:48:26]
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 26 MB. Current time: 10/26/20 6:23:26 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 25 MB. Current time: 10/26/20 6:53:26 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 25 MB. Current time: 10/26/20 7:23:26 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 25 MB. Current time: 10/26/20 7:53:26 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 26 MB. Current time: 10/26/20 8:23:27 AM KST
+// HMemoryUtils.trashcanNow. Engine heap size: 860 MB. GUI used memory: 25 MB. Current time: 10/26/20 8:53:27 AM KST

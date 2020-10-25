@@ -148,7 +148,7 @@ module pifo_calendar_atom_v0_4
                                 else if((w_s_axis_input_overflow == in_global_overflow_bit) 
                                         & (w_reg_pifo_overflow != in_global_overflow_bit))
                                         begin
-                                            combi_rank_compare_large = 0;
+                                            combi_rank_compare_large = 1;
                                         end
                                 
                                 // else, means input and register overflow bit is same,

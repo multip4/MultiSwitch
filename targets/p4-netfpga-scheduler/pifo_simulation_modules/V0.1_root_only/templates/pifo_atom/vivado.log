@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Fri Dec 13 00:13:02 2019
+# Process ID: 23538
+# Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/pifo_atom
+# Command line: vivado -mode batch -source pifo_atom.tcl
+# Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/pifo_atom/vivado.log
+# Journal file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/pifo_atom/vivado.jou
+#-----------------------------------------------------------
+source pifo_atom.tcl
+# set design pifo_atom
+# set top pifo_calendar_atom_v0_2
+# set device xc7vx690t-3-ffg1761
+# set proj_dir ./ip_proj
+# set ip_version 1.00
+# set lib_name NetFPGA
+# set axi_lite_ipif_ip_path ../../../xilinx/cores/axi_lite_ipif/source/
+# create_project -name ${design} -force -dir "./${proj_dir}" -part ${device} -ip
+# set_property source_mgmt_mode All [current_project]
+# set_property top ${top} [current_fileset]
+# set_property ip_repo_paths $::env(SUME_FOLDER)/lib/hw/  [current_fileset]
+# puts "PIFO Atom"
+PIFO Atom
+# read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_atom_v0_2.v"
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+
+    while executing
+"ipx::current_core"
+    invoked from within
+"set_property name ${design} [ipx::current_core]"
+    (file "pifo_atom.tcl" line 29)
+INFO: [Common 17-206] Exiting Vivado at Fri Dec 13 00:13:10 2019...

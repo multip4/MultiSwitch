@@ -1,0 +1,90 @@
+SDNet compiler arguments:
+	 ./src/project_demo.sdnet -skipEval -busType axi -busWidth 256 -singlecontrolport -workDir nf_sume_sdnet_ip -altVivadoScripts
+
+
+/*********************/
+
+Sync 0: S_SYNCER_for_TopParser
+	Ports: 
+		packet_in_PACKET2,	calc_depth: 275,	actual_depth: 512,	backpressure_thresh: 129
+		tuple_in_TUPLE0,	calc_depth: 139,	actual_depth: 256,	backpressure_thresh: 66
+		tuple_in_TUPLE1,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+
+
+/*********************/
+
+Sync 1: S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+	Ports: 
+		packet_in_PACKET5,	calc_depth: 323,	actual_depth: 512,	backpressure_thresh: 177
+		tuple_in_TUPLE0,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE1,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE2,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE3,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE4,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE6,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+
+
+/*********************/
+
+Sync 2: S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+	Ports: 
+		packet_in_PACKET13,	calc_depth: 313,	actual_depth: 512,	backpressure_thresh: 167
+		tuple_in_TUPLE0,	calc_depth: 154,	actual_depth: 256,	backpressure_thresh: 81
+		tuple_in_TUPLE1,	calc_depth: 154,	actual_depth: 256,	backpressure_thresh: 81
+		tuple_in_TUPLE2,	calc_depth: 154,	actual_depth: 256,	backpressure_thresh: 81
+		tuple_in_TUPLE3,	calc_depth: 154,	actual_depth: 256,	backpressure_thresh: 81
+		tuple_in_TUPLE4,	calc_depth: 154,	actual_depth: 256,	backpressure_thresh: 81
+		tuple_in_TUPLE5,	calc_depth: 154,	actual_depth: 256,	backpressure_thresh: 81
+		tuple_in_TUPLE6,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE7,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE8,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE9,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE10,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE11,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE12,	calc_depth: 157,	actual_depth: 256,	backpressure_thresh: 84
+		tuple_in_TUPLE14,	calc_depth: 157,	actual_depth: 256,	backpressure_thresh: 84
+
+
+/*********************/
+
+Sync 3: S_SYNCER_for_S_SYNCER_for_TopDeparser
+	Ports: 
+		packet_in_PACKET14,	calc_depth: 359,	actual_depth: 512,	backpressure_thresh: 213
+		tuple_in_TUPLE0,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE1,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE2,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE3,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE4,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE5,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE6,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE7,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE8,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE9,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE10,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE11,	calc_depth: 148,	actual_depth: 256,	backpressure_thresh: 75
+		tuple_in_TUPLE12,	calc_depth: 74,	actual_depth: 128,	backpressure_thresh: 33
+		tuple_in_TUPLE13,	calc_depth: 180,	actual_depth: 256,	backpressure_thresh: 107
+		tuple_in_TUPLE15,	calc_depth: 180,	actual_depth: 256,	backpressure_thresh: 107
+
+
+/*********************/
+
+Sync 4: S_SYNCER_for_TopDeparser
+	Ports: 
+		packet_in_PACKET5,	calc_depth: 289,	actual_depth: 512,	backpressure_thresh: 143
+		tuple_in_TUPLE0,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE1,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE2,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE3,	calc_depth: 138,	actual_depth: 256,	backpressure_thresh: 65
+		tuple_in_TUPLE4,	calc_depth: 145,	actual_depth: 256,	backpressure_thresh: 72
+		tuple_in_TUPLE6,	calc_depth: 145,	actual_depth: 256,	backpressure_thresh: 72
+
+
+/*********************/
+
+Sync 5: S_SYNCER_for__OUT_
+	Ports: 
+		packet_in_PACKET2,	calc_depth: 323,	actual_depth: 512,	backpressure_thresh: 177
+		tuple_in_TUPLE0,	calc_depth: 139,	actual_depth: 256,	backpressure_thresh: 66
+		tuple_in_TUPLE1,	calc_depth: 139,	actual_depth: 256,	backpressure_thresh: 66
+

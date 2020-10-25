@@ -36,6 +36,10 @@ parameter OUTPUT_SYNC=1
     input [PIFO_ROOT_WIDTH-1:0]     s_axis_pifo_info,    
     input [PIFO_ROOT_WIDTH-1:0]     s_axis_pifo_calandar_top,
     
+    input                           s_axis_gpfc_valid,
+    input [PIFO_ROOT_WIDTH-1:0]     s_axis_gpfc_pause_rank,
+
+    
     output reg                      m_axis_valid,    
     output                          m_axis_bypass_en,
     
@@ -68,7 +72,7 @@ begin
             end
         2'b11: // both s_axis_pifo_info and calendar top is valid
             begin
-                if(s_axis_pifo_rank < s_axis_pifo_calendar_top_rank)
+                if((s_axis_pifo_rank < s_axis_pifo_calendar_top_rank) & ~( s_axis_gpfc_valid & (s_axis_pifo_rank >= s_axis_gpfc_pause_rank)))
                     r_bypass_en_next = 1;
             end
     endcase

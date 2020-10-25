@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Sat Oct  3 20:32:50 2020
+# Process ID: 6691
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch
+# Command line: wbtcv -mode batch -source /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/webtalk.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/webtalk.jou
+#-----------------------------------------------------------
+source /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/webtalk/xsim_webtalk.tcl -notrace

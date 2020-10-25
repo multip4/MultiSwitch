@@ -1,0 +1,407 @@
+#-----------------------------------------------------------
+# xsim v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Oct  7 15:09:01 2020
+# Process ID: 24134
+# Current directory: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch
+# Command line: xsim -mode tcl -source {xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/xsim_script.tcl}
+# Log file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.log
+# Journal file: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/work.SimpleSumeSwitch_tb#work.glbl/xsim_script.tcl
+# xsim {work.SimpleSumeSwitch_tb#work.glbl} -autoloadwcfg -runall
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+run -all
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l2_switch.table_l2_switch_t_Wrap_inst.table_l2_switch_t_IntTop_inst.table_l2_switch_t_Lookup_inst.table_l2_switch_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l2_switch/table_l2_switch_t_Wrap_inst/table_l2_switch_t_IntTop_inst/table_l2_switch_t_Lookup_inst/table_l2_switch_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_344  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l2_switch.table_l2_switch_t_Wrap_inst.table_l2_switch_t_IntTop_inst.table_l2_switch_t_Lookup_inst.table_l2_switch_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l2_switch/table_l2_switch_t_Wrap_inst/table_l2_switch_t_IntTop_inst/table_l2_switch_t_Lookup_inst/table_l2_switch_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_344  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l2_switch.table_l2_switch_t_Wrap_inst.table_l2_switch_t_IntTop_inst.table_l2_switch_t_Lookup_inst.table_l2_switch_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l2_switch/table_l2_switch_t_Wrap_inst/table_l2_switch_t_IntTop_inst/table_l2_switch_t_Lookup_inst/table_l2_switch_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_344  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l2_switch.table_l2_switch_t_Wrap_inst.table_l2_switch_t_IntTop_inst.table_l2_switch_t_Lookup_inst.table_l2_switch_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l2_switch/table_l2_switch_t_Wrap_inst/table_l2_switch_t_IntTop_inst/table_l2_switch_t_Lookup_inst/table_l2_switch_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_344  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l2_switch.table_l2_switch_t_Wrap_inst.table_l2_switch_t_IntTop_inst.table_l2_switch_t_Lookup_inst.table_l2_switch_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l2_switch/table_l2_switch_t_Wrap_inst/table_l2_switch_t_IntTop_inst/table_l2_switch_t_Lookup_inst/table_l2_switch_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_344  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l1_switch.table_l1_switch_t_Wrap_inst.table_l1_switch_t_IntTop_inst.table_l1_switch_t_Lookup_inst.table_l1_switch_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l1_switch/table_l1_switch_t_Wrap_inst/table_l1_switch_t_IntTop_inst/table_l1_switch_t_Lookup_inst/table_l1_switch_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_480  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l1_switch.table_l1_switch_t_Wrap_inst.table_l1_switch_t_IntTop_inst.table_l1_switch_t_Lookup_inst.table_l1_switch_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l1_switch/table_l1_switch_t_Wrap_inst/table_l1_switch_t_IntTop_inst/table_l1_switch_t_Lookup_inst/table_l1_switch_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_480  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l1_switch.table_l1_switch_t_Wrap_inst.table_l1_switch_t_IntTop_inst.table_l1_switch_t_Lookup_inst.table_l1_switch_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l1_switch/table_l1_switch_t_Wrap_inst/table_l1_switch_t_IntTop_inst/table_l1_switch_t_Lookup_inst/table_l1_switch_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_480  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l1_switch.table_l1_switch_t_Wrap_inst.table_l1_switch_t_IntTop_inst.table_l1_switch_t_Lookup_inst.table_l1_switch_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l1_switch/table_l1_switch_t_Wrap_inst/table_l1_switch_t_IntTop_inst/table_l1_switch_t_Lookup_inst/table_l1_switch_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_480  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_l1_switch.table_l1_switch_t_Wrap_inst.table_l1_switch_t_IntTop_inst.table_l1_switch_t_Lookup_inst.table_l1_switch_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_l1_switch/table_l1_switch_t_Wrap_inst/table_l1_switch_t_IntTop_inst/table_l1_switch_t_Lookup_inst/table_l1_switch_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_480  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_strict_priority.table_strict_priority_t_Wrap_inst.table_strict_priority_t_IntTop_inst.table_strict_priority_t_Lookup_inst.table_strict_priority_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_strict_priority/table_strict_priority_t_Wrap_inst/table_strict_priority_t_IntTop_inst/table_strict_priority_t_Lookup_inst/table_strict_priority_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_614  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_strict_priority.table_strict_priority_t_Wrap_inst.table_strict_priority_t_IntTop_inst.table_strict_priority_t_Lookup_inst.table_strict_priority_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_strict_priority/table_strict_priority_t_Wrap_inst/table_strict_priority_t_IntTop_inst/table_strict_priority_t_Lookup_inst/table_strict_priority_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_614  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_strict_priority.table_strict_priority_t_Wrap_inst.table_strict_priority_t_IntTop_inst.table_strict_priority_t_Lookup_inst.table_strict_priority_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_strict_priority/table_strict_priority_t_Wrap_inst/table_strict_priority_t_IntTop_inst/table_strict_priority_t_Lookup_inst/table_strict_priority_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_614  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_strict_priority.table_strict_priority_t_Wrap_inst.table_strict_priority_t_IntTop_inst.table_strict_priority_t_Lookup_inst.table_strict_priority_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_strict_priority/table_strict_priority_t_Wrap_inst/table_strict_priority_t_IntTop_inst/table_strict_priority_t_Lookup_inst/table_strict_priority_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_614  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_strict_priority.table_strict_priority_t_Wrap_inst.table_strict_priority_t_IntTop_inst.table_strict_priority_t_Lookup_inst.table_strict_priority_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_strict_priority/table_strict_priority_t_Wrap_inst/table_strict_priority_t_IntTop_inst/table_strict_priority_t_Lookup_inst/table_strict_priority_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_614  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_switch_mode.table_switch_mode_t_Wrap_inst.table_switch_mode_t_IntTop_inst.table_switch_mode_t_Lookup_inst.table_switch_mode_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_switch_mode/table_switch_mode_t_Wrap_inst/table_switch_mode_t_IntTop_inst/table_switch_mode_t_Lookup_inst/table_switch_mode_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_752  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_switch_mode.table_switch_mode_t_Wrap_inst.table_switch_mode_t_IntTop_inst.table_switch_mode_t_Lookup_inst.table_switch_mode_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_switch_mode/table_switch_mode_t_Wrap_inst/table_switch_mode_t_IntTop_inst/table_switch_mode_t_Lookup_inst/table_switch_mode_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_752  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_switch_mode.table_switch_mode_t_Wrap_inst.table_switch_mode_t_IntTop_inst.table_switch_mode_t_Lookup_inst.table_switch_mode_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_switch_mode/table_switch_mode_t_Wrap_inst/table_switch_mode_t_IntTop_inst/table_switch_mode_t_Lookup_inst/table_switch_mode_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_752  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_switch_mode.table_switch_mode_t_Wrap_inst.table_switch_mode_t_IntTop_inst.table_switch_mode_t_Lookup_inst.table_switch_mode_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_switch_mode/table_switch_mode_t_Wrap_inst/table_switch_mode_t_IntTop_inst/table_switch_mode_t_Lookup_inst/table_switch_mode_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_752  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_switch_mode.table_switch_mode_t_Wrap_inst.table_switch_mode_t_IntTop_inst.table_switch_mode_t_Lookup_inst.table_switch_mode_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_switch_mode/table_switch_mode_t_Wrap_inst/table_switch_mode_t_IntTop_inst/table_switch_mode_t_Lookup_inst/table_switch_mode_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_752  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_rank_calc_mode.table_rank_calc_mode_t_Wrap_inst.table_rank_calc_mode_t_IntTop_inst.table_rank_calc_mode_t_Lookup_inst.table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_0.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_rank_calc_mode/table_rank_calc_mode_t_Wrap_inst/table_rank_calc_mode_t_IntTop_inst/table_rank_calc_mode_t_Lookup_inst/table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_0/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_888  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_rank_calc_mode.table_rank_calc_mode_t_Wrap_inst.table_rank_calc_mode_t_IntTop_inst.table_rank_calc_mode_t_Lookup_inst.table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_1.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_rank_calc_mode/table_rank_calc_mode_t_Wrap_inst/table_rank_calc_mode_t_IntTop_inst/table_rank_calc_mode_t_Lookup_inst/table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_1/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_888  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_rank_calc_mode.table_rank_calc_mode_t_Wrap_inst.table_rank_calc_mode_t_IntTop_inst.table_rank_calc_mode_t_Lookup_inst.table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_2.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_rank_calc_mode/table_rank_calc_mode_t_Wrap_inst/table_rank_calc_mode_t_IntTop_inst/table_rank_calc_mode_t_Lookup_inst/table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_2/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_888  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_rank_calc_mode.table_rank_calc_mode_t_Wrap_inst.table_rank_calc_mode_t_IntTop_inst.table_rank_calc_mode_t_Lookup_inst.table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_3.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_rank_calc_mode/table_rank_calc_mode_t_Wrap_inst/table_rank_calc_mode_t_IntTop_inst/table_rank_calc_mode_t_Lookup_inst/table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_3/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_888  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.table_rank_calc_mode.table_rank_calc_mode_t_Wrap_inst.table_rank_calc_mode_t_IntTop_inst.table_rank_calc_mode_t_Lookup_inst.table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_4.xpm_memory_tdpram_inst.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/table_rank_calc_mode/table_rank_calc_mode_t_Wrap_inst/table_rank_calc_mode_t_IntTop_inst/table_rank_calc_mode_t_Lookup_inst/table_rank_calc_mode_t_RamR1RW1_KeyValue_inst_4/xpm_memory_tdpram_inst/xpm_memory_base_inst/Initial270_888  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_BRIDGER_for_table_l2_switch_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_BRIDGER_for_table_l2_switch_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2444  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_BRIDGER_for_table_l1_switch_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_BRIDGER_for_table_l1_switch_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2534  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_BRIDGER_for_table_strict_priority_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_BRIDGER_for_table_strict_priority_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2444  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_BRIDGER_for_table_switch_mode_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_BRIDGER_for_table_switch_mode_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2444  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_BRIDGER_for_table_rank_calc_mode_tuple_in_request.myfifo.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_BRIDGER_for_table_rank_calc_mode_tuple_in_request/myfifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2444  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopParser.v9rmdt0tuuceat1jtw7jl48ttqh_816.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopParser/v9rmdt0tuuceat1jtw7jl48ttqh_816/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2881  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopParser.ihkdvlxj96vrcmly_2645.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopParser/ihkdvlxj96vrcmly_2645/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2911  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopParser.iear8rakpq3nhcrzlhcfj00gkwqtxj_2287.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopParser/iear8rakpq3nhcrzlhcfj00gkwqtxj_2287/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2975  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopParser.ypujgwfofqr5u6g9b4zwzrfi_2364.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopParser/ypujgwfofqr5u6g9b4zwzrfi_2364/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3059  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.tmkx505vzcy3fz9hagwc_1815.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/tmkx505vzcy3fz9hagwc_1815/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2881  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.yayx2f6sdyb9iiaw4guks10i9zr1uew_282.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/yayx2f6sdyb9iiaw4guks10i9zr1uew_282/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2911  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.r72rq0ueglh14hsjq04iock6zl8og8g_226.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/r72rq0ueglh14hsjq04iock6zl8og8g_226/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3240  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.wb9fccjvy9s07fbmivj0wdczy_1575.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/wb9fccjvy9s07fbmivj0wdczy_1575/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3324  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.r3mp8on78tui31e0bs3vh7_1110.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/r3mp8on78tui31e0bs3vh7_1110/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3408  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.szidl14qtbycbsjqyyw5_732.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/szidl14qtbycbsjqyyw5_732/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2975  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.w9lsf4lgl23wpx4sl0x_2575.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/w9lsf4lgl23wpx4sl0x_2575/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3059  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.p7bnpt7wll387f98i_927.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser/p7bnpt7wll387f98i_927/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3660  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.o42dmf6mav47jg0zigvw8hjs_2091.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/o42dmf6mav47jg0zigvw8hjs_2091/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2881  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.ucqi79uvlc1a654ksn3n_476.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/ucqi79uvlc1a654ksn3n_476/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2911  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.uo3isua3l3nvmzxb_1175.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/uo3isua3l3nvmzxb_1175/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3408  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.yeoavfaqopnlkzjg0hs0rg_1197.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/yeoavfaqopnlkzjg0hs0rg_1197/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3937  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.o3x381egore4cq91sk8d_865.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/o3x381egore4cq91sk8d_865/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3240  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.hghj7d8zjietgfprkx44byaf_2078.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/hghj7d8zjietgfprkx44byaf_2078/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2975  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.srlc2dr4m5jvuml5pciepeue_280.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/srlc2dr4m5jvuml5pciepeue_280/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3324  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.swskkwfh61u9200jceafit66iawi_824.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/swskkwfh61u9200jceafit66iawi_824/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4273  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.djcnl77zy3pb6o7j0cdo1aenyv2c8ddy_1639.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/djcnl77zy3pb6o7j0cdo1aenyv2c8ddy_1639/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4273  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.wumehi8r1tosuudpq0kn3zkqcay_2681.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/wumehi8r1tosuudpq0kn3zkqcay_2681/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4443  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.oe3v24rkgw1tx5vinvixc_628.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/oe3v24rkgw1tx5vinvixc_628/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4527  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.rl9g0zi2gqgb730msx_2477.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/rl9g0zi2gqgb730msx_2477/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_4611  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.yobw4hqhic4izg8d_964.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/yobw4hqhic4izg8d_964/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3059  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_S_SYNCER_for_TopDeparser.yhexrbp1lvuztp6n699t5m4_2022.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_S_SYNCER_for_TopDeparser/yhexrbp1lvuztp6n699t5m4_2022/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3660  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.v8uyvz48t9tud1hrabog02jcuvnuk_126.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/v8uyvz48t9tud1hrabog02jcuvnuk_126/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2881  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.l49xjw1oqcifiwthns2pyhm56zm0_925.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/l49xjw1oqcifiwthns2pyhm56zm0_925/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2911  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.sih1g8qc4s0phbsbg3ufra49rq_103.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/sih1g8qc4s0phbsbg3ufra49rq_103/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3240  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.vqvbkwagvjr4rf7gd7pz0rxo6k_681.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/vqvbkwagvjr4rf7gd7pz0rxo6k_681/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3324  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.yoth8mwkuivomkyfahpgntyv_956.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/yoth8mwkuivomkyfahpgntyv_956/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3408  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.s7r9nrytcnxzjk7zzsh5oz7llaji5q4e_1728.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/s7r9nrytcnxzjk7zzsh5oz7llaji5q4e_1728/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2975  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.eo5qml23r35emkz87609616iwa_2107.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/eo5qml23r35emkz87609616iwa_2107/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3059  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for_TopDeparser.fc7vpuoukod9bfunlxf96cz88yh8j7_1315.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for_TopDeparser/fc7vpuoukod9bfunlxf96cz88yh8j7_1315/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3660  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for__OUT_.mvw77k50wu5eusfhs3f24cv0su_1267.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for__OUT_/mvw77k50wu5eusfhs3f24cv0su_1267/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_5463  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for__OUT_.gokatjjmfkc2w4f1xzpazo2978ijfxo_1103.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for__OUT_/gokatjjmfkc2w4f1xzpazo2978ijfxo_1103/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2911  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for__OUT_.lohq29vyswbfmj317mn5s6t69_1559.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for__OUT_/lohq29vyswbfmj317mn5s6t69_1559/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_3408  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. SimpleSumeSwitch_tb.SimpleSumeSwitch_i.S_SYNCER_for__OUT_.teta80rnpdwljtiy5ke0x_2368.gnuram_async_fifo.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc  0
+Time: 1 ps  Iteration: 0  Process: /SimpleSumeSwitch_tb/SimpleSumeSwitch_i/S_SYNCER_for__OUT_/teta80rnpdwljtiy5ke0x_2368/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial270_2975  File: /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/xpm_memory.sv
+[SW] CAM_Init() - start
+[SW] CAM_Init() - done
+[SW] CAM_EnableDevice() - start
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+[SW] CAM_EnableDevice() - done
+SV_write_control()- done
+[SW] CAM_Init() - start
+[SW] CAM_Init() - done
+[SW] CAM_EnableDevice() - start
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+[SW] CAM_EnableDevice() - done
+[SW] CAM_WriteEntry() - start
+SV_write_control()- done
+CAM UPDATE           0: KEY(hex) = 1 VALUE(hex) = 101
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+SV_read_control()- done
+[SW] CAM_WriteEntry() - start
+CAM UPDATE           1: KEY(hex) = 4 VALUE(hex) = 104
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+SV_read_control()- done
+[SW] CAM_WriteEntry() - start
+CAM UPDATE           2: KEY(hex) = 10 VALUE(hex) = 110
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_WriteEntry() - start
+SV_read_control()- done
+CAM UPDATE           3: KEY(hex) = 40 VALUE(hex) = 140
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_Init() - start
+[SW] CAM_Init() - done
+[SW] CAM_EnableDevice() - start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+[SW] CAM_EnableDevice() - done
+[SW] CAM_WriteEntry() - start
+SV_write_control()- done
+CAM UPDATE           0: KEY(hex) = AB00000000AB VALUE(hex) = 180001000
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_Init() - start
+[SW] CAM_Init() - done
+[SW] CAM_EnableDevice() - start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+[SW] CAM_EnableDevice() - done
+[SW] CAM_WriteEntry() - start
+CAM UPDATE           0: KEY(hex) = 10000000001 VALUE(hex) = 3
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_WriteEntry() - start
+SV_read_control()- done
+CAM UPDATE           1: KEY(hex) = 20000000002 VALUE(hex) = 3
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_WriteEntry() - start
+SV_read_control()- done
+CAM UPDATE           2: KEY(hex) = 30000000003 VALUE(hex) = 3
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_WriteEntry() - start
+SV_read_control()- done
+CAM UPDATE           3: KEY(hex) = 40000000004 VALUE(hex) = 3
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_WriteEntry() - start
+SV_read_control()- done
+CAM UPDATE           4: KEY(hex) = 11111111101 VALUE(hex) = 3
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_WriteEntry() - start
+SV_read_control()- done
+CAM UPDATE           5: KEY(hex) = AB00000000AB VALUE(hex) = 2
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+[SW] CAM_Init() - start
+[SW] CAM_Init() - done
+[SW] CAM_EnableDevice() - start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+CAM UPDATE           0: KEY(hex) = AB00000000AB VALUE(hex) = 18
+SV_write_control()- start
+[SW] CAM_EnableDevice() - done
+[SW] CAM_WriteEntry() - start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_write_control()- start
+SV_write_control()- done
+SV_read_control()- start
+SV_read_control()- done
+SV_read_control()- start
+[SW] CAM_WriteEntry() - done
+SV_read_control()- done
+[10477474]  INFO: finished packet stimulus file
+[10489136] ERROR: tuple mismatch for packet 1
+expected < tuple_out_digest_data, tuple_out_sume_metadata > = < 0000000000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000004100000 >
+actual   < tuple_out_digest_data, tuple_out_sume_metadata > = < 0000000000000000000000000000000000000000000000000000000000000000 8000100000000000000000000000000010100000 >
+$finish called at time : 10489136 ps : File "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/Testbench/Check.v" Line 120
+exit
+INFO: [Common 17-206] Exiting xsim at Wed Oct  7 15:09:15 2020...

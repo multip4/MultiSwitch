@@ -30,8 +30,13 @@ module output_queue_v0_1_with_cpu
     parameter BUFFER_ADDR_WIDTH = 12,
     parameter PIFO_ADDR_WIDTH = 10,
     parameter BUFFER_WORD_DEPTH = 4096,
-    parameter PIFO_WORD_DEPTH = 1024,
+    parameter PIFO_WORD_DEPTH = 256,
+
+    parameter PAUSE_FRAME_WIDTH = 512,
+    parameter PAUSE_RANK_WIDTH = 17,
+
     parameter OUTPUT_SYNC = 1
+
     )
     (
     
@@ -64,7 +69,16 @@ module output_queue_v0_1_with_cpu
      output                                          m_is_pifo_full,
      output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_remain_size,
      output [BUFFER_ADDR_WIDTH-1:0]                  m_buffer_counter,
-        
+    
+    // input gpfc signal
+
+    input                                           s_axis_gpfc_valid,
+    input   [PAUSE_RANK_WIDTH-1:0]                  s_axis_gpfc_pause_rank,
+
+    input                                           s_axis_gpfc_pause_frame_valid,
+    input   [PAUSE_FRAME_WIDTH-1:0]                 s_axis_gpfc_pause_frame_data,
+    output                                          s_axis_gpfc_pause_frame_ack,
+
     // clock and reset
     input axis_aclk,
     input axis_resetn
@@ -78,7 +92,8 @@ module output_queue_v0_1_with_cpu
     localparam IDLE = 0;
     localparam BYPASS = 1;
     localparam UPDATE_FL_TAIL = 2;
-    localparam READ_PKT = 3; 
+    localparam READ_PKT = 3;
+    localparam GPFC_PF = 4; 
 //    localparam BYPASS_STOP = 4;
     
 
@@ -126,15 +141,84 @@ module output_queue_v0_1_with_cpu
     reg                                           r_s_axis_buffer_wr_en_d1; 
     reg                                           r_s_axis_pifo_insert_en_d1;
 
+
+    // gpfc registers
+
+    reg [DATA_WIDTH-1:0]                          r_pause_frame_last_data, r_pause_frame_last_data_next;
+    reg                                           r_pause_frame_ack, r_pause_frame_ack_next;
+
+
     // output result for sop pkt addr 
     reg [BUFFER_ADDR_WIDTH-1:0] pifo_calendar_top_addr;
     // buffer manager module inst
-    addr_manager_v0_2
+    
+    
+//    addr_manager_v0_2
+//    #(
+//    .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
+//    .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
+//    addr_manager_inst
+//    (
+//    .s_axis_wr_en(ctl_buffer_wr_en), // write signal for fl_head transition
+//    .s_axis_rd_en(r_buffer_rd_en_next),    // read signal 
+        
+//    .s_axis_rd_pkt_sop_addr(pifo_calendar_top_addr), // read address for sop 
+//    .s_axis_rd_first_word_en(r_buffer_first_word_en_next), // the first word signal, for fl_tail value update.
+    
+//    .m_axis_fl_head(w_addr_manager_out_buffer_fl_head),       // next writable available address, same as free list head.
+//    .m_axis_fl_head_next(w_addr_manager_out_buffer_fl_head_next),
+//    .m_axis_fl_tail(w_addr_manager_out_buffer_fl_tail),
+//    .m_axis_fl_tail_next(w_addr_manager_out_buffer_fl_tail_next),  // next readable address, the value of index at fl_tail
+    
+//    .m_axis_remain_space(addr_manager_out_st_buffer_remain_space), // statistics for buffer spae
+//    .m_axis_almost_full(addr_manager_out_st_buffer_almost_full),  // buffer almost full signal. 
+//    .m_axis_is_empty(addr_manager_out_st_buffer_empty),     // buffer empty signal
+//    .m_axis_buffer_counter(m_buffer_counter),
+    
+//    .clk(axis_aclk),
+//    .rstn(axis_resetn)    //active low    
+//    );
+ 
+    // buffer wrapper module inst
+     
+    wire [DATA_WIDTH - 1:0]                         w_buffer_wrapper_out_tdata;  // outptu pkt data
+    wire [(DATA_WIDTH / 8) - 1:0]                   w_buffer_wrapper_out_tkeep; // output keep data
+    wire                                            w_buffer_wrapper_out_tlast; // output last signal
+    wire [META_WIDTH-1:0]                           w_buffer_wrapper_out_tuser; // output metadata 
+    wire [PIFO_WIDTH-1:0]                           w_buffer_wrapper_out_tpifo;  // output pifo infomation.
+    
+//    buffer_wrapper_v1_0_with_cpu
+//    #(.C_S_AXIS_ADDR_WIDTH(BUFFER_ADDR_WIDTH))
+//    buffer_wrapper_inst
+//    (
+//        .s_axis_tdata(r_s_axis_tdata_d1),
+//        .s_axis_tkeep(r_s_axis_tkeep_d1),
+//        .s_axis_tlast(r_s_axis_tlast_d1),
+//        .s_axis_tuser(r_s_axis_tuser_d1),
+//        .s_axis_tpifo(r_s_axis_tpifo_d1),
+        
+//        .m_axis_tdata(w_buffer_wrapper_out_tdata),
+//        .m_axis_tkeep(w_buffer_wrapper_out_tkeep),
+//        .m_axis_tlast(w_buffer_wrapper_out_tlast),
+//        .m_axis_tuser(w_buffer_wrapper_out_tuser),
+//        .m_axis_tpifo(w_buffer_wrapper_out_tpifo),
+        
+//        .s_axis_wr_addr(w_addr_manager_out_buffer_fl_head),
+//        .s_axis_wr_en(ctl_buffer_wr_en),
+//        .s_axis_rd_addr(r_buffer_rd_addr_next),
+
+//        .clk(axis_aclk),
+//        .rstn(axis_resetn)    //active low    
+//    );   
+    
+    
+    block_ram_wrapper
     #(
-    .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
-    .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH))
-    addr_manager_inst
-    (
+     .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
+     .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH)
+    )
+    block_ram_inst(
+    
     .s_axis_wr_en(ctl_buffer_wr_en), // write signal for fl_head transition
     .s_axis_rd_en(r_buffer_rd_en_next),    // read signal 
         
@@ -150,42 +234,24 @@ module output_queue_v0_1_with_cpu
     .m_axis_almost_full(addr_manager_out_st_buffer_almost_full),  // buffer almost full signal. 
     .m_axis_is_empty(addr_manager_out_st_buffer_empty),     // buffer empty signal
     .m_axis_buffer_counter(m_buffer_counter),
+
+    .s_axis_tdata(r_s_axis_tdata_d1),
+    .s_axis_tkeep(r_s_axis_tkeep_d1),
+    .s_axis_tlast(r_s_axis_tlast_d1),
+    .s_axis_tuser(r_s_axis_tuser_d1),
+    .s_axis_tpifo(r_s_axis_tpifo_d1),
     
+    .m_axis_tdata(w_buffer_wrapper_out_tdata),
+    .m_axis_tkeep(w_buffer_wrapper_out_tkeep),
+    .m_axis_tlast(w_buffer_wrapper_out_tlast),
+    .m_axis_tuser(w_buffer_wrapper_out_tuser),
+    .m_axis_tpifo(w_buffer_wrapper_out_tpifo),
+
     .clk(axis_aclk),
     .rstn(axis_resetn)    //active low    
-    );
- 
-    // buffer wrapper module inst
-     
-    wire [DATA_WIDTH - 1:0]                         w_buffer_wrapper_out_tdata;  // outptu pkt data
-    wire [(DATA_WIDTH / 8) - 1:0]                   w_buffer_wrapper_out_tkeep; // output keep data
-    wire                                            w_buffer_wrapper_out_tlast; // output last signal
-    wire [META_WIDTH-1:0]                           w_buffer_wrapper_out_tuser; // output metadata 
-    wire [PIFO_WIDTH-1:0]                           w_buffer_wrapper_out_tpifo;  // output pifo infomation.
     
-    buffer_wrapper_v1_0_with_cpu
-    #(.C_S_AXIS_ADDR_WIDTH(BUFFER_ADDR_WIDTH))
-    buffer_wrapper_inst
-    (
-        .s_axis_tdata(r_s_axis_tdata_d1),
-        .s_axis_tkeep(r_s_axis_tkeep_d1),
-        .s_axis_tlast(r_s_axis_tlast_d1),
-        .s_axis_tuser(r_s_axis_tuser_d1),
-        .s_axis_tpifo(r_s_axis_tpifo_d1),
-        
-        .m_axis_tdata(w_buffer_wrapper_out_tdata),
-        .m_axis_tkeep(w_buffer_wrapper_out_tkeep),
-        .m_axis_tlast(w_buffer_wrapper_out_tlast),
-        .m_axis_tuser(w_buffer_wrapper_out_tuser),
-        .m_axis_tpifo(w_buffer_wrapper_out_tpifo),
-        
-        .s_axis_wr_addr(w_addr_manager_out_buffer_fl_head),
-        .s_axis_wr_en(ctl_buffer_wr_en),
-        .s_axis_rd_addr(r_buffer_rd_addr_next),
-
-        .clk(axis_aclk),
-        .rstn(axis_resetn)    //active low    
-    );   
+    );
+    
     
 //    reg                             r_pifo_pop_en;
     reg                             ctl_pifo_pop_en;    
@@ -197,9 +263,11 @@ module output_queue_v0_1_with_cpu
     wire [BUFFER_ADDR_WIDTH-1:0]    w_pifo_calendar_out_addr; 
     wire                            w_pifo_calendar_out_calendar_full;
     wire [PIFO_WIDTH-1:0]           w_pifo_calendar_out_pifo_calendar_top;
+    
 
     
-    pifo_calendar_v0_2_with_no_cpu
+    
+    pifo_calendar_demo
     #(
     .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH),
     .BUFFER_ADDR_WIDTH(BUFFER_ADDR_WIDTH),
@@ -234,7 +302,11 @@ module output_queue_v0_1_with_cpu
         .s_axis_valid(s_axis_pifo_insert_en),
         .s_axis_pifo_info(w_pifo_root_info_final),        
         .s_axis_pifo_calandar_top(w_pifo_calendar_out_pifo_calendar_top),
-        
+
+        .s_axis_gpfc_valid(s_axis_gpfc_valid),
+        .s_axis_gpfc_pause_rank(s_axis_gpfc_pause_rank),
+
+
         .m_axis_valid(w_bypass_checker_out_valid),
         .m_axis_bypass_en(w_bypass_checker_out_bypass_en),        
                                  
@@ -262,7 +334,8 @@ module output_queue_v0_1_with_cpu
         r_m_axis_tuser_next = r_m_axis_tuser;
         r_m_axis_tpifo_next = r_m_axis_tpifo;
         
-        
+        r_pause_frame_last_data_next = r_pause_frame_last_data;
+        r_pause_frame_ack_next = 0;
         case(output_queue_fsm_state)
             
             // default state:
@@ -278,33 +351,55 @@ module output_queue_v0_1_with_cpu
                             // if the pifo insert_en_d1 is true and bypass is true, then bypass
                             // else if the buffer is not empty then dequeue from buffer 
                             
-                            if(r_s_axis_pifo_insert_en_d1 & w_bypass_checker_out_bypass_final)
+
+                            if(s_axis_gpfc_pause_frame_valid)
                                 begin
-                                    output_queue_fsm_state_next = BYPASS;
-                                    r_m_axis_tvalid_next = r_s_axis_tvalid_d1;
-                                    r_m_axis_tdata_next = r_s_axis_tdata_d1;
-                                    r_m_axis_tkeep_next = r_s_axis_tkeep_d1;
-                                    r_m_axis_tlast_next = r_s_axis_tlast_d1;
-                                    r_m_axis_tuser_next = r_s_axis_tuser_d1;
-                                    r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
-                                    ctl_buffer_wr_en = 0;
-                                    ctl_pifo_insert_en = 0;                                     
-                                    
-//                                    output_queue_fsm_state_next = UPDATE_FL_TAIL;
-//                                    r_buffer_rd_addr_next = r_buffer_rd_addr;
-//                                    r_buffer_first_word_en_next = 1;
-//                                    r_buffer_rd_en_next = 0; 
+                                    output_queue_fsm_state_next = GPFC_PF;
+                                    r_m_axis_tvalid_next = 1;
+                                    r_m_axis_tdata_next = s_axis_gpfc_pause_frame_data[DATA_WIDTH-1:0];
+                                    r_m_axis_tlast_next = 0;
+                                    r_pause_frame_ack_next = 1;
 
+                                    //TODO: r_m_axis_tuser_next, t_keep
 
+                                    r_pause_frame_last_data_next = s_axis_gpfc_pause_frame_data[PAUSE_FRAME_WIDTH -1: DATA_WIDTH];
                                 end
-                            else if (~addr_manager_out_st_buffer_empty)
+
+
+                            else
                                 begin
-                                    output_queue_fsm_state_next = UPDATE_FL_TAIL;
-                                    ctl_pifo_pop_en = 1;
-                                    r_buffer_rd_addr_next = w_pifo_calendar_out_addr;
-                                    r_buffer_first_word_en_next = 1; // first word control signal set to 1.
-                                    r_buffer_rd_en_next = 0;                                   
-                                end    
+                                    if(r_s_axis_pifo_insert_en_d1 & w_bypass_checker_out_bypass_final)
+                                        begin
+                                            output_queue_fsm_state_next = BYPASS;
+                                            r_m_axis_tvalid_next = r_s_axis_tvalid_d1;
+                                            r_m_axis_tdata_next = r_s_axis_tdata_d1;
+                                            r_m_axis_tkeep_next = r_s_axis_tkeep_d1;
+                                            r_m_axis_tlast_next = r_s_axis_tlast_d1;
+                                            r_m_axis_tuser_next = r_s_axis_tuser_d1;
+                                            r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
+                                            ctl_buffer_wr_en = 0;
+                                            ctl_pifo_insert_en = 0;                                     
+                                            
+        //                                    output_queue_fsm_state_next = UPDATE_FL_TAIL;
+        //                                    r_buffer_rd_addr_next = r_buffer_rd_addr;
+        //                                    r_buffer_first_word_en_next = 1;
+        //                                    r_buffer_rd_en_next = 0; 
+
+
+                                        end
+                                    
+                                    //TODO: & ~( s_axis_gpfc_valid & (s_axis_pifo_rank >= s_axis_gpfc_pause_rank))
+                                    else if (~addr_manager_out_st_buffer_empty )
+                                        begin
+
+                                            output_queue_fsm_state_next = UPDATE_FL_TAIL;
+                                            ctl_pifo_pop_en = 1;
+                                            r_buffer_rd_addr_next = w_pifo_calendar_out_addr;
+                                            r_buffer_first_word_en_next = 1; // first word control signal set to 1.
+                                            r_buffer_rd_en_next = 0;                                   
+                                        end    
+                                end
+                            
                         end
                                        
                 end
@@ -352,21 +447,21 @@ module output_queue_v0_1_with_cpu
             // read pkt from buffer until get the eop chunk
             // goto IDLE state if get the eop chunck    
             
-//            BYPASS_STOP:
-//                begin
-//                    r_m_axis_tvalid_next = r_m_axis_tvalid;
-//                    r_m_axis_tdata_next = r_m_axis_tdata;
-//                    r_m_axis_tkeep_next = r_m_axis_tkeep;
-//                    r_m_axis_tlast_next = r_m_axis_tlast;
-//                    r_m_axis_tuser_next = r_m_axis_tuser;
-//                    r_m_axis_tpifo_next = r_m_axis_tpifo;                 
-                
-//                    if(m_axis_tready)
-//                        begin
-//                            output_queue_fsm_state_next = READ_PKT;
-//                            r_buffer_rd_en_next = 1;       
-//                        end
-//                end
+            GPFC_PF:
+                begin
+                    if(m_axis_tready)
+                        begin
+
+                            r_m_axis_tdata_next = r_pause_frame_last_data_next;
+                            // TODO : r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
+                            r_m_axis_tlast_next = 1;
+                            // TODO: r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
+
+                            output_queue_fsm_state_next = IDLE;
+                        end
+
+
+                end
             
             READ_PKT:
                 begin
@@ -422,6 +517,10 @@ module output_queue_v0_1_with_cpu
                 r_s_axis_tlast_d1   <=0;               
                 r_s_axis_buffer_wr_en_d1 <=0;  
                 r_s_axis_pifo_insert_en_d1 <=0;   
+                r_pause_frame_last_data <= 0;
+                r_pause_frame_ack <= 0;
+
+
             end
         else
             begin
@@ -445,8 +544,9 @@ module output_queue_v0_1_with_cpu
                 r_s_axis_tlast_d1   <= s_axis_tlast;               
                 r_s_axis_buffer_wr_en_d1 <= s_axis_buffer_wr_en;  
                 r_s_axis_pifo_insert_en_d1 <= s_axis_pifo_insert_en;
+                r_pause_frame_ack <= r_pause_frame_ack_next;
+                r_pause_frame_last_data <= r_pause_frame_last_data_next;
                 
-                           
             end
     end
     
@@ -462,6 +562,8 @@ assign m_axis_tpifo = (OUTPUT_SYNC)? r_m_axis_tpifo: r_m_axis_tpifo_next;
 assign m_is_buffer_almost_full = addr_manager_out_st_buffer_almost_full;
 assign m_is_pifo_full = w_pifo_calendar_out_calendar_full;
 assign m_buffer_remain_size = addr_manager_out_st_buffer_remain_space;
+
+assign s_axis_gpfc_pause_frame_ack = r_pause_frame_ack;
 
 endmodule
 

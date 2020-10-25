@@ -21,9 +21,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module scheduler_top_v0_1
-    #(
+#(
     // parameters from original output_queue.v
     // Master AXI Stream Data Width
     parameter DATA_WIDTH=256,
@@ -48,7 +47,7 @@ module scheduler_top_v0_1
     
     // parameters for scheduler_top.
     parameter BUFFER_WORD_DEPTH = 4096,
-    parameter PIFO_CALENDAR_DEPTH = 512,  // scale down to test bit simulation.
+    parameter PIFO_CALENDAR_DEPTH = 256,  // scale down to test bit simulation.
     parameter PIFO_INFO_LENGTH = 32,
     parameter BUFFER_OUTPUT_SYNC=0,
     parameter CPU_EQ_AGENT_ADDR = 8
@@ -163,47 +162,47 @@ module scheduler_top_v0_1
      wire [NUM_QUEUES-1:0]               w_buffer_write_en_bit_array; 
      wire [NUM_QUEUES-1:0]               w_pifo_insert_en_bit_array; 
     
-    // read wire between cpu_sub and output queue module
-    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pkt_buffer_req_addr;
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pkt_buffer_req_valid;
-    wire [PKT_BUFFER_WIDTH-1:0]         w_ip2cpu_read_pkt_buffer_resp_value;
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_pkt_buffer_resp_valid;
+//    // read wire between cpu_sub and output queue module
+//    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pkt_buffer_req_addr;
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pkt_buffer_req_valid;
+//    wire [PKT_BUFFER_WIDTH-1:0]         w_ip2cpu_read_pkt_buffer_resp_value;
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_pkt_buffer_resp_valid;
     
-    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_sume_buffer_req_addr;
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_sume_buffer_req_valid;  
-    wire [C_M_AXIS_TUSER_WIDTH-1:0]     w_ip2cpu_read_sume_buffer_resp_value;  
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_sume_buffer_resp_valid;  
+//    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_sume_buffer_req_addr;
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_sume_buffer_req_valid;  
+//    wire [C_M_AXIS_TUSER_WIDTH-1:0]     w_ip2cpu_read_sume_buffer_resp_value;  
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_sume_buffer_resp_valid;  
                                          
-    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pifo_buffer_req_addr;    
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pifo_buffer_req_valid;   
-    wire [PIFO_INFO_LENGTH-1:0]         w_ip2cpu_read_pifo_buffer_resp_value;  
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_pifo_buffer_resp_valid;  
+//    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pifo_buffer_req_addr;    
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pifo_buffer_req_valid;   
+//    wire [PIFO_INFO_LENGTH-1:0]         w_ip2cpu_read_pifo_buffer_resp_value;  
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_pifo_buffer_resp_valid;  
                                          
-    wire [PIFO_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pifo_calendar_req_addr;  
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pifo_calendar_req_valid; 
-    wire [PIFO_INFO_LENGTH-1:0]         w_ip2cpu_read_pifo_calendar_resp_value;
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_pifo_calendar_resp_valid;
+//    wire [PIFO_INDEX_WIDTH-1 : 0]     w_cpu2ip_read_pifo_calendar_req_addr;  
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_read_pifo_calendar_req_valid; 
+//    wire [PIFO_INFO_LENGTH-1:0]         w_ip2cpu_read_pifo_calendar_resp_value;
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_read_pifo_calendar_resp_valid;
                                          
-    // write wire between cpu_sub and output queue module                                     
-    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_pkt_buffer_req_addr;    
-    wire [PKT_BUFFER_WIDTH-1:0]         w_cpu2ip_write_pkt_buffer_req_value;   
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_pkt_buffer_req_valid;   
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pkt_buffer_resp_valid;  
+//    // write wire between cpu_sub and output queue module                                     
+//    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_pkt_buffer_req_addr;    
+//    wire [PKT_BUFFER_WIDTH-1:0]         w_cpu2ip_write_pkt_buffer_req_value;   
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_pkt_buffer_req_valid;   
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pkt_buffer_resp_valid;  
                                          
-    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_sume_buffer_req_addr;   
-    wire [C_M_AXIS_TUSER_WIDTH-1:0]     w_cpu2ip_write_sume_buffer_req_value;  
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_sume_buffer_req_valid;  
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_sume_buffer_resp_valid; 
+//    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_sume_buffer_req_addr;   
+//    wire [C_M_AXIS_TUSER_WIDTH-1:0]     w_cpu2ip_write_sume_buffer_req_value;  
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_sume_buffer_req_valid;  
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_sume_buffer_resp_valid; 
                                          
-    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_pifo_buffer_req_addr;   
-    wire [PIFO_INFO_LENGTH-1:0]         w_cpu2ip_write_pifo_buffer_req_value;  
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_pifo_buffer_req_valid;  
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pifo_buffer_resp_valid; 
+//    wire [CPU_BUFFER_CALL_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_pifo_buffer_req_addr;   
+//    wire [PIFO_INFO_LENGTH-1:0]         w_cpu2ip_write_pifo_buffer_req_value;  
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_pifo_buffer_req_valid;  
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pifo_buffer_resp_valid; 
                                          
-    wire [PIFO_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_pifo_calendar_req_addr; 
-    wire [PIFO_INFO_LENGTH-1:0]         w_cpu2ip_write_pifo_calendar_req_value;
-    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_pifo_calendar_req_valid;
-    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pifo_calendar_resp_valid;
+//    wire [PIFO_INDEX_WIDTH-1 : 0]     w_cpu2ip_write_pifo_calendar_req_addr; 
+//    wire [PIFO_INFO_LENGTH-1:0]         w_cpu2ip_write_pifo_calendar_req_value;
+//    wire [NUM_QUEUES-1:0]               w_cpu2ip_write_pifo_calendar_req_valid;
+//    wire [NUM_QUEUES-1:0]               w_ip2cpu_write_pifo_calendar_resp_valid;
 
     reg [DATA_WIDTH - 1:0]                    s_axis_tdata_d1;
     reg [(DATA_WIDTH / 8) - 1:0]              s_axis_tkeep_d1;

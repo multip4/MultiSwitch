@@ -52,22 +52,24 @@ generate_target all [get_ips buffer_pifo_32_4096]
 set_property -dict [list CONFIG.C_S_AXIS_TUSER_WIDTH {160}] [get_ips nf_sume_sdnet_ip]
 
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/scheduler_top_v0_1.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/addr_manager_v0_2.v"
+#read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/addr_manager_v0_2.v"
+#read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/buffer_wrapper_v1_0_with_cpu.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/block_ram_wrapper.v"
 
 # read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/addr_manager_v0_1.v"
 # read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/output_queue_v0_1.v"
 # read_verilog "./modules/buffer_wrapper_v0_1.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/buffer_wrapper_v1_0_with_cpu.v"
+
 # read_verilog "./modules/pifo_calendar_atom_v0_1.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_atom_v0_3.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_atom_v0_4.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/output_queue_v0_1_with_cpu.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/cpu_sub.v"
 # read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_v0_1.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_v0_2_with_cpu.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/pifo_calendar_demo_v1.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/output_queue_bypass_checker.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/eneueue_agent_v0_1.v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/modules/top_scheduler_cpu_defines.v"
-read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/nf_datapath/nf_datapath.v"
+read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/nf_datapath/$::env(NF_DATAPATH_NAME).v"
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/ip/sss_output_queue_single_v1/hdl/sss_output_queue_single.v"
 
 read_verilog "$::env(P4_PROJECT_PIFO_MODULES_DIR)/templates/fallthrough_small_fifo_v1_0_0/hdl/fallthrough_small_fifo.v"

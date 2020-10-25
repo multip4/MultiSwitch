@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Oct 21 20:49:02 2020
+# Process ID: 923
+# Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new
+# Command line: vivado
+# Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new/vivado.log
+# Journal file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/jkchoi/Documents/project_temp/project_temp.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+add_files -norecurse {/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/wrr_engine.v /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
