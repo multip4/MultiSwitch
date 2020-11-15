@@ -192,11 +192,17 @@ module nf_datapath #(
     (* mark_debug = "true" *) wire [Q_SIZE_WIDTH-1:0]    dma_q_size; 
 
     //1000 lim add adding last dq info wire.
-    wire   [31:0]              last_pkt_info0; 
-    wire   [31:0]              last_pkt_info1;
-    wire   [31:0]              last_pkt_info2;
-    wire   [31:0]              last_pkt_info3;
-    wire   [31:0]              last_pkt_info4;
+    wire   [PIFO_WIDTH-1:0]              last_pkt_info0; 
+    wire   [PIFO_WIDTH-1:0]              last_pkt_info1;
+    wire   [PIFO_WIDTH-1:0]              last_pkt_info2;
+    wire   [PIFO_WIDTH-1:0]              last_pkt_info3;
+    wire   [PIFO_WIDTH-1:0]              last_pkt_info4;
+
+    reg   [PIFO_WIDTH-1:0]              r_last_pkt_info0; 
+    reg   [PIFO_WIDTH-1:0]              r_last_pkt_info1;
+    reg   [PIFO_WIDTH-1:0]              r_last_pkt_info2;
+    reg   [PIFO_WIDTH-1:0]              r_last_pkt_info3;
+    reg   [PIFO_WIDTH-1:0]              r_last_pkt_info4;
 
 
 
@@ -350,11 +356,11 @@ assign s_axis_4_tready=w_in_tready[4];
       .S_AXI_AWREADY(S1_AXI_AWREADY),
       .S_AXI_ACLK (axi_aclk),
       .S_AXI_ARESETN(axi_resetn),
-      .last_pkt_info0(last_pkt_info0),
-	  .last_pkt_info1(last_pkt_info1),
-	  .last_pkt_info2(last_pkt_info2),
-	  .last_pkt_info3(last_pkt_info3),
-	  .last_pkt_info4(last_pkt_info4)
+      .last_pkt_info0(r_last_pkt_info0),
+	  .last_pkt_info1(r_last_pkt_info1),
+	  .last_pkt_info2(r_last_pkt_info2),
+	  .last_pkt_info3(r_last_pkt_info3),
+	  .last_pkt_info4(r_last_pkt_info4)
     );
 
 //    (* mark_debug = "true" *) wire [C_S_AXI_DATA_WIDTH-1:0] bytes_dropped;
@@ -426,25 +432,6 @@ assign s_axis_4_tready=w_in_tready[4];
 //      .bytes_dropped(bytes_dropped), 
 //      .pkt_dropped(pkt_dropped), 
 
-      .S_AXI_AWADDR(S2_AXI_AWADDR), 
-      .S_AXI_AWVALID(S2_AXI_AWVALID),
-      .S_AXI_WDATA(S2_AXI_WDATA),  
-      .S_AXI_WSTRB(S2_AXI_WSTRB),  
-      .S_AXI_WVALID(S2_AXI_WVALID), 
-      .S_AXI_BREADY(S2_AXI_BREADY), 
-      .S_AXI_ARADDR(S2_AXI_ARADDR), 
-      .S_AXI_ARVALID(S2_AXI_ARVALID),
-      .S_AXI_RREADY(S2_AXI_RREADY), 
-      .S_AXI_ARREADY(S2_AXI_ARREADY),
-      .S_AXI_RDATA(S2_AXI_RDATA),  
-      .S_AXI_RRESP(S2_AXI_RRESP),  
-      .S_AXI_RVALID(S2_AXI_RVALID), 
-      .S_AXI_WREADY(S2_AXI_WREADY), 
-      .S_AXI_BRESP(S2_AXI_BRESP),  
-      .S_AXI_BVALID(S2_AXI_BVALID), 
-      .S_AXI_AWREADY(S2_AXI_AWREADY),
-      .S_AXI_ACLK (axi_aclk), 
-      .S_AXI_ARESETN(axi_resetn),
       .m_axis_0_tpifo(last_pkt_info0),
       .m_axis_1_tpifo(last_pkt_info1),
       .m_axis_2_tpifo(last_pkt_info2),
@@ -452,7 +439,28 @@ assign s_axis_4_tready=w_in_tready[4];
       .m_axis_4_tpifo(last_pkt_info4)
     ); 
     
-    
+
+always @(posedge axis_aclk)
+  begin
+    if(~axis_resetn)
+      begin
+        r_last_pkt_info0 <= 0;
+        r_last_pkt_info1 <= 0;
+        r_last_pkt_info2 <= 0;
+        r_last_pkt_info3 <= 0;
+        r_last_pkt_info4 <= 0;
+      end
+    else
+      begin
+        r_last_pkt_info0 <= last_pkt_info0;
+        r_last_pkt_info1 <= last_pkt_info1;
+        r_last_pkt_info2 <= last_pkt_info2;
+        r_last_pkt_info3 <= last_pkt_info3;
+        r_last_pkt_info4 <= last_pkt_info4;
+      end
+  end    
+
+
     
     
 endmodule

@@ -23,11 +23,12 @@
 module output_queue_bypass_checker
 #(
 parameter BUFFER_ADDR_WIDTH = 12,
-parameter PIFO_RANK_WIDTH = 19,
+parameter PIFO_RANK_WIDTH = 18,
 parameter PIFO_ROOT_WIDTH = 32,
 parameter ROOT_RANK_START_POS = 12,
 parameter ROOT_RANK_END_POS = 30,
 parameter ROOT_PIFO_INFO_VALID_POS = 31,
+parameter PAUSE_RANK_WIDTH = 17,
 parameter OUTPUT_SYNC=1
 )
 (
@@ -37,7 +38,7 @@ parameter OUTPUT_SYNC=1
     input [PIFO_ROOT_WIDTH-1:0]     s_axis_pifo_calandar_top,
     
     input                           s_axis_gpfc_valid,
-    input [PIFO_ROOT_WIDTH-1:0]     s_axis_gpfc_pause_rank,
+    input [PIFO_RANK_WIDTH-1:0]     s_axis_gpfc_pause_rank,
 
     
     output reg                      m_axis_valid,    

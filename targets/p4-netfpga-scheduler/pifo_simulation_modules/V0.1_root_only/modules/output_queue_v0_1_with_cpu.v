@@ -31,9 +31,10 @@ module output_queue_v0_1_with_cpu
     parameter PIFO_ADDR_WIDTH = 10,
     parameter BUFFER_WORD_DEPTH = 4096,
     parameter PIFO_WORD_DEPTH = 256,
+    parameter PIFO_RANK_WIDTH = PIFO_WIDTH - 1 - 1 - BUFFER_ADDR_WIDTH, // PIFO_INFO = {valid, overflow, rank, address} 
 
     parameter PAUSE_FRAME_WIDTH = 512,
-    parameter PAUSE_RANK_WIDTH = 17,
+    parameter PAUSE_RANK_WIDTH = 18,
 
     parameter OUTPUT_SYNC = 1
 
@@ -129,7 +130,14 @@ module output_queue_v0_1_with_cpu
     reg                                          r_m_axis_tlast, r_m_axis_tlast_next; // output last signal
     reg [META_WIDTH-1:0]                         r_m_axis_tuser, r_m_axis_tuser_next; // output metadata 
     reg [PIFO_WIDTH-1:0]                         r_m_axis_tpifo, r_m_axis_tpifo_next;  // output pifo infomation.
-        
+    
+    
+    wire  w_r_m_axis_tpifo_valid;
+    wire  w_r_m_axis_tpifo_overflow;
+    wire [PIFO_RANK_WIDTH - 1:0] w_r_m_axis_tpifo_rank;
+    wire [BUFFER_ADDR_WIDTH - 1:0] w_r_m_axis_tpifo_address; // unused
+    assign {w_r_m_axis_tpifo_valid, w_r_m_axis_tpifo_overflow, w_r_m_axis_tpifo_rank, w_r_m_axis_tpifo_address} = r_m_axis_tpifo;
+    
     // 1 delay for input signal
     reg [DATA_WIDTH - 1:0]                        r_s_axis_tdata_d1; 
     reg [((DATA_WIDTH / 8)) - 1:0]                r_s_axis_tkeep_d1; 
@@ -140,6 +148,14 @@ module output_queue_v0_1_with_cpu
 
     reg                                           r_s_axis_buffer_wr_en_d1; 
     reg                                           r_s_axis_pifo_insert_en_d1;
+
+
+    wire  w_r_s_axis_tpifo_d1_valid;
+    wire  w_r_s_axis_tpifo_d1_overflow;
+    wire [PIFO_RANK_WIDTH - 1:0] w_r_s_axis_tpifo_d1_rank;
+    wire [BUFFER_ADDR_WIDTH - 1:0] w_r_s_axis_tpifo_d1_address; // unused
+    assign {w_r_s_axis_tpifo_d1_valid, w_r_s_axis_tpifo_d1_overflow, w_r_s_axis_tpifo_d1_rank, w_r_s_axis_tpifo_d1_address} = r_s_axis_tpifo_d1;
+
 
 
     // gpfc registers
@@ -252,6 +268,12 @@ module output_queue_v0_1_with_cpu
     
     );
     
+    wire  w_buffer_wrapper_out_tpifo_valid;
+    wire  w_buffer_wrapper_out_tpifo_overflow;
+    wire [PIFO_RANK_WIDTH - 1:0] w_buffer_wrapper_out_tpifo_rank;
+    wire [BUFFER_ADDR_WIDTH - 1:0] w_buffer_wrapper_out_tpifo_address; // unused
+    assign {w_buffer_wrapper_out_tpifo_valid, w_buffer_wrapper_out_tpifo_overflow, w_buffer_wrapper_out_tpifo_rank, w_buffer_wrapper_out_tpifo_address} = w_buffer_wrapper_out_tpifo;
+    
     
 //    reg                             r_pifo_pop_en;
     reg                             ctl_pifo_pop_en;    
@@ -263,8 +285,6 @@ module output_queue_v0_1_with_cpu
     wire [BUFFER_ADDR_WIDTH-1:0]    w_pifo_calendar_out_addr; 
     wire                            w_pifo_calendar_out_calendar_full;
     wire [PIFO_WIDTH-1:0]           w_pifo_calendar_out_pifo_calendar_top;
-    
-
     
     
     pifo_calendar_demo
@@ -278,7 +298,7 @@ module output_queue_v0_1_with_cpu
         .s_axis_pifo_info_root(w_pifo_root_info_final),
         .s_axis_insert_en(ctl_pifo_insert_en),
         .s_axis_pop_en(ctl_pifo_pop_en), // pop signal uses combinational logic output.
-        
+        .s_axis_global_pifo(r_m_axis_tpifo),
         .m_axis_pifo_calendar_top(w_pifo_calendar_out_pifo_calendar_top),
         .m_axis_buffer_addr(w_pifo_calendar_out_addr), // pop result, buffer address
         .m_axis_calendar_full(w_pifo_calendar_out_calendar_full),
@@ -313,6 +333,10 @@ module output_queue_v0_1_with_cpu
         .clk(axis_aclk),                     
         .rstn(axis_resetn)                     
     );
+    
+    
+    
+    
     
     // Combination Logic Block
     always @(*)
@@ -376,7 +400,23 @@ module output_queue_v0_1_with_cpu
                                             r_m_axis_tkeep_next = r_s_axis_tkeep_d1;
                                             r_m_axis_tlast_next = r_s_axis_tlast_d1;
                                             r_m_axis_tuser_next = r_s_axis_tuser_d1;
-                                            r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
+                                            
+                                            // in bypass condition, the input is must valid,
+                                            // if output is valid and overflow is same and the input rank is larger than the global rank then update the global value 
+                                            // or if output is not valid then, update the global value
+                                            // TODO: Need to confirm the logic below, 
+                                            if((~w_r_m_axis_tpifo_valid) 
+                                            || (w_r_m_axis_tpifo_valid 
+                                                && (w_r_m_axis_tpifo_overflow != w_r_s_axis_tpifo_d1_overflow)
+                                                && (w_r_s_axis_tpifo_d1_rank < w_r_m_axis_tpifo_rank))
+                                            || ((w_r_m_axis_tpifo_valid 
+                                            && (w_r_m_axis_tpifo_overflow == w_r_s_axis_tpifo_d1_overflow)) 
+                                            && (w_r_s_axis_tpifo_d1_rank > w_r_m_axis_tpifo_rank)))
+                                                begin
+                                                    r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
+                                                end
+                                            
+                                            
                                             ctl_buffer_wr_en = 0;
                                             ctl_pifo_insert_en = 0;                                     
                                             
@@ -470,8 +510,25 @@ module output_queue_v0_1_with_cpu
                     r_m_axis_tkeep_next = w_buffer_wrapper_out_tkeep;
                     r_m_axis_tlast_next = w_buffer_wrapper_out_tlast;
                     r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
-                    r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;
+                    
+                    
+                    // in read condition, the bram output is must valid,
+                    // if global is valid and overflow is same and the input rank is larger than the global rank then update the global value 
+                    // or if output is not valid then, update the global value 
+                    // or if the overflow bit is not same, then update the global value
+                    if((~w_r_m_axis_tpifo_valid) 
 
+                    || (w_r_m_axis_tpifo_valid 
+                    && (w_r_m_axis_tpifo_overflow != w_r_s_axis_tpifo_d1_overflow)
+                    && (w_buffer_wrapper_out_tpifo_rank < w_r_m_axis_tpifo_rank))
+                    
+                    || (w_r_m_axis_tpifo_valid 
+                    && (w_r_m_axis_tpifo_overflow == w_buffer_wrapper_out_tpifo_overflow) 
+                    && (w_buffer_wrapper_out_tpifo_rank > w_r_m_axis_tpifo_rank)))
+                        begin
+                            r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;
+                        end
+                    
                     if(m_axis_tready)
                         begin
                             // set output value.

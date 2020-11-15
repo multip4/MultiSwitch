@@ -70,11 +70,11 @@ module enqueue_agent_v0_1
         m_axis_ctl_buffer_wr_en, // output bit vector for buffer write
          
         // cpu req/resp
-        s_axi_addr,      
-        s_axi_req_valid, 
+//        s_axi_addr,      
+//        s_axi_req_valid, 
                          
-        m_axi_data,      
-        m_axi_resp_valid,
+//        m_axi_data,      
+//        m_axi_resp_valid,
         
         axis_aclk,
         axis_resetn
@@ -99,11 +99,11 @@ module enqueue_agent_v0_1
     // return combinational logic output in ASYNC_MODE
     output [QUEUE_NUM-1:0]              m_axis_ctl_buffer_wr_en;
     
-    input [C_S_AXI_ADDR_WIDTH-1:0]      s_axi_addr;    
-    input                               s_axi_req_valid;
+//    input [C_S_AXI_ADDR_WIDTH-1:0]      s_axi_addr;    
+//    input                               s_axi_req_valid;
     
-    output [C_S_AXI_DATA_WIDTH-1:0]     m_axi_data;
-    output                              m_axi_resp_valid;
+//    output [C_S_AXI_DATA_WIDTH-1:0]     m_axi_data;
+//    output                              m_axi_resp_valid;
         
     
     
@@ -156,9 +156,9 @@ module enqueue_agent_v0_1
     reg [QUEUE_NUM-1:0]                 r_m_axis_ctl_pifo_in_en, r_m_axis_ctl_pifo_in_en_next;
     reg [QUEUE_NUM-1:0]                 r_m_axis_ctl_buffer_wr_en, r_m_axis_ctl_buffer_wr_en_next;
 
-    reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data;
-    reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data_next;
-    reg                          r_cpu_read_resp_valid;    
+//    reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data;
+//    reg [C_S_AXI_DATA_WIDTH-1:0] r_cpu_read_data_next;
+//    reg                          r_cpu_read_resp_valid;    
     
     integer i;
 
@@ -328,37 +328,37 @@ module enqueue_agent_v0_1
     
     // cpu combinational logic
     
-    wire [3:0] addr_src = s_axi_addr [7:4];
-    wire [3:0] addr_dst = s_axi_addr [3:0];
+//    wire [3:0] addr_src = s_axi_addr [7:4];
+//    wire [3:0] addr_dst = s_axi_addr [3:0];
         
-    always @(*)
-    begin
+//    always @(*)
+//    begin
         
-        case(addr_dst)
-            0:
-                begin
-                    r_cpu_read_data_next = r_nf0_pkt_drop[addr_src];           
-                end
-            1:
-                begin
-                    r_cpu_read_data_next = r_nf1_pkt_drop[addr_src]; 
-                end
-            2:
-                begin
-                    r_cpu_read_data_next = r_nf2_pkt_drop[addr_src]; 
-                end
-            3:  
-                begin
-                    r_cpu_read_data_next = r_nf3_pkt_drop[addr_src]; 
-                end 
-            default:
-                begin
-                    r_cpu_read_data_next = r_nf4_pkt_drop[addr_src]; 
-                end
+//        case(addr_dst)
+//            0:
+//                begin
+//                    r_cpu_read_data_next = r_nf0_pkt_drop[addr_src];           
+//                end
+//            1:
+//                begin
+//                    r_cpu_read_data_next = r_nf1_pkt_drop[addr_src]; 
+//                end
+//            2:
+//                begin
+//                    r_cpu_read_data_next = r_nf2_pkt_drop[addr_src]; 
+//                end
+//            3:  
+//                begin
+//                    r_cpu_read_data_next = r_nf3_pkt_drop[addr_src]; 
+//                end 
+//            default:
+//                begin
+//                    r_cpu_read_data_next = r_nf4_pkt_drop[addr_src]; 
+//                end
             
-        endcase
+//        endcase
         
-    end
+//    end
     
     
       
@@ -371,8 +371,8 @@ module enqueue_agent_v0_1
                 r_m_axis_ctl_pifo_in_en <= 0;
                 r_m_axis_ctl_buffer_wr_en <= 0;
                 
-                r_cpu_read_data <= 0;
-                r_cpu_read_resp_valid <= 0;
+//                r_cpu_read_data <= 0;
+//                r_cpu_read_resp_valid <= 0;
                 for(i=0; i<QUEUE_NUM; i=i+1) begin
                     r_nf0_pkt_drop[i] <= 0;
                     r_nf1_pkt_drop[i] <= 0;
@@ -390,8 +390,8 @@ module enqueue_agent_v0_1
                 r_m_axis_ctl_pifo_in_en <=  r_m_axis_ctl_pifo_in_en_next;
                 r_m_axis_ctl_buffer_wr_en <=  r_m_axis_ctl_buffer_wr_en_next;
                 
-                r_cpu_read_data <= r_cpu_read_data_next;
-                r_cpu_read_resp_valid <= s_axi_req_valid; 
+//                r_cpu_read_data <= r_cpu_read_data_next;
+//                r_cpu_read_resp_valid <= s_axi_req_valid; 
                 r_axis_tready <= r_axis_tready_next;
                 
                 for(i=0; i<QUEUE_NUM; i=i+1) begin
@@ -435,6 +435,6 @@ module enqueue_agent_v0_1
     assign m_axis_ctl_buffer_wr_en = (SYNC_MODE)? r_m_axis_ctl_buffer_wr_en: r_m_axis_ctl_buffer_wr_en_next;
     
     // assgin cpu result
-    assign m_axi_data = r_cpu_read_data;      
-    assign m_axi_resp_valid = r_cpu_read_resp_valid;
+//    assign m_axi_data = r_cpu_read_data;      
+//    assign m_axi_resp_valid = r_cpu_read_resp_valid;
 endmodule

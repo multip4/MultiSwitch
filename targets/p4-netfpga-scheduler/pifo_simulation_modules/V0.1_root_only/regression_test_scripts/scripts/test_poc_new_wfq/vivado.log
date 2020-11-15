@@ -1,0 +1,588 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Nov 11 00:00:20 2020
+# Process ID: 10245
+# Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new_wfq
+# Command line: vivado
+# Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new_wfq/vivado.log
+# Journal file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/scripts/test_poc_new_wfq/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/test/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:05 . Memory (MB): peak = 6185.445 ; gain = 115.793 ; free physical = 2265 ; free virtual = 13355
+generate_target Simulation [get_files /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/identifier_ip/identifier_ip.xci]
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'identifier_ip'...
+export_ip_user_files -of_objects [get_files /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/identifier_ip/identifier_ip.xci] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/identifier_ip/identifier_ip.xci] -directory /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/sim_scripts -ip_user_files_dir /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files -ipstatic_source_dir /home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic -lib_map_path [list {modelsim=/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.cache/compile_simlib/modelsim} {questa=/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.cache/compile_simlib/questa} {ies=/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.cache/compile_simlib/ies} {xcelium=/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.cache/compile_simlib/xcelium} {vcs=/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.cache/compile_simlib/vcs} {riviera=/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/Xilinx/Vivado/2018.2/data/xsim/xsim.ini' copied to run dir:'/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/addr_table_12_4096_with_coe.mif'
+INFO: [SIM-utils-43] Exported '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/addr_table.coe'
+INFO: [SIM-utils-43] Exported '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/identifier_ip.mif'
+INFO: [SIM-utils-43] Exported '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/id_rom16x32.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj top_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/barrier_ip/hdl/barrier.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module barrier
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/barrier_ip/sim/barrier_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module barrier_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_vlog_beh
+INFO: [VRFC 10-2458] undeclared symbol wr_rst_busy_i, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1249]
+INFO: [VRFC 10-2458] undeclared symbol wr_eop_ad, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1331]
+INFO: [VRFC 10-2458] undeclared symbol rd_eop_ad, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1332]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_axis, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:1574]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wach, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2099]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wdch, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2319]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wrch, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2486]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rach, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:2866]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rdch, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:3099]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_CONV_VER
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:4153]
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:4361]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_sync_stage
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_as
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_beh_ver_ll_afifo
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_ss
+INFO: [VRFC 10-2458] undeclared symbol srst_wrst_busy, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/simulation/fifo_generator_vlog_beh.v:7793]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_preload0
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_axic_reg_slice
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/hdl/fifo_generator_v13_2_rfs.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2
+INFO: [VRFC 10-2458] undeclared symbol sleep_i, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/bd/control_sub/ipshared/7aff/hdl/fifo_generator_v13_2_rfs.v:519]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_axi_clock_converter_0_0/sim/control_sub_axi_clock_converter_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_axi_clock_converter_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_xbar_0/sim/control_sub_xbar_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_xbar_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_s00_mmu_0/sim/control_sub_s00_mmu_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_s00_mmu_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m07_data_fifo_0/sim/control_sub_m07_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m07_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m06_data_fifo_0/sim/control_sub_m06_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m06_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m05_data_fifo_0/sim/control_sub_m05_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m05_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m04_data_fifo_0/sim/control_sub_m04_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m04_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m03_data_fifo_0/sim/control_sub_m03_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m03_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m02_data_fifo_0/sim/control_sub_m02_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m02_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m01_data_fifo_0/sim/control_sub_m01_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m01_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_m00_data_fifo_0/sim/control_sub_m00_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_m00_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_s00_data_fifo_0/sim/control_sub_s00_data_fifo_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_s00_data_fifo_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/ip/control_sub_auto_pc_0/sim/control_sub_auto_pc_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub_auto_pc_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/bd/control_sub/sim/control_sub.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_sub
+INFO: [VRFC 10-311] analyzing module control_sub_axi_interconnect_0_0
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_35MSE9
+INFO: [VRFC 10-311] analyzing module m01_couplers_imp_159MA5B
+INFO: [VRFC 10-311] analyzing module m02_couplers_imp_1UHPQGS
+INFO: [VRFC 10-311] analyzing module m03_couplers_imp_V7OM1U
+INFO: [VRFC 10-311] analyzing module m04_couplers_imp_73P722
+INFO: [VRFC 10-311] analyzing module m05_couplers_imp_1194TWK
+INFO: [VRFC 10-311] analyzing module m06_couplers_imp_1YASCCN
+INFO: [VRFC 10-311] analyzing module m07_couplers_imp_RC6YHL
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_1S77UJ5
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/hdl/axis_sim_record.v:95]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip4/sim/axis_sim_record_ip4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip4
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip3/sim/axis_sim_record_ip3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip3
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip2/sim/axis_sim_record_ip2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip1/sim/axis_sim_record_ip1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record
+WARNING: [VRFC 10-756] identifier state is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:93]
+WARNING: [VRFC 10-756] identifier ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:94]
+WARNING: [VRFC 10-756] identifier not_ready_count is used before its declaration [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:95]
+WARNING: [VRFC 10-2845] overwriting previous definition of module axis_sim_record [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/hdl/axis_sim_record.v:59]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/axis_sim_record_ip0/sim/axis_sim_record_ip0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axis_sim_record_ip0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/identifier_ip/sim/identifier_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module identifier_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/buffer_pifo_32_4096/sim/buffer_pifo_32_4096.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_pifo_32_4096
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/buffer_meta_128_4096/sim/buffer_meta_128_4096.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_meta_128_4096
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/buffer_pkt_289_4096/sim/buffer_pkt_289_4096.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer_pkt_289_4096
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/addr_table_12_4096_with_coe/sim/addr_table_12_4096_with_coe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module addr_table_12_4096_with_coe
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/axis_infrastructure_v1_1_0/hdl/axis_infrastructure_v1_1_vl_rfs.v" into library axis_infrastructure_v1_1_0
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_mux_enc
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_aclken_converter
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_aclken_converter_wrapper
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_axis2vector
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_util_vector2axis
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_clock_synchronizer
+INFO: [VRFC 10-311] analyzing module axis_infrastructure_v1_1_0_cdc_handshake
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_vlog_beh
+INFO: [VRFC 10-2458] undeclared symbol wr_rst_busy_i, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1249]
+INFO: [VRFC 10-2458] undeclared symbol wr_eop_ad, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1331]
+INFO: [VRFC 10-2458] undeclared symbol rd_eop_ad, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1332]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_axis, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:1574]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wach, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2099]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wdch, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2319]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_wrch, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2486]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rach, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:2866]
+INFO: [VRFC 10-2458] undeclared symbol rd_rst_busy_rdch, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:3099]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_vlog_beh [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:98]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_CONV_VER
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4153]
+INFO: [VRFC 10-2458] undeclared symbol safety_ckt_rd_rst, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4361]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_CONV_VER [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:3366]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_sync_stage
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_sync_stage [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4938]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_as
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_bhv_ver_as [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:4959]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_beh_ver_ll_afifo
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_beh_ver_ll_afifo [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:6937]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_ss
+INFO: [VRFC 10-2458] undeclared symbol srst_wrst_busy, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:7793]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_bhv_ver_ss [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:7065]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_bhv_ver_preload0
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_bhv_ver_preload0 [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:9206]
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2_axic_reg_slice
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2_axic_reg_slice [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/simulation/fifo_generator_vlog_beh.v:10324]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v" into library fifo_generator_v13_2_2
+INFO: [VRFC 10-311] analyzing module fifo_generator_v13_2_2
+INFO: [VRFC 10-2458] undeclared symbol sleep_i, assumed default net type wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v:519]
+WARNING: [VRFC 10-2845] overwriting previous definition of module fifo_generator_v13_2_2 [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/fifo_generator_v13_2_2/hdl/fifo_generator_v13_2_rfs.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.ip_user_files/ipstatic/axis_data_fifo_v1_1_18/hdl/axis_data_fifo_v1_1_vl_rfs.v" into library axis_data_fifo_v1_1_18
+INFO: [VRFC 10-311] analyzing module axis_data_fifo_v1_1_18_axis_data_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_my_extern_calc_0_tuple_in_my_extern_calc_input.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_my_extern_calc_0_tuple_in_my_extern_calc_input
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_l1_switch_tuple_in_request.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_table_l1_switch_tuple_in_request
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_rank_calc_mode_tuple_in_request.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_table_rank_calc_mode_tuple_in_request
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_rc_class_lookup_tuple_in_request.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_table_rc_class_lookup_tuple_in_request
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_rc_weight_lookup_tuple_in_request.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_table_rc_weight_lookup_tuple_in_request
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_table_strict_priority_tuple_in_request.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_table_strict_priority_tuple_in_request
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_BRIDGERs.HDL/S_BRIDGER_for_tin_timestamp_0_tuple_in_tin_timestamp_input.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_BRIDGER_for_tin_timestamp_0_tuple_in_tin_timestamp_input
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_CONTROLLERs.HDL/S_CONTROLLER_SimpleSumeSwitch.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_CONTROLLER_SimpleSumeSwitch
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_PROTOCOL_ADAPTER_EGRESS
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v:111]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v:110]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_EGRESS.v:112]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_PROTOCOL_ADAPTER_INGRESS
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v:218]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v:217]
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_PROTOCOL_ADAPTERs.HDL/S_PROTOCOL_ADAPTER_INGRESS.v:219]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_RESETTER_control
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_line.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_RESETTER_line
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_RESETTER.HDL/S_RESETTER_lookup.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_RESETTER_lookup
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopDeparser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_TopDeparser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for_TopParser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for_TopParser
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/S_SYNCERs.HDL/S_SYNCER_for__OUT_.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module S_SYNCER_for__OUT_
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/SimpleSumeSwitch.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleSumeSwitch
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopDeparser_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopDeparser_t.HDL/TopDeparser_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_Engine
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec_compute_control_remove
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_extract_headers_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_FifoWriter
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DscFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DscFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_LatencyBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_PktFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_PktFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_FifoReader
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataShift_UniShifterSelect
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataBuffer_BarrelShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataBuffer_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_BidirShifterUpdate
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_TupleShift_BidirShifterUpdate_UniShifter2X
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_0_Editor_DataMux
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_1_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_act_3_sec
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_act_3_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_act_3_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1_compute_control_insert
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1_compute__STRUCT_dstAddr
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1_compute__STRUCT_srcAddr
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1_compute__STRUCT_etherType
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_1_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_FifoWriter
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DscFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DscFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_LatencyBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_PktFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_PktFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_FifoReader
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataShift_UniShifterSelect
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataBuffer_BarrelShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataBuffer_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleMerge
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleMerge_UniShifterDownMask
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleMerge_UniShifterDownTuple
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_BidirShifterUpdate
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_TupleShift_BidirShifterUpdate_UniShifter2X
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_2_Editor_DataMux
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute_control_insert
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute__STRUCT_time
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute__STRUCT_pifo_info
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_emit_0_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_FifoWriter
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DscFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DscFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_LatencyBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_PktFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_PktFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleFifo
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleFifo_RAM
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_FifoReader
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataShift_UniShifterSelect
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataBuffer
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataBuffer_BarrelShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataBuffer_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleMerge
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleMerge_UniShifterDownMask
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleMerge_UniShifterDownTuple
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleShift
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleShift_UniShifterDown
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleShift_UniShifterUp
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleShift_BidirShifterUpdate
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_TupleShift_BidirShifterUpdate_UniShifter2X
+INFO: [VRFC 10-311] analyzing module TopDeparser_t_EngineStage_3_Editor_DataMux
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopParser_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopParser_t.HDL/TopParser_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopParser_t_Engine
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0_ExtractShifter
+INFO: [VRFC 10-311] analyzing module TopParser_t_start
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_isValid
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_dstAddr
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_srcAddr
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_p_ethernet_etherType
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_TopParser_extracts_size
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_user_metadata_rc_mode
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_user_metadata_switch_mode
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_user_metadata_rc_class_id
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_user_metadata_rc_class_weight
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_digest_data_unused
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopParser_t_start_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopParser_t_reject
+INFO: [VRFC 10-311] analyzing module TopParser_t_reject_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopParser_t_reject_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_0_TupleForward
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopParser_t_EngineStage_1_ErrorCheck
+INFO: [VRFC 10-311] analyzing module TopParser_t_accept
+INFO: [VRFC 10-311] analyzing module TopParser_t_accept_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopParser_t_accept_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_0_t.HDL/TopPipe_lvl_0_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_p_int_h_isValid
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_tin_timestamp_input_stateful_valid_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_tin_timestamp_input_valid
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_local_state_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_act_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_local_end
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_local_end_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_0_t_local_end_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_1_t.HDL/TopPipe_lvl_1_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_start
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_start_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_start_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_tin_timestamp_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_tin_timestamp_sec_compute_p_int_h_time
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_tin_timestamp_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_tin_timestamp_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_sume_metadata_pkt_len
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_table_l1_switch_req_lookup_request_key_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_local_state_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_split_act_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_end_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_end_0_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_1_t_local_end_0_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_2_t.HDL/TopPipe_lvl_2_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_2_t.HDL/TopPipe_lvl_2_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_start_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_start_0_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_start_0_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_table_l1_switch_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_table_l1_switch_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_table_l1_switch_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_NoAction_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_NoAction_0_sec_compute_table_rank_calc_mode_req_lookup_request_key_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_NoAction_0_sec_compute_local_state_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_NoAction_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_NoAction_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_l2_forward_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_l2_forward_0_sec_compute_sume_metadata_dst_port
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_l2_forward_0_sec_compute_table_rank_calc_mode_req_lookup_request_key_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_l2_forward_0_sec_compute_local_state_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_l2_forward_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_l2_forward_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_end_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_end_1_compute_table_rc_class_lookup_req_lookup_request_key_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_end_1_compute_table_rc_weight_lookup_req_lookup_request_key_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_end_1_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_2_t_local_end_1_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_3_t.HDL/TopPipe_lvl_3_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_3_t.HDL/TopPipe_lvl_3_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_start_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_start_1_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_start_1_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rank_calc_mode_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rank_calc_mode_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rank_calc_mode_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_6_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_6_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_6_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_calc_mode_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_calc_mode_0_sec_compute_user_metadata_rc_mode
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_calc_mode_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_calc_mode_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rc_class_lookup_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rc_class_lookup_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rc_class_lookup_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_4
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_8_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_8_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_8_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_class_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_class_0_sec_compute_user_metadata_rc_class_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_class_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_class_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_5
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rc_weight_lookup_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rc_weight_lookup_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_table_rc_weight_lookup_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_6
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_9_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_9_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_NoAction_9_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_weight_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_weight_0_sec_compute_user_metadata_rc_class_weight
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_weight_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_set_rc_weight_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_7
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_my_extern_calc_input_stateful_valid
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_my_extern_calc_input_oq_port
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_my_extern_calc_input_class_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_my_extern_calc_input_class_weight
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_my_extern_calc_input_pkt_len
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_my_extern_calc_input_rc_type
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_local_state_id
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_act_1_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_EngineStage_8
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_end_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_end_2_compute_table_strict_priority_req_lookup_request_key
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_end_2_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_3_t_local_end_2_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_4_t.HDL/TopPipe_lvl_4_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_4_t.HDL/TopPipe_lvl_4_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_local_start_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_local_start_2_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_local_start_2_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_1
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_my_extern_calc_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_my_extern_calc_sec_compute_TopPipe_fl_rank_result
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_my_extern_calc_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_my_extern_calc_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_2
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_condition_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_condition_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_condition_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_3
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_0_sec_compute_sume_metadata_pifo_info
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_table_strict_priority_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_table_strict_priority_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_table_strict_priority_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_4
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_NoAction_7_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_NoAction_7_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_NoAction_7_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_set_strict_rank_0_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_set_strict_rank_0_sec_compute_sume_metadata_pifo_info
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_set_strict_rank_0_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_set_strict_rank_0_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_5
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_2_sec
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_2_sec_compute_p_int_h_pifo_info
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_2_sec_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_act_2_sec_compute_control_increment_offset
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_EngineStage_6
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_sink
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_sink_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_4_t_sink_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/TopPipe_lvl_t.HDL/TopPipe_lvl_t.vp" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_Engine
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_EngineStage_0
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup_compute_control_nextSection
+INFO: [VRFC 10-311] analyzing module TopPipe_lvl_t_setup_compute_control_increment_offset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/drr_engine_v2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module drr_engine_v2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/extern_fallthrough_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module extern_fallthrough_small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/extern_small_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module extern_small_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module my_extern_calc_0_t
+ERROR: [VRFC 10-1412] syntax error near wire [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v:205]
+ERROR: [VRFC 10-2790] Verilog 2000 keyword wire used in incorrect context [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v:205]
+ERROR: [VRFC 10-91] w_wrr_out_valid is not declared [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v:421]
+ERROR: [VRFC 10-91] w_wrr_out_data is not declared [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v:424]
+ERROR: [VRFC 10-2787] module my_extern_calc_0_t ignored due to previous errors [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v:55]
+xvhdl --incr --relax -prj top_tb_vhdl.prj
+INFO: [USF-XSim-69] 'compile' step finished in '5' seconds
+INFO: [USF-XSim-99] Step results log file:'/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or '/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 6760.980 ; gain = 0.000 ; free physical = 2278 ; free virtual = 13368
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+CRITICAL WARNING: [HDL 9-806] Syntax error near "wire". [/home/jkchoi/Documents/git/p4-netfpga-live/contrib-projects/sume-sdnet-switch/projects/project_demo/simple_sume_switch/hw/project/simple_sume_switch.srcs/sources_1/ip/nf_sume_sdnet_ip/nf_sume_sdnet_ip/SimpleSumeSwitch/my_extern_calc_0_t.HDL/my_extern_calc_0_t.v:205]
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 11 00:04:05 2020...
