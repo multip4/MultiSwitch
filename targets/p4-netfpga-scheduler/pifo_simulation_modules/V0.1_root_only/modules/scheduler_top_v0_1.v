@@ -53,6 +53,7 @@ module scheduler_top_v0_1
     parameter PIFO_INFO_LENGTH = 32,
     parameter BUFFER_OUTPUT_SYNC=0,
     parameter CPU_EQ_AGENT_ADDR = 8
+
     )
     (
     // Part 1: System side signals
@@ -269,7 +270,8 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     wire [C_M_AXIS_TUSER_WIDTH-1:0]             w_tuser_to_sss_output_queue_single[0:NUM_QUEUES-2];
     wire                                        w_tvalid_to_sss_output_queue_single[0:NUM_QUEUES-2];
     wire                                        w_tlast_to_sss_output_queue_single[0:NUM_QUEUES-2];
-    wire                                        w_tready_from_sss_output_queue_single[0:NUM_QUEUES-2];
+    
+    wire                                        w_tready_from_sss_output_queue_single[0:NUM_QUEUES-1];
 
     wire [PIFO_INFO_LENGTH-1:0]                 w_tpifo_next[0:NUM_QUEUES-1];
     assign w_tpifo_next[NUM_QUEUES-1] = {PIFO_INFO_LENGTH{1'b0}};

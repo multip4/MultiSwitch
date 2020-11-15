@@ -36,7 +36,21 @@ module output_queue_v0_1_with_cpu
     parameter PAUSE_FRAME_WIDTH = 512,
     parameter PAUSE_RANK_WIDTH = 18,
 
-    parameter OUTPUT_SYNC = 1
+    parameter OUTPUT_SYNC = 1,
+
+    // parameters for queue full control,
+
+    //  small unit debug
+//    parameter PIFO_FULL_ON = PIFO_WORD_DEPTH - 2, 
+//    parameter PIFO_FULL_OFF = 1,
+//    parameter BUFFER_FULL_ON = 10,
+//    parameter BUFFER_FULL_OFF = 2    
+    
+    parameter PIFO_FULL_ON = PIFO_WORD_DEPTH - 2, 
+    parameter PIFO_FULL_OFF = 10,
+
+    parameter BUFFER_FULL_ON = BUFFER_WORD_DEPTH - 96,
+    parameter BUFFER_FULL_OFF = 400
 
     )
     (
@@ -231,7 +245,9 @@ module output_queue_v0_1_with_cpu
     block_ram_wrapper
     #(
      .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
-     .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH)
+     .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH),
+     .BUFFER_FULL_ON(BUFFER_FULL_ON),
+     .BUFFER_FULL_OFF(BUFFER_FULL_OFF)
     )
     block_ram_inst(
     
@@ -291,7 +307,9 @@ module output_queue_v0_1_with_cpu
     #(
     .PIFO_CALENDAR_SIZE(PIFO_WORD_DEPTH),
     .BUFFER_ADDR_WIDTH(BUFFER_ADDR_WIDTH),
-    .PIFO_CALENDAR_INDEX_WIDTH(PIFO_ADDR_WIDTH)
+    .PIFO_CALENDAR_INDEX_WIDTH(PIFO_ADDR_WIDTH),
+    .PIFO_FULL_ON(PIFO_FULL_ON),
+    .PIFO_FULL_OFF(PIFO_FULL_OFF)
     )
     pifo_calendar_inst
     (

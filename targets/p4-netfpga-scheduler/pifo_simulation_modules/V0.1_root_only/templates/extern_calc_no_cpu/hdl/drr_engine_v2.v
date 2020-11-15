@@ -98,7 +98,7 @@ always @(*)
 		  CALC_UPDATE:
 		      begin                
 		                  
-            r_drr_fsm_next = RETURN_RESULT;
+            
            // check if is outdated,
                // 1. check overflow bit,
                // if is outdated by overflow,
@@ -156,8 +156,22 @@ always @(*)
                           end
                       
                   end    
-		                  
-		      end        
+		         
+             r_drr_fsm_next = RETURN_RESULT;
+
+            // 2 cycle-operation,
+/*
+            r_drr_fsm_next = IDLE;
+            r_resp_valid_next = 1;
+            r_resp_data_next = {1'b1, r_target_overflow_next,r_target_round_next, {PIFO_ADDR_WIDTH{1'b0}}}; 
+
+            r_overflow_next[r_target_class_id] = r_target_overflow_next;
+            r_round_next[r_target_class_id] = r_target_round_next;
+            r_weight_next[r_target_class_id] = r_target_weight_next;              
+*/
+		      end
+
+                   
 		  RETURN_RESULT:
 		      begin
 		          r_resp_valid_next = 1;
@@ -169,10 +183,11 @@ always @(*)
 
 		          r_drr_fsm_next = IDLE;
 		      end
-          default:
-            begin
-                r_drr_fsm_next = IDLE;
-            end  
+          
+      default:
+        begin
+            r_drr_fsm_next = IDLE;
+        end  
 		endcase
 	end
 

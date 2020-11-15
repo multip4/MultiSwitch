@@ -144,7 +144,7 @@ extern_data = {
                               "@RESULT_WIDTH@" : "output_width(result)"}
 },
 
-"extern_calc" : {"hdl_template_file": "externs/extern_calc_no_cpu/hdl/EXTERN_extern_calc_template.v",
+"extern_calc" : {"hdl_template_file": "externs/extern_calc_no_cpu/hdl/EXTERN_extern_calc_template_pipe.v",
                   "replacements": {"@EXTERN_NAME@" : "extern_name",
                               "@PREFIX_NAME@" : "prefix_name",
                               "@MODULE_NAME@" : "module_name",

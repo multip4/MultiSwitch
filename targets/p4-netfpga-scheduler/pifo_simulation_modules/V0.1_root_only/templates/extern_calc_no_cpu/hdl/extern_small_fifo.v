@@ -67,15 +67,28 @@
 parameter MAX_DEPTH        = 2 ** MAX_DEPTH_BITS;
 
 reg [WIDTH-1:0] queue [MAX_DEPTH - 1 : 0];
+reg [WIDTH-1:0] queue_next [MAX_DEPTH - 1 : 0];
+
 reg [MAX_DEPTH_BITS - 1 : 0] rd_ptr;
 reg [MAX_DEPTH_BITS - 1 : 0] wr_ptr;
 reg [MAX_DEPTH_BITS : 0] depth;
 
+integer i;
+always @(*)
+  begin
+      for(i=0;i<MAX_DEPTH;i=i+1)
+        begin
+          queue_next[i] = queue[i];
+        end
+
+      if (wr_en)
+        queue_next[wr_ptr] = din;
+  end
+
 // Sample the data
 always @(posedge clk)
 begin
-   if (wr_en)
-      queue[wr_ptr] <= din;
+   
    if (rd_en)
       dout <=
 	      // synthesis translate_off
@@ -90,8 +103,19 @@ begin
       rd_ptr <= 'h0;
       wr_ptr <= 'h0;
       depth  <= 'h0;
+      for(i=0;i<MAX_DEPTH;i=i+1)
+        begin
+          queue[i] <= {WIDTH{1'b0}};
+        end
+
    end
    else begin
+
+      for(i=0;i<MAX_DEPTH;i=i+1)
+        begin
+          queue[i] <= queue_next[i];
+        end
+
       if (wr_en) wr_ptr <= wr_ptr + 'h1;
       if (rd_en) rd_ptr <= rd_ptr + 'h1;
       if (wr_en & ~rd_en) depth <=

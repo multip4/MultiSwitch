@@ -35,7 +35,9 @@ parameter C_S_AXIS_TUSER_WIDTH=128,
 parameter C_M_AXIS_PIFO_WIDTH=32,
 parameter C_S_AXIS_PIFO_WIDTH=32,
 parameter C_S_AXIS_ADDR_WIDTH=12,
-parameter OUTPUT_SYNC = 0
+parameter OUTPUT_SYNC = 0,
+parameter BUFFER_FULL_ON = ADDR_TABLE_DEPTH - THRESHOLD_ALMOST_FULL,
+parameter BUFFER_FULL_OFF = 40
 )
 (
     // IO for Address Manager
@@ -343,12 +345,45 @@ begin
 
 end
 
+// FULL Control FSM
+reg fsm_full, fsm_full_next;
+localparam NORMAL = 0;
+localparam FULL = 1;
+
+always @(*)
+begin
+    fsm_full_next = fsm_full;
+    
+    case(fsm_full)
+        NORMAL:
+            begin
+                if (m_axis_space_counter_reg > BUFFER_FULL_ON)
+                    begin
+                        fsm_full_next = FULL;
+                    end
+            end
+        FULL:
+            begin
+                if (m_axis_space_counter_reg < BUFFER_FULL_OFF)
+                    begin
+                        fsm_full_next = NORMAL;
+                    end
+            end
+    endcase
+    
+end
+
+
+
+
+
 always @(posedge clk)
 begin
     if(~rstn) 
         begin
             r_fl_head <= 0;
             r_fl_tail <= ADDR_TABLE_DEPTH-1;
+            fsm_full <= NORMAL;
 //            addr_manager_fsm_state<=IDLE;
 //            r_last_rd_index <= ADDR_TABLE_DEPTH-1;
             m_axis_space_counter_reg <= 0;
@@ -360,16 +395,16 @@ begin
 //            r_last_rd_index <= r_last_rd_index_next;
             r_fl_head <= r_fl_head_next;
             r_fl_tail <= r_fl_tail_next;
+            fsm_full <= fsm_full_next;
 //            addr_manager_fsm_state <= addr_manager_fsm_state_next;
             m_axis_space_counter_reg <= m_axis_space_counter_reg_next;
-     
+
         end
     
 end
 
 
-assign m_axis_almost_full = (m_axis_space_counter_reg > ADDR_TABLE_DEPTH-THRESHOLD_ALMOST_FULL)? 1 : 0;
-
+assign m_axis_almost_full = fsm_full;
 assign m_axis_fl_head = r_fl_head;
 assign m_axis_fl_head_next = r_fl_head_next;
 assign m_axis_fl_tail = r_fl_tail;    

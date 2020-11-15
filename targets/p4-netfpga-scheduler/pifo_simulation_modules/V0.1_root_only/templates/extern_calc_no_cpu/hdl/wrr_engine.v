@@ -51,8 +51,8 @@ reg [RESULT_WIDTH-1:0]          r_resp_data,  r_resp_data_next;
 
 localparam FSM_WIDTH = 2;
 localparam IDLE = 0;
-localparam RETURN_RESULT = 1;
-localparam WRR_CALC = 2;
+localparam RETURN_RESULT = 2;
+localparam WRR_CALC = 1;
 
 
 reg [FSM_WIDTH-1:0] r_wrr_fsm, r_wrr_fsm_next;
@@ -87,7 +87,7 @@ always @(*)
                 end
             WRR_CALC:
                 begin
-                	r_wrr_fsm_next = RETURN_RESULT;
+                	
 
               // check if is outdated,
              // 1. check overflow bit,
@@ -124,7 +124,18 @@ always @(*)
                          end
                  end
 
-                end
+
+              // r_wrr_fsm_next = RETURN_RESULT;
+
+                r_wrr_fsm_next = IDLE;
+                r_resp_valid_next = 1;
+                r_resp_data_next = {1'b1, r_target_overflow,r_target_round, {PIFO_ADDR_WIDTH{1'b0}}};
+                r_overflow_next[req_class_id] = r_target_overflow;
+                r_round_next[req_class_id] = r_target_round;
+                r_weight_next[req_class_id] = r_target_weight;  
+
+            end
+/*
             RETURN_RESULT:
                 begin
                     r_wrr_fsm_next = IDLE;
@@ -134,6 +145,7 @@ always @(*)
                 r_round_next[req_class_id] = r_target_round;
                 r_weight_next[req_class_id] = r_target_weight;  
                 end
+*/                
             default:
                 begin
                     r_wrr_fsm_next = IDLE;

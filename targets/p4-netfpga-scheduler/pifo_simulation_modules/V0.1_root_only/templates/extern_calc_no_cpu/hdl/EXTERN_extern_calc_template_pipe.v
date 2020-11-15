@@ -204,7 +204,7 @@ assign w_div_out_remain = 1;
     wire                       w_wrr_out_valid;
     wire [PIFO_WIDTH-1:0]      w_wrr_out_data;
 
-    wrr_engine
+    wrr_engine_pipe
     #(
       .CLASS_WIDTH(CLASS_WIDTH),
       .WEIGHT_WIDTH(WEIGHT_WIDTH),
@@ -215,9 +215,9 @@ assign w_div_out_remain = 1;
       .PIFO_WIDTH(PIFO_WIDTH)
     )
     wrr_inst(
-      .req_valid(r_req_wrr_valid_next),
-      .req_class_id(r_req_class_id_next),
-      .req_class_weight(r_req_class_weight_next),
+      .req_valid(r_req_wrr_valid),
+      .req_class_id(r_req_class_id),
+      .req_class_weight(r_req_class_weight),
       .last_pifo_valid(w_last_pkt_valid),
       .last_pifo_overflow(w_last_pkt_overflow),
       .last_pifo_round(w_last_pkt_round),
@@ -231,7 +231,7 @@ assign w_div_out_remain = 1;
 // DRR ENGINE
     wire                       w_drr_out_valid;
     wire [PIFO_WIDTH-1:0]      w_drr_out_data;
-    drr_engine_v2
+    drr_engine_pipe
     #(
       .CLASS_WIDTH(CLASS_WIDTH),
       .WEIGHT_WIDTH(WEIGHT_WIDTH),
@@ -243,11 +243,11 @@ assign w_div_out_remain = 1;
       .PIFO_WIDTH(PIFO_WIDTH)
     )
     drr_inst(
-      .req_valid(r_req_drr_valid_next),
-      .req_class_id(r_req_class_id_next),
-      .req_class_weight(r_req_class_weight_next),      
-      .req_div_quotient(r_div_out_quotient_next),
-      .req_div_remain(r_div_out_remain_next),
+      .req_valid(r_req_drr_valid),
+      .req_class_id(r_req_class_id),
+      .req_class_weight(r_req_class_weight),      
+      .req_div_quotient(r_div_out_quotient),
+      .req_div_remain(r_div_out_remain),
       .last_pifo_valid(w_last_pkt_valid),
       .last_pifo_overflow(w_last_pkt_overflow),
       .last_pifo_round(w_last_pkt_round),
@@ -263,7 +263,7 @@ assign w_div_out_remain = 1;
     wire                       w_wfq_out_valid;
     wire [PIFO_WIDTH-1:0]      w_wfq_out_data;
 
-    wfq_engine
+    wfq_engine_pipe
     #(
       .CLASS_WIDTH(CLASS_WIDTH),
       .WEIGHT_WIDTH(WEIGHT_WIDTH),
@@ -275,10 +275,10 @@ assign w_div_out_remain = 1;
       .PIFO_WIDTH(PIFO_WIDTH)
     )
     wfq_inst(
-      .req_valid(r_req_wfq_valid_next),
-      .req_class_id(r_req_class_id_next), 
-      .req_div_quotient(r_div_out_quotient_next),
-      .req_div_remain(r_div_out_remain_next),
+      .req_valid(r_req_wfq_valid),
+      .req_class_id(r_req_class_id), 
+      .req_div_quotient(r_div_out_quotient),
+      .req_div_remain(r_div_out_remain),
       .last_pifo_valid(w_last_pkt_valid),
       .last_pifo_overflow(w_last_pkt_overflow),
       .last_pifo_round(w_last_pkt_round),
@@ -288,33 +288,6 @@ assign w_div_out_remain = 1;
       .clk(clk_lookup),
       .rstn(rstn)
     ); 
-
-    wire empty_div_fifo;
-    wire full_div_fifo;
-    wire [WEIGHT_WIDTH-1:0]  w_div_fifo_out_quotient;
-    wire [WEIGHT_WIDTH-1:0]  w_div_fifo_out_remain;
-
-    //// Input buffer to hold requests ////
-    extern_fallthrough_small_fifo
-    #(
-        .WIDTH(INPUT_WIDTH),
-        .MAX_DEPTH_BITS(L2_REQ_BUF_DEPTH)
-    )
-    extern_devide_fifo
-    (
-       // Outputs
-       .dout                           ({w_div_fifo_out_quotient,w_div_fifo_out_remain}),
-       .full                           (full_div_fifo),
-       .nearly_full                    (),
-       .prog_full                      (),
-       .empty                          (empty_div_fifo),
-       // Inputs
-       .din                            ({w_div_out_quotient,w_div_out_remain}),
-       .wr_en                          (w_div_out_valid),
-       .rd_en                          (rd_en_fifo),
-       .reset                          (~rstn),
-       .clk                            (clk_lookup)
-    );
 
     //// Input buffer to hold requests ////
     extern_fallthrough_small_fifo
@@ -338,9 +311,12 @@ assign w_div_out_remain = 1;
        .clk                            (clk_lookup)
     );
 
-    reg  [FSM_WIDTH-1:0]               r_fsm_state, r_fsm_state_next;
     reg  [RESULT_WIDTH-1:0]           r_output_data, r_output_data_next;
     reg                               r_output_valid, r_output_valid_next;
+
+    reg                               r_read_fifo_d1, r_read_fifo_d2, r_read_fifo_d3,r_read_fifo_d4;
+    reg                               r_req_fifo_stateful_valid_d1, r_req_fifo_stateful_valid_d2, r_req_fifo_stateful_valid_d3,r_req_fifo_stateful_valid_d4;
+    reg [CALC_TYPE_WIDTH-1:0]         r_req_calc_type_d1,r_req_calc_type_d2,r_req_calc_type_d3,r_req_calc_type_d4;
 
 
     localparam REQ_WRR = 8'b00000100;
@@ -350,12 +326,8 @@ assign w_div_out_remain = 1;
     // FSM 
     always @(*)
       begin
-        r_fsm_state_next = r_fsm_state;
-        r_output_data_next = r_output_data;
-        r_last_pkt_info_next = r_last_pkt_info;
-        r_output_valid_next = 0;
+
         rd_en_fifo = 0;
-        
         r_req_class_id_next = r_req_class_id;    
         r_req_class_weight_next = r_req_class_weight;
         r_req_pkt_size_next = r_req_pkt_size;    
@@ -391,100 +363,83 @@ assign w_div_out_remain = 1;
             end
         endcase
 
-        case(r_fsm_state)
-          IDLE:
-            begin
-              if (~empty_div_fifo) 
-                begin
-                  rd_en_fifo = 1;
-
-                  if(w_req_fifo_valid == 1)
-                    begin
-
-                        r_req_class_id_next = w_req_class_id;    
-                        r_req_class_weight_next = w_req_class_weight;
-                        r_req_pkt_size_next = w_req_pkt_size;    
-                        r_req_calc_type_next = w_req_calc_type;   
-                        r_req_output_port_next = w_req_output_port;
-                        r_div_out_quotient_next = w_div_fifo_out_quotient;
-                        r_div_out_remain_next = w_div_fifo_out_remain;     
-                        
-                        case(w_req_calc_type)
-                          REQ_WFQ: // WFQ
-                              begin
-                                  r_fsm_state_next = WAIT_RESULT_WFQ;
-                                  r_req_wfq_valid_next = 1;
-                              end
-                          REQ_DRR: // DRR
-                              begin
-                                  r_fsm_state_next = WAIT_RESULT_DRR;
-                                  r_req_drr_valid_next = 1;
-                              end
-                          REQ_WRR: // WRR
-                              begin
-                                  r_fsm_state_next = WAIT_RESULT_WRR;
-                                  r_req_wrr_valid_next = 1;
-                              end
-                          default: // No match
-                              begin
-                                  r_fsm_state_next = IDLE;
-                                  r_output_valid_next = 1;
-                                  r_output_data_next = {RESULT_WIDTH{1'b0}};
-                              end
-                          
-                        endcase
-                    end
-                  else
-                    begin
-                      r_fsm_state_next = IDLE;
-                      r_output_valid_next = 1;
-                      r_output_data_next = {RESULT_WIDTH{1'b0}};
-                    end
-              end
-            end
-          WAIT_RESULT_WRR:
-            begin
-                if(w_wrr_out_valid)
-                    begin
-                        r_output_valid_next = 1;
-                        r_output_data_next = w_wrr_out_data;
-                        r_fsm_state_next = IDLE;
-                    end
-            end
-            
-         WAIT_RESULT_DRR:
+        if(w_div_out_valid)
+          begin
+            rd_en_fifo = 1;
+            if(w_req_fifo_valid == 1)
               begin
-                  if(w_drr_out_valid)
-                      begin
-                          r_output_valid_next = 1;
-                          r_output_data_next = w_drr_out_data;
-                          r_fsm_state_next = IDLE;
-                      end
-              end
-         WAIT_RESULT_WFQ:
-               begin
-                   if(w_wfq_out_valid)
-                       begin
-                           r_output_valid_next = 1;
-                           r_output_data_next = w_wfq_out_data;
-                           r_fsm_state_next = IDLE;
-                       end
-               end
-          default:
-            begin
-              r_fsm_state_next = IDLE;
-            end
-        endcase
 
+                  r_req_class_id_next = w_req_class_id;    
+                  r_req_class_weight_next = w_req_class_weight;
+                  r_req_pkt_size_next = w_req_pkt_size;    
+                  r_req_calc_type_next = w_req_calc_type;   
+                  r_req_output_port_next = w_req_output_port;
+                  r_div_out_quotient_next = w_div_out_quotient;
+                  r_div_out_remain_next = w_div_out_remain;
+
+                  case(w_req_calc_type)
+                    REQ_WFQ: // WFQ
+                        begin
+                            r_req_wfq_valid_next = 1;
+                        end
+                    REQ_DRR: // DRR
+                        begin
+                            r_req_drr_valid_next = 1;
+                        end
+                    REQ_WRR: // WRR
+                        begin
+                            r_req_wrr_valid_next = 1;
+                        end
+                  endcase
+              end            
+          end
       end
 
+    always @(*)
+      begin
+        r_output_valid_next = 0;
+        r_output_data_next = {RESULT_WIDTH{1'b0}};
+        if(r_read_fifo_d4)
+          begin
+            r_output_valid_next = 1;
+            if(r_req_fifo_stateful_valid_d4)
+              begin
+                case(r_req_calc_type_d4)
+                    REQ_WFQ: // WFQ
+                        begin
+                            r_output_data_next = w_wfq_out_data;
+                        end
+                    REQ_DRR: // DRR
+                        begin
+                            r_output_data_next = w_drr_out_data;
+                        end
+                    REQ_WRR: // WRR
+                        begin
+                            r_output_data_next = w_wrr_out_data;
+                        end
+                endcase
+              end
 
+          end
+      end
 
     always @(posedge clk_lookup)
       begin
         if (~rstn) 
           begin
-            r_fsm_state <= IDLE;
+            r_read_fifo_d1 <= 0;
+            r_read_fifo_d2 <= 0;
+            r_read_fifo_d3 <= 0;
+            r_read_fifo_d4 <= 0;
+
+            r_req_fifo_stateful_valid_d1<=0;
+            r_req_fifo_stateful_valid_d2<=0;
+            r_req_fifo_stateful_valid_d3<=0;
+            r_req_fifo_stateful_valid_d4<=0;
+            r_req_calc_type_d1<=0;
+            r_req_calc_type_d2<=0;
+            r_req_calc_type_d3<=0;
+            r_req_calc_type_d4<=0;
             r_req_calc_type <= 0;
             r_output_data <= 0;
             r_output_valid <= 0;
@@ -503,7 +458,19 @@ assign w_div_out_remain = 1;
           end
         else
           begin
-            r_fsm_state <= r_fsm_state_next;
+            r_read_fifo_d1 <= rd_en_fifo;
+            r_read_fifo_d2 <= r_read_fifo_d1;
+            r_read_fifo_d3 <= r_read_fifo_d2;
+            r_read_fifo_d4 <= r_read_fifo_d3;
+            r_req_fifo_stateful_valid_d1<=w_req_fifo_valid;
+            r_req_fifo_stateful_valid_d2<=r_req_fifo_stateful_valid_d1;
+            r_req_fifo_stateful_valid_d3<=r_req_fifo_stateful_valid_d2;
+            r_req_fifo_stateful_valid_d4<=r_req_fifo_stateful_valid_d3;
+            r_req_calc_type_d1<=w_req_calc_type;
+            r_req_calc_type_d2<=r_req_calc_type_d1;
+            r_req_calc_type_d3<=r_req_calc_type_d2;
+            r_req_calc_type_d4<=r_req_calc_type_d3;
+
             r_output_data <= r_output_data_next;
             r_output_valid <= r_output_valid_next;
             r_last_pkt_info <= r_last_pkt_info_next;
@@ -521,7 +488,7 @@ assign w_div_out_remain = 1;
           end
       end
 
-    assign tuple_out_@EXTERN_NAME@_output_VALID = r_output_valid_next;
-    assign tuple_out_@EXTERN_NAME@_output_DATA = r_output_data_next;
+    assign tuple_out_@EXTERN_NAME@_output_VALID = r_output_valid;
+    assign tuple_out_@EXTERN_NAME@_output_DATA = r_output_data;
 endmodule
 
