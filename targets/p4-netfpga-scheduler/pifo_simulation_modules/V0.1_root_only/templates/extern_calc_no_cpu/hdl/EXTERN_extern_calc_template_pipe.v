@@ -144,7 +144,7 @@ module @MODULE_NAME@
     wire [PIFO_RANK_WIDTH-1:0]      w_last_pkt_round;
     wire [PIFO_ADDR_WIDTH-1:0]      w_last_pkt_addr;
 
-    assign {w_last_pkt_valid, w_last_pkt_overflow, w_last_pkt_round, w_last_pkt_addr} = r_last_pkt_info;
+    assign {w_last_pkt_valid, w_last_pkt_overflow, w_last_pkt_round, w_last_pkt_addr} = r_last_pkt_info_next;
 
 
 wire                     w_div_out_valid;

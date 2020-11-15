@@ -72,7 +72,6 @@ table_cam_add_entry table_strict_priority set_strict_rank 0x014444444401 => 0x80
 table_cam_add_entry table_rc_class_lookup set_rc_class 0x013333333301 => 1
 table_cam_add_entry table_rc_class_lookup set_rc_class 0x014444444401 => 2
 
-
 // ====================================================
 // table rule for wrr weight lookup 
 // table name: table_rc_weight_lookup
@@ -80,8 +79,8 @@ table_cam_add_entry table_rc_class_lookup set_rc_class 0x014444444401 => 2
 // action    : set_rc_weight
 // action param:bit<16> class_weight
 
-table_cam_add_entry table_rc_weight_lookup set_rc_weight 0x013333333301 => 10
-table_cam_add_entry table_rc_weight_lookup set_rc_weight 0x014444444401 => 2
+table_cam_add_entry table_rc_weight_lookup set_rc_weight 0x013333333301 => 2
+table_cam_add_entry table_rc_weight_lookup set_rc_weight 0x014444444401 => 1
 
 // ====================================================
 // table rule for rank calc look up, 
@@ -89,7 +88,6 @@ table_cam_add_entry table_rc_weight_lookup set_rc_weight 0x014444444401 => 2
 // key       : sumemeta.dst_port
 // action    : set_calc_mode
 // action param: bit<8> calc_mode, each bit stands for pq, wrr, drr, wfq,
-
 
 table_cam_add_entry table_rank_calc_mode set_calc_mode 0b00010000 => 0b00000100
 table_cam_add_entry table_rank_calc_mode set_calc_mode 0b00000001 => 0b00000001

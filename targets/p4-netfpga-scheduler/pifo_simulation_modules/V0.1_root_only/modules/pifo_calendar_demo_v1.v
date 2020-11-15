@@ -32,7 +32,7 @@ module pifo_calendar_demo
     parameter ROOT_RANK_END_POS = 30,
     parameter ROOT_PIFO_INFO_VALID_POS = 31,
     parameter PIFO_INFO_OVERFLOW_POS = 30,
-    parameter PIFO_FULL_ON = PIFO_CALENDAR_SIZE - 1,
+    parameter PIFO_FULL_ON = PIFO_CALENDAR_SIZE - 2,
     parameter PIFO_FULL_OFF = 10
        
     )
@@ -246,8 +246,8 @@ always @(posedge clk)
     end
 
 assign m_axis_buffer_addr = w_pifo_atom_element[0][BUFFER_ADDR_WIDTH-1:0];
-assign w_ctl_insert = (m_axis_calendar_full)?  0 : s_axis_insert_en;
-assign w_ctl_pop = (r_pifo_element_count > 0) ? s_axis_pop_en: 0;
+assign w_ctl_insert = s_axis_insert_en;
+assign w_ctl_pop = s_axis_pop_en;
 
 assign m_axis_pifo_calendar_top = w_pifo_atom_element[0];
 assign m_axis_calendar_full = fsm_full;

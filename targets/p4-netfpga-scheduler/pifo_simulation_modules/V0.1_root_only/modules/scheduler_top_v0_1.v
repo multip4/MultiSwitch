@@ -265,11 +265,11 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     wire                                        pifo_full[0:NUM_QUEUES-1];
     wire [BUFFER_INDEX_WIDTH-1:0]               buffer_queue_depth[0:NUM_QUEUES-1];
     
-    wire [DATA_WIDTH - 1:0]                     w_tdata_to_sss_output_queue_single[0:NUM_QUEUES-2];
-    wire [(DATA_WIDTH / 8) - 1:0]               w_tkeep_to_sss_output_queue_single[0:NUM_QUEUES-2];
-    wire [C_M_AXIS_TUSER_WIDTH-1:0]             w_tuser_to_sss_output_queue_single[0:NUM_QUEUES-2];
-    wire                                        w_tvalid_to_sss_output_queue_single[0:NUM_QUEUES-2];
-    wire                                        w_tlast_to_sss_output_queue_single[0:NUM_QUEUES-2];
+    wire [DATA_WIDTH - 1:0]                     w_tdata_to_sss_output_queue_single[0:NUM_QUEUES-1];
+    wire [(DATA_WIDTH / 8) - 1:0]               w_tkeep_to_sss_output_queue_single[0:NUM_QUEUES-1];
+    wire [C_M_AXIS_TUSER_WIDTH-1:0]             w_tuser_to_sss_output_queue_single[0:NUM_QUEUES-1];
+    wire                                        w_tvalid_to_sss_output_queue_single[0:NUM_QUEUES-1];
+    wire                                        w_tlast_to_sss_output_queue_single[0:NUM_QUEUES-1];
     
     wire                                        w_tready_from_sss_output_queue_single[0:NUM_QUEUES-1];
 
@@ -323,7 +323,7 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     genvar i;
     generate
         
-        for(i=0;i<NUM_QUEUES-1;i=i+1)
+        for(i=0;i<NUM_QUEUES;i=i+1)
             begin:gen_output_queue
                 
                 output_queue_v0_1_with_cpu
@@ -393,6 +393,7 @@ assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
     endgenerate
  
 
+/*
 //DMA Queue Unused.
 
 assign buffer_almost_full[NUM_QUEUES-1] = 'b1;
@@ -422,7 +423,7 @@ sss_output_queue_single_dma
     .m_axis_tready(w_m_axis_tready[NUM_QUEUES-1]),
     .m_axis_tlast(w_m_axis_tlast[NUM_QUEUES-1])   
 );
-
+*/
 
 always @(posedge axis_aclk)
 begin

@@ -88,8 +88,7 @@ def pad_pkt(pkt, size, id = 0):
     count = 1
 
     pkt = pkt / ('\x00'* (30 - len(pkt) % 32))
-    # print id%len(mask)
-    pkt = pkt / mask[id%(len(mask)-1)]/ '\xff'
+    pkt = pkt / mask[id]/ '\xff'
 
     while len(pkt) < size:
     	# print "Packet Length, Padding Mask", len(pkt), count
@@ -97,7 +96,7 @@ def pad_pkt(pkt, size, id = 0):
     	# mask = '\x01' + str(count)
     	# print len(mask), mask
     	# mask = str(hex("{:02x}".format(count)))
-    	pkt = pkt / (mask[count%(len(mask)-1)]* 32)
+    	pkt = pkt / (mask[count]* 32)
     	count +=1
 
     return pkt
@@ -188,7 +187,7 @@ def send_drop_pkt(SMAC, DMAC,input_port):
 def send_pkt(SMAC, DMAC,input_port,ouput_port,length,id=0):
     global pktCnt
     pktCnt += 1
-    pkt = Ether(dst=DMAC, src=SMAC)/mask[id%(len(mask)-1)]/ '\xff'/IP()
+    pkt = Ether(dst=DMAC, src=SMAC)/mask[id]/ '\xff'/IP()
     # pkt = pad_pkt(pkt, length, hex(length))
     pkt = pad_pkt(pkt, length, id)
     
@@ -365,7 +364,7 @@ def test_congestion_scenario(size):
 
 	write_pcap_files()		
 
-test_fixed_size_senario(256, 100)
+test_fixed_size_senario(128, 50)
 
 
 # delete_test_files()

@@ -364,7 +364,7 @@ def test_congestion_scenario(size):
 
 	write_pcap_files()		
 
-test_fixed_size_senario(256, 50)
+test_fixed_size_senario(64, 50)
 
 
 # delete_test_files()

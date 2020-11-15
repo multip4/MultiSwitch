@@ -427,8 +427,8 @@ module output_queue_v0_1_with_cpu
                                             || (w_r_m_axis_tpifo_valid 
                                                 && (w_r_m_axis_tpifo_overflow != w_r_s_axis_tpifo_d1_overflow)
                                                 && (w_r_s_axis_tpifo_d1_rank < w_r_m_axis_tpifo_rank))
-                                            || ((w_r_m_axis_tpifo_valid 
-                                            && (w_r_m_axis_tpifo_overflow == w_r_s_axis_tpifo_d1_overflow)) 
+                                            || (w_r_m_axis_tpifo_valid 
+                                            && (w_r_m_axis_tpifo_overflow == w_r_s_axis_tpifo_d1_overflow) 
                                             && (w_r_s_axis_tpifo_d1_rank > w_r_m_axis_tpifo_rank)))
                                                 begin
                                                     r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
