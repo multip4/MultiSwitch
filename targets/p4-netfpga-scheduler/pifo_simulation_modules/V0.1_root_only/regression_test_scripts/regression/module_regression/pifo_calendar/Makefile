@@ -1,6 +1,7 @@
-TEST_NAME ?= test01
-STOP_FAIL ?= 1
-
+T ?= test01
+S ?= 1
+TEST_NAME = ${T}
+STOP_FAIL = ${S}
 run_test:
 	# echo ${TEST_NAME}
 	# echo ${STOP_FAIL}

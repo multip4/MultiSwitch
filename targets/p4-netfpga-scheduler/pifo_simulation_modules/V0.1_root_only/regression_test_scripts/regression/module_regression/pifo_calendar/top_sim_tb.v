@@ -67,22 +67,8 @@ assign w_checker_data_6 = (CHECKER_DATA_COUNT > 6) ? w_module_out_data_6 : 0;
 assign w_checker_data_7 = (CHECKER_DATA_COUNT > 7) ? w_module_out_data_7 : 0;
 assign w_checker_data_8 = (CHECKER_DATA_COUNT > 8) ? w_module_out_data_8 : 0;
 assign w_checker_data_9 = (CHECKER_DATA_COUNT > 9) ? w_module_out_data_9 : 0;
+
 sim_stim_general_ip
-#(
-//.HAND_SHAKE(1),
-//.FILE_PATH(),
-.DATA_COUNT(STIM_DATA_COUNT),
-.DATA_0_WIDTH(STIM_DATA_WIDTH_0),
-.DATA_1_WIDTH(STIM_DATA_WIDTH_1),
-.DATA_2_WIDTH(STIM_DATA_WIDTH_2),
-.DATA_3_WIDTH(STIM_DATA_WIDTH_3),
-.DATA_4_WIDTH(STIM_DATA_WIDTH_4),
-.DATA_5_WIDTH(STIM_DATA_WIDTH_5),
-.DATA_6_WIDTH(STIM_DATA_WIDTH_6),
-.DATA_7_WIDTH(STIM_DATA_WIDTH_7),
-.DATA_8_WIDTH(STIM_DATA_WIDTH_8),
-.DATA_9_WIDTH(STIM_DATA_WIDTH_9)
-)
 sim_stim_general_inst(
 .clk(clk),
 .rstn(rstn),
@@ -100,22 +86,6 @@ sim_stim_general_inst(
 
 
 sim_checker_general_ip
-#(
-//.STOP_FAIL(1),
-//.FILE_PATH(),
-//.LOG_FILE_PATH(),
-.DATA_COUNT(CHECKER_DATA_COUNT),
-.DATA_0_WIDTH(CHECKER_DATA_WIDTH_0),
-.DATA_1_WIDTH(CHECKER_DATA_WIDTH_1),
-.DATA_2_WIDTH(CHECKER_DATA_WIDTH_2),
-.DATA_3_WIDTH(CHECKER_DATA_WIDTH_3),
-.DATA_4_WIDTH(CHECKER_DATA_WIDTH_4),
-.DATA_5_WIDTH(CHECKER_DATA_WIDTH_5),
-.DATA_6_WIDTH(CHECKER_DATA_WIDTH_6),
-.DATA_7_WIDTH(CHECKER_DATA_WIDTH_7),
-.DATA_8_WIDTH(CHECKER_DATA_WIDTH_8),
-.DATA_9_WIDTH(CHECKER_DATA_WIDTH_9)
-)
 sim_checker_general_inst(
 .clk(clk),
 .rstn(rstn),

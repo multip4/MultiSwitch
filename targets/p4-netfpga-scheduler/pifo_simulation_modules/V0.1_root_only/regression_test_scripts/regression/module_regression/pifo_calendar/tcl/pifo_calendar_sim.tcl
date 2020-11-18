@@ -54,12 +54,20 @@ create_ip -name sim_stim_general -vendor NetFPGA -library NetFPGA -version 1.00 
 
 set_property -dict [list CONFIG.DATA_COUNT {4}    \
 CONFIG.HAND_SHAKE {0} \
+CONFIG.DATA_0_WIDTH {32} \
+CONFIG.DATA_1_WIDTH {1} \
+CONFIG.DATA_2_WIDTH {1} \
+CONFIG.DATA_3_WIDTH {32} \
 CONFIG.FILE_PATH ${file_path_data_in}] [get_ips sim_stim_general_ip]
 generate_target all [get_ips sim_stim_general_ip]
 
 create_ip -name sim_checker_general -vendor NetFPGA -library NetFPGA -version 1.00 -module_name sim_checker_general_ip
 
-set_property -dict [list CONFIG.DATA_COUNT {3} \
+set_property -dict [list CONFIG.DATA_COUNT {4} \
+CONFIG.DATA_0_WIDTH {32} \
+CONFIG.DATA_1_WIDTH {12} \
+CONFIG.DATA_2_WIDTH {1} \
+CONFIG.DATA_3_WIDTH {32} \
 CONFIG.STOP_FAIL ${STOP_FAIL} \
 CONFIG.FILE_PATH ${file_path_data_exp} \
 CONFIG.LOG_FILE_PATH ${file_path_data_log}] [get_ips sim_checker_general_ip]
