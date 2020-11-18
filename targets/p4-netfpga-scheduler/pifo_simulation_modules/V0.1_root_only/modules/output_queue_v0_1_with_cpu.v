@@ -46,11 +46,11 @@ module output_queue_v0_1_with_cpu
 //    parameter BUFFER_FULL_ON = 10,
 //    parameter BUFFER_FULL_OFF = 2    
     
-    parameter PIFO_FULL_ON = PIFO_WORD_DEPTH - 2, 
-    parameter PIFO_FULL_OFF = 10,
+    parameter PIFO_FULL_ON = PIFO_WORD_DEPTH - 3, 
+    parameter PIFO_FULL_OFF = 1,
 
     parameter BUFFER_FULL_ON = BUFFER_WORD_DEPTH - 96,
-    parameter BUFFER_FULL_OFF = 400
+    parameter BUFFER_FULL_OFF = 1
 
     )
     (
@@ -179,7 +179,7 @@ module output_queue_v0_1_with_cpu
 
 
     // output result for sop pkt addr 
-    reg [BUFFER_ADDR_WIDTH-1:0] pifo_calendar_top_addr;
+    reg [BUFFER_ADDR_WIDTH-1:0] combi_sop_addr;
     // buffer manager module inst
     
     
@@ -192,7 +192,7 @@ module output_queue_v0_1_with_cpu
 //    .s_axis_wr_en(ctl_buffer_wr_en), // write signal for fl_head transition
 //    .s_axis_rd_en(r_buffer_rd_en_next),    // read signal 
         
-//    .s_axis_rd_pkt_sop_addr(pifo_calendar_top_addr), // read address for sop 
+//    .s_axis_rd_pkt_sop_addr(combi_sop_addr), // read address for sop 
 //    .s_axis_rd_first_word_en(r_buffer_first_word_en_next), // the first word signal, for fl_tail value update.
     
 //    .m_axis_fl_head(w_addr_manager_out_buffer_fl_head),       // next writable available address, same as free list head.
@@ -254,7 +254,7 @@ module output_queue_v0_1_with_cpu
     .s_axis_wr_en(ctl_buffer_wr_en), // write signal for fl_head transition
     .s_axis_rd_en(r_buffer_rd_en_next),    // read signal 
         
-    .s_axis_rd_pkt_sop_addr(pifo_calendar_top_addr), // read address for sop 
+    .s_axis_rd_pkt_sop_addr(combi_sop_addr), // read address for sop 
     .s_axis_rd_first_word_en(r_buffer_first_word_en_next), // the first word signal, for fl_tail value update.
     
     .m_axis_fl_head(w_addr_manager_out_buffer_fl_head),       // next writable available address, same as free list head.
@@ -367,7 +367,7 @@ module output_queue_v0_1_with_cpu
         ctl_pifo_pop_en             = 0;
         ctl_buffer_wr_en            = r_s_axis_buffer_wr_en_d1;
         ctl_pifo_insert_en          = r_s_axis_pifo_insert_en_d1; 
-        pifo_calendar_top_addr      = w_pifo_calendar_out_addr;
+        combi_sop_addr              = w_pifo_calendar_out_addr;
         
         r_m_axis_tvalid_next = 0;
         r_m_axis_tdata_next = r_m_axis_tdata;
@@ -479,7 +479,7 @@ module output_queue_v0_1_with_cpu
 
                     // update sop address.
                     output_queue_fsm_state_next = UPDATE_FL_TAIL;
-                    pifo_calendar_top_addr = w_addr_manager_out_buffer_fl_head;
+                    combi_sop_addr = w_addr_manager_out_buffer_fl_head;
                     r_buffer_rd_addr_next = w_addr_manager_out_buffer_fl_head;
                     r_buffer_first_word_en_next = 1; // first word control signal set to 1.
                     r_buffer_rd_en_next = 0;

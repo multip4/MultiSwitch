@@ -37,7 +37,7 @@ parameter C_S_AXIS_PIFO_WIDTH=32,
 parameter C_S_AXIS_ADDR_WIDTH=12,
 parameter OUTPUT_SYNC = 0,
 parameter BUFFER_FULL_ON = ADDR_TABLE_DEPTH - THRESHOLD_ALMOST_FULL,
-parameter BUFFER_FULL_OFF = 40
+parameter BUFFER_FULL_OFF = 1
 )
 (
     // IO for Address Manager
@@ -143,14 +143,13 @@ addr_table_12_4096_with_coe
         .addra(port_a_addr),
         .dina(port_a_data),
         .douta(w_port_a_out),
-        .wea(port_a_wea), // no write for port a 
+        .wea(port_a_wea), 
         
         // PortB for FL Head (read only)  
         .addrb(port_b_addr),
-        .dinb(port_b_data),
+        .dinb({ADDR_WIDTH{1'b0}}),
         .doutb(w_port_b_out),
-        .web(port_b_wea),
-        
+        .web('b0), // no write for port b 
         .clka(clk),
         .clkb(clk)
     );
@@ -276,7 +275,7 @@ assign m_axis_tpifo = (~OUTPUT_SYNC)? m_axis_tpifo_async : m_axis_tpifo_reg;
 always @(*)
 begin
     port_b_addr = r_fl_head;
-    port_b_data = 32'b0;
+    port_b_data = {ADDR_WIDTH{1'b0}};
     port_b_wea = 'b0;
     
     port_a_addr = r_fl_tail;
@@ -364,7 +363,7 @@ begin
             end
         FULL:
             begin
-                if (m_axis_space_counter_reg < BUFFER_FULL_OFF)
+                if (m_axis_space_counter_reg <= BUFFER_FULL_OFF)
                     begin
                         fsm_full_next = NORMAL;
                     end

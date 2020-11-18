@@ -32,8 +32,8 @@ module pifo_calendar_demo
     parameter ROOT_RANK_END_POS = 30,
     parameter ROOT_PIFO_INFO_VALID_POS = 31,
     parameter PIFO_INFO_OVERFLOW_POS = 30,
-    parameter PIFO_FULL_ON = PIFO_CALENDAR_SIZE - 2,
-    parameter PIFO_FULL_OFF = 10
+    parameter PIFO_FULL_ON = PIFO_CALENDAR_SIZE - 3,
+    parameter PIFO_FULL_OFF = 1
        
     )
     (
@@ -213,14 +213,14 @@ begin
     case(fsm_full)
         NORMAL:
             begin
-                if (r_pifo_element_count > PIFO_FULL_ON)
+                if (r_pifo_element_count >= PIFO_FULL_ON)
                     begin
                         fsm_full_next = FULL;
                     end
             end
         FULL:
             begin
-                if (r_pifo_element_count < PIFO_FULL_OFF)
+                if (r_pifo_element_count <= PIFO_FULL_OFF)
                     begin
                         fsm_full_next = NORMAL;
                     end
