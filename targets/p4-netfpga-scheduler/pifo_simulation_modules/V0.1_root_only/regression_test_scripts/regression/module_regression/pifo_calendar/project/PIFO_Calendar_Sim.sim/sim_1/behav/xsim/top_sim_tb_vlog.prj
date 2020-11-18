@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  -i "../../../../" -d "SIMULATION=1" \
+"../../../../../../../../../modules/pifo_calendar_atom_v0_4.v" \
+"../../../../../../../../../modules/pifo_calendar_demo_v1.v" \
+"../../../../../top_sim_tb.v" \
+"../../../../PIFO_Calendar_Sim.srcs/sources_1/ip/sim_stim_general_ip/sim_stim_general.v" \
+"../../../../PIFO_Calendar_Sim.srcs/sources_1/ip/sim_stim_general_ip/sim/sim_stim_general_ip.v" \
+"../../../../PIFO_Calendar_Sim.srcs/sources_1/ip/sim_checker_general_ip/sim_checker_general.v" \
+"../../../../PIFO_Calendar_Sim.srcs/sources_1/ip/sim_checker_general_ip/sim/sim_checker_general_ip.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

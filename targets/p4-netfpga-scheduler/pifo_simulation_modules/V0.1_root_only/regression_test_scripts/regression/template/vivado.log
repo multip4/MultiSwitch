@@ -1,0 +1,47 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Nov 18 09:40:51 2020
+# Process ID: 28608
+# Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template
+# Command line: vivado
+# Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/vivado.log
+# Journal file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/jkchoi/Documents/project_temp/project_temp.xpr
+CRITICAL WARNING: [Project 1-19] Could not find the file '/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/tb_template.v'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 6150.570 ; gain = 66.973 ; free physical = 498 ; free virtual = 11399
+update_compile_order -fileset sources_1
+add_files -norecurse /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/top_sim_tb.v
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_general.v] -no_script -reset -force -quiet
+remove_files  /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_general.v
+add_files -norecurse /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1/sim_checker_general.v
+update_compile_order -fileset sources_1
+set repo_dir $::env(PROJECT_IP_PATH)
+/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/ip
+set xilinx_repo_dir $::env(XILINX_VIVADO)/data/ip/xilinx/
+/tools/Xilinx/Vivado/2018.2/data/ip/xilinx/
+puts "repo_dir ${repo_dir}"
+repo_dir /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/templates/ip
+puts "repo_dir /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template"
+repo_dir /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template
+repo_dir /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1/
+invalid command name "repo_dir"
+repo_dir "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1/"
+invalid command name "repo_dir"
+puts "/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1/"
+/home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1/
+create_ip -name sim_checker_general -vendor NetFPGA -library NetFPGA -version 1.00 -module_name sim_checker_general_ip
+ERROR: [Coretcl 2-1134] No IP matching VLNV 'NetFPGA:NetFPGA:sim_checker_general:1.00' was found. Please check your repository configuration.
+add_files -norecurse /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/modules/pifo_calendar_demo_v1.v
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 18 10:32:24 2020...
