@@ -35,3 +35,7 @@ for test in ${TEST_CASES}; do
     run_test ${test} 0;
 
 done
+
+rm -rfv project;\
+rm -rfv vivado*;\
+rm -rfv .Xil;\

@@ -36,6 +36,3 @@ for test in ${TEST_CASES}; do
 
 done
 
-rm -rfv project;\
-rm -rfv vivado*;\
-rm -rfv .Xil;\
