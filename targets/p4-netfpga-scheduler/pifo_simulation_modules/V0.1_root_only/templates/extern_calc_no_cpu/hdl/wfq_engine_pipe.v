@@ -89,7 +89,9 @@ always @(*)
    // if is outdated by overflow,
    // sync to the current global overflow and round,
    // and set 0 weight,
-   if(PIPE_1_r_target_overflow != PIPE_1_r_last_pifo_overflow && PIPE_1_r_last_pifo_round < PIPE_1_r_target_round)
+//   if(PIPE_1_r_target_overflow != PIPE_1_r_last_pifo_overflow && PIPE_1_r_last_pifo_round < PIPE_1_r_target_round)
+   if(PIPE_1_r_target_overflow != PIPE_1_r_last_pifo_overflow)
+
        begin
            
           PIPE_2_r_target_overflow_next = PIPE_1_r_last_pifo_overflow;

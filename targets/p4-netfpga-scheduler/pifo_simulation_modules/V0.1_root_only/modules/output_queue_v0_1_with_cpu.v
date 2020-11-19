@@ -36,6 +36,7 @@ module output_queue_v0_1_with_cpu
     parameter PAUSE_FRAME_WIDTH = 512,
     parameter PAUSE_RANK_WIDTH = 18,
 
+    parameter DEBUG_BRAM_ADDR_FL_TAIL_INDEX = BUFFER_WORD_DEPTH-1,
     parameter OUTPUT_SYNC = 1,
 
     // parameters for queue full control,
@@ -247,7 +248,8 @@ module output_queue_v0_1_with_cpu
      .ADDR_WIDTH(BUFFER_ADDR_WIDTH),
      .ADDR_TABLE_DEPTH(BUFFER_WORD_DEPTH),
      .BUFFER_FULL_ON(BUFFER_FULL_ON),
-     .BUFFER_FULL_OFF(BUFFER_FULL_OFF)
+     .BUFFER_FULL_OFF(BUFFER_FULL_OFF),
+     .DEBUG_BRAM_ADDR_FL_TAIL_INDEX(DEBUG_BRAM_ADDR_FL_TAIL_INDEX)
     )
     block_ram_inst(
     
@@ -338,8 +340,9 @@ module output_queue_v0_1_with_cpu
     output_queue_bypass_checker_inst
     (   
         .s_axis_valid(s_axis_pifo_insert_en),
-        .s_axis_pifo_info(w_pifo_root_info_final),        
+        .s_axis_pifo_info(s_axis_tpifo),        
         .s_axis_pifo_calandar_top(w_pifo_calendar_out_pifo_calendar_top),
+        .s_axis_global_pifo_overflow(w_r_m_axis_tpifo_overflow),
 
         .s_axis_gpfc_valid(s_axis_gpfc_valid),
         .s_axis_gpfc_pause_rank(s_axis_gpfc_pause_rank),
@@ -351,10 +354,6 @@ module output_queue_v0_1_with_cpu
         .clk(axis_aclk),                     
         .rstn(axis_resetn)                     
     );
-    
-    
-    
-    
     
     // Combination Logic Block
     always @(*)
@@ -530,6 +529,7 @@ module output_queue_v0_1_with_cpu
                     r_m_axis_tuser_next = w_buffer_wrapper_out_tuser;
                     
                     
+                    
                     // in read condition, the bram output is must valid,
                     // if global is valid and overflow is same and the input rank is larger than the global rank then update the global value 
                     // or if output is not valid then, update the global value 
@@ -537,7 +537,7 @@ module output_queue_v0_1_with_cpu
                     if((~w_r_m_axis_tpifo_valid) 
 
                     || (w_r_m_axis_tpifo_valid 
-                    && (w_r_m_axis_tpifo_overflow != w_r_s_axis_tpifo_d1_overflow)
+                    && (w_r_m_axis_tpifo_overflow != w_buffer_wrapper_out_tpifo_overflow)
                     && (w_buffer_wrapper_out_tpifo_rank < w_r_m_axis_tpifo_rank))
                     
                     || (w_r_m_axis_tpifo_valid 
@@ -626,8 +626,9 @@ module output_queue_v0_1_with_cpu
     end
     
 
-assign m_axis_tvalid =  (OUTPUT_SYNC)? r_m_axis_tvalid & m_axis_tready : r_m_axis_tvalid_next & m_axis_tready;
-//assign m_axis_tvalid = (OUTPUT_SYNC)? r_m_axis_tvalid: r_m_axis_tvalid_next;
+
+//assign m_axis_tvalid =  (OUTPUT_SYNC)? r_m_axis_tvalid & m_axis_tready : r_m_axis_tvalid_next & m_axis_tready;
+assign m_axis_tvalid = (OUTPUT_SYNC)? r_m_axis_tvalid: r_m_axis_tvalid_next;
 assign m_axis_tdata = (OUTPUT_SYNC)? r_m_axis_tdata: r_m_axis_tdata_next;
 assign m_axis_tkeep = (OUTPUT_SYNC)? r_m_axis_tkeep: r_m_axis_tkeep_next;
 assign m_axis_tlast = (OUTPUT_SYNC)? r_m_axis_tlast: r_m_axis_tlast_next;

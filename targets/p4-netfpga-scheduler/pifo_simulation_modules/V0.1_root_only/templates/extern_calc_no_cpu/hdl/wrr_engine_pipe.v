@@ -84,11 +84,11 @@ always @(*)
     PIPE_2_r_target_overflow_next = PIPE_1_r_target_overflow;
     PIPE_2_r_target_round_next = PIPE_1_r_target_round;
     PIPE_2_r_target_weight_next = PIPE_1_r_target_weight;
-  
-
+    
      // check if is outdated,
      // 1. check overflow bit,
-     if(PIPE_1_r_target_overflow != last_pifo_overflow_d1 && last_pifo_round_d1 < PIPE_1_r_target_round)
+//     if(PIPE_1_r_target_overflow != last_pifo_overflow_d1 && last_pifo_round_d1 < PIPE_1_r_target_round)
+     if(PIPE_1_r_target_overflow != last_pifo_overflow_d1)
          begin
              PIPE_2_r_target_overflow_next = last_pifo_overflow_d1;
              PIPE_2_r_target_round_next = last_pifo_round_d1;
@@ -119,8 +119,7 @@ always @(*)
                      PIPE_2_r_target_round_next =  PIPE_1_r_target_round + 1;
                      PIPE_2_r_target_weight_next = PIPE_1_r_req_weight - 1;
                  end
-         end
-
+        end
   end
 
 // PIPE 3. Update
@@ -131,6 +130,9 @@ always @(*)
         r_resp_data_next = {PIFO_WIDTH{1'b0}}; 
         for (i = 0;i<CLASS_ID_COUNT;i=i+1)
           begin
+          
+            
+            
             r_overflow_next[i] = r_overflow[i];
             r_round_next[i] = r_round[i];
             r_weight_next[i] = r_weight[i];          

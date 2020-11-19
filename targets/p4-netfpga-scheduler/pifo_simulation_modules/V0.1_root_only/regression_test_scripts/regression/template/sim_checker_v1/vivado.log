@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Wed Nov 18 13:58:44 2020
-# Process ID: 19233
+# Start of session at: Wed Nov 18 15:32:05 2020
+# Process ID: 32509
 # Current directory: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1
 # Command line: vivado -mode batch -source sim_checker_ip.tcl
 # Log file: /home/jkchoi/Documents/git/MultiSwitch/targets/p4-netfpga-scheduler/pifo_simulation_modules/V0.1_root_only/regression_test_scripts/regression/template/sim_checker_v1/vivado.log
@@ -128,4 +128,4 @@ INFO: [Ipptcl 7-1486] check_integrity: Integrity check passed.
 # update_ip_catalog
 # close_project
 # file delete -force ${proj_dir} 
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 18 13:58:54 2020...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 18 15:32:15 2020...

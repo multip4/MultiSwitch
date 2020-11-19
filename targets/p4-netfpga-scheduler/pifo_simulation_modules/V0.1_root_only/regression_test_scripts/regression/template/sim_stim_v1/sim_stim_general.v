@@ -107,11 +107,16 @@ always @(posedge clk) begin
         m_axis_valid <= 0;
     end
     else begin // sync, update FF registers
-        r_is_first_line <= r_is_first_line_next;
         if (!$feof(data_file) & read_next) begin 
         //read file
+        
         m_axis_valid <= 1;
-        scan_file = $fscanf(data_file, "%h,%h,%h,%h,%h,%h,%h,%h,%h,%h\n", m_axis_data0,m_axis_data1,m_axis_data2,m_axis_data3,m_axis_data4,m_axis_data5,m_axis_data6,m_axis_data7,m_axis_data8,m_axis_data9); 
+        
+        scan_file = $fscanf(data_file, "%h,%h,%h,%h,%h,%h,%h,%h,%h,%h\n", m_axis_data0,m_axis_data1,m_axis_data2,m_axis_data3,m_axis_data4,m_axis_data5,m_axis_data6,m_axis_data7,m_axis_data8,m_axis_data9);
+
+        r_is_first_line <= r_is_first_line_next;
+        
+
         //use captured_data as you would any other wire or reg value;
         $display("[%0t] [Sim Stim IP   ] Read next line: %h,%h,%h,%h,%h,%h,%h,%h,%h,%h", $time,m_axis_data0,m_axis_data1,m_axis_data2,m_axis_data3,m_axis_data4,m_axis_data5,m_axis_data6,m_axis_data7,m_axis_data8,m_axis_data9); 
 

@@ -73,7 +73,7 @@ reg      [DATA_9_WIDTH-1:0]   r_exp_data9;
 reg     [MAX_DATA_DEPTH_WIDTH-1:0] r_file_read_line_counter, r_file_read_line_counter_next;
 
 
-reg     [DATA_COUNT-1:0] r_check_result;
+reg     [9:0] r_check_result;
 
 integer expected_check_result = 2 ** DATA_COUNT - 1;
 
@@ -120,7 +120,7 @@ always @(posedge clk) begin
         r_exp_data8 <= 0;
         r_exp_data9 <= 0;
         r_check_result <= 0;
-        r_file_read_line_counter <=1;
+        r_file_read_line_counter <=0;
         r_pass_count <= 0;
         r_fail_count <= 0;
 
@@ -134,11 +134,14 @@ always @(posedge clk) begin
         
         //read next line
         if (!$feof(exp_data_file) & s_axis_valid) begin 
-    
-            
-            r_file_read_line_counter <= r_file_read_line_counter_next;
+        
             //read file        
             exp_scan_file = $fscanf(exp_data_file, "%h,%h,%h,%h,%h,%h,%h,%h,%h,%h\n", r_exp_data0,r_exp_data1,r_exp_data2,r_exp_data3,r_exp_data4,r_exp_data5,r_exp_data6,r_exp_data7,r_exp_data8,r_exp_data9); 
+            
+           
+
+            r_file_read_line_counter <= r_file_read_line_counter + 1;
+
             //use captured_data as you would any other wire or reg value;
             $display("[%0t] [Sim Checker IP] Read next line: %h,%h,%h,%h,%h,%h,%h,%h,%h,%h", $time, r_exp_data0,r_exp_data1,r_exp_data2,r_exp_data3,r_exp_data4,r_exp_data5,r_exp_data6,r_exp_data7,r_exp_data8,r_exp_data9);
             

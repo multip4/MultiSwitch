@@ -37,7 +37,8 @@ parameter C_S_AXIS_PIFO_WIDTH=32,
 parameter C_S_AXIS_ADDR_WIDTH=12,
 parameter OUTPUT_SYNC = 0,
 parameter BUFFER_FULL_ON = ADDR_TABLE_DEPTH - THRESHOLD_ALMOST_FULL,
-parameter BUFFER_FULL_OFF = 1
+parameter BUFFER_FULL_OFF = 1,
+parameter DEBUG_BRAM_ADDR_FL_TAIL_INDEX = ADDR_TABLE_DEPTH-1
 )
 (
     // IO for Address Manager
@@ -381,7 +382,7 @@ begin
     if(~rstn) 
         begin
             r_fl_head <= 0;
-            r_fl_tail <= ADDR_TABLE_DEPTH-1;
+            r_fl_tail <= DEBUG_BRAM_ADDR_FL_TAIL_INDEX;
             fsm_full <= NORMAL;
 //            addr_manager_fsm_state<=IDLE;
 //            r_last_rd_index <= ADDR_TABLE_DEPTH-1;
