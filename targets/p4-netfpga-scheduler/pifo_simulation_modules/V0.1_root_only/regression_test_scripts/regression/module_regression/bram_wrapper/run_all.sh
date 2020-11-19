@@ -1,5 +1,5 @@
 #!/bin/bash
-
+function run_test(){
 test_case=$1
 STOP_FAIL=$2
 test_folder=$(pwd)/test_data/${test_case}
@@ -14,14 +14,24 @@ echo ${data_exp_path}
 
 echo ${log_path}
 
+
 rm -rfv project;\
 rm -rfv vivado*;\
 rm -rfv .Xil;\
 
 echo "Create reference project under folder /project";\
-vivado -mode gui -source ./tcl/pifo_calendar_sim.tcl -tclargs ${data_in_path} ${data_exp_path} ${log_path} ${STOP_FAIL}
+vivado -mode batch -source ./tcl/pifo_calendar_sim.tcl -tclargs ${data_in_path} ${data_exp_path} ${log_path} ${STOP_FAIL}
+}
 
 
-rm -rfv project;\
-rm -rfv vivado*;\
-rm -rfv .Xil;\
+cd test_data
+TEST_CASES=$(ls -d *);
+cd ..
+
+
+for test in ${TEST_CASES}; do
+    echo "$test"
+
+    run_test ${test} 0;
+
+done

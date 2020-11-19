@@ -14,7 +14,7 @@ clean:
 	rm -rfv project;\
 	rm -rfv vivado*;\
 	rm -rfv .Xil;\
-	rm -rfv ./log*;
+	rm -rfv log*
 
 run_all: clean
 	./run_all.sh

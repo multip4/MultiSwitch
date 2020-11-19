@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_sim_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top_sim_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="44466453fs"></ZoomStartTime>
+      <ZoomEndTime time="107667739fs"></ZoomEndTime>
+      <Cursor1Time time="55000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="236"></NameColumnWidth>
+      <ValueColumnWidth column_width="78"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="90" />
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/clk_lookup">
+      <obj_property name="ElementShortName">clk_lookup</obj_property>
+      <obj_property name="ObjectShortName">clk_lookup</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/tuple_in_my_extern_calc_input_VALID">
+      <obj_property name="ElementShortName">tuple_in_my_extern_calc_input_VALID</obj_property>
+      <obj_property name="ObjectShortName">tuple_in_my_extern_calc_input_VALID</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/tuple_in_my_extern_calc_input_DATA">
+      <obj_property name="ElementShortName">tuple_in_my_extern_calc_input_DATA[53:0]</obj_property>
+      <obj_property name="ObjectShortName">tuple_in_my_extern_calc_input_DATA[53:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/tuple_out_my_extern_calc_output_VALID">
+      <obj_property name="ElementShortName">tuple_out_my_extern_calc_output_VALID</obj_property>
+      <obj_property name="ObjectShortName">tuple_out_my_extern_calc_output_VALID</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/tuple_out_my_extern_calc_output_DATA">
+      <obj_property name="ElementShortName">tuple_out_my_extern_calc_output_DATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tuple_out_my_extern_calc_output_DATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/last_pifo_info0">
+      <obj_property name="ElementShortName">last_pifo_info0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_info0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/last_pifo_info1">
+      <obj_property name="ElementShortName">last_pifo_info1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_info1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/last_pifo_info2">
+      <obj_property name="ElementShortName">last_pifo_info2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_info2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/last_pifo_info3">
+      <obj_property name="ElementShortName">last_pifo_info3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_info3[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/last_pifo_info4">
+      <obj_property name="ElementShortName">last_pifo_info4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_info4[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/w_req_class_id">
+      <obj_property name="ElementShortName">w_req_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">w_req_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/w_req_class_weight">
+      <obj_property name="ElementShortName">w_req_class_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">w_req_class_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/w_req_pkt_size">
+      <obj_property name="ElementShortName">w_req_pkt_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">w_req_pkt_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/w_req_calc_type">
+      <obj_property name="ElementShortName">w_req_calc_type[7:0]</obj_property>
+      <obj_property name="ObjectShortName">w_req_calc_type[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/w_req_output_port">
+      <obj_property name="ElementShortName">w_req_output_port[7:0]</obj_property>
+      <obj_property name="ObjectShortName">w_req_output_port[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/w_req_fifo_valid">
+      <obj_property name="ElementShortName">w_req_fifo_valid</obj_property>
+      <obj_property name="ObjectShortName">w_req_fifo_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/r_req_wrr_valid">
+      <obj_property name="ElementShortName">r_req_wrr_valid</obj_property>
+      <obj_property name="ObjectShortName">r_req_wrr_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/r_req_drr_valid">
+      <obj_property name="ElementShortName">r_req_drr_valid</obj_property>
+      <obj_property name="ObjectShortName">r_req_drr_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/r_req_wfq_valid">
+      <obj_property name="ElementShortName">r_req_wfq_valid</obj_property>
+      <obj_property name="ObjectShortName">r_req_wfq_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/r_req_class_id">
+      <obj_property name="ElementShortName">r_req_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">r_req_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/r_req_class_weight">
+      <obj_property name="ElementShortName">r_req_class_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">r_req_class_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/r_req_pkt_size">
+      <obj_property name="ElementShortName">r_req_pkt_size[15:0]</obj_property>
+      <obj_property name="ObjectShortName">r_req_pkt_size[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/r_req_calc_type">
+      <obj_property name="ElementShortName">r_req_calc_type[7:0]</obj_property>
+      <obj_property name="ObjectShortName">r_req_calc_type[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/r_req_output_port">
+      <obj_property name="ElementShortName">r_req_output_port[7:0]</obj_property>
+      <obj_property name="ObjectShortName">r_req_output_port[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider79" type="divider">
+      <obj_property name="label">wrr</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/req_valid">
+      <obj_property name="ElementShortName">req_valid</obj_property>
+      <obj_property name="ObjectShortName">req_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/req_class_id">
+      <obj_property name="ElementShortName">req_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">req_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/req_class_weight">
+      <obj_property name="ElementShortName">req_class_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">req_class_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/last_pifo_valid">
+      <obj_property name="ElementShortName">last_pifo_valid</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/last_pifo_overflow">
+      <obj_property name="ElementShortName">last_pifo_overflow[0:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_overflow[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/last_pifo_round">
+      <obj_property name="ElementShortName">last_pifo_round[17:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_round[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/resp_valid">
+      <obj_property name="ElementShortName">resp_valid</obj_property>
+      <obj_property name="ObjectShortName">resp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/resp_data">
+      <obj_property name="ElementShortName">resp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">resp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider113" type="divider">
+      <obj_property name="label">drr</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/req_valid">
+      <obj_property name="ElementShortName">req_valid</obj_property>
+      <obj_property name="ObjectShortName">req_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/req_class_id">
+      <obj_property name="ElementShortName">req_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">req_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/req_class_weight">
+      <obj_property name="ElementShortName">req_class_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">req_class_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/req_div_quotient">
+      <obj_property name="ElementShortName">req_div_quotient[15:0]</obj_property>
+      <obj_property name="ObjectShortName">req_div_quotient[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/req_div_remain">
+      <obj_property name="ElementShortName">req_div_remain[15:0]</obj_property>
+      <obj_property name="ObjectShortName">req_div_remain[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/last_pifo_valid">
+      <obj_property name="ElementShortName">last_pifo_valid</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/last_pifo_overflow">
+      <obj_property name="ElementShortName">last_pifo_overflow[0:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_overflow[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/last_pifo_round">
+      <obj_property name="ElementShortName">last_pifo_round[17:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_round[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/resp_valid">
+      <obj_property name="ElementShortName">resp_valid</obj_property>
+      <obj_property name="ObjectShortName">resp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/resp_data">
+      <obj_property name="ElementShortName">resp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">resp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/r_overflow">
+      <obj_property name="ElementShortName">r_overflow[0:31][0:0]</obj_property>
+      <obj_property name="ObjectShortName">r_overflow[0:31][0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/r_round">
+      <obj_property name="ElementShortName">r_round[0:31][17:0]</obj_property>
+      <obj_property name="ObjectShortName">r_round[0:31][17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/r_weight">
+      <obj_property name="ElementShortName">r_weight[0:31][15:0]</obj_property>
+      <obj_property name="ObjectShortName">r_weight[0:31][15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/r_resp_valid">
+      <obj_property name="ElementShortName">r_resp_valid</obj_property>
+      <obj_property name="ObjectShortName">r_resp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/drr_inst/r_resp_data">
+      <obj_property name="ElementShortName">r_resp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">r_resp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider130" type="divider">
+      <obj_property name="label">wfq</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/req_valid">
+      <obj_property name="ElementShortName">req_valid</obj_property>
+      <obj_property name="ObjectShortName">req_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/req_class_id">
+      <obj_property name="ElementShortName">req_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">req_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/req_div_quotient">
+      <obj_property name="ElementShortName">req_div_quotient[15:0]</obj_property>
+      <obj_property name="ObjectShortName">req_div_quotient[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/req_div_remain">
+      <obj_property name="ElementShortName">req_div_remain[15:0]</obj_property>
+      <obj_property name="ObjectShortName">req_div_remain[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/last_pifo_valid">
+      <obj_property name="ElementShortName">last_pifo_valid</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/last_pifo_overflow">
+      <obj_property name="ElementShortName">last_pifo_overflow[0:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_overflow[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/last_pifo_round">
+      <obj_property name="ElementShortName">last_pifo_round[17:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_round[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/resp_valid">
+      <obj_property name="ElementShortName">resp_valid</obj_property>
+      <obj_property name="ObjectShortName">resp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/resp_data">
+      <obj_property name="ElementShortName">resp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">resp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/r_overflow">
+      <obj_property name="ElementShortName">r_overflow[0:31][0:0]</obj_property>
+      <obj_property name="ObjectShortName">r_overflow[0:31][0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/r_round">
+      <obj_property name="ElementShortName">r_round[0:31][17:0]</obj_property>
+      <obj_property name="ObjectShortName">r_round[0:31][17:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/r_resp_valid">
+      <obj_property name="ElementShortName">r_resp_valid</obj_property>
+      <obj_property name="ObjectShortName">r_resp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wfq_inst/r_resp_data">
+      <obj_property name="ElementShortName">r_resp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">r_resp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider88" type="divider">
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_valid">
+      <obj_property name="ElementShortName">PIPE_1_r_valid</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_overflow">
+      <obj_property name="ElementShortName">PIPE_1_r_target_overflow[0:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_overflow[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_overflow_next">
+      <obj_property name="ElementShortName">PIPE_1_r_target_overflow_next[0:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_overflow_next[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_round">
+      <obj_property name="ElementShortName">PIPE_1_r_target_round[17:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_round[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_round_next">
+      <obj_property name="ElementShortName">PIPE_1_r_target_round_next[17:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_round_next[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_weight">
+      <obj_property name="ElementShortName">PIPE_1_r_target_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_weight_next">
+      <obj_property name="ElementShortName">PIPE_1_r_target_weight_next[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_weight_next[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_class_id">
+      <obj_property name="ElementShortName">PIPE_1_r_target_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_target_class_id_next">
+      <obj_property name="ElementShortName">PIPE_1_r_target_class_id_next[4:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_target_class_id_next[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_req_weight">
+      <obj_property name="ElementShortName">PIPE_1_r_req_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_req_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_1_r_req_weight_next">
+      <obj_property name="ElementShortName">PIPE_1_r_req_weight_next[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_1_r_req_weight_next[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/last_pifo_valid_d1">
+      <obj_property name="ElementShortName">last_pifo_valid_d1</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_valid_d1</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/last_pifo_overflow_d1">
+      <obj_property name="ElementShortName">last_pifo_overflow_d1[0:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_overflow_d1[0:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/last_pifo_round_d1">
+      <obj_property name="ElementShortName">last_pifo_round_d1[17:0]</obj_property>
+      <obj_property name="ObjectShortName">last_pifo_round_d1[17:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_valid">
+      <obj_property name="ElementShortName">PIPE_2_r_valid</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_overflow">
+      <obj_property name="ElementShortName">PIPE_2_r_target_overflow[0:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_overflow[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_overflow_next">
+      <obj_property name="ElementShortName">PIPE_2_r_target_overflow_next[0:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_overflow_next[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_round">
+      <obj_property name="ElementShortName">PIPE_2_r_target_round[17:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_round[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_round_next">
+      <obj_property name="ElementShortName">PIPE_2_r_target_round_next[17:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_round_next[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_weight">
+      <obj_property name="ElementShortName">PIPE_2_r_target_weight[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_weight[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_weight_next">
+      <obj_property name="ElementShortName">PIPE_2_r_target_weight_next[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_weight_next[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/PIPE_2_r_target_class_id">
+      <obj_property name="ElementShortName">PIPE_2_r_target_class_id[4:0]</obj_property>
+      <obj_property name="ObjectShortName">PIPE_2_r_target_class_id[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/r_resp_data">
+      <obj_property name="ElementShortName">r_resp_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">r_resp_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim_tb/my_extern_calc_0/wrr_inst/r_resp_data_next">
+      <obj_property name="ElementShortName">r_resp_data_next[31:0]</obj_property>
+      <obj_property name="ObjectShortName">r_resp_data_next[31:0]</obj_property>
+   </wvobject>
+</wave_config>
