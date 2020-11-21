@@ -187,6 +187,7 @@ def send_drop_pkt(SMAC, DMAC,input_port):
 def send_pkt(SMAC, DMAC,input_port,ouput_port,length,id=0):
     global pktCnt
     pktCnt += 1
+    id %=100
     pkt = Ether(dst=DMAC, src=SMAC)/mask[id]/ '\xff'/IP()
     # pkt = pad_pkt(pkt, length, hex(length))
     pkt = pad_pkt(pkt, length, id)
@@ -364,7 +365,7 @@ def test_congestion_scenario(size):
 
 	write_pcap_files()		
 
-test_fixed_size_senario(64, 50)
+test_fixed_size_senario(512, 50)
 
 
 # delete_test_files()

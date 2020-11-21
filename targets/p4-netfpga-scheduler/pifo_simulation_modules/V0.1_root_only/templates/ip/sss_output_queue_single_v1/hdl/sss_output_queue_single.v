@@ -63,8 +63,8 @@ module sss_output_queue_single
     parameter C_S_AXIS_DATA_WIDTH=256,
     parameter C_M_AXIS_TUSER_WIDTH=128,
     parameter C_S_AXIS_TUSER_WIDTH=128,
-    parameter QUEUE_BUFFER_SIZE = 128,
-    parameter QUEUE_BUFFER_THRESHOLD = 64
+    parameter QUEUE_BUFFER_SIZE = 256,
+    parameter QUEUE_BUFFER_THRESHOLD = 128
 )
 (
     // Part 1: System side signals

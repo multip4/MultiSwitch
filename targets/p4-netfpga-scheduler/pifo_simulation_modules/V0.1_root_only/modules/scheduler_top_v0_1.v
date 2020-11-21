@@ -228,9 +228,9 @@ wire  [C_S_AXIS_TUSER_WIDTH-PIFO_INFO_LENGTH-1:0] w_sume_meta, w_sume_meta_d1;
 assign {w_pifo_info_d1, w_sume_meta_d1} = s_axis_tuser_d1; //wire split
 assign {w_pifo_info, w_sume_meta} = s_axis_tuser; //wire split
 
-    enqueue_agent_v0_1
+    enqueue_agent_no_hs
     #(
-    .SYNC_MODE(1)
+    .SYNC_MODE(0)
     )
     enqueue_agent_inst(
             // from/to pipeline

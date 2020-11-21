@@ -48,11 +48,10 @@ module output_queue_v0_1_with_cpu
 //    parameter BUFFER_FULL_OFF = 2    
     
     parameter PIFO_FULL_ON = PIFO_WORD_DEPTH - 3, 
-    parameter PIFO_FULL_OFF = 1,
+    parameter PIFO_FULL_OFF = 0,
 
     parameter BUFFER_FULL_ON = BUFFER_WORD_DEPTH - 96,
     parameter BUFFER_FULL_OFF = 1
-
     )
     (
     
@@ -425,10 +424,10 @@ module output_queue_v0_1_with_cpu
                                             if((~w_r_m_axis_tpifo_valid) 
                                             || (w_r_m_axis_tpifo_valid 
                                                 && (w_r_m_axis_tpifo_overflow != w_r_s_axis_tpifo_d1_overflow)
-                                                && (w_r_s_axis_tpifo_d1_rank < w_r_m_axis_tpifo_rank))
+                                                && (w_r_m_axis_tpifo_rank > w_r_s_axis_tpifo_d1_rank))
                                             || (w_r_m_axis_tpifo_valid 
                                             && (w_r_m_axis_tpifo_overflow == w_r_s_axis_tpifo_d1_overflow) 
-                                            && (w_r_s_axis_tpifo_d1_rank > w_r_m_axis_tpifo_rank)))
+                                            && (w_r_m_axis_tpifo_rank < w_r_s_axis_tpifo_d1_rank )))
                                                 begin
                                                     r_m_axis_tpifo_next = r_s_axis_tpifo_d1;
                                                 end
@@ -538,11 +537,11 @@ module output_queue_v0_1_with_cpu
 
                     || (w_r_m_axis_tpifo_valid 
                     && (w_r_m_axis_tpifo_overflow != w_buffer_wrapper_out_tpifo_overflow)
-                    && (w_buffer_wrapper_out_tpifo_rank < w_r_m_axis_tpifo_rank))
+                    && (w_r_m_axis_tpifo_rank > w_buffer_wrapper_out_tpifo_rank))
                     
                     || (w_r_m_axis_tpifo_valid 
                     && (w_r_m_axis_tpifo_overflow == w_buffer_wrapper_out_tpifo_overflow) 
-                    && (w_buffer_wrapper_out_tpifo_rank > w_r_m_axis_tpifo_rank)))
+                    && (w_r_m_axis_tpifo_rank < w_buffer_wrapper_out_tpifo_rank)))
                         begin
                             r_m_axis_tpifo_next = w_buffer_wrapper_out_tpifo;
                         end

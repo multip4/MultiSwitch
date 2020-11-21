@@ -46,7 +46,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module enqueue_agent_v0_1
+module enqueue_agent_no_hs
     #(
         parameter C_S_AXIS_TUSER_WIDTH = 128,
         parameter C_S_AXI_DATA_WIDTH = 32,
@@ -167,7 +167,7 @@ module enqueue_agent_v0_1
     begin
         
         // set default value for all combinational output 
-        s_axis_tready = 0;
+        s_axis_tready = 1;
         fsm_enqueue_agent_state_next = fsm_enqueue_agent_state;
         r_m_axis_ctl_pifo_in_en_next = r_m_axis_ctl_pifo_in_en;
         r_m_axis_ctl_buffer_wr_en_next = r_m_axis_ctl_buffer_wr_en;
@@ -293,7 +293,7 @@ module enqueue_agent_v0_1
                         begin
                             //set ready signal to 1 only if the s_axis_tlast_f1 and s_axis_tlast value is not 0.
 //                            if(~s_axis_tlast) r_axis_tready_next = 1;
-                            s_axis_tready = 1;
+//                            s_axis_tready = 1;
                             if(s_axis_tlast)
                                 begin
                                     fsm_enqueue_agent_state_next = IDLE;
@@ -305,14 +305,14 @@ module enqueue_agent_v0_1
                     // move to IDLE state when find eop.
                     ENQUEUE_REMAIN:
                         begin
-                            s_axis_tready = 1;
+//                            s_axis_tready = 1;
                             r_m_axis_ctl_pifo_in_en_next = 0;
                             //set ready signal to 1 only if the s_axis_tlast_f1 and s_axis_tlast value is not 0.
 //                            if(~s_axis_tlast) r_axis_tready_next = 1;
                             if(s_axis_tlast)
                                 begin
                                     fsm_enqueue_agent_state_next = IDLE;
-                                    r_m_axis_ctl_buffer_wr_en_next = 0;
+//                                    r_m_axis_ctl_buffer_wr_en_next = 0;
                                     //r_axis_tready_next = 0;
                                 end
                         end
